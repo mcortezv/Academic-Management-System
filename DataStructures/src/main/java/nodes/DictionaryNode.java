@@ -10,15 +10,15 @@ package nodes;
  *
  * @author Cortez, Manuel;
  */
-public class MapNode<K, V> {
+public class DictionaryNode<K, V> {
     private K key;
     private V value;
-    private MapNode<K, V> next;
+    private DictionaryNode<K, V> next;
 
     /**
      * Constructor por defecto, crea un nodo sin dato.
      */
-    public MapNode() {
+    public DictionaryNode() {
         this.key = null;
         this.value = null;
         this.next = null;
@@ -29,7 +29,7 @@ public class MapNode<K, V> {
      * @param key Llave del nodo.
      * @param value El valor almacenado en el nodo.
      */
-    public MapNode(K key, V value) {
+    public DictionaryNode(K key, V value) {
         this.key = key;
         this.value = value;
         this.next = null;
@@ -51,11 +51,11 @@ public class MapNode<K, V> {
         return value;
     }
 
-    public void setNext(MapNode<K, V> next){
+    public void setNext(DictionaryNode<K, V> next){
         this.next = next;
     }
 
-    public MapNode<K, V> getNext(){
+    public DictionaryNode<K, V> getNext(){
         return next;
     }
 }
