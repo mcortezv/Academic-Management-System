@@ -1,9 +1,11 @@
-
-package Utilities;
-
-import Persistence.PersistenceStudentsCourses;
-import Persistence.PersistenceWaitingListCourse;
-import Persistence.PersistenceRoles;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package componets;
+import persistence.PersistenceStudentsCourses;
+import persistence.PersistenceWaitingListCourse;
+import persistence.PersistenceRoles;
 
 /**
  *
