@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package componets;
+package components;
 import persistence.PersistenceStudentsCourses;
-import persistence.PersistenceWaitingListCourse;
+import persistence.PersistenceWaitingListCourses;
 import persistence.PersistenceRoles;
 
 /**
@@ -17,7 +17,7 @@ public class Course {
     private String name;
     private Student tutor;
     private PersistenceStudentsCourses enrolledStudents;
-    private PersistenceWaitingListCourse waitingList;
+    private PersistenceWaitingListCourses waitingList;
     private PersistenceRoles studentsWithAssignedRole;
     
     /**
@@ -33,9 +33,9 @@ public class Course {
      * @param waitingList
      * @param studentsWithAssignedRole 
      */
-    public Course(String id, String name, Student tutor, 
-            PersistenceStudentsCourses enrolledStudents, 
-            PersistenceWaitingListCourse waitingList, PersistenceRoles studentsWithAssignedRole){     
+    public Course(String id, String name, Student tutor,
+                  PersistenceStudentsCourses enrolledStudents,
+                  PersistenceWaitingListCourses waitingList, PersistenceRoles studentsWithAssignedRole){
         this.id = id;
         this.name = name;
         this.enrolledStudents = enrolledStudents;

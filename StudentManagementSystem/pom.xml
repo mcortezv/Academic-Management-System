@@ -17,6 +17,6 @@
     </dependencies>
     <properties>
         <maven.compiler.release>23</maven.compiler.release>
-        <exec.mainClass>StudentManagementSystem</exec.mainClass>
+        <exec.mainClass>main.Main</exec.mainClass>
     </properties>
 </project>

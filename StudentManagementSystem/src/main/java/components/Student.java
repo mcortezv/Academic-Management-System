@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package componets;
+package components;
 import persistence.PersistenceGrades;
 
 /**
  *
  * @author Sebas
  */
-public class Student {
-    private int id;
+public class Student implements Comparable<Student> {
+    private String id;
     private String fullName;
     private Contact contactDetails;
     private PersistenceGrades grades;
@@ -27,7 +27,7 @@ public class Student {
      * @param grades
      * @param rol 
      */
-    public Student(int id, String fullName, Contact contactDetails,PersistenceGrades grades, Role rol){   
+    public Student(String id, String fullName, Contact contactDetails,PersistenceGrades grades, Role rol){
         this.id = id;
         this.fullName = fullName;
         this.contactDetails = contactDetails;
@@ -36,9 +36,9 @@ public class Student {
     }
     /**
      * 
-     * @return 
+     * @return id String
      */
-    public int getId() {
+    public String getId() {
         return id;
     }
     /**
@@ -64,9 +64,9 @@ public class Student {
     }
     /**
      * 
-     * @param id 
+     * @param id String
      */
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     /**
@@ -98,5 +98,9 @@ public class Student {
     public String toString() {
         return "Estudiante{" + "Matricula: " + id + ", Nombre Completo: " + fullName + ", Datos de Contecto: " + contactDetails + ", Rol: " + rol + '}';
     }
-    
+
+    @Override
+    public int compareTo(Student o) {
+        return 0;
+    }
 }

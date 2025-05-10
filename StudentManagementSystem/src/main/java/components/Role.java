@@ -2,39 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package componets;
+package components;
 
 /**
  *
  * @author Sebas
  */
-public class Action {
-    private String name; 
-    /**
-     * 
-     */
-    public Action(){}
+public class Role {    
+    private String name;
     /**
      * 
      * @param name 
      */
-    public Action(String name){
+    public Role(String name){
         this.name = name;
     }
-    /**
-     * 
-     * @return 
-     */
+
     public String getName() {
         return name;
     }
-    /**
-     * 
-     * @param name 
-     */
+
     public void setName(String name) {
         this.name = name;
     }
-    
-    
 }

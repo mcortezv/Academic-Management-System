@@ -4,10 +4,21 @@
  */
 package persistence;
 
+import com.sun.net.httpserver.Request;
+import structures.Queue;
+
 /**
  *
  * @author Sebas
  */
 public class PersistenceRequests {
-    
+    private Queue<Request> requests;
+
+    public PersistenceRequests(){
+        this.requests = new Queue<Request>();
+    }
+
+    public void processNextRequest(){
+
+    }
 }

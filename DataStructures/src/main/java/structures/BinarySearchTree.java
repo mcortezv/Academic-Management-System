@@ -15,7 +15,7 @@ import nodes.BinaryTreeNode;
  * @author Cortez, Manuel
  */
 public class BinarySearchTree<T extends Comparable<T>> {
-    private BinaryTreeNode<T> raiz;
+    public BinaryTreeNode<T> raiz;
 
     /**
      * Constructor que inicializa un árbol binario de búsqueda vacío.
@@ -137,7 +137,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @param dato el dato a insertar
      * @return el nodo modificado con el nuevo dato insertado
      */
-    private BinaryTreeNode<T> insert(BinaryTreeNode<T> nodo, T dato) {
+    public BinaryTreeNode<T> insert(BinaryTreeNode<T> nodo, T dato) {
         if (nodo == null) {
             return new BinaryTreeNode<>(dato);
         }
