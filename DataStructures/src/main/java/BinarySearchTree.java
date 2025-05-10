@@ -51,7 +51,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
         BinaryTreeNode<T> actual = raiz;
         while (actual.getLeft() != null) {
-            actual = actual.getRight();
+            actual = actual.getLeft();
         }
         return actual.getValue();
     }
