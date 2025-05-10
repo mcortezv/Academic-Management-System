@@ -1,3 +1,5 @@
+package structures;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -12,7 +14,7 @@ import java.util.Objects;
  *
  * @author Cortez, Manuel;
  */
-public class CircularLinkedList<T> {
+public class LinkedList<T> {
     private SingleNode<T> P;
     private SingleNode<T> ultimo;
     private int tam;
@@ -24,11 +26,9 @@ public class CircularLinkedList<T> {
      */
     public void add(T o) {
         SingleNode<T> nuevoNodo = new SingleNode<>(o);
-        if (ultimo == null) {
+        if (ultimo == null){
             P = nuevoNodo;
-            nuevoNodo.setNext(nuevoNodo);
         } else {
-            nuevoNodo.setNext(P);
             ultimo.setNext(nuevoNodo);
         }
         ultimo = nuevoNodo;
@@ -42,20 +42,13 @@ public class CircularLinkedList<T> {
      * @param indice int Indice donde se desea insetar.
      */
     public void set(T o, int indice) {
-        if (indice < 0 || indice > tam) {
+        if (indice < 0 || indice >= tam) {
             throw new ListException("Indice fuera del rango");
         }
         SingleNode<T> nuevoNodo = new SingleNode<>(o);
         if (indice == 0) {
-            if (P == null) {
-                P = nuevoNodo;
-                P.setNext(P);
-                ultimo = P;
-            } else {
-                nuevoNodo.setNext(P);
-                P = nuevoNodo;
-                ultimo.setNext(P);
-            }
+            nuevoNodo.setNext(P);
+            P = nuevoNodo;
         } else {
             SingleNode<T> actual = P;
             for (int i = 0; i < indice - 1; i++) {
@@ -63,9 +56,6 @@ public class CircularLinkedList<T> {
             }
             nuevoNodo.setNext(actual.getNext());
             actual.setNext(nuevoNodo);
-            if (actual == ultimo) {
-                ultimo = nuevoNodo;
-            }
         }
         tam++;
     }
@@ -77,22 +67,19 @@ public class CircularLinkedList<T> {
      * @return true si el objeto fue eliminado, false si no se encontró.
      */
     public boolean remove(T o) {
-        if (P == null) {
+        if (P == null){
             return false;
         }
         if (Objects.equals(P.getValue(), o)) {
-            if (P == ultimo) {
-                P = null;
+            P = P.getNext();
+            if (P == null) {
                 ultimo = null;
-            } else {
-                P = P.getNext();
-                ultimo.setNext(P);
             }
             tam--;
             return true;
         }
         SingleNode<T> actual = P;
-        while (actual.getNext() != P) {
+        while (actual.getNext() != null) {
             if (Objects.equals(actual.getNext().getValue(), o)) {
                 if (actual.getNext() == ultimo) {
                     ultimo = actual;
@@ -105,7 +92,6 @@ public class CircularLinkedList<T> {
         }
         return false;
     }
-
 
     /**
      * Metodo que busca un objeto en la lista y devuelve su índice.

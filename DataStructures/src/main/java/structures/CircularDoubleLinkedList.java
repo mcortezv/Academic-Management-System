@@ -1,88 +1,99 @@
+package structures;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 import exceptions.ListException;
-import nodes.SingleNode;
+import nodes.DoubleNode;
 import java.util.Objects;
 
 /**
- * Clase Generica de una Lista Enalzada que permite Agregar, Remover y Encontrar
+ * Clase Generica de una Lista Doblemente Enlazada Circular que permite Agregar, Remover y Encontrar
  * el indice de objetos, asi como vaciar por completo la lista.
  *
  * @author Cortez, Manuel;
  */
-public class LinkedList<T> {
-    private SingleNode<T> P;
-    private SingleNode<T> ultimo;
+public class CircularDoubleLinkedList<T> {
+    private DoubleNode<T> P;
+    private DoubleNode<T> ultimo;
     private int tam;
 
-    /**
-     * Metodo que Asigna un objeto a la ultima posicion de la lista.
-     *
-     * @param o Objeto a insertar.
-     */
     public void add(T o) {
-        SingleNode<T> nuevoNodo = new SingleNode<>(o);
-        if (ultimo == null){
+        DoubleNode<T> nuevoNodo = new DoubleNode<>(o);
+        if (ultimo == null) {
             P = nuevoNodo;
+            nuevoNodo.setNext(nuevoNodo);
+            nuevoNodo.setPrev(nuevoNodo);
         } else {
+            nuevoNodo.setNext(P);
+            nuevoNodo.setPrev(ultimo);
+            P.setPrev(nuevoNodo);
             ultimo.setNext(nuevoNodo);
         }
         ultimo = nuevoNodo;
         tam++;
     }
 
-    /**
-     * Metodo que Asigna un objeto en la posicion que recibe como parametro.
-     *
-     * @param o Objeto a insertar.
-     * @param indice int Indice donde se desea insetar.
-     */
     public void set(T o, int indice) {
-        if (indice < 0 || indice >= tam) {
+        if (indice < 0 || indice > tam) {
             throw new ListException("Indice fuera del rango");
         }
-        SingleNode<T> nuevoNodo = new SingleNode<>(o);
+        DoubleNode<T> nuevoNodo = new DoubleNode<>(o);
         if (indice == 0) {
-            nuevoNodo.setNext(P);
-            P = nuevoNodo;
+            if (P == null) {
+                P = nuevoNodo;
+                P.setNext(P);
+                P.setPrev(P);
+                ultimo = P;
+            } else {
+                nuevoNodo.setNext(P);
+                nuevoNodo.setPrev(ultimo);
+                P.setPrev(nuevoNodo);
+                ultimo.setNext(nuevoNodo);
+                P = nuevoNodo;
+            }
         } else {
-            SingleNode<T> actual = P;
+            DoubleNode<T> actual = P;
             for (int i = 0; i < indice - 1; i++) {
                 actual = actual.getNext();
             }
             nuevoNodo.setNext(actual.getNext());
+            nuevoNodo.setPrev(actual);
+            actual.getNext().setPrev(nuevoNodo);
             actual.setNext(nuevoNodo);
+            if (actual == ultimo) {
+                ultimo = nuevoNodo;
+            }
         }
         tam++;
     }
 
-    /**
-     * Metodo que Elimina un objeto de la lista.
-     *
-     * @param o Objeto a eliminar.
-     * @return true si el objeto fue eliminado, false si no se encontró.
-     */
     public boolean remove(T o) {
-        if (P == null){
+        if (P == null) {
             return false;
         }
         if (Objects.equals(P.getValue(), o)) {
-            P = P.getNext();
-            if (P == null) {
+            if (P == ultimo) {
+                P = null;
                 ultimo = null;
+            } else {
+                P.getNext().setPrev(ultimo);
+                ultimo.setNext(P.getNext());
+                P = P.getNext();
             }
             tam--;
             return true;
         }
-        SingleNode<T> actual = P;
-        while (actual.getNext() != null) {
+        DoubleNode<T> actual = P;
+        while (actual.getNext() != P) {
             if (Objects.equals(actual.getNext().getValue(), o)) {
                 if (actual.getNext() == ultimo) {
                     ultimo = actual;
                 }
-                actual.setNext(actual.getNext().getNext());
+                DoubleNode<T> aEliminar = actual.getNext();
+                actual.setNext(aEliminar.getNext());
+                aEliminar.getNext().setPrev(actual);
                 tam--;
                 return true;
             }
@@ -91,14 +102,8 @@ public class LinkedList<T> {
         return false;
     }
 
-    /**
-     * Metodo que busca un objeto en la lista y devuelve su índice.
-     *
-     * @param o Objeto a buscar.
-     * @return Índice del objeto o -1 si no se encuentra.
-     */
     public int indexOf(T o) {
-        SingleNode<T> actual = P;
+        DoubleNode<T> actual = P;
         for (int i = 0; i < tam; i++) {
             if (Objects.equals(actual.getValue(), o)){
                 return i;
@@ -108,9 +113,6 @@ public class LinkedList<T> {
         return -1;
     }
 
-    /**
-     * Metodo que limpia la lista, eliminando todos los elementos.
-     */
     public void clear() {
         this.P = null;
         this.ultimo = null;
