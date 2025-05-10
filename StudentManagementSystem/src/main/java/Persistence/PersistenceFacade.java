@@ -16,25 +16,18 @@ import structures.HashDictionary;
  */
 public class PersistenceFacade implements IPersistenceFacade {
     private PersistenceStudents persistenceStudents;
-    private PersistenceGrades persistenceGrades;
     private PersistenceCourses persistenceCourses;
     private PersistenceStudentsCourses persistenceStudentsCourses;
     private PersistenceRequests persistenceRequests;
-    private PersistenceRoles persistenceRoles;
-    private PersistenceWaitingListCourses persistenceWaitingListCourses;
     private PersistenceActions persistenceActions;
 
-    public PersistenceFacade(PersistenceStudents persistenceStudents, PersistenceGrades persistenceGrades,
-                             PersistenceCourses persistenceCourses, PersistenceStudentsCourses persistenceStudentsCourses,
-                             PersistenceRequests persistenceRequests, PersistenceRoles persistenceRoles,
-                             PersistenceWaitingListCourses persistenceWaitingListCourses, PersistenceActions persistenceActions){
+    public PersistenceFacade(PersistenceStudents persistenceStudents, PersistenceCourses persistenceCourses,
+                             PersistenceStudentsCourses persistenceStudentsCourses, PersistenceRequests persistenceRequests,
+                             PersistenceActions persistenceActions){
         this.persistenceStudents = persistenceStudents;
-        this.persistenceGrades = persistenceGrades;
         this.persistenceCourses = persistenceCourses;
         this.persistenceStudentsCourses = persistenceStudentsCourses;
         this.persistenceRequests = persistenceRequests;
-        this.persistenceRoles = persistenceRoles;
-        this.persistenceWaitingListCourses = persistenceWaitingListCourses;
         this.persistenceActions = persistenceActions;
     }
 
@@ -54,23 +47,23 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     @Override
-    public void addGrade(double grade) {
-        persistenceGrades.addGrade(grade);
+    public void addGrade(Double grade) {
+
     }
 
     @Override
-    public void updateGrade(double grade, int index) {
-        persistenceGrades.updateGrade(grade, index);
+    public void updateGrade(Double grade, int index) {
+
     }
 
     @Override
-    public double getAverage(double[] grades) {
-        return persistenceGrades.getAverage();
+    public Double getAverage() {
+        return null;
     }
 
     @Override
     public ArrayList<Double> listGrades() {
-        return persistenceGrades.listGrades();
+        return null;
     }
 
     @Override

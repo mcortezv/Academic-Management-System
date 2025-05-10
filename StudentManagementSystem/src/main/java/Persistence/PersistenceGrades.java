@@ -28,8 +28,11 @@ public class PersistenceGrades {
         grades.remove(grade);
     }
 
-    public Double getAverage(){
-        return null;
+    public Double getAverage(int index, Double sum){
+        if (index == grades.numObjects){
+            return sum / grades.numObjects;
+        }
+        return getAverage(index + 1, sum + grades.get(index));
     }
 
     public ArrayList<Double> listGrades(){
