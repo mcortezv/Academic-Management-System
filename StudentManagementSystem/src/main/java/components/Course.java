@@ -93,7 +93,6 @@ public class Course {
         
     }
 
-      
     /**
      * toString
      * @return 
@@ -103,5 +102,4 @@ public class Course {
     public String toString() {
         return "Curso{" + "Id: " + id + ", Nombre: " + name + ", tutor: " + tutor;
     }
-  
 }

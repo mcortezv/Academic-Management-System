@@ -21,12 +21,9 @@ public class Main {
     public static IPersistenceFacade loader(){
         return new PersistenceFacade(
                 new PersistenceStudents(),
-                new PersistenceGrades(),
                 new PersistenceCourses(),
                 new PersistenceStudentsCourses(),
                 new PersistenceRequests(),
-                new PersistenceRoles(),
-                new PersistenceWaitingListCourses(),
                 new PersistenceActions()
         );
     }

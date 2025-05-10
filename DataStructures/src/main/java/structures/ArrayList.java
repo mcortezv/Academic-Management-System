@@ -59,6 +59,20 @@ public class ArrayList<T> {
     }
 
     /**
+     * Retorna un objeto a una posición específica de la lista.
+     *
+     * @return o T
+     * @param i int Índice del objeto
+     * @throws ListException si el índice está fuera de rango.
+     */
+    public T get(int i) {
+        if (i < 0 || i >= array.length){
+            throw new ListException("Indice Fuera de Rango");
+        }
+        return array[i];
+    }
+
+    /**
      * Elimina un objeto de la lista.
      *
      * @param o T Objeto a eliminar.

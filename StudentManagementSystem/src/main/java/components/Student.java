@@ -4,6 +4,7 @@
  */
 package components;
 import persistence.PersistenceGrades;
+import structures.ArrayList;
 
 /**
  *
@@ -15,10 +16,12 @@ public class Student implements Comparable<Student> {
     private Contact contactDetails;
     private PersistenceGrades grades;
     private Role rol;
+
     /**
      * 
      */
     public Student(){}
+
     /**
      * 
      * @param id
@@ -34,6 +37,7 @@ public class Student implements Comparable<Student> {
         this.grades = grades;
         this.rol = rol;
     }
+
     /**
      * 
      * @return id String
@@ -41,6 +45,7 @@ public class Student implements Comparable<Student> {
     public String getId() {
         return id;
     }
+
     /**
      * 
      * @return 
@@ -48,6 +53,7 @@ public class Student implements Comparable<Student> {
     public String getFullName() {
         return fullName;
     }
+
     /**
      * 
      * @return 
@@ -55,6 +61,7 @@ public class Student implements Comparable<Student> {
     public Contact getContactDetails() {
         return contactDetails;
     }
+
     /**
      * 
      * @return 
@@ -62,6 +69,7 @@ public class Student implements Comparable<Student> {
     public Role getRol() {
         return rol;
     }
+
     /**
      * 
      * @param id String
@@ -69,6 +77,7 @@ public class Student implements Comparable<Student> {
     public void setId(String id) {
         this.id = id;
     }
+
     /**
      * 
      * @param fullName 
@@ -76,6 +85,7 @@ public class Student implements Comparable<Student> {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
+
     /**
      * 
      * @param contactDetails 
@@ -83,6 +93,23 @@ public class Student implements Comparable<Student> {
     public void setContactDetails(Contact contactDetails) {
         this.contactDetails = contactDetails;
     }
+
+    public void addGrade(Double grade) {
+        grades.addGrade(grade);
+    }
+
+    public void updateGrade(Double grade, int index) {
+        grades.updateGrade(grade, index);
+    }
+
+    public Double getAverage() {
+        return grades.getAverage(0, 0.0);
+    }
+
+    public ArrayList<Double> listGrades() {
+        return grades.listGrades();
+    }
+
     /**
      * 
      * @param rol 
@@ -90,6 +117,7 @@ public class Student implements Comparable<Student> {
     public void setRol(Role rol) {
         this.rol = rol;
     }
+
     /**
      * 
      * @return 
