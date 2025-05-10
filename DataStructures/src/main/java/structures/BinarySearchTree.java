@@ -141,14 +141,12 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (nodo == null) {
             return new BinaryTreeNode<>(dato);
         }
-
         int comparacion = dato.compareTo(nodo.getValue());
         if (comparacion < 0) {
             nodo.setLeft(insert(nodo.getLeft(), dato));
         } else if (comparacion > 0) {
             nodo.setRight(insert(nodo.getRight(), dato));
         }
-
         return nodo;
     }
 
