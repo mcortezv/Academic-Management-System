@@ -5,9 +5,23 @@
 package exceptions;
 
 /**
+ * Excepción personalizada para manejar errores en HashMaps.
  *
- * @author mdjes
+ * @author Cortez, Manuel;
  */
-public class HashMapException {
-    
+public class HashMapException extends RuntimeException {
+
+    /**
+     * Constructor por defecto de la excepción.
+     */
+    public HashMapException(){}
+
+    /**
+     * Constructor que acepta un mensaje de error.
+     *
+     * @param s String Mensaje de error descriptivo.
+     */
+    public HashMapException(String s){
+        super(s);
+    }
 }

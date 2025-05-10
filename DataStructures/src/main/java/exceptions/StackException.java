@@ -5,9 +5,23 @@
 package exceptions;
 
 /**
+ * Excepción personalizada para manejar errores en Pilas.
  *
- * @author mdjes
+ * @author Cortez, Manuel;
  */
-public class StackException {
-    
+public class StackException extends RuntimeException {
+
+    /**
+     * Constructor por defecto de la excepción.
+     */
+    public StackException(){}
+
+    /**
+     * Constructor que acepta un mensaje de error.
+     *
+     * @param s String Mensaje de error descriptivo.
+     */
+    public StackException(String s){
+        super(s);
+    }
 }

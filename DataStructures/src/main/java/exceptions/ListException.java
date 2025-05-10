@@ -5,7 +5,7 @@
 package exceptions;
 
 /**
- * Excepción personalizada para manejar errores en listas.
+ * Excepción personalizada para manejar errores en Listas.
  *
  * @author Cortez, Manuel;
  */

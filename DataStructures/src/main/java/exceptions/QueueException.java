@@ -5,9 +5,23 @@
 package exceptions;
 
 /**
+ * Excepción personalizada para manejar errores en Colas.
  *
- * @author mdjes
+ * @author Cortez, Manuel;
  */
-public class QueueException {
-    
+public class QueueException extends RuntimeException {
+
+    /**
+     * Constructor por defecto de la excepción.
+     */
+    public QueueException(){}
+
+    /**
+     * Constructor que acepta un mensaje de error.
+     *
+     * @param s String Mensaje de error descriptivo.
+     */
+    public QueueException(String s){
+        super(s);
+    }
 }
