@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package components;
-import reset.PersistenceStudentsCourses;
-import reset.PersistenceWaitingListCourses;
-import reset.PersistenceRoles;
+import persistence.PersistenceStudentsCourses;
+import persistence.PersistenceWaitingListCourses;
+import persistence.PersistenceRoles;
 
 /**
  *

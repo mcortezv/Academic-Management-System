@@ -2,26 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package reset.exceptions;
+package persistence.exceptions;
 
 /**
- * Excepción personalizada para manejar errores en la Persistencia de Solicitudes.
+ * Excepción personalizada para manejar errores en la Persistencia de Calificaciones.
  *
  * @author Cortez, Manuel;
  */
-public class PersistenceRequestException extends RuntimeException {
+public class PersistenceGradesException extends RuntimeException {
 
     /**
      * Constructor por defecto de la excepción.
      */
-    public PersistenceRequestException(){}
+    public PersistenceGradesException(){}
 
     /**
      * Constructor que acepta un mensaje de error.
      *
      * @param s String Mensaje de error descriptivo.
      */
-    public PersistenceRequestException(String s){
+    public PersistenceGradesException(String s){
         super(s);
     }
 }
