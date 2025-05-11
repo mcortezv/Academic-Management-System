@@ -5,12 +5,13 @@
 package components;
 import persistences.PersistenceGrades;
 import structures.ArrayList;
+import commun.Identificable;
 
 /**
  *
  * @author Sebas
  */
-public class Student implements Comparable<Student> {
+public class Student implements Identificable {
     private String id;
     private String fullName;
     private Contact contactDetails;
@@ -42,6 +43,7 @@ public class Student implements Comparable<Student> {
      * 
      * @return id String
      */
+    @Override
     public String getId() {
         return id;
     }
@@ -128,7 +130,7 @@ public class Student implements Comparable<Student> {
     }
 
     @Override
-    public int compareTo(Student o) {
-        return 0;
+    public int compareTo(Identificable o) {
+        return this.id.compareTo(o.getId());
     }
 }

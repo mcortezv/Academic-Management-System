@@ -5,6 +5,7 @@
 package structures;
 import exceptions.TreeException;
 import nodes.BinaryTreeNode;
+import commun.Identificable;
 
 /**
  * Implementación de un árbol binario de búsqueda genérico que almacena elementos ordenados.
@@ -13,7 +14,7 @@ import nodes.BinaryTreeNode;
  * @param <T> el tipo de elementos almacenados en el árbol, debe implementar Comparable<T>
  * @author Cortez, Manuel
  */
-public class BinarySearchTree<T extends Comparable<T>> {
+public class BinarySearchTree<T extends Identificable> {
     public BinaryTreeNode<T> raiz;
 
     /**
