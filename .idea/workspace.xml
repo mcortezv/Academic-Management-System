@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="77f88530-7d7b-4939-97d1-3bfe23dbd89d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataStructures/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DataStructures/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataStructures/src/main/java/structures/BinarySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/DataStructures/src/main/java/structures/BinarySearchTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataStructures/src/test/java/BinarySearchTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/DataStructures/src/test/java/BinarySearchTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentManagementSystem/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/StudentManagementSystem/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentManagementSystem/src/main/java/components/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/StudentManagementSystem/src/main/java/components/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2wvy19GstZEoLcPo5BXmYSGsrED" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="77f88530-7d7b-4939-97d1-3bfe23dbd89d" name="Changes" comment="" />
+      <created>1746936124431</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1746936124431</updated>
+    </task>
+    <servers />
+  </component>
+</project>
