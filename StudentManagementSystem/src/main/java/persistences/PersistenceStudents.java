@@ -26,7 +26,7 @@ public class PersistenceStudents {
     }
 
     public Student searchStudent(String id){
-        return students.get(id);
+        return null;
     }
 
     public BinarySearchTree<Student> listStudents(){
