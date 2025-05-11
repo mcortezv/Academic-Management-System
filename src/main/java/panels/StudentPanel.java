@@ -1,0 +1,53 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package panels;
+
+import formsDialog.StudentFormDialog;
+import gui.MainFrame;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Frame;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+/**
+ *
+ * @author david
+ */
+public class StudentPanel extends BasePanel{
+    private JButton btnAddStudent;
+    private JButton btnDeleteStudent;
+    private JButton btnSearchStudent;
+
+    public StudentPanel(MainFrame frame) {
+        super(frame);
+
+    }
+
+    @Override
+    public void startComponents() {
+        btnAddStudent = new JButton("Añadir estudiante");
+        btnDeleteStudent = new JButton("Eliminar estudiante");
+        btnSearchStudent = new JButton("Buscar Estudiante");
+
+        //Buttons
+        btnAddStudent.setPreferredSize(new Dimension(150, 30));;
+        btnDeleteStudent.setPreferredSize(new Dimension(150, 30));;
+        btnSearchStudent.setPreferredSize(new Dimension(150, 30));;
+            //Add student button
+            btnAddStudent.addActionListener(e -> { 
+                new StudentFormDialog(mainFrame).setVisible(true);
+            });
+
+        //Paneles
+        centralPanel.add(btnAddStudent);        
+        centralPanel.add(btnDeleteStudent);
+        centralPanel.add(btnSearchStudent);
+
+    }
+
+}
