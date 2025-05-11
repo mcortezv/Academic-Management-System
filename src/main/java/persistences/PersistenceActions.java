@@ -10,7 +10,7 @@ import persistences.exceptions.PersistenceActionsException;
 import structures.Stack;
 
 /**
- *
+ * Clase de persistencia que implementa una pila 
  * @author Sebas
  */
 public class PersistenceActions {
