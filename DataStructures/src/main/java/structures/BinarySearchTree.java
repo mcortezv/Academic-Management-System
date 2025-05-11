@@ -4,6 +4,7 @@ package structures;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+import components.Student;
 import exceptions.TreeException;
 import nodes.BinaryTreeNode;
 
@@ -14,8 +15,8 @@ import nodes.BinaryTreeNode;
  * @param <T> el tipo de elementos almacenados en el árbol, debe implementar Comparable<T>
  * @author Cortez, Manuel
  */
-public class BinarySearchTree<T extends Comparable<T>> {
-    public BinaryTreeNode<T> raiz;
+public class BinarySearchTree<T extends Comparable<Student>> {
+    public BinaryTreeNode<Student> raiz;
 
     /**
      * Constructor que inicializa un árbol binario de búsqueda vacío.
@@ -30,11 +31,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @param nodo el nodo raíz del subárbol a buscar
      * @return el nodo con el dato más grande, o null si el subárbol está vacío
      */
-    private BinaryTreeNode<T> findBiggestNode(BinaryTreeNode<T> nodo) {
+    private BinaryTreeNode<Student> findBiggestNode(BinaryTreeNode<Student> nodo) {
         if (nodo == null) {
             return null;
         }
-        BinaryTreeNode<T> actual = nodo;
+        BinaryTreeNode<Student> actual = nodo;
         while (actual.getLeft() != null) {
             actual = actual.getRight();
         }
@@ -47,11 +48,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @return el dato más pequeño en el árbol
      * @throws TreeException si el árbol está vacío
      */
-    public T firstEntry() {
+    public Student firstEntry() {
         if (raiz == null) {
             throw new TreeException("El arbol esta vacío");
         }
-        BinaryTreeNode<T> actual = raiz;
+        BinaryTreeNode<Student> actual = raiz;
         while (actual.getLeft() != null) {
             actual = actual.getLeft();
         }
@@ -64,11 +65,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @return el dato más grande en el árbol
      * @throws TreeException si el árbol está vacío
      */
-    public T lastEntry() {
+    public Student lastEntry() {
         if (raiz == null) {
             throw new TreeException("El árbol está vacío");
         }
-        BinaryTreeNode<T> mayor = findBiggestNode(raiz);
+        BinaryTreeNode<Student> mayor = findBiggestNode(raiz);
         return mayor.getValue();
     }
 
@@ -79,7 +80,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @return el dato encontrado en el árbol
      * @throws TreeException si el dato no se encuentra en el árbol o es null
      */
-    public T get(T dato) {
+    public Student get(String dato) {
         if (dato == null) {
             throw new TreeException("El dato no puede ser nulo");
         }
@@ -94,11 +95,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @return el dato encontrado
      * @throws TreeException si el dato no se encuentra en el subárbol
      */
-    private T get(BinaryTreeNode<T> nodo, T dato) {
+    private Student get(BinaryTreeNode<Student> nodo, String dato) {
         if (nodo == null) {
             throw new TreeException("Dato no encontrado en el árbol");
         }
-        int comparacion = dato.compareTo(nodo.getValue());
+        int comparacion = dato.compareTo(nodo.getValue().getId());
         if (comparacion == 0) {
             return nodo.getValue();
         } else if (comparacion < 0) {
@@ -123,7 +124,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @param dato el dato a insertar en el árbol
      * @throws TreeException si el dato a insertar es null
      */
-    public void insert(T dato) {
+    public void insert(Student dato) {
         if (dato == null) {
             throw new TreeException("El dato no puede ser nulo");
         }
@@ -137,11 +138,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @param dato el dato a insertar
      * @return el nodo modificado con el nuevo dato insertado
      */
-    public BinaryTreeNode<T> insert(BinaryTreeNode<T> nodo, T dato) {
+    public BinaryTreeNode<Student> insert(BinaryTreeNode<Student> nodo, Student dato) {
         if (nodo == null) {
-            return new BinaryTreeNode<>(dato);
+            return new BinaryTreeNode<Student>(dato);
         }
-        int comparacion = dato.compareTo(nodo.getValue());
+        int comparacion = dato.getId().compareTo(nodo.getValue().getId());
         if (comparacion < 0) {
             nodo.setLeft(insert(nodo.getLeft(), dato));
         } else if (comparacion > 0) {
@@ -156,7 +157,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @param dato el dato a buscar
      * @return true si el dato existe en el árbol, false en caso contrario
      */
-    public boolean contains(T dato) {
+    public boolean contains(String dato) {
         try {
             get(dato);
         } catch (TreeException e) {
@@ -170,7 +171,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
      *
      * @param dato el dato a eliminar del árbol
      */
-    public void remove(T dato) {
+    public void remove(Student dato) {
         raiz = remove(raiz, dato);
     }
 
@@ -181,11 +182,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * @param dato el dato a eliminar
      * @return el nodo modificado con el dato eliminado
      */
-    private BinaryTreeNode<T> remove(BinaryTreeNode<T> nodo, T dato) {
+    private BinaryTreeNode<Student> remove(BinaryTreeNode<Student> nodo, Student dato) {
         if (nodo == null) {
             return null;
         }
-        int comparacion = dato.compareTo(nodo.getValue());
+        int comparacion = dato.getId().compareTo(nodo.getValue().getId());
         if (comparacion < 0) {
             nodo.setLeft(remove(nodo.getLeft(), dato));
         } else if (comparacion > 0) {
@@ -196,7 +197,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             } else if (nodo.getRight() == null) {
                 return nodo.getLeft();
             }
-            BinaryTreeNode<T> sucesor = findBiggestNode(nodo.getLeft());
+            BinaryTreeNode<Student> sucesor = findBiggestNode(nodo.getLeft());
             nodo.setValue(sucesor.getValue());
             nodo.setLeft(remove(nodo.getLeft(), sucesor.getValue()));
         }

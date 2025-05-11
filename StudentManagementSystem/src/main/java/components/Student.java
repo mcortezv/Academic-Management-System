@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package components;
-import persistence.PersistenceGrades;
+import persistences.PersistenceGrades;
 import structures.ArrayList;
 
 /**

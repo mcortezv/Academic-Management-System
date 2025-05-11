@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package persistence;
+package persistences;
 import components.Student;
 import structures.BinarySearchTree;
 
@@ -26,7 +26,7 @@ public class PersistenceStudents {
     }
 
     public Student searchStudent(String id){
-        return null;
+        return students.get(id);
     }
 
     public BinarySearchTree<Student> listStudents(){
