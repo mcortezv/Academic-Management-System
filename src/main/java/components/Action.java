@@ -5,10 +5,13 @@
 package components;
 
 /**
- *
+ * Clase que representa una accion realizada dentro del sistema     
  * @author Sebas
  */
 public class Action {
+    /**
+     * Enumeracion que define los distintos tipos de acciones del sistema
+     */
     public enum Type {
         addStudent,
         searchStudent,
@@ -26,8 +29,9 @@ public class Action {
     }
     private final Type type;
     private final Object data;
+    
     /**
-     * 
+     * Constructor que inicializa los atributos de la instancia al valor de sus parametros
      * @param type
      * @param data
      */
@@ -35,11 +39,17 @@ public class Action {
         this.type = type;
         this.data = data;
     }
-
+    /**
+     * Metodo que regresa el tipo de accion realizada
+     * @return type
+     */
     public Type getType(){
         return this.type;
     }
-
+    /**
+     * Metodo que regresa los datos de la accion realizada
+     * @return data
+     */
     public Object getData(){
         return this.data;
     }
