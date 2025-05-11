@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package main;
+import gui.MainFrame;
 import interfaces.IPersistenceFacade;
 import persistences.*;
 
@@ -21,6 +22,8 @@ public class Main {
     public static IPersistenceFacade loader(){
         PersistenceStudents students = new PersistenceStudents();
         PersistenceCourses courses = new PersistenceCourses();
+        MainFrame frame = new MainFrame();
+        frame.setVisible(true);
         return new PersistenceFacade(
                 students,
                 courses,
