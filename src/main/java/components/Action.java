@@ -11,9 +11,18 @@ package components;
 public class Action {
     public enum Type {
         addStudent,
+        searchStudent,
         removeStudent,
         addCourse,
         removeCourse,
+        listCourses,
+        enrollStudentInCourse,
+        showEnrolledStudentsInCourse,
+        showWaitingListForCourse,
+        submitGradesRequest,
+        processNextRequest,
+        listStudents,
+        rotateRoles,
     }
     private final Type type;
     private final Object data;
@@ -25,10 +34,12 @@ public class Action {
     public Action(Type type, Object data){
         this.type = type;
         this.data = data;
-    }    
+    }
+
     public Type getType(){
         return this.type;
     }
+
     public Object getData(){
         return this.data;
     }

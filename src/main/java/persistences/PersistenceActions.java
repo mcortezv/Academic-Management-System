@@ -6,6 +6,7 @@ package persistences;
 import components.Action;
 import components.Course;
 import components.Student;
+import persistences.exceptions.PersistenceActionsException;
 import structures.Stack;
 
 /**
@@ -16,6 +17,7 @@ public class PersistenceActions {
     private final Stack<Action> actions;
     private final PersistenceStudents persistenceStudents;
     private final PersistenceCourses persistenceCourses;
+
     /**
      * 
      * @param persistenceStudents
@@ -33,6 +35,7 @@ public class PersistenceActions {
     public void addAction(Action action){
         actions.push(action);
     }
+
     /**
      * 
      */
@@ -40,14 +43,13 @@ public class PersistenceActions {
         if(!actions.isEmpty()){
             Action lastAction = actions.pop();
             performUndo(lastAction);
-            
         }        
     }
+
     /**
      * 
      * @param action 
      */
-     
     public void performUndo(Action action){
         switch(action.getType()){
             case addStudent -> {
@@ -67,8 +69,8 @@ public class PersistenceActions {
                 persistenceCourses.addCourse(courseToadd);
             }
             default -> {
+                throw  new PersistenceActionsException("La ultima accion no cumple los requisitos para ser deshecha: " + action.getType());
             }
         }   
     }
-    
 }

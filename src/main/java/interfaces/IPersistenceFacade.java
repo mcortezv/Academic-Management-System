@@ -34,4 +34,6 @@ public interface IPersistenceFacade {
     Course deleteCourse(Course course);
 
     HashDictionary<String, Course> lisCourses();
+
+    void undoAction();
 }
