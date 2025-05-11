@@ -9,32 +9,27 @@ package components;
  * @author Sebas
  */
 public class Action {
-    private String name; 
-    /**
-     * 
-     */
-    public Action(){}
-    /**
-     * 
-     * @param name 
-     */
-    public Action(String name){
-        this.name = name;
+    public enum Type {
+        addStudent,
+        removeStudent,
+        addCourse,
+        removeCourse,
     }
+    private final Type type;
+    private final Object data;
     /**
      * 
-     * @return 
+     * @param type
+     * @param data
      */
-    public String getName() {
-        return name;
+    public Action(Type type, Object data){
+        this.type = type;
+        this.data = data;
+    }    
+    public Type getType(){
+        return this.type;
     }
-    /**
-     * 
-     * @param name 
-     */
-    public void setName(String name) {
-        this.name = name;
+    public Object getData(){
+        return this.data;
     }
-    
-    
 }

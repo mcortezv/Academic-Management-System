@@ -4,6 +4,8 @@
  */
 package persistences;
 import components.Action;
+import components.Course;
+import components.Student;
 import structures.Stack;
 
 /**
@@ -11,9 +13,62 @@ import structures.Stack;
  * @author Sebas
  */
 public class PersistenceActions {
-    private Stack<Action> actions;
-
-    public PersistenceActions(){
-        actions = new Stack<Action>();
+    private final Stack<Action> actions;
+    private final PersistenceStudents persistenceStudents;
+    private final PersistenceCourses persistenceCourses;
+    /**
+     * 
+     * @param persistenceStudents
+     * @param persistenceCourses 
+     */
+    public PersistenceActions(PersistenceStudents persistenceStudents, PersistenceCourses persistenceCourses){
+        actions = new Stack<>();
+        this.persistenceStudents = persistenceStudents;
+        this.persistenceCourses  = persistenceCourses;
     }
+    /**
+     * 
+     * @param action 
+     */
+    public void addAction(Action action){
+        actions.push(action);
+    }
+    /**
+     * 
+     */
+    public void undoLastAction(){
+        if(!actions.isEmpty()){
+            Action lastAction = actions.pop();
+            performUndo(lastAction);
+            
+        }        
+    }
+    /**
+     * 
+     * @param action 
+     */
+     
+    public void performUndo(Action action){
+        switch(action.getType()){
+            case addStudent -> {
+                Student studentToRemove = (Student) action.getData();
+                persistenceStudents.removeStudent(studentToRemove);
+            }
+            case removeStudent -> {
+                Student studentToAdd = (Student) action.getData();  
+                persistenceStudents.addStudent(studentToAdd);
+            }
+            case addCourse -> {
+                Course courseToRemove = (Course) action.getData();
+                persistenceCourses.removeCourse(courseToRemove);
+            }
+            case removeCourse -> {
+                Course courseToadd = (Course) action.getData();
+                persistenceCourses.addCourse(courseToadd);
+            }
+            default -> {
+            }
+        }   
+    }
+    
 }
