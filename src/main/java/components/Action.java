@@ -5,10 +5,12 @@
 package components;
 
 /**
- * Clase que representa una accion realizada dentro del sistema     
- * @author Sebas
+ * Clase que representa una accion realizada dentro del sistema
+ *
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class Action {
+
     /**
      * Enumeracion que define los distintos tipos de acciones del sistema
      */
@@ -29,28 +31,34 @@ public class Action {
     }
     private final Type type;
     private final Object data;
-    
+
     /**
-     * Constructor que inicializa los atributos de la instancia al valor de sus parametros
+     * Constructor que establece los atributos de la instancia al valor de sus
+     * parametros
+     *
      * @param type
      * @param data
      */
-    public Action(Type type, Object data){
+    public Action(Type type, Object data) {
         this.type = type;
         this.data = data;
     }
+
     /**
      * Metodo que regresa el tipo de accion realizada
+     *
      * @return type
      */
-    public Type getType(){
+    public Type getType() {
         return this.type;
     }
+
     /**
      * Metodo que regresa los datos de la accion realizada
+     *
      * @return data
      */
-    public Object getData(){
+    public Object getData() {
         return this.data;
     }
 }

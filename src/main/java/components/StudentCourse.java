@@ -5,15 +5,16 @@
 package components;
 
 /**
- *
- * @author Sebas
+ *Clase que funciona como intermediaria para relacionar un estudiante con un curso especifico
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class StudentCourse {
     private Student student;
     private Course course;
     
     /**
-     * 
+     * Constructor que establece los atributos de la instancia al valor de sus
+     * parametros
      * @param student
      * @param course 
      */

@@ -7,7 +7,7 @@ package components;
 /**
  *  Clase que contiene los datos de contacto pertenecientes al estudiante
  * 
- * @author Sebas
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.  
  */
 public class Contact {
     private String phoneNumber;
@@ -16,9 +16,9 @@ public class Contact {
     
     /**
      * Constructor que inicializa los atributos de la instancia al valor de sus parametros
-     * @param phoneNumber
-     * @param eMail
-     * @param zipCode 
+     * @param phoneNumber telefono 
+     * @param eMail correo electronico
+     * @param zipCode codigo postal
      */
     public Contact(String phoneNumber, String eMail, String zipCode){
         this.phoneNumber = phoneNumber;
