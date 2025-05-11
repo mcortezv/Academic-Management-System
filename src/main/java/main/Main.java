@@ -21,13 +21,12 @@ public class Main {
     public static IPersistenceFacade loader(){
         PersistenceStudents students = new PersistenceStudents();
         PersistenceCourses courses = new PersistenceCourses();
-        PersistenceActions actions = new PersistenceActions(students,courses);
         return new PersistenceFacade(
                 students,
                 courses,
                 new PersistenceStudentsCourses(),
                 new PersistenceRequests(),
-                actions
+                new PersistenceActions(students,courses)
         );
     }
 }

@@ -12,7 +12,7 @@ import interfaces.Identificable;
  * Los elementos deben implementar la interfaz Comparable para permitir la comparación.
  *
  * @param <T> el tipo de elementos almacenados en el árbol, debe implementar Comparable<T>
- * @author Cortez, Manuel
+ * @author Cortez, Manuel;
  */
 public class BinarySearchTree<T extends Identificable> {
     public BinaryTreeNode<T> raiz;
