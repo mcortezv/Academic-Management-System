@@ -1,3 +1,4 @@
+components\Request.class
 formsDialog\StudentFormDialog.class
 structures\BinarySearchTree.class
 panels\StudentPanel.class
@@ -28,6 +29,7 @@ panels\EnrollmentPanel.class
 persistences\exceptions\PersistenceStudentsCoursesException.class
 panels\BasePanel.class
 panels\NorthPanel.class
+validators\Validator.class
 persistences\PersistenceStudents.class
 structures\nodes\DictionaryNode.class
 components\Student.class
@@ -42,6 +44,7 @@ persistences\exceptions\PersistenceActionsException.class
 components\Course.class
 components\Contact.class
 persistences\PersistenceFacade.class
+components\Request$Type.class
 panels\MainPanel.class
 structures\Stack.class
 structures\exceptions\HashMapException.class

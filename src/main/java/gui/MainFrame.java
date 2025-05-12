@@ -4,6 +4,7 @@
  */
 package gui;
 
+import interfaces.IPersistenceFacade;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,13 +18,13 @@ import panels.MainPanel;
 import panels.NorthPanel;
 import panels.ReportPanel;
 import panels.StudentPanel;
-
+import persistences.*;
 /**
  *
  * @author david
  */
 public class MainFrame extends JFrame {
-
+    private final IPersistenceFacade persistence;
     private JMenuBar menuBar;
     private JButton btnStudents;
     private JButton btnCourse;
@@ -39,8 +40,9 @@ public class MainFrame extends JFrame {
     private GradePanel gradePanel;
     private ReportPanel reportPanel;
 
-    public MainFrame() {
+    public MainFrame(IPersistenceFacade persistence) {
         starComponetns();
+        this.persistence = persistence;
         setTitle("Gestion de estudiantes");
         setSize(800, 500);
         setJMenuBar(menuBar);
