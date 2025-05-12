@@ -6,12 +6,15 @@ package panels;
 
 import gui.MainFrame;
 import java.awt.Frame;
+import javax.swing.JButton;
 
 /**
  *
  * @author david
  */
 public class ReportPanel extends BasePanel{
+    private JButton listAverageSruents;
+    
 
     public ReportPanel(MainFrame frame, NorthPanel northPanel) {
         super(frame, northPanel);
@@ -19,7 +22,7 @@ public class ReportPanel extends BasePanel{
 
     @Override
     public void startComponents() {
-
+        
     }
 
 }

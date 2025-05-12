@@ -18,6 +18,7 @@ structures\nodes\DoubleNode.class
 interfaces\Identificable.class
 structures\exceptions\ListException.class
 components\StudentCourse.class
+formsDialog\GradeFormPanel.class
 panels\CoursePanel.class
 panels\ReportPanel.class
 panels\CourseTablePanel.class
@@ -53,6 +54,7 @@ structures\exceptions\StackException.class
 components\Action.class
 persistences\PersistenceRoles.class
 structures\exceptions\QueueException.class
+formsDialog\EnrollFormDialog.class
 structures\nodes\AVLTreeNode.class
 persistences\PersistenceWaitingListCourses.class
 structures\nodes\SingleNode.class

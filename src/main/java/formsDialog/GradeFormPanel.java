@@ -4,10 +4,16 @@
  */
 package formsDialog;
 
+import gui.MainFrame;
+
 /**
  *
  * @author david
  */
-public class GradeFormPanel {
+public class GradeFormPanel extends BaseDialog{
+    
+    public GradeFormPanel(MainFrame owner, int option) {
+        super(owner, option);
+    }
     
 }

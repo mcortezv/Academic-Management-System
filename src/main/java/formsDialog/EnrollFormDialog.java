@@ -4,10 +4,16 @@
  */
 package formsDialog;
 
+import gui.MainFrame;
+
 /**
  *
  * @author david
  */
-public class EnrollFormDialog {
+public class EnrollFormDialog extends BaseDialog{
+    
+    public EnrollFormDialog(MainFrame owner, int option) {
+        super(owner, option);
+    }
     
 }

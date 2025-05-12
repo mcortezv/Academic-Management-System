@@ -64,7 +64,7 @@ public class CoursePanel extends BasePanel {
             showPanel(courseTablePanel);
         });
         //Rotate role in course button
-        btnCreateCourse.addActionListener(e -> {
+        btnRotateRole.addActionListener(e -> {
             new CourseFormDialog(mainFrame, 0).setVisible(true);
         });
 

@@ -113,6 +113,29 @@ public class CourseFormDialog extends BaseDialog {
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        
+        // Name field
+        JPanel courseNamePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        courseNamePanel.add(new JLabel("Nombre del curso:   "));
+        JTextField courseNameField = new JTextField(15);
+        courseNamePanel.add(courseNameField);
+        courseNamePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+        southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+        
+        // Create button
+        JButton btnRotate = new JButton("Rotar rol");
+        btnRotate.addActionListener(e -> {
+            
+            dispose();
+        });
+
+        // Add everything to the central panel
+        centerPanel.add(courseNamePanel);
+        southPanel.add(btnRotate);
+
+        add(centerPanel, BorderLayout.CENTER);
+        add(southPanel, BorderLayout.SOUTH);
+        
     }
 
 }
