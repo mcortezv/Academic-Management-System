@@ -19,11 +19,11 @@ import javax.swing.JPanel;
  */
 public abstract class BasePanel extends JPanel {
 
-    protected JButton btnBack;
+    protected MainFrame mainFrame;
     protected JPanel centralPanel;
     protected JPanel southPanel;
     protected JPanel westPanel;
-    protected MainFrame mainFrame;
+    protected JButton btnBack;
 
 
     public BasePanel(MainFrame frame) {

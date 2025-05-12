@@ -20,6 +20,7 @@ structures\exceptions\ListException.class
 components\StudentCourse.class
 panels\CoursePanel.class
 panels\ReportPanel.class
+panels\CourseTablePanel.class
 persistences\PersistenceGrades.class
 persistences\exceptions\PersistenceWaitingListCoursesException.class
 structures\CircularDoubleLinkedList.class

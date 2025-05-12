@@ -57,5 +57,4 @@ public class StudentPanel extends BasePanel{
         centralPanel.add(btnSearchStudent);
 
     }
-
 }

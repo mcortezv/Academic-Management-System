@@ -33,8 +33,6 @@ public class CourseFormDialog extends BaseDialog{
                 setTitle("Eliminar curso");
                 deleteCourse();
                 break;
-            case 2:
-                break;
             default:
                 break;
                 

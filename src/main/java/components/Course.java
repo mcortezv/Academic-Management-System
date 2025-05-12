@@ -92,6 +92,10 @@ public class Course {
     public void rotateRol(){
         
     }
+    
+    public int getEnrolledStudents(){
+        return 0;
+    }
 
     /**
      * toString

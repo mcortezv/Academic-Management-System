@@ -4,6 +4,7 @@
  */
 package gui;
 
+import interfaces.IPersistenceFacade;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,6 +18,7 @@ import panels.MainPanel;
 import panels.NorthPanel;
 import panels.ReportPanel;
 import panels.StudentPanel;
+import persistences.PersistenceFacade;
 
 /**
  *
@@ -38,8 +40,10 @@ public class MainFrame extends JFrame {
     private EnrollmentPanel enrollmentPanel;
     private GradePanel gradePanel;
     private ReportPanel reportPanel;
+    private IPersistenceFacade persistenciaFacade;
 
-    public MainFrame() {
+    public MainFrame(IPersistenceFacade persistenciaFacade) {
+        this.persistenciaFacade = persistenciaFacade;
         starComponetns();
         setTitle("Gestion de estudiantes");
         setSize(800, 500);
@@ -47,6 +51,10 @@ public class MainFrame extends JFrame {
         add(centralPanel, BorderLayout.CENTER);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+    }
+    
+    public IPersistenceFacade getIPersistenceFacade(){
+        return persistenciaFacade;
     }
 
     public void starComponetns() {

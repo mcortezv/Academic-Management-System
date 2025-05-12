@@ -26,12 +26,10 @@ public class StudentFormDialog extends JDialog{
     private JPanel centerPanel;
     private JPanel southPanel;
     private MainFrame mainFrame;
-    private MainFrame mainFrame2;
-
+    
     public StudentFormDialog(MainFrame owner, int option) {
         super(owner, " ", true);
         mainFrame = owner;
-        mainFrame2 = owner;
         centerPanel = new JPanel();
         southPanel = new JPanel();
         switch (option){

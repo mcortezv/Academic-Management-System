@@ -4,6 +4,8 @@ package structures;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+import java.util.List;
+import java.util.ArrayList;
 import structures.nodes.DictionaryNode;
 
 /**
@@ -11,6 +13,7 @@ import structures.nodes.DictionaryNode;
  * @author Cortez, Manuel;
  */
 public class HashDictionary<K, V> {
+
     private DictionaryNode<K, V>[] table;
     private int size;
     private int capacity;
@@ -19,6 +22,18 @@ public class HashDictionary<K, V> {
         this.capacity = capacidadInicial;
         this.table = new DictionaryNode[capacidadInicial];
         this.size = 0;
+    }
+
+    public List<V> getValues() {
+        List<V> values = new ArrayList<>();
+        for (int i = 0; i < capacity; i++) {
+            DictionaryNode<K, V> actual = table[i];
+            while (actual != null) {
+                values.add(actual.getValue());
+                actual = actual.getNext();
+            }
+        }
+        return values;
     }
 
     public int getSize() {
@@ -45,7 +60,9 @@ public class HashDictionary<K, V> {
                     actual.setValue(valor);
                     return;
                 }
-                if (actual.getNext() == null) break;
+                if (actual.getNext() == null) {
+                    break;
+                }
                 actual = actual.getNext();
             }
             actual.setNext(nuevo);
@@ -72,7 +89,6 @@ public class HashDictionary<K, V> {
         }
         return false;
     }
-
 
     public V get(K clave) {
         int indice = getHash(clave);
