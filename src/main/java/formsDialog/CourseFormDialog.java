@@ -19,33 +19,36 @@ import javax.swing.JTextField;
  *
  * @author david
  */
-public class CourseFormDialog extends BaseDialog{
-    
+public class CourseFormDialog extends BaseDialog {
+
     public CourseFormDialog(MainFrame owner, int option) {
         super(owner, option);
-        
-        switch (option){
+
+        switch (option) {
             case 0:
                 setTitle("Añadir curso");
-                addCourse();
+                caseAddCourse();
                 break;
             case 1:
                 setTitle("Eliminar curso");
-                deleteCourse();
+                caseDeleteCourse();
+                break;
+            case 2:
+                setTitle("Rotar rol (lider del grupo)");
+                caseRotateRol();
                 break;
             default:
                 break;
-                
+
         }
-        
     }
-    
-    public void addCourse(){
+
+    public void caseAddCourse() {
         setSize(350, 150);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
-        
+
         // Name field
         JPanel courseNamePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         courseNamePanel.add(new JLabel("Nombre del curso:   "));
@@ -53,7 +56,7 @@ public class CourseFormDialog extends BaseDialog{
         courseNamePanel.add(courseNameField);
         courseNamePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-        
+
         // Create button
         JButton btnAddCourse = new JButton("Crear curso");
         btnAddCourse.addActionListener(e -> {
@@ -61,23 +64,23 @@ public class CourseFormDialog extends BaseDialog{
             //añade el curso a la lista de cursos
             //si regresa true se despliega un Joptionpane "Añadido"
             //si regresa false se despliega un Joptionpane "error ya existe un curso con ese nombre"
-            dispose(); 
+            dispose();
         });
-        
+
         // Add everything to the central panel
         centerPanel.add(courseNamePanel);
         southPanel.add(btnAddCourse);
-        
+
         add(centerPanel, BorderLayout.CENTER);
         add(southPanel, BorderLayout.SOUTH);
     }
-    
-    public void deleteCourse(){
+
+    public void caseDeleteCourse() {
         setSize(350, 150);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
-        
+
         // Name field
         JPanel courseNamePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         courseNamePanel.add(new JLabel("Nombre del curso:   "));
@@ -85,7 +88,7 @@ public class CourseFormDialog extends BaseDialog{
         courseNamePanel.add(courseNameField);
         courseNamePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-        
+
         // Create button
         JButton btnDelete = new JButton("Eliminar curso");
         btnDelete.addActionListener(e -> {
@@ -93,16 +96,23 @@ public class CourseFormDialog extends BaseDialog{
             //ejecuta "eliminar" de la lista de cursos
             //si regresa true se despliega un Joptionpane "Eliminado"
             //si regresa false se despliega un Joptionpane "error no se encontró el curso"
-            dispose(); 
+            dispose();
         });
-        
+
         // Add everything to the central panel
         centerPanel.add(courseNamePanel);
         southPanel.add(btnDelete);
-        
+
         add(centerPanel, BorderLayout.CENTER);
         add(southPanel, BorderLayout.SOUTH);
-        
+
     }
-     
+    
+    public void caseRotateRol(){
+        setSize(350, 150);
+        setLocationRelativeTo(mainFrame);
+        setLayout(new BorderLayout());
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+    }
+
 }

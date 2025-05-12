@@ -18,8 +18,8 @@ public class EnrollmentPanel extends BasePanel{
     JButton btnEnrolledStudents;
     JButton btnWaitList;
 
-    public EnrollmentPanel(MainFrame frame) {
-        super(frame);
+    public EnrollmentPanel(MainFrame frame, NorthPanel northPanel) {
+        super(frame, northPanel);
     }
 
     @Override

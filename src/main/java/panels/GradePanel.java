@@ -21,8 +21,8 @@ public class GradePanel extends BasePanel{
     JButton btnListGrades;
     JButton btnAverageStudent;
 
-    public GradePanel(MainFrame frame) {
-        super(frame);
+    public GradePanel(MainFrame frame, NorthPanel northPanel) {
+        super(frame, northPanel);
     }
 
     @Override

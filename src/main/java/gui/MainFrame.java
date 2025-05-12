@@ -32,9 +32,10 @@ public class MainFrame extends JFrame {
     private JButton btnEnrollments;
     private JButton btnGrades;
     private JButton btnReport;
+    private JButton btnInUse;
     private MainPanel mainPanel;
     private JPanel centralPanel;
-    private JPanel northPanel;
+    private NorthPanel northPanel;
     private StudentPanel studentPanel;
     private CoursePanel coursePanel;
     private EnrollmentPanel enrollmentPanel;
@@ -67,35 +68,55 @@ public class MainFrame extends JFrame {
 
         //Main panel
         mainPanel = new MainPanel();
-
-        // Initialize panels
-        studentPanel = new StudentPanel(this);
-        coursePanel = new CoursePanel(this);
-        enrollmentPanel = new EnrollmentPanel(this);
-        gradePanel = new GradePanel(this);
-        reportPanel = new ReportPanel(this);
-
-        //Buttons
-        btnStudents.addActionListener(e -> showPanel(studentPanel));
-        btnCourse.addActionListener(e -> showPanel(coursePanel));
-        btnEnrollments.addActionListener(e -> showPanel(enrollmentPanel));
-        btnGrades.addActionListener(e -> showPanel(gradePanel));
-        btnReport.addActionListener(e -> showPanel(reportPanel));
-
+        
+        //North panel
+        northPanel = new NorthPanel();
+        
         //Central Panel
         centralPanel = new JPanel();
         centralPanel.add(mainPanel);
         add(centralPanel, BorderLayout.CENTER);
 
-        //North panel
-        northPanel = new NorthPanel();
-        northPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
+        // Initialize panels
+        studentPanel = new StudentPanel(this, northPanel);
+        coursePanel = new CoursePanel(this, northPanel);
+        enrollmentPanel = new EnrollmentPanel(this, northPanel);
+        gradePanel = new GradePanel(this, northPanel);
+        reportPanel = new ReportPanel(this, northPanel);
+
         add(northPanel, BorderLayout.NORTH);
         northPanel.add(btnStudents);
         northPanel.add(btnCourse);
         northPanel.add(btnEnrollments);
         northPanel.add(btnGrades);
         northPanel.add(btnReport);
+        
+        //Buttons
+        btnStudents.addActionListener(e -> showPanel(studentPanel));
+        btnStudents.addActionListener(e -> {
+            btnInUse = btnStudents;
+            northPanel.setInUseButton(btnInUse);
+        });
+        btnCourse.addActionListener(e -> showPanel(coursePanel));
+        btnCourse.addActionListener(e -> {
+            btnInUse = btnCourse;
+            northPanel.setInUseButton(btnInUse);
+        });
+        btnEnrollments.addActionListener(e -> showPanel(enrollmentPanel));
+        btnEnrollments.addActionListener(e -> {
+            btnInUse = btnEnrollments;
+            northPanel.setInUseButton(btnInUse);
+        });
+        btnGrades.addActionListener(e -> showPanel(gradePanel));
+        btnGrades.addActionListener(e -> {
+            btnInUse = btnGrades;
+            northPanel.setInUseButton(btnInUse);
+        });
+        btnReport.addActionListener(e -> showPanel(reportPanel));
+        btnReport.addActionListener(e -> {
+            btnInUse = btnReport;
+            northPanel.setInUseButton(btnInUse);
+        });
 
     }
 

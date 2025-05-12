@@ -24,11 +24,12 @@ public class CoursePanel extends BasePanel {
     private JButton btnCreateCourse;
     private JButton btnDeleteCourse;
     private JButton btnListCourses;
+    private JButton btnRotateRole;
     private JPanel mainCoursePanel;
     private CourseTablePanel courseTablePanel;
 
-    public CoursePanel(MainFrame frame) {
-        super(frame);
+    public CoursePanel(MainFrame frame, NorthPanel northPanel) {
+        super(frame, northPanel);
     }
 
     @Override
@@ -36,6 +37,7 @@ public class CoursePanel extends BasePanel {
         btnCreateCourse = new JButton("Añadir curso");
         btnDeleteCourse = new JButton("Eliminar curso");
         btnListCourses = new JButton("Ver cursos");
+        btnRotateRole = new JButton("Rotar rol de estudiante");
         mainCoursePanel = new JPanel();
         courseTablePanel = new CourseTablePanel(mainFrame.getIPersistenceFacade().lisCourses(), this);
         
@@ -45,9 +47,10 @@ public class CoursePanel extends BasePanel {
         mainCoursePanel.setBorder(BorderFactory.createEmptyBorder(20, 150, 0, 150));
 
         //Buttons
-        btnCreateCourse.setPreferredSize(new Dimension(150, 30));;
-        btnDeleteCourse.setPreferredSize(new Dimension(150, 30));;
-        btnListCourses.setPreferredSize(new Dimension(150, 30));;
+        btnCreateCourse.setPreferredSize(new Dimension(150, 30));
+        btnDeleteCourse.setPreferredSize(new Dimension(150, 30));
+        btnListCourses.setPreferredSize(new Dimension(150, 30));
+        btnRotateRole.setPreferredSize(new Dimension(150, 30));
         //Create course button
         btnCreateCourse.addActionListener(e -> {
             new CourseFormDialog(mainFrame, 0).setVisible(true);
@@ -60,14 +63,18 @@ public class CoursePanel extends BasePanel {
         btnListCourses.addActionListener(e -> {
             showPanel(courseTablePanel);
         });
+        //Rotate role in course button
+        btnCreateCourse.addActionListener(e -> {
+            new CourseFormDialog(mainFrame, 0).setVisible(true);
+        });
 
         //Panels
         mainCoursePanel.add(btnCreateCourse);
         mainCoursePanel.add(btnDeleteCourse);
         mainCoursePanel.add(btnListCourses);
+        mainCoursePanel.add(btnRotateRole);
         centralPanel.add(mainCoursePanel);
         
-
     }
 
     private void showPanel(JPanel nuevoPanel) {

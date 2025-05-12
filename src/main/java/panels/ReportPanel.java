@@ -13,8 +13,8 @@ import java.awt.Frame;
  */
 public class ReportPanel extends BasePanel{
 
-    public ReportPanel(MainFrame frame) {
-        super(frame);
+    public ReportPanel(MainFrame frame, NorthPanel northPanel) {
+        super(frame, northPanel);
     }
 
     @Override

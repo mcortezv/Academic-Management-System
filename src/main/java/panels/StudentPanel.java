@@ -23,8 +23,8 @@ public class StudentPanel extends BasePanel{
     private JButton btnDeleteStudent;
     private JButton btnSearchStudent;
 
-    public StudentPanel(MainFrame frame) {
-        super(frame);
+    public StudentPanel(MainFrame frame, NorthPanel northPanel) {
+        super(frame, northPanel);
 
     }
 
