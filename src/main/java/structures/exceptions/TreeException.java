@@ -7,7 +7,7 @@ package structures.exceptions;
 /**
  * Excepción personalizada para manejar errores en Arboles.
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class TreeException extends RuntimeException {
 

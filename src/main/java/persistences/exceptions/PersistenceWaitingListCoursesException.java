@@ -7,7 +7,7 @@ package persistences.exceptions;
 /**
  * Excepción personalizada para manejar errores en la Persistencia de Lissta de Espera de Cursos.
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class PersistenceWaitingListCoursesException extends RuntimeException {
 

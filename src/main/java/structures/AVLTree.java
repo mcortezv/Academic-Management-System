@@ -11,7 +11,7 @@ import structures.nodes.AVLTreeNode;
  * Clase genérica que representa un Árbol AVL.
  * Proporciona inserción, eliminación y balanceo automático de nodos.
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  *
  * @param <T> el tipo de dato que se almacenará, debe ser comparable
  */

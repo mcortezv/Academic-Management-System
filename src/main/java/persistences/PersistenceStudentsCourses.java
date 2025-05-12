@@ -8,7 +8,7 @@ import structures.LinkedList;
 
 /**
  *
- * @author Sebas
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class PersistenceStudentsCourses {
     public LinkedList<StudentCourse> studentsCourses;

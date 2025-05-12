@@ -12,7 +12,7 @@ import structures.nodes.SingleNode;
  * Esta clase implementa las operaciones basicas de una cola: encolar,
  * desencolar, obtener el primer elemento,
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  * @param <T> Tipo de datos de los elementos almacenados en la cola.
  */
 public class Queue<T> {

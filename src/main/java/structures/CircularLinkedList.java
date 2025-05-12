@@ -12,7 +12,7 @@ import java.util.Objects;
  * Clase Generica de una Lista Enalzada que permite Agregar, Remover y Encontrar
  * el indice de objetos, asi como vaciar por completo la lista.
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class CircularLinkedList<T> {
     private SingleNode<T> P;

@@ -21,6 +21,7 @@ public class PersistenceFacade implements IPersistenceFacade {
     private PersistenceStudentsCourses persistenceStudentsCourses;
     private PersistenceRequests persistenceRequests;
     private PersistenceActions persistenceActions;
+    
     /**
      * Constructor que establece los atributos de la instancia al valor de sus
      * parametros
@@ -71,41 +72,59 @@ public class PersistenceFacade implements IPersistenceFacade {
     
     /**
      * Agrega una calificacion 
-     * @param grade 
+     * @param studentId
+     * @param grade calificacion a añadir
      */
     @Override
-    public void addGrade(Double grade) {
+    public void addGrade(String studentId, Double grade) {
+        Student student = persistenceStudents.searchStudent(studentId);
+        if(student != null){
+            student.addGrade(grade);
+            persistenceActions.addAction(new Action(Action.Type.addGrade,student));
+        }
+    }
+    /**
+     * Actualiza una calificacion
+     * @param studentId
+     * @param grade calificacion a actualizar
+     * @param index indice del arreglo en el que se hará la actualizacion
+     */
+    @Override
+    public void updateGrade(String studentId, Double grade, int index) {
         
     }
     /**
-     * 
-     * @param grade
-     * @param index 
+     * Obtiene el promedio de calificacion de un estudiante
+     * @param studentId
+     * @return double
      */
     @Override
-    public void updateGrade(Double grade, int index) {
-
-    }
-    /**
-     * 
-     * @return 
-     */
-    @Override
-    public Double getAverage() {
+    public Double getAverage(String studentId) {
+        Student student = persistenceStudents.searchStudent(studentId);
+        if(student != null){
+            persistenceActions.addAction(new Action(Action.Type.getAverage,student));
+            return student.getAverage();
+        }
         return null;
     }
     /**
-     * 
+     * Lista el arreglo de calificaciones
+     * @param studentId
      * @return 
      */
     @Override
-    public ArrayList<Double> listGrades() {
+    public ArrayList<Double> listGrades(String studentId) {
+        Student student = persistenceStudents.searchStudent(studentId);
+        if(student != null){
+            persistenceActions.addAction(new Action(Action.Type.listGrades, student));
+            return student.listGrades();
+        }
         return null;
     }
     /**
-     * 
-     * @param course
-     * @return 
+     * Agrega un curso
+     * @param course curso a agregar
+     * @return course 
      */
     @Override
     public Course addCourse(Course course) {
@@ -113,9 +132,9 @@ public class PersistenceFacade implements IPersistenceFacade {
         return persistenceCourses.addCourse(course);
     }
     /**
-     * 
+     * Elimina un curso 
      * @param course
-     * @return 
+     * @return course curso eliminado
      */
     @Override
     public Course deleteCourse(Course course) {
@@ -123,8 +142,8 @@ public class PersistenceFacade implements IPersistenceFacade {
         return persistenceCourses.removeCourse(course);
     }
     /**
-     * 
-     * @return 
+     * Lista tods los cursos
+     * @return cursos del sistema
      */
     @Override
     public HashDictionary<String, Course> lisCourses() {
@@ -132,7 +151,7 @@ public class PersistenceFacade implements IPersistenceFacade {
         return persistenceCourses.listCourses();
     }
     /**
-     * 
+     * Deshace la ultima accion registrada
      */
     @Override
     public void undoAction(){

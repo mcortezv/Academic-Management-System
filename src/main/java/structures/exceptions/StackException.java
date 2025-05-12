@@ -7,7 +7,7 @@ package structures.exceptions;
 /**
  * Excepción personalizada para manejar errores en Pilas.
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class StackException extends RuntimeException {
 

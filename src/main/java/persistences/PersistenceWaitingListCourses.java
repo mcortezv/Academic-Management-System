@@ -8,7 +8,7 @@ import structures.CircularDoubleLinkedList;
 
 /**
  *
- * @author Sebas
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class PersistenceWaitingListCourses {
     private CircularDoubleLinkedList<Course> waitingListCourses;

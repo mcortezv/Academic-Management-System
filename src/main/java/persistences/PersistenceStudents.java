@@ -8,7 +8,7 @@ import structures.BinarySearchTree;
 
 /**
  *
- * @author Sebas
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class PersistenceStudents {
     private BinarySearchTree<Student> students;
