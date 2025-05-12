@@ -112,6 +112,7 @@ public class StudentFormDialog extends JDialog{
         add(southPanel, BorderLayout.SOUTH);
     }
     
+    
     public void deleteStudent(){
         setSize(350, 150);
         setLocationRelativeTo(mainFrame);
