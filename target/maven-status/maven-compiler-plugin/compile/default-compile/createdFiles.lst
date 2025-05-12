@@ -35,6 +35,8 @@ structures\HashDictionary.class
 components\Action$Type.class
 structures\exceptions\TreeException.class
 structures\CircularLinkedList.class
+formsDialog\CourseFormDialog.class
+formsDialog\BaseDialog.class
 components\Role.class
 structures\LinkedList.class
 persistences\exceptions\PersistenceStudentsException.class

@@ -35,12 +35,20 @@ public class StudentPanel extends BasePanel{
         btnSearchStudent = new JButton("Buscar Estudiante");
 
         //Buttons
-        btnAddStudent.setPreferredSize(new Dimension(150, 30));;
-        btnDeleteStudent.setPreferredSize(new Dimension(150, 30));;
-        btnSearchStudent.setPreferredSize(new Dimension(150, 30));;
+        btnAddStudent.setPreferredSize(new Dimension(150, 30));
+        btnDeleteStudent.setPreferredSize(new Dimension(150, 30));
+        btnSearchStudent.setPreferredSize(new Dimension(150, 30));
             //Add student button
             btnAddStudent.addActionListener(e -> { 
-                new StudentFormDialog(mainFrame).setVisible(true);
+                new StudentFormDialog(mainFrame, 0).setVisible(true);
+            });
+            //Delete student button
+            btnDeleteStudent.addActionListener(e -> { 
+                new StudentFormDialog(mainFrame, 1).setVisible(true);
+            });
+            //Search student button
+            btnSearchStudent.addActionListener(e -> { 
+                new StudentFormDialog(mainFrame, 2).setVisible(true);
             });
 
         //Paneles
