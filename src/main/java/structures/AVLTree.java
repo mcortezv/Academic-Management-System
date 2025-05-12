@@ -109,7 +109,7 @@ public class AVLTree<T extends Comparable<T>> {
     private void actualizarAltura(AVLTreeNode<T> nodo) {
         int izquierdaAltura = altura(nodo.getLeft());
         int derechaAltura = altura(nodo.getRight());
-        nodo.setAltura(1 + Math.max(izquierdaAltura, derechaAltura));
+        nodo.setHeight(1 + Math.max(izquierdaAltura, derechaAltura));
     }
     /**
      * 
@@ -117,7 +117,7 @@ public class AVLTree<T extends Comparable<T>> {
      * @return 
      */
     private int altura(AVLTreeNode<T> nodo) {
-        return nodo == null ? 0 : nodo.getAltura();
+        return nodo == null ? 0 : nodo.getHeight();
     }
     /**
      * 

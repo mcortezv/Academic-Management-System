@@ -118,4 +118,6 @@ public class LinkedList<T> {
         this.ultimo = null;
         this.tam = 0;
     }
+    
+    
 }

@@ -8,7 +8,7 @@ package structures.nodes;
  * Clase Generica Nodo que permite crear un nuevo Nodo que guarda un Objeto
  * y la referencia del nodo siguiente, Null en caso de ser el ultimo.
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class SingleNode<T> {
     T value;

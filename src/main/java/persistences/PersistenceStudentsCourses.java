@@ -14,7 +14,7 @@ public class PersistenceStudentsCourses {
     public LinkedList<StudentCourse> studentsCourses;
 
     public PersistenceStudentsCourses(){
-        this.studentsCourses = new LinkedList<StudentCourse>();
+        this.studentsCourses = new LinkedList<>();
     }
 
     public int getCapacity(){
