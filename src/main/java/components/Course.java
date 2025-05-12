@@ -108,7 +108,7 @@ public class Course {
      * Metodo que rota el rol de lider del curso
      */
     public void rotateRol() {
-
+        
     }
 
     /**
