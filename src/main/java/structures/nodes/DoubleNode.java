@@ -6,11 +6,13 @@ package structures.nodes;
 
 /**
  * Clase que representa un nodo de la lista doblemente enlazada.
+ *
  * @param <T> Tipo de dato almacenado en el nodo.
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class DoubleNode<T> {
+
     private T value;
     private DoubleNode<T> next;
     private DoubleNode<T> prev;
@@ -26,6 +28,7 @@ public class DoubleNode<T> {
 
     /**
      * Constructor que inicializa un nodo con un dato.
+     *
      * @param value El valor almacenado en el nodo.
      */
     public DoubleNode(T value) {
@@ -34,27 +37,57 @@ public class DoubleNode<T> {
         this.prev = null;
     }
 
-    public void setValue(T value){
+    /**
+     * Establece el valor del nodo al valor del parametro
+     *
+     * @param value valor a establecer
+     */
+    public void setValue(T value) {
         this.value = value;
     }
 
-    public T getValue(){
+    /**
+     * Obtiene el valor de la instancia
+     *
+     * @return value valor del nodo
+     */
+    public T getValue() {
         return value;
     }
 
-    public void setNext(DoubleNode<T> next){
+    /**
+     * Establece como siguiente el nodo recibido al parametro
+     *
+     * @param next
+     */
+    public void setNext(DoubleNode<T> next) {
         this.next = next;
     }
 
-    public DoubleNode<T> getNext(){
+    /**
+     * Obtiene el nodo siguiente
+     *
+     * @return next nodo siguiente
+     */
+    public DoubleNode<T> getNext() {
         return next;
     }
 
-    public void setPrev(DoubleNode<T> prev){
+    /**
+     * Establece como previo el nodo recibido al parametro
+     *
+     * @param prev
+     */
+    public void setPrev(DoubleNode<T> prev) {
         this.prev = prev;
     }
 
-    public DoubleNode<T> getPrev(){
+    /**
+     * Obtiene el nodo previo
+     *
+     * @return prev nodo previo
+     */
+    public DoubleNode<T> getPrev() {
         return prev;
     }
 }

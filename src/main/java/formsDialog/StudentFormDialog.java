@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package formsDialog;
 
 import gui.MainFrame;
@@ -22,18 +18,41 @@ import javax.swing.JTextField;
  *
  * @author david
  */
-public class StudentFormDialog extends JDialog{
+public final class StudentFormDialog extends JDialog{
     private JPanel centerPanel;
     private JPanel southPanel;
-
-    public StudentFormDialog(MainFrame owner) {
-        super(owner, "Añadir estudiante", true);
-        setSize(400, 300);
-        setLocationRelativeTo(owner);
-        setLayout(new BorderLayout());
-
+    private MainFrame mainFrame;
+    
+    public StudentFormDialog(MainFrame owner, int option) {
+        super(owner, " ", true);
+        mainFrame = owner;
         centerPanel = new JPanel();
         southPanel = new JPanel();
+        switch (option){
+            case 0 -> {
+                setTitle("Añadir estudiante");
+                addStudent();
+            }
+            case 1 -> {
+                setTitle("Eliminar estudiante");
+                deleteStudent();
+            }
+            case 2 -> {
+                setTitle("Buscar estudiante");
+                searchStudent();
+            }
+            default -> {
+            }
+                
+        }
+        
+       
+    }
+    
+    public void addStudent(){
+        setSize(400, 300);
+        setLocationRelativeTo(mainFrame);
+        setLayout(new BorderLayout());
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 
         // Name field
@@ -43,7 +62,7 @@ public class StudentFormDialog extends JDialog{
         namePanel.add(nameField);
         namePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0)); 
 
-        // Section label
+        //contact information label 
         JLabel sectionLabel = new JLabel("--------  Informacion de contacto  --------");
         sectionLabel.setFont(sectionLabel.getFont().deriveFont(Font.BOLD));
         sectionLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -68,14 +87,14 @@ public class StudentFormDialog extends JDialog{
         addressPanel.add(addressField);
 
         // Add button
-        JButton saveButton = new JButton("Añadir");
-        saveButton.addActionListener(e -> {
-
-
+        JButton btnadd = new JButton("Añadir");
+        btnadd.addActionListener(e -> {
+            //verifica que los datos ingresados sean corectos mediante REGEX
+            //Ejecuta "añadir" de la lista de estudiantes
             dispose(); 
         });
 
-        // Add everything to the main panel
+        // Add everything to the central panel
         centerPanel.add(namePanel);
         centerPanel.add(Box.createVerticalStrut(10));
         centerPanel.add(sectionLabel);
@@ -83,8 +102,68 @@ public class StudentFormDialog extends JDialog{
         centerPanel.add(emailPanel);
         centerPanel.add(addressPanel);
         centerPanel.add(Box.createVerticalStrut(15));
-        southPanel.add(saveButton);
+        southPanel.add(btnadd);
 
+        add(centerPanel, BorderLayout.CENTER);
+        add(southPanel, BorderLayout.SOUTH);
+    }
+    
+    public void deleteStudent(){
+        setSize(350, 150);
+        setLocationRelativeTo(mainFrame);
+        setLayout(new BorderLayout());
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        
+        // Id field
+        JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        idPanel.add(new JLabel("Matricula del estudiante:   "));
+        JTextField idField = new JTextField(12);
+        idPanel.add(idField);
+        idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+        southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+        
+        // Delete button                                                                                                            
+        JButton btnDelete = new JButton("Eliminar estudiante");
+        btnDelete.addActionListener(e -> {
+            //se ejecuta "eliminar" de la lista de estudiantes
+            //si regresa true se despliega un Joptionpane "eliminado"
+            //si regresa false se despliega un Joptionpane "error no se encontro al estudainte"
+            dispose(); 
+        });
+        
+        // Add everything to the central panel
+        centerPanel.add(idPanel);
+        southPanel.add(btnDelete);
+        
+        add(centerPanel, BorderLayout.CENTER);
+        add(southPanel, BorderLayout.SOUTH);
+    }
+    
+    public void searchStudent(){
+        setSize(350, 150);
+        setLocationRelativeTo(mainFrame);
+        setLayout(new BorderLayout());
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        
+        // Id field
+        JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        idPanel.add(new JLabel("Matricula del estudiante:   "));
+        JTextField idField = new JTextField(12);
+        idPanel.add(idField);
+        idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+        southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+        
+        // Delete button
+        JButton btnSearch = new JButton("Buscar");
+        btnSearch.addActionListener(e -> {
+            
+            dispose(); 
+        });
+        
+        // Add everything to the central panel
+        centerPanel.add(idPanel);
+        southPanel.add(btnSearch);
+        
         add(centerPanel, BorderLayout.CENTER);
         add(southPanel, BorderLayout.SOUTH);
     }

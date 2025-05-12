@@ -3,73 +3,143 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package validators;
+
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 /**
+ * Clase validadora que utiliza expresiones regulares para validar los datos de
+ * entrada del usuario
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class Validator {
 
-    // 4 Numeros seguidos de 4 letras mayusculas
+    /**
+     * Valida que el id esté compuesto por cuatro numeros seguidos de cuatro
+     * letras mayusculas
+     *
+     * @param id a vallidar
+     * @return boolean
+     */
     public static boolean validateId(String id) {
         String regex = "^\\d{4}[A-Z]{4}$";
         return validarRegex(id, regex);
     }
 
-    // Solo letras y espacios, primera letra en mayuscula
+    /**
+     * Valida que el nombre esté compuesto solo por letras, la primera
+     * mayuscula, ademas de permitir espacios
+     *
+     * @param name a validar
+     * @return boolean
+     */
     public static boolean validateName(String name) {
         String regex = "^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(\\s[A-ZÁÉÍÓÚÑa-záéíóúñ]+)+$";
         return validarRegex(name, regex);
     }
 
-    // Solo numeros, entre 7 y 15 digitos
+    /**
+     * Valida que el numero esté compuesto solo de numeros, entre 7 y 15 digitos
+     *
+     * @param phone a validar
+     * @return boolean
+     */
     public static boolean validatePhone(String phone) {
         String regex = "^\\d{7,15}$";
         return validarRegex(phone, regex);
     }
 
-    // Valida Correo Electronico
+    /**
+     * Valida que el correo electronico cumpla el formato establecido: parte
+     * local, arroba, dominio
+     *
+     * @param email a validar
+     * @return boolean
+     */
     public static boolean validateEmail(String email) {
         String regex = "^[\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4}$";
         return validarRegex(email, regex);
     }
 
-    // Letras y espacios, 3 a 50 caracteres
+    /**
+     * Valida que la calle esté compuesta solo de letras, permitiendo espacios y
+     * dando un limite minimo de 3 caractetes y 50 caracteres como maximo
+     *
+     * @param street a validar
+     * @return boolean
+     */
     public static boolean validateStreet(String street) {
         String regex = "^[A-ZÁÉÍÓÚÑa-záéíóúñ\\s]{3,50}$";
         return validarRegex(street, regex);
     }
 
-    // Nmeros y opcionalmente letra
+    /**
+     * Valida que el numero de la calle este compuesto por numeros, y letras de
+     * forma opcional
+     *
+     * @param number a validar
+     * @return boolean
+     */
     public static boolean validateStreetNumber(String number) {
         String regex = "^[0-9]+[A-Za-z]?$";
         return validarRegex(number, regex);
     }
 
-    // Letras y espacios, 2 a 50 caracteres
+    /**
+     * Valida que el distrito esté compuesto solo de letras, permitiendo
+     * espacios y dando un limite minimo de 2 caractetes y 50 caracteres como
+     * maximo
+     *
+     * @param district a validar
+     * @return boolean
+     */
     public static boolean validateDistric(String district) {
         String regex = "^[A-ZÁÉÍÓÚÑa-záéíóúñ\\s]{2,50}$";
         return validarRegex(district, regex);
     }
 
-    // Letras, numeros y espacios, 5 a 50 caracteres
+    /**
+     * Valida que el curso esté compuesto solo de letras, permitiendo espacios y
+     * dando un limite minimo de 5 caractetes y 50 caracteres como maximo
+     *
+     * @param courseName a validar
+     * @return boolean
+     */
     public static boolean validateCourseName(String courseName) {
         String regex = "^[A-ZÁÉÍÓÚÑa-záéíóúñ\\s\\d]{5,50}$";
         return validarRegex(courseName, regex);
     }
 
-    // 0 a 100
+    /**
+     * Valida que la calificacion ingresada sea un numero dentro del rango 0 a
+     * 100
+     *
+     * @param grade a validar
+     * @return boolean
+     */
     public static boolean validateGrade(int grade) {
         return grade >= 0 && grade <= 100;
     }
 
-    // 0.0 a 10.0 con 1 decimal
+    /**
+     * Valida que el decimal de la calificacion se encuentre del rango 0.0 a
+     * 10.0 con 1 decimal
+     *
+     * @param grade a validar
+     * @return boolean
+     */
     public static boolean validateDecimalGrade(double grade) {
         return grade >= 0.0 && grade <= 10.0 && (grade * 10) % 10 == 0;
     }
 
+    /**
+     * Valida que un valor cumpla con una expresion regular
+     *
+     * @param valor del texto que se desea validar
+     * @param regex la expresion regular que define el formato esperado
+     * @return boolean
+     */
     private static boolean validarRegex(String valor, String regex) {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(valor);

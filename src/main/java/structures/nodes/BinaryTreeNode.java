@@ -6,11 +6,13 @@ package structures.nodes;
 
 /**
  * Clase que representa un nodo de un Arbol.
+ *
  * @param <T> Tipo de dato almacenado en el nodo.
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class BinaryTreeNode<T> {
+
     private T value;
     private BinaryTreeNode<T> left;
     private BinaryTreeNode<T> right;
@@ -26,6 +28,7 @@ public class BinaryTreeNode<T> {
 
     /**
      * Constructor que inicializa un nodo con un dato.
+     *
      * @param value El valor almacenado en el nodo.
      */
     public BinaryTreeNode(T value) {
@@ -34,27 +37,57 @@ public class BinaryTreeNode<T> {
         this.right = null;
     }
 
-    public void setValue(T value){
+    /**
+     * Establece el valor del nodo al valor recibido del parametro
+     *
+     * @param value
+     */
+    public void setValue(T value) {
         this.value = value;
     }
 
-    public T getValue(){
+    /**
+     * Obtiene el valor del nodo
+     *
+     * @return value
+     */
+    public T getValue() {
         return value;
     }
 
-    public void setLeft(BinaryTreeNode<T> left){
+    /**
+     * Establece el nodo recibido del parametro como nodo izquierdo
+     *
+     * @param left
+     */
+    public void setLeft(BinaryTreeNode<T> left) {
         this.left = left;
     }
 
-    public BinaryTreeNode<T> getLeft(){
+    /**
+     * Obtiene el nodo que se encuentra a la izquierda
+     *
+     * @return left
+     */
+    public BinaryTreeNode<T> getLeft() {
         return left;
     }
 
-    public void setRight(BinaryTreeNode<T> right){
+    /**
+     * Establece el nodo recibido del paremtro como nodo derecho
+     *
+     * @param right
+     */
+    public void setRight(BinaryTreeNode<T> right) {
         this.right = right;
     }
 
-    public BinaryTreeNode<T> getRight(){
+    /**
+     * Obtiene el nodo que se encuentra a la derecha
+     *
+     * @return right
+     */
+    public BinaryTreeNode<T> getRight() {
         return right;
     }
 }

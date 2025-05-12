@@ -6,11 +6,13 @@ package structures.nodes;
 
 /**
  * Clase que representa un nodo de un Mapa.
+ *
  * @param <K, V> Tipo de dato de la llave y del valor almacenado en el nodo.
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class DictionaryNode<K, V> {
+
     private K key;
     private V value;
     private DictionaryNode<K, V> next;
@@ -26,6 +28,7 @@ public class DictionaryNode<K, V> {
 
     /**
      * Constructor que inicializa un nodo con un dato.
+     *
      * @param key Llave del nodo.
      * @param value El valor almacenado en el nodo.
      */
@@ -35,27 +38,57 @@ public class DictionaryNode<K, V> {
         this.next = null;
     }
 
-    public void setKey(K key){
+    /**
+     * Establece la clave del nodo al valor recibido del parametro
+     *
+     * @param key
+     */
+    public void setKey(K key) {
         this.key = key;
     }
 
-    public K getKey(){
+    /**
+     * Obtiene la clave del nodo
+     *
+     * @return key
+     */
+    public K getKey() {
         return key;
     }
 
-    public void setValue(V value){
+    /**
+     * Establece el valor del nodo al valor recibido del parametro
+     *
+     * @param value
+     */
+    public void setValue(V value) {
         this.value = value;
     }
 
-    public V getValue(){
+    /**
+     * Obtiene el valor del nodo
+     *
+     * @return value
+     */
+    public V getValue() {
         return value;
     }
 
-    public void setNext(DictionaryNode<K, V> next){
+    /**
+     * Establece como siguiente el nodo recibido del parametro
+     *
+     * @param next
+     */
+    public void setNext(DictionaryNode<K, V> next) {
         this.next = next;
     }
 
-    public DictionaryNode<K, V> getNext(){
+    /**
+     * Obtiene el nodo siguiente
+     *
+     * @return next
+     */
+    public DictionaryNode<K, V> getNext() {
         return next;
     }
 }

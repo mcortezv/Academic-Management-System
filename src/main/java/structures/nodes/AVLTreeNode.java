@@ -6,15 +6,17 @@ package structures.nodes;
 
 /**
  * Clase que representa un nodo de un Arbol.
+ *
  * @param <T> Tipo de dato almacenado en el nodo.
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class AVLTreeNode<T> {
+
     private T value;
     private AVLTreeNode<T> left;
     private AVLTreeNode<T> right;
-    private int altura;
+    private int height;
 
     /**
      * Constructor que inicializa el nodo con un dato.
@@ -73,7 +75,7 @@ public class AVLTreeNode<T> {
     /**
      * Devuelve la referencia al nodo hijo derecho.
      *
-     * @return el nodo derecho
+     * @return right el nodo derecho
      */
     public AVLTreeNode<T> getRight() {
         return right;
@@ -82,14 +84,18 @@ public class AVLTreeNode<T> {
     /**
      * Devuelve la altura del nodo en especifico.
      *
-     * @return altura int
+     * @return height int
      */
-    public int getAltura() { return altura; }
+    public int getHeight() {
+        return height;
+    }
 
     /**
      * Establece la altura del nodo en especifico.
      *
-     * @param altura int
+     * @param height int
      */
-    public void setAltura(int altura) { this.altura = altura; }
+    public void setHeight(int height) {
+        this.height = height;
+    }
 }
