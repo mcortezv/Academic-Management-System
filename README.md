@@ -43,15 +43,15 @@ All of this using data structures implemented from scratch and applying **generi
 
 ## **Implemented Data Structures**
 
-- `ArbolBST<T>`
-- `ArbolAVL<T>`
-- `ListaEnlazada<T>`
-- `ListaDobleCircular<T>`
-- `ListaCircular<T>`
-- `Pila<T>`
-- `Cola<T>`
-- `Diccionario<K, V>`
-- `ArregloDinamico<T>`
+- `TreeBST<T>`
+- `TreeAVL<T>`
+- `LinkedList<T>`
+- `CircularDoubleLinkedList<T>`
+- `LinkedList<T>`
+- `Stack<T>`
+- `Queue<T>`
+- `Dictionary<K, V>`
+- `DynamicArray<T>`
 
 All structures are implemented using **generic programming (`<T>`)** for reusability and flexibility.
 
