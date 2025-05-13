@@ -34,7 +34,10 @@ public final class StudentFormDialog extends JDialog {
     private JTextField phoneField;
     private JTextField emailField;
     private JTextField addressField;
+    private JTextField idField;
     private PersistenceStudents persistence;
+    private Student student;
+    private Contact contact;
 
     public StudentFormDialog(MainFrame owner, IPersistenceFacade persistence, int option) {
         super(owner, " ", true);
@@ -148,8 +151,8 @@ public final class StudentFormDialog extends JDialog {
             JOptionPane.showMessageDialog(centerPanel, "Nombre del estudiante invalido");
             throw new PersistenceStudentsException("Direccion invalida");
         }
-        Contact contact = new Contact(phoneNumber, email, adressField);
-        Student student = new Student(name, contact);
+        contact = new Contact(phoneNumber, email, adressField);
+        student = new Student(name, contact);
         persistence.addStudent(student);
         JOptionPane.showMessageDialog(centerPanel, "Estudiante agregado con exito");
         dispose();
@@ -165,7 +168,7 @@ public final class StudentFormDialog extends JDialog {
         // Id field
         JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         idPanel.add(new JLabel("Matricula del estudiante:   "));
-        JTextField idField = new JTextField(12);
+        idField = new JTextField(12);
         idPanel.add(idField);
         idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
@@ -173,9 +176,11 @@ public final class StudentFormDialog extends JDialog {
         // Delete button                                                                                                            
         JButton btnDelete = new JButton("Eliminar estudiante");
         btnDelete.addActionListener(e -> {
-            //se ejecuta "eliminar" de la lista de estudiantes
-            //si regresa true se despliega un Joptionpane "eliminado"
-            //si regresa false se despliega un Joptionpane "error no se encontro al estudainte"
+            try {
+                actionBtnDeleteStudent();
+            } catch (PersistenceStudentsException ex) {
+                System.out.println("Error al intentar eliminar el estudiante: " + ex.getMessage());
+            }
             dispose();
         });
 
@@ -187,6 +192,17 @@ public final class StudentFormDialog extends JDialog {
         add(southPanel, BorderLayout.SOUTH);
     }
 
+    public void actionBtnDeleteStudent() {
+        String id = idField.getText().trim();
+        if (!Validator.validateId(id)) {
+            JOptionPane.showMessageDialog(centerPanel, "Id de estudiante invalido");
+            throw new PersistenceStudentsException("Id del estudiante invalido");
+        }
+        student = persistence.searchStudent(id);
+        persistence.removeStudent(student);
+        JOptionPane.showMessageDialog(centerPanel, "Estudiante removido con exito");
+    }
+
     public void searchStudent() {
         setSize(350, 150);
         setLocationRelativeTo(mainFrame);
@@ -196,7 +212,7 @@ public final class StudentFormDialog extends JDialog {
         // Id field
         JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         idPanel.add(new JLabel("Matricula del estudiante:   "));
-        JTextField idField = new JTextField(12);
+        idField = new JTextField(12);
         idPanel.add(idField);
         idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
@@ -204,7 +220,11 @@ public final class StudentFormDialog extends JDialog {
         // Delete button
         JButton btnSearch = new JButton("Buscar");
         btnSearch.addActionListener(e -> {
-
+            try{
+                actionBtnSearchStudent();
+            }catch(PersistenceStudentsException ex){
+                System.out.println("Error al intentar buscar al estudiante: " + ex.getMessage());
+            }
             dispose();
         });
 
@@ -214,5 +234,17 @@ public final class StudentFormDialog extends JDialog {
 
         add(centerPanel, BorderLayout.CENTER);
         add(southPanel, BorderLayout.SOUTH);
+    }
+
+    public void actionBtnSearchStudent() {
+        String id = idField.getText().trim();
+        if (!Validator.validateId(id)) {
+            JOptionPane.showMessageDialog(centerPanel, "Id de estudiante invalido");
+            throw new PersistenceStudentsException("Id del estudiante invalido");
+        }        
+        student = persistence.searchStudent(id);
+        
+        JOptionPane.showMessageDialog(centerPanel, student.toString(),"Estudiante encontrado: ",1);
+        
     }
 }
