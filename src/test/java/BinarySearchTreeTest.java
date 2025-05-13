@@ -18,26 +18,43 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Cortez, Manuel;
  */
 public class BinarySearchTreeTest {
+
     private BinarySearchTree<Student> arbol;
     private Contact datosContacto;
     private PersistenceGrades grades;
-    private Role rol;
+    private Role role;
     private Student student1;
     private Student student2;
     private Student student3;
     private Student student4;
-    private Student student5;    
-    
+    private Student student5;
+
     @BeforeEach
     public void setUp() {
         arbol = new BinarySearchTree<>();
         datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
         grades = new PersistenceGrades();
-        student1 = new Student("ABC100", "Escalante Sebastian", datosContacto, grades, rol);
-        student2 = new Student("ABC200", "Escalante Sebastian", datosContacto, grades, rol);
-        student3 = new Student("ABC300", "Escalante Sebastian", datosContacto, grades, rol);
-        student4 = new Student("ABC400", "Escalante Sebastian", datosContacto, grades, rol);
-        student5 = new Student("ABC500", "Escalante Sebastian", datosContacto, grades, rol);
+        role = new Role(Role.RoleType.STUDENT);
+
+        student1 = new Student("Escalante Sebastian", datosContacto);
+        student1.setRol(role);
+        student1.setId("ABC100");
+
+        student2 = new Student("Escalante Sebastian", datosContacto);
+        student2.setRol(role);
+        student2.setId("ABC200");
+
+        student3 = new Student("Escalante Sebastian", datosContacto);
+        student3.setRol(role);
+        student3.setId("ABC300");
+
+        student4 = new Student("Escalante Sebastian", datosContacto);
+        student4.setRol(role);
+        student4.setId("ABC400");
+
+        student5 = new Student("Escalante Sebastian", datosContacto);
+        student5.setRol(role);
+        student5.setId("ABC500");
     }
 
     @Test
@@ -68,7 +85,7 @@ public class BinarySearchTreeTest {
         arbol.insert(student2);
         arbol.insert(student3);
         arbol.insert(student4);
-        arbol.insert(student5);        
+        arbol.insert(student5);
         assertEquals(student1, arbol.firstEntry());
         assertEquals(student5, arbol.lastEntry());
     }
@@ -78,12 +95,12 @@ public class BinarySearchTreeTest {
         arbol.insert(student1);
         arbol.insert(student2);
         arbol.insert(student3);
-        arbol.insert(student4);                        
+        arbol.insert(student4);
         assertEquals(student1, arbol.get(student1));
         assertEquals(student2, arbol.get(student2));
         assertEquals(student3, arbol.get(student3));
-        assertEquals(student4, arbol.get(student4));        
-                
+        assertEquals(student4, arbol.get(student4));
+
         assertThrows(TreeException.class, () -> arbol.get(student5));
     }
 
@@ -102,6 +119,6 @@ public class BinarySearchTreeTest {
         arbol.remove(student2);
         assertFalse(arbol.contains(student2));
         assertTrue(arbol.contains(student3));
-        assertTrue(arbol.contains(student3)); 
+        assertTrue(arbol.contains(student3));
     }
 }

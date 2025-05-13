@@ -7,13 +7,15 @@ package components;
 import persistences.PersistenceGrades;
 import structures.ArrayList;
 import interfaces.Identificable;
+import java.util.Random;
+import validators.Validator;
 
 /**
  * Clase que representa un estudiante dentro del sistema
  *
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
-public class Student implements Identificable {
+public final class Student implements Identificable {
 
     private String id;
     private String fullName;
@@ -25,6 +27,19 @@ public class Student implements Identificable {
      * Constructor vacio del estudiante
      */
     public Student() {
+        this.id = generateRandomId();
+    }
+
+    /**
+     Constructor que establece los atributos de la instancia al valor de sus
+     * parametros
+     * @param fullName
+     * @param contactDetails
+     */
+    public Student(String fullName, Contact contactDetails) {
+        this.id = generateRandomId();
+        this.contactDetails = contactDetails;
+
     }
 
     /**
@@ -38,7 +53,7 @@ public class Student implements Identificable {
      * @param rol
      */
     public Student(String id, String fullName, Contact contactDetails, PersistenceGrades grades, Role rol) {
-        this.id = id;
+        this.id = generateRandomId();
         this.fullName = fullName;
         this.contactDetails = contactDetails;
         this.grades = grades;
@@ -142,7 +157,7 @@ public class Student implements Identificable {
     /**
      * Lista todas las calificaciones del estudiante
      *
-     * @return grades 
+     * @return grades
      */
     public ArrayList<Double> listGrades() {
         return grades.listGrades();
@@ -167,6 +182,28 @@ public class Student implements Identificable {
     @Override
     public int compareTo(Identificable o) {
         return this.id.compareTo(o.getId());
+    }
+
+    /**
+     * Metodo que regresa un id generado aleatoreamente y valida que cumpla con
+     * el formato establecido para el id en el sistema
+     *
+     * @return id aleatorio
+     */
+    public String generateRandomId() {
+        Random random = new Random();
+        String numbers = String.format("%04d", random.nextInt(10000));
+        String letters = "";
+        for (int i = 0; i < 4; i++) {
+            char letter = (char) (random.nextInt(26) + 'A');
+            letters += letter;
+        }
+        String id = numbers + letters;
+        if (Validator.validateId(id)) {
+            return id;
+        } else {
+            return generateRandomId();
+        }
     }
 
     /**
