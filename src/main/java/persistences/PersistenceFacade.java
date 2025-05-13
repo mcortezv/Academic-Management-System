@@ -6,6 +6,7 @@ package persistences;
 import components.Action;
 import components.Course;
 import components.Student;
+import components.StudentCourse;
 import interfaces.IPersistenceFacade;
 import structures.ArrayList;
 import structures.BinarySearchTree;
@@ -85,7 +86,7 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     /**
-     * Lista tods los cursos
+     * Lista todos los cursos
      * @return cursos del sistema
      */
     @Override
@@ -95,29 +96,30 @@ public class PersistenceFacade implements IPersistenceFacade {
     }
 
     /**
-     * Lista tods los cursos
-     * @return cursos del sistema
+     * Permite inscribir a un estudiante en un curso.
+     * @param studentId String
+     * @param courseId String
      */
     @Override
     public void enrollStudentInCourse(String studentId, String courseId){
         Student student = persistenceStudents.searchStudent(studentId);
         Course course = persistenceCourses.getCourse(courseId);
         if (course != null && student != null){
-            persistenceActions.addAction( new Action(Action.Type.enrollStudentInCourse, null));
+            persistenceActions.addAction( new Action(Action.Type.enrollStudentInCourse, new StudentCourse(student, course)));
             course.getEnrolledStudents().enrollStudentCourse(student);
         }
     }
 
     /**
-     * Lista tods los cursos
+     * Lista todos los estudiantes inscritos en un curso.
      * @return cursos del sistema
      */
     @Override
-    public void listEnrolledInCourse(String id){
+    public PersistenceStudentsCourses showEnrolledStudentsInCourse(String id){
         Course course = persistenceCourses.getCourse(id);
         if (course != null){
-            persistenceActions.addAction( new Action(Action.Type.rotateRoles, null));
-            return course.rotateRol();
+            persistenceActions.addAction( new Action(Action.Type.showEnrolledStudentsInCourse, id));
+            return course.getEnrolledStudents();
         }
         return null;
     }
@@ -127,11 +129,11 @@ public class PersistenceFacade implements IPersistenceFacade {
      * @return cursos del sistema
      */
     @Override
-    public void showWaitingListForCourse(){
+    public PersistenceWaitingListCourses showWaitingListForCourse(String id){
         Course course = persistenceCourses.getCourse(id);
         if (course != null){
-            persistenceActions.addAction( new Action(Action.Type.rotateRoles, null));
-            return course.rotateRol();
+            persistenceActions.addAction( new Action(Action.Type.showWaitingListForCourse, id));
+            return course.getWaitingList();
         }
         return null;
     }
@@ -146,7 +148,7 @@ public class PersistenceFacade implements IPersistenceFacade {
         Student student = persistenceStudents.searchStudent(studentId);
         if(student != null){
             student.addGrade(grade);
-            persistenceActions.addAction(new Action(Action.Type.addGrade,student));
+            persistenceActions.addAction(new Action(Action.Type.addGrade, studentId));
         }
     }
     /**
@@ -160,6 +162,7 @@ public class PersistenceFacade implements IPersistenceFacade {
         Student student = persistenceStudents.searchStudent(studentId);
         if (student != null){
             student.updateGrade(grade, index);
+            persistenceActions.addAction( new Action(Action.Type.updateGrade, studentId));
         }
     }
     /**
@@ -171,7 +174,7 @@ public class PersistenceFacade implements IPersistenceFacade {
     public Double getAverage(String studentId) {
         Student student = persistenceStudents.searchStudent(studentId);
         if(student != null){
-            persistenceActions.addAction(new Action(Action.Type.getAverage,student));
+            persistenceActions.addAction(new Action(Action.Type.getAverage, studentId));
             return student.getAverage();
         }
         return null;
@@ -185,7 +188,7 @@ public class PersistenceFacade implements IPersistenceFacade {
     public ArrayList<Double> listGrades(String studentId) {
         Student student = persistenceStudents.searchStudent(studentId);
         if(student != null){
-            persistenceActions.addAction(new Action(Action.Type.listGrades, student));
+            persistenceActions.addAction(new Action(Action.Type.listGrades, studentId));
             return student.listGrades();
         }
         return null;
@@ -218,7 +221,7 @@ public class PersistenceFacade implements IPersistenceFacade {
     public Student rotateRol(String id) {
         Course course = persistenceCourses.getCourse(id);
         if (course != null){
-            persistenceActions.addAction( new Action(Action.Type.rotateRoles, null));
+            persistenceActions.addAction( new Action(Action.Type.rotateRoles, id));
             return course.rotateRol();
         }
         return null;

@@ -5,6 +5,8 @@
 package interfaces;
 import components.Course;
 import components.Student;
+import persistences.PersistenceStudentsCourses;
+import persistences.PersistenceWaitingListCourses;
 import structures.ArrayList;
 import structures.BinarySearchTree;
 import structures.HashDictionary;
@@ -27,9 +29,9 @@ public interface IPersistenceFacade {
 
     void enrollStudentInCourse(String studentId, String courseId);
 
-    void listEnrolledInCourse(String id);
+    PersistenceStudentsCourses showEnrolledStudentsInCourse(String id);
 
-    void showWaitingListForCourse(String id);
+    PersistenceWaitingListCourses showWaitingListForCourse(String id);
 
     void addGrade(String studentId, Double grade);
 

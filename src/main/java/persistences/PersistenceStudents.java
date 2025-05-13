@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package persistences;
-
 import components.Student;
 import structures.BinarySearchTree;
 
@@ -12,7 +11,6 @@ import structures.BinarySearchTree;
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class PersistenceStudents {
-
     private BinarySearchTree<Student> students;
 
     public PersistenceStudents() {
@@ -35,6 +33,4 @@ public class PersistenceStudents {
     public BinarySearchTree<Student> listStudents() {
         return students;
     }
-    
-    
 }
