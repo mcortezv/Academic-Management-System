@@ -28,7 +28,7 @@ public class PersistenceStudents {
     }
 
     public Student searchStudent(String studentId) {
-        Student studentToFind = new Student(studentId, "", null, null, null);
+        Student studentToFind = new Student(studentId, "", null, null);
         return students.get(studentToFind);
     }
 
