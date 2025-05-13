@@ -4,41 +4,91 @@
  */
 package panels;
 
+import formsDialog.CourseFormDialog;
+import formsDialog.StudentFormDialog;
 import gui.MainFrame;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Frame;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 /**
  *
  * @author david
  */
 public class CoursePanel extends BasePanel {
-    JButton btnAddCourse;
-    JButton btnDeleteCourse;
-    JButton btnListCourses;
 
-    public CoursePanel(MainFrame frame) {
-        super(frame);
+    private JButton btnCreateCourse;
+    private JButton btnDeleteCourse;
+    private JButton btnListCourses;
+    private JButton btnRotateRole;
+    private JPanel mainCoursePanel;
+    private CourseTablePanel courseTablePanel;
+
+    public CoursePanel(MainFrame frame, NorthPanel northPanel) {
+        super(frame, northPanel);
     }
 
     @Override
     public void startComponents() {
-        btnAddCourse =  new JButton("Añadir curso");
-        btnDeleteCourse =  new JButton("Eliminar curso");
-        btnListCourses =  new JButton("Ver cursos");
+        btnCreateCourse = new JButton("Añadir curso");
+        btnDeleteCourse = new JButton("Eliminar curso");
+        btnListCourses = new JButton("Ver cursos");
+        btnRotateRole = new JButton("Rotar rol de estudiante");
+        mainCoursePanel = new JPanel();
+        courseTablePanel = new CourseTablePanel(mainFrame.getIPersistenceFacade().lisCourses(), this);
+        
+        
+        //comentarioxxx
+        //Main course panel
+        mainCoursePanel.setLayout(new FlowLayout());
+        mainCoursePanel.setPreferredSize(new Dimension(200, 300));
+        mainCoursePanel.setBorder(BorderFactory.createEmptyBorder(20, 150, 0, 150));
 
         //Buttons
-        btnAddCourse.setPreferredSize(new Dimension(150, 30));;
-        btnDeleteCourse.setPreferredSize(new Dimension(150, 30));;
-        btnListCourses.setPreferredSize(new Dimension(150, 30));;
+        btnCreateCourse.setPreferredSize(new Dimension(150, 30));
+        btnDeleteCourse.setPreferredSize(new Dimension(150, 30));
+        btnListCourses.setPreferredSize(new Dimension(150, 30));
+        btnRotateRole.setPreferredSize(new Dimension(150, 30));
+        //Create course button
+        btnCreateCourse.addActionListener(e -> {
+            new CourseFormDialog(mainFrame, 0).setVisible(true);
+        });
+        //Delete course button
+        btnDeleteCourse.addActionListener(e -> {
+            new CourseFormDialog(mainFrame, 1).setVisible(true);
+        });
+        //List courses button asdasda
+        btnListCourses.addActionListener(e -> {
+            showPanel(courseTablePanel);
+        });
+        //Rotate role in course button
+        btnRotateRole.addActionListener(e -> {
+            new CourseFormDialog(mainFrame, 0).setVisible(true);
+        });
 
         //Panels
-        centralPanel.add(btnAddCourse);
-        centralPanel.add(btnDeleteCourse);
-        southPanel.add(btnListCourses);
-
+        mainCoursePanel.add(btnCreateCourse);
+        mainCoursePanel.add(btnDeleteCourse);
+        mainCoursePanel.add(btnListCourses);
+        mainCoursePanel.add(btnRotateRole);
+        centralPanel.add(mainCoursePanel);
+        
     }
 
+    private void showPanel(JPanel nuevoPanel) {
+        removeAll();
+        add(nuevoPanel, BorderLayout.CENTER);
+        revalidate();
+        repaint();
+    }
+    
+    public void showCoursePanel() {
+        showPanel(mainCoursePanel);
+        add(southPanel, BorderLayout.SOUTH);
+        
+    }
 }

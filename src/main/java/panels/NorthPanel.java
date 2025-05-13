@@ -5,8 +5,13 @@
 package panels;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -14,8 +19,11 @@ import javax.swing.JPanel;
  */
 public class NorthPanel extends JPanel {
 
-    public NorthPanel() {
+    private JButton btnInUse;
 
+    public NorthPanel() {
+        setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        setBorder(new EmptyBorder(10, 0, 10, 0));
     }
 
     @Override
@@ -24,8 +32,28 @@ public class NorthPanel extends JPanel {
         int width = getWidth();
         int height = getHeight();
 
-        g.setColor(new Color(123, 200, 150)); 
+        g.setColor(new Color(123, 200, 150));
         g.fillRect(0, 0, width, height);
+        Graphics2D g2 = (Graphics2D) g;
+
+        if (btnInUse != null) {
+            Rectangle r = btnInUse.getBounds();
+            g2.setColor(new Color(200, 220, 255));
+            g2.fillRoundRect(r.x - 5, r.y - 5, r.width + 10, r.height + 10, 15, 15);
+        } else {
+            g2.setColor(new Color(123, 200, 150));
+            
+        }
+    }
+
+    public void setInUseButton(JButton boton) {
+        this.btnInUse = boton;
+        repaint();
+    }
+
+    public void erraseRectangle() {
+        btnInUse = null;
+        repaint();
     }
 
 }

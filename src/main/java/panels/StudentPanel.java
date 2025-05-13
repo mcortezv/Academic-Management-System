@@ -2,16 +2,13 @@ package panels;
 
 import formsDialog.StudentFormDialog;
 import gui.MainFrame;
-import interfaces.IPersistenceFacade;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import persistences.PersistenceStudents;
-
-
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -21,10 +18,9 @@ public class StudentPanel extends BasePanel{
     private JButton btnAddStudent;
     private JButton btnDeleteStudent;
     private JButton btnSearchStudent;
-    private IPersistenceFacade persistence;
-    public StudentPanel(MainFrame frame, IPersistenceFacade persistence) {
-        super(frame);
-        this.persistence = persistence;
+
+    public StudentPanel(MainFrame frame, NorthPanel northPanel) {
+        super(frame, northPanel);
 
     }
 
@@ -40,15 +36,15 @@ public class StudentPanel extends BasePanel{
         btnSearchStudent.setPreferredSize(new Dimension(150, 30));
             //Add student button
             btnAddStudent.addActionListener(e -> { 
-                new StudentFormDialog(mainFrame,persistence, 0).setVisible(true);
+                new StudentFormDialog(mainFrame, 0).setVisible(true);
             });
             //Delete student button
             btnDeleteStudent.addActionListener(e -> { 
-                new StudentFormDialog(mainFrame,persistence, 1).setVisible(true);
+                new StudentFormDialog(mainFrame, 1).setVisible(true);
             });
             //Search student button
             btnSearchStudent.addActionListener(e -> { 
-                new StudentFormDialog(mainFrame,persistence, 2).setVisible(true);
+                new StudentFormDialog(mainFrame, 2).setVisible(true);
             });
 
         //Paneles
@@ -57,5 +53,4 @@ public class StudentPanel extends BasePanel{
         centralPanel.add(btnSearchStudent);
 
     }
-    
 }

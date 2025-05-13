@@ -4,6 +4,7 @@ package structures;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+import java.util.List;
 import structures.nodes.DictionaryNode;
 
 /**
@@ -19,6 +20,17 @@ public class HashDictionary<K, V> {
         this.capacity = capacidadInicial;
         this.table = new DictionaryNode[capacidadInicial];
         this.size = 0;
+    }
+    public List<V> getValues() {
+        List<V> values = new java.util.ArrayList<>();
+        for (int i = 0; i < capacity; i++) {
+            DictionaryNode<K, V> actual = table[i];
+            while (actual != null) {
+                values.add(actual.getValue());
+                actual = actual.getNext();
+            }
+        }
+        return values;
     }
 
     public int getSize() {

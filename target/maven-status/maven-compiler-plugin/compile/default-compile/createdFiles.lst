@@ -12,16 +12,17 @@ gui\MainFrame.class
 main\Main.class
 interfaces\IPersistenceFacade.class
 persistences\exceptions\PersistenceGradesException.class
+formsDialog\GradeFormDialog.class
 persistences\exceptions\PersistenceRequestException.class
 persistences\PersistenceActions.class
 persistences\PersistenceRequests.class
 structures\nodes\DoubleNode.class
 interfaces\Identificable.class
 structures\exceptions\ListException.class
-components\Role$RoleType.class
 components\StudentCourse.class
 panels\CoursePanel.class
 panels\ReportPanel.class
+panels\CourseTablePanel.class
 persistences\PersistenceGrades.class
 persistences\exceptions\PersistenceWaitingListCoursesException.class
 structures\CircularDoubleLinkedList.class
@@ -40,7 +41,6 @@ structures\exceptions\TreeException.class
 structures\CircularLinkedList.class
 formsDialog\CourseFormDialog.class
 formsDialog\BaseDialog.class
-components\Role.class
 structures\LinkedList.class
 persistences\exceptions\PersistenceStudentsException.class
 persistences\exceptions\PersistenceActionsException.class
@@ -56,6 +56,7 @@ structures\exceptions\StackException.class
 components\Action.class
 persistences\PersistenceRoles.class
 structures\exceptions\QueueException.class
+formsDialog\EnrollFormDialog.class
 structures\nodes\AVLTreeNode.class
 persistences\PersistenceWaitingListCourses.class
 structures\nodes\SingleNode.class
