@@ -94,7 +94,9 @@ public class PersistenceFacade implements IPersistenceFacade {
         return persistenceCourses.listCourses();
     }
 
+    public void enrollStudentInCourse(){
 
+    }
 
 
 
@@ -170,9 +172,12 @@ public class PersistenceFacade implements IPersistenceFacade {
         return persistenceStudents.listStudents();
     }
 
-    //@Override
-    //public Student rotateRol() {
+    //public Student rotateRol(String id) {
+        //Course course = persistenceCourses.getCourse(id);
+        //if (course != null){
+
+        //}
         //persistenceActions.addAction( new Action(Action.Type.listStudents, null));
-        //return persistenceStudents.listStudents();
+        //return persistence.listStudents();
     //}
 }

@@ -13,7 +13,6 @@ import structures.HashDictionary;
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class PersistenceCourses {
-
     private HashDictionary<String, Course> courses;
 
     /**
@@ -45,6 +44,15 @@ public class PersistenceCourses {
             return course;
         }
         return null;
+    }
+
+    /**
+     * Regresa el curso correspondiente al id que recibe como parametro.
+     *
+     * @return courses
+     */
+    public Course getCourse(String id){
+        return courses.get(id);
     }
 
     /**
