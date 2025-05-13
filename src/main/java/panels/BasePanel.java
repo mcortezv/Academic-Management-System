@@ -19,15 +19,17 @@ import javax.swing.JPanel;
  */
 public abstract class BasePanel extends JPanel {
 
-    protected JButton btnBack;
+    protected MainFrame mainFrame;
     protected JPanel centralPanel;
     protected JPanel southPanel;
     protected JPanel westPanel;
-    protected MainFrame mainFrame;
+    protected JButton btnBack;
+    protected NorthPanel northPanel;
 
 
-    public BasePanel(MainFrame frame) {
+    public BasePanel(MainFrame frame, NorthPanel northPanel) {
         mainFrame = frame;
+        this.northPanel = northPanel;
         btnBack = new JButton("Volver");
         setLayout(new BorderLayout());
         centralPanel = new JPanel();
@@ -46,6 +48,9 @@ public abstract class BasePanel extends JPanel {
         southPanel.add(btnBack);
         //Boton
         btnBack.addActionListener(e -> frame.showMainPanel());
+        btnBack.addActionListener(e -> {
+           this.northPanel.erraseRectangle();
+        });
 
     }
 
