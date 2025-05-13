@@ -10,8 +10,11 @@ package components;
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class Action {
+
     private final Type type;
+    private Student student;
     private final Object data;
+    private int index;
 
     /**
      * Enumeracion que define los distintos tipos de acciones del sistema
@@ -33,7 +36,7 @@ public class Action {
         addGrade,
         updateGrade,
         getAverage,
-        listGrades
+        listGrades,
     }
 
     /**
@@ -46,6 +49,26 @@ public class Action {
     public Action(Type type, Object data) {
         this.type = type;
         this.data = data;
+    }
+
+    /**
+     *
+     * @param type
+     * @param student
+     * @param data
+     */
+    public Action(Type type, Student student, Object data) {
+        this.type = type;
+        this.student = student;
+        this.data = data;
+
+    }
+
+    public Action(Type type, Student student, Object data, int index) {
+        this.type = type;
+        this.student = student;
+        this.data = data;
+        this.index = index;
     }
 
     /**
@@ -65,4 +88,21 @@ public class Action {
     public Object getData() {
         return this.data;
     }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
 }

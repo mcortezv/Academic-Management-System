@@ -11,8 +11,11 @@ package components;
  * @author Sebas
  */
 public class Request {
+
     private final Type type;
+    private Student student;
     private final Object data;
+    private int index;
 
     /**
      * Enumeracion que define los distintos tipos de acciones del sistema
@@ -20,7 +23,14 @@ public class Request {
     public enum Type {
         addGrade,
         updateGrade,
-        removeGrade
+        removeGrade,
+        listGrades
+    }
+
+    public Request(Type type, Object data) {
+        this.type = type;
+        this.data = data;
+
     }
 
     /**
@@ -28,11 +38,22 @@ public class Request {
      * parametros
      *
      * @param type
+     * @param student
      * @param data
      */
-    public Request(Type type, Object data) {
+    public Request(Type type, Student student, Object data) {
         this.type = type;
+        this.student = student;
         this.data = data;
+
+    }
+
+    public Request(Type type, Student student, Object data, int index) {
+        this.type = type;
+        this.student = student;
+        this.data = data;
+        this.index = index;
+
     }
 
     /**
@@ -52,4 +73,34 @@ public class Request {
     public Object getData() {
         return this.data;
     }
+
+    /**
+     *
+     * @return
+     */
+    public Student getStudent() {
+        return student;
+    }
+    /**
+     * 
+     * @return 
+     */
+    public int getIndex() {
+        return index;
+    }
+    /**
+     * 
+     * @param student 
+     */
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+    /**
+     * 
+     * @param index 
+     */
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
 }
