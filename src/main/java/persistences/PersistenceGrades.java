@@ -7,7 +7,7 @@ import structures.ArrayList;
 
 /**
  *
- * @author Sebas
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class PersistenceGrades {
     private ArrayList<Double> grades;

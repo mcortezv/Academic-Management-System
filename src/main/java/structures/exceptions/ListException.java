@@ -7,7 +7,7 @@ package structures.exceptions;
 /**
  * Excepción personalizada para manejar errores en Listas.
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class ListException extends RuntimeException {
 

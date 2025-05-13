@@ -9,7 +9,7 @@ import structures.Queue;
 
 /**
  *
- * @author Sebas
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class PersistenceRequests {
     private Queue<Request> requests;

@@ -19,11 +19,13 @@ import panels.NorthPanel;
 import panels.ReportPanel;
 import panels.StudentPanel;
 import persistences.*;
+
 /**
  *
  * @author david
  */
-public class MainFrame extends JFrame {
+public final class MainFrame extends JFrame {
+
     private final IPersistenceFacade persistence;
     private JMenuBar menuBar;
     private JButton btnStudents;
@@ -41,7 +43,7 @@ public class MainFrame extends JFrame {
     private ReportPanel reportPanel;
 
     public MainFrame(IPersistenceFacade persistence) {
-        starComponetns();
+        startComponetns();
         this.persistence = persistence;
         setTitle("Gestion de estudiantes");
         setSize(800, 500);
@@ -51,7 +53,7 @@ public class MainFrame extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    public void starComponetns() {
+    public void startComponetns() {
         menuBar = new JMenuBar();
         btnStudents = new JButton("Estudiantes");
         btnCourse = new JButton("Cursos");
@@ -63,7 +65,7 @@ public class MainFrame extends JFrame {
         mainPanel = new MainPanel();
 
         // Initialize panels
-        studentPanel = new StudentPanel(this);
+        studentPanel = new StudentPanel(this, persistence);
         coursePanel = new CoursePanel(this);
         enrollmentPanel = new EnrollmentPanel(this);
         gradePanel = new GradePanel(this);

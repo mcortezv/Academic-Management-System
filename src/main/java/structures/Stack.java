@@ -13,7 +13,7 @@ import structures.nodes.SingleNode;
  * desapilar, obtener el ultimo elemento,
  * verificar si esta vacia y obtener el tamaño de la pila.
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  * @param <T> Tipo de datos de los elementos almacenados en la pila.
  */
 public class Stack<T> {

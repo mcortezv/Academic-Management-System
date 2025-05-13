@@ -14,13 +14,32 @@ public class Role {
     private String name;
 
     /**
-     * Constructor que establece los atributos de la instancia al valor de sus
-     * parametros
-     *
-     * @param name
+     * Enum que define los roles predefinidos del sistema
      */
-    public Role(String name) {
-        this.name = name;
+    public enum RoleType {
+        STUDENT("Estudiante"),
+        TUTOR("Tutor");
+
+        private final String roleName;
+
+        RoleType(String roleName) {
+            this.roleName = roleName;
+        }
+
+        public String getRoleName() {
+            return roleName;
+        }
+
+    }
+
+    /**
+     * Constructor que establece el nombre del rol a partir de un nombre
+     * predefinido
+     *
+     * @param roleType
+     */
+    public Role(RoleType roleType) {
+        this.name = roleType.getRoleName();
     }
 
     /**

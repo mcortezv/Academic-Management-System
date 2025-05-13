@@ -35,7 +35,7 @@ public class Validator {
      * @return boolean
      */
     public static boolean validateName(String name) {
-        String regex = "^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(\\s[A-ZÁÉÍÓÚÑa-záéíóúñ]+)+$";
+        String regex = "^[A-Za-zÁÉÍÓÚÑáéíóúñ]+(\\s[A-Za-zÁÉÍÓÚÑáéíóúñ]+)*$";
         return validarRegex(name, regex);
     }
 
@@ -82,7 +82,7 @@ public class Validator {
      * @return boolean
      */
     public static boolean validateStreetNumber(String number) {
-        String regex = "^[0-9]+[A-Za-z]?$";
+        String regex = "^[A-Za-z0-9]+$";
         return validarRegex(number, regex);
     }
 

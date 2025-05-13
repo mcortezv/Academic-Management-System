@@ -28,6 +28,10 @@ public class Action {
         processNextRequest,
         listStudents,
         rotateRoles,
+        addGrade,
+        updateGrade,
+        getAverage,
+        listGrades
     }
     private final Type type;
     private final Object data;

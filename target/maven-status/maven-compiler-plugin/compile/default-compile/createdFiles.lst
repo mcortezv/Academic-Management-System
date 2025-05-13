@@ -18,6 +18,7 @@ persistences\PersistenceRequests.class
 structures\nodes\DoubleNode.class
 interfaces\Identificable.class
 structures\exceptions\ListException.class
+components\Role$RoleType.class
 components\StudentCourse.class
 panels\CoursePanel.class
 panels\ReportPanel.class

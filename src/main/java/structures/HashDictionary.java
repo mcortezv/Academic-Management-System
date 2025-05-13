@@ -8,7 +8,7 @@ import structures.nodes.DictionaryNode;
 
 /**
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class HashDictionary<K, V> {
     private DictionaryNode<K, V>[] table;

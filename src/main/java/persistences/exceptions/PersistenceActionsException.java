@@ -7,7 +7,7 @@ package persistences.exceptions;
 /**
  * Excepción personalizada para manejar errores en la Persistencia de Acciones.
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class PersistenceActionsException extends RuntimeException {
 

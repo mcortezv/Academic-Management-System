@@ -21,13 +21,13 @@ public interface IPersistenceFacade {
 
     BinarySearchTree<Student> listStudents();
 
-    void addGrade(Double grade);
+    void addGrade(String studentId, Double grade);
 
-    void updateGrade(Double grade, int index);
+    void updateGrade(String studentId, Double grade, int index);
 
-    Double getAverage();
+    Double getAverage(String studentId);
 
-    ArrayList<Double> listGrades();
+    ArrayList<Double> listGrades(String studentId);
 
     Course addCourse(Course course);
 

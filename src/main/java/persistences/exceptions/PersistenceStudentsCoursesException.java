@@ -7,7 +7,7 @@ package persistences.exceptions;
 /**
  * Excepción personalizada para manejar errores en la Persistencia de Estudiantes.
  *
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class PersistenceStudentsCoursesException extends RuntimeException {
 
