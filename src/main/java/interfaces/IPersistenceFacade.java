@@ -19,7 +19,17 @@ public interface IPersistenceFacade {
 
     Student searchStudentById(String id);
 
-    BinarySearchTree<Student> listStudents();
+    Course addCourse(Course course);
+
+    Course deleteCourse(Course course);
+
+    HashDictionary<String, Course> lisCourses();
+
+    void enrollStudentInCourse(String studentId, String courseId);
+
+    void listEnrolledInCourse(String id);
+
+    void showWaitingListForCourse(String id);
 
     void addGrade(String studentId, Double grade);
 
@@ -29,11 +39,9 @@ public interface IPersistenceFacade {
 
     ArrayList<Double> listGrades(String studentId);
 
-    Course addCourse(Course course);
-
-    Course deleteCourse(Course course);
-
-    HashDictionary<String, Course> lisCourses();
-
     void undoAction();
+
+    BinarySearchTree<Student> listStudentsByAverage();
+
+    Student rotateRol(String id);
 }

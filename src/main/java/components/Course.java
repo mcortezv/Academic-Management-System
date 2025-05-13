@@ -75,6 +75,33 @@ public class Course {
     }
 
     /**
+     * Metodo que regresa una persistencia de estudiantes inscritos en un curso.
+     *
+     * @return enrolledStudents
+     */
+    public PersistenceStudentsCourses getEnrolledStudents() {
+        return enrolledStudents;
+    }
+
+    /**
+     * Metodo que regresa una persistencia de estudiantes en lista de espera del curso.
+     *
+     * @return waitingList
+     */
+    public PersistenceWaitingListCourses getWaitingList() {
+        return waitingList;
+    }
+
+    /**
+     * Metodo que regresa una persistencia de estudiantes con rol asignado.
+     *
+     * @return studentsWithAssignedRole
+     */
+    public PersistenceRoles getStudentsWithAssignedRole() {
+        return studentsWithAssignedRole;
+    }
+
+    /**
      * Establece el id del curso al valor recibido del parametro
      *
      * @param id id del curso
