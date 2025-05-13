@@ -6,7 +6,7 @@ package interfaces;
 
 /**
  *
- * @author mdjes
+ * @author Cortez, Manuel;
  */
 public interface Identificable extends Comparable<Identificable> {
     String getId();
