@@ -10,14 +10,14 @@ import java.util.Objects;
  * Implementación de una lista basada en un array.
  *
  * @param <T> Tipo de elementos almacenados en la lista.
- * @author Cortez, Manuel;
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class ArrayList<T> {
     public int numObjects;
     public T[] array;
 
     /**
-     * Constructor de la lista.
+     * Constructor que establece los atributos de la instancia al valor de sus parametros
      *
      * @param numObjetos int Tamaño inicial de la lista.
      * @throws ListException si el tamaño es negativo.

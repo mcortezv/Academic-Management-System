@@ -5,29 +5,20 @@
 package components;
 
 /**
- * Clase que representa una accion realizada dentro del sistema
+ * Clase que representa una solicitud realizada para realizar cambios dentro del
+ * sistema
  *
- * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
+ * @author Sebas
  */
-public class Action {
+public class Request {
 
     /**
      * Enumeracion que define los distintos tipos de acciones del sistema
      */
     public enum Type {
-        addStudent,
-        searchStudent,
-        removeStudent,
-        addCourse,
-        removeCourse,
-        listCourses,
-        enrollStudentInCourse,
-        showEnrolledStudentsInCourse,
-        showWaitingListForCourse,
-        submitGradesRequest,
-        processNextRequest,
-        listStudents,
-        rotateRoles,
+        addGrade,
+        updateGrade,
+        removeGrade
     }
     private final Type type;
     private final Object data;
@@ -39,13 +30,13 @@ public class Action {
      * @param type
      * @param data
      */
-    public Action(Type type, Object data) {
+    public Request(Type type, Object data) {
         this.type = type;
         this.data = data;
     }
 
     /**
-     * Metodo que regresa el tipo de accion realizada
+     * Metodo que regresa el tipo de solicitud realizada
      *
      * @return type
      */
@@ -54,11 +45,12 @@ public class Action {
     }
 
     /**
-     * Metodo que regresa los datos de la accion realizada
+     * Metodo que regresa los datos de la solicitud realizada
      *
      * @return data
      */
     public Object getData() {
         return this.data;
     }
+
 }

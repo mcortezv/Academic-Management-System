@@ -15,7 +15,7 @@ public class PersistenceRoles {
     private CircularLinkedList<Role> roles;
 
     public PersistenceRoles(){
-        this.roles = new CircularLinkedList<Role>();
+        this.roles = new CircularLinkedList<>();
     }
 
     public Student next(){

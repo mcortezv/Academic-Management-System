@@ -49,7 +49,12 @@ public class AVLTree<T extends Comparable<T>> {
     public void remove(T dato) {
         raiz = remove(raiz, dato);
     }
-
+    /**
+     * 
+     * @param nodo
+     * @param dato
+     * @return 
+     */
     private AVLTreeNode<T> remove(AVLTreeNode<T> nodo, T dato) {
         if (nodo == null) throw new TreeException("Elemento no encontrado");
         int cmp = dato.compareTo(nodo.getValue());
@@ -66,12 +71,20 @@ public class AVLTree<T extends Comparable<T>> {
         }
         return balancear(nodo);
     }
-
+    /**
+     * 
+     * @param nodo
+     * @return 
+     */
     private AVLTreeNode<T> obtenerMinimo(AVLTreeNode<T> nodo) {
         while (nodo.getLeft() != null) nodo = nodo.getLeft();
         return nodo;
     }
-
+    /**
+     * 
+     * @param nodo
+     * @return 
+     */
     private AVLTreeNode<T> balancear(AVLTreeNode<T> nodo) {
         actualizarAltura(nodo);
         int balance = obtenerBalance(nodo);
@@ -89,21 +102,36 @@ public class AVLTree<T extends Comparable<T>> {
         }
         return nodo;
     }
-
+    /**
+     * 
+     * @param nodo 
+     */
     private void actualizarAltura(AVLTreeNode<T> nodo) {
         int izquierdaAltura = altura(nodo.getLeft());
         int derechaAltura = altura(nodo.getRight());
         nodo.setAltura(1 + Math.max(izquierdaAltura, derechaAltura));
     }
-
+    /**
+     * 
+     * @param nodo
+     * @return 
+     */
     private int altura(AVLTreeNode<T> nodo) {
         return nodo == null ? 0 : nodo.getAltura();
     }
-
+    /**
+     * 
+     * @param nodo
+     * @return 
+     */
     private int obtenerBalance(AVLTreeNode<T> nodo) {
         return nodo == null ? 0 : altura(nodo.getLeft()) - altura(nodo.getRight());
     }
-
+    /**
+     * 
+     * @param y
+     * @return 
+     */
     private AVLTreeNode<T> rotarDerecha(AVLTreeNode<T> y) {
         AVLTreeNode<T> x = y.getLeft();
         AVLTreeNode<T> T2 = x.getRight();
@@ -113,7 +141,11 @@ public class AVLTree<T extends Comparable<T>> {
         actualizarAltura(x);
         return x;
     }
-
+    /**
+     * 
+     * @param x
+     * @return 
+     */
     private AVLTreeNode<T> rotarIzquierda(AVLTreeNode<T> x) {
         AVLTreeNode<T> y = x.getRight();
         AVLTreeNode<T> T2 = y.getLeft();
@@ -141,4 +173,23 @@ public class AVLTree<T extends Comparable<T>> {
     public AVLTreeNode<T> getRaiz() {
         return raiz;
     }
+    /**
+     * 
+     */
+    public  void ListinOrder(){
+        inOrder(raiz);
+    }
+    /**
+     * 
+     * @param node 
+     */
+    public void inOrder(AVLTreeNode<T> node){
+        if(node != null){
+            inOrder(node.getLeft());
+            System.out.println(node.getValue());
+            inOrder(node.getRight());
+        }
+    }
+    
+    
 }

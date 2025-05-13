@@ -4,7 +4,7 @@
  */
 package persistences;
 
-import com.sun.net.httpserver.Request;
+import components.Request;
 import structures.Queue;
 
 /**
@@ -15,10 +15,10 @@ public class PersistenceRequests {
     private Queue<Request> requests;
 
     public PersistenceRequests(){
-        this.requests = new Queue<Request>();
+        this.requests = new Queue<>();
     }
 
     public void processNextRequest(){
-            
+
     }
 }
