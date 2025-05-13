@@ -11,6 +11,8 @@ package components;
  * @author Sebas
  */
 public class Request {
+    private final Type type;
+    private final Object data;
 
     /**
      * Enumeracion que define los distintos tipos de acciones del sistema
@@ -20,8 +22,6 @@ public class Request {
         updateGrade,
         removeGrade
     }
-    private final Type type;
-    private final Object data;
 
     /**
      * Constructor que establece los atributos de la instancia al valor de sus

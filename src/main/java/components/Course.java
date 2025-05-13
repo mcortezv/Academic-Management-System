@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package components;
-
 import persistences.PersistenceStudentsCourses;
 import persistences.PersistenceWaitingListCourses;
 import persistences.PersistenceRoles;
@@ -14,7 +13,6 @@ import persistences.PersistenceRoles;
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class Course {
-
     private String id;
     private String name;
     private Student tutor;
@@ -25,8 +23,7 @@ public class Course {
     /**
      * Constructor vacio del curso
      */
-    public Course() {
-    }
+    public Course(){}
 
     /**
      * Constructor que establece los atributos de la instancia al valor de sus
@@ -105,10 +102,10 @@ public class Course {
     }
 
     /**
-     * Metodo que rota el rol de lider del curso
+     * Metodo que rota el rol de lider del curso y devuelve al estudiante que es el nuevo lider.
      */
-    public void rotateRol() {
-        
+    public Student rotateRol() {
+        return studentsWithAssignedRole.rotateRole();
     }
 
     /**
@@ -119,6 +116,6 @@ public class Course {
      */
     @Override
     public String toString() {
-        return "Curso{" + "Id: " + id + ", Nombre: " + name + ", tutor: " + tutor;
+        return "Curso{" + "Id: " + id + ", Nombre: " + name + ", Tutor: " + tutor;
     }
 }

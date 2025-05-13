@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package main;
-
 import gui.MainFrame;
 import interfaces.IPersistenceFacade;
 import persistences.*;
@@ -13,7 +12,7 @@ import persistences.*;
  * @author Cortez, Manuel;
  */
 public class Main {
-    //comentario 
+
     public static void main(String[] args) {
         IPersistenceFacade persistenceFacade = loader();
         MainFrame mainMenu = new MainFrame(persistenceFacade);
@@ -33,5 +32,4 @@ public class Main {
                 actions
         );
     }
-
 }

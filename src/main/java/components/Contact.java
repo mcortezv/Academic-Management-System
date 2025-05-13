@@ -25,41 +25,39 @@ public class Contact {
         this.eMail = eMail;
         this.zipCode = zipCode;
     }
+
     /**
-     * Regresa una cadena de texto con el numero de telefono  
+     * Metodo que establece a la instancia el atributo phoneNumber al valor de su parametro
+     * @param phoneNumber
+     */
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    /**
+     * Regresa una cadena de texto con el numero de telefono
      * @return numero de telefono
      */
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
+    /**
+     * * Metodo que establece a la instancia el atributo eMail al valor de su parametro
+     * @param eMail
+     */
+    public void seteMmail(String eMail) {
+        this.eMail = eMail;
+    }
+
     /**
      * Regresa una cadena de texto con el correo electronico  
      * @return correo electronico
      */
-    public String geteMail() {
+    public String geteMmail() {
         return eMail;
     }
-    /**
-    * Regresa una cadena de texto con el código postal
-     * @return codigo postal
-     */
-    public String getZipCode() {
-        return zipCode;
-    }
-    /**
-     * Metodo que establece a la instancia el atributo phoneNumber al valor de su parametro
-     * @param phoneNumber 
-     */
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-    /**
-     * * Metodo que establece a la instancia el atributo eMail al valor de su parametro
-     * @param eMail 
-     */
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
-    }
+
     /**
      * Metodo que establece a la instancia el atributo zipCode al valor de su parametro
      * @param zipCode 
@@ -69,13 +67,19 @@ public class Contact {
     }
 
     /**
+     * Regresa una cadena de texto con el código postal
+     * @return codigo postal
+     */
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    /**
      * Metodo que regresa una cadena de texto con todos los atributos de la instancia 
      * @return cadena de texto con la informacion del contacto
      */
     @Override
     public String toString() {
-        return "Contacto{" + "Numero de telefono: " + phoneNumber + ", Correo Electronico: " + eMail + ", Codigo Postal: " + zipCode + '}';
+        return "Contacto{" + "Numero de Telefono: " + phoneNumber + ", Correo Electronico: " + eMail + ", Codigo Postal: " + zipCode + '}';
     }
-    
-    
 }
