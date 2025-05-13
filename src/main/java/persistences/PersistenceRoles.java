@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package persistences;
-import components.Role;
 import components.Student;
 import structures.CircularLinkedList;
 
@@ -12,13 +11,13 @@ import structures.CircularLinkedList;
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class PersistenceRoles {
-    private CircularLinkedList<Role> roles;
+    private CircularLinkedList<Student> roles;
 
     public PersistenceRoles(){
         this.roles = new CircularLinkedList<>();
     }
 
-    public Student next(){
-        return null;
+    public Student rotateRole(){
+        return roles.rotateNode().getValue();
     }
 }

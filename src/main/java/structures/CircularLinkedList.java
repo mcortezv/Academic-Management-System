@@ -1,9 +1,8 @@
-package structures;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package structures;
 import structures.exceptions.ListException;
 import structures.nodes.SingleNode;
 import java.util.Objects;
@@ -133,5 +132,21 @@ public class CircularLinkedList<T> {
         this.P = null;
         this.ultimo = null;
         this.tam = 0;
+    }
+
+    /**
+     * Metodo que establece el nodo principal al siguiente.
+     */
+    public SingleNode<T> rotateNode(){
+        if (P == null){
+            throw new ListException("El rol no se puede rotar porque no hay estudiantes.");
+        }
+        if (tam < 2){
+            throw new ListException("El rol no se puede rotar porque no hay suficientes estudiantes.");
+        }
+        ultimo.setNext(P);
+        ultimo = P;
+        P = P.getNext();
+        return P;
     }
 }

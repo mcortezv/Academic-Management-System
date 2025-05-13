@@ -10,6 +10,8 @@ package components;
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class Action {
+    private final Type type;
+    private final Object data;
 
     /**
      * Enumeracion que define los distintos tipos de acciones del sistema
@@ -33,8 +35,6 @@ public class Action {
         getAverage,
         listGrades
     }
-    private final Type type;
-    private final Object data;
 
     /**
      * Constructor que establece los atributos de la instancia al valor de sus

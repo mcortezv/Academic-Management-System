@@ -40,16 +40,17 @@ public class PersistenceFacade implements IPersistenceFacade {
         this.persistenceRequests = persistenceRequests;
         this.persistenceActions = persistenceActions;
     }
+
     /**
      * Agrega un estudiante al sistema y registra la accion 
      * @param student el estudiante a agregar     
      */
-    
     @Override
     public void addStudent(Student student) {
         persistenceActions.addAction( new Action(Action.Type.addStudent, student));
         persistenceStudents.addStudent(student);
     }
+
     /**
      * Busca un estudiante por su id y registra la accion
      * @param id del estudiante
@@ -60,15 +61,44 @@ public class PersistenceFacade implements IPersistenceFacade {
         persistenceActions.addAction( new Action(Action.Type.searchStudent, id));
         return persistenceStudents.searchStudent(id);
     }
+
     /**
-     * Lista todos los estudiantes agregados al sistema y registra la accion
-     * @return arbol binario con los estudiantes 
+     * Agrega un curso
+     * @param course curso a agregar
+     * @return course
      */
     @Override
-    public BinarySearchTree<Student> listStudents() {
-        persistenceActions.addAction( new Action(Action.Type.listStudents, null));
-        return persistenceStudents.listStudents();
+    public Course addCourse(Course course) {
+        persistenceActions.addAction( new Action(Action.Type.addCourse, course));
+        return persistenceCourses.addCourse(course);
     }
+
+    /**
+     * Elimina un curso
+     * @param course
+     * @return course curso eliminado
+     */
+    @Override
+    public Course deleteCourse(Course course) {
+        persistenceActions.addAction( new Action(Action.Type.removeCourse, course));
+        return persistenceCourses.removeCourse(course);
+    }
+
+    /**
+     * Lista tods los cursos
+     * @return cursos del sistema
+     */
+    @Override
+    public HashDictionary<String, Course> lisCourses() {
+        persistenceActions.addAction( new Action(Action.Type.listCourses, null));
+        return persistenceCourses.listCourses();
+    }
+
+
+
+
+
+
     
     /**
      * Agrega una calificacion 
@@ -121,35 +151,7 @@ public class PersistenceFacade implements IPersistenceFacade {
         }
         return null;
     }
-    /**
-     * Agrega un curso
-     * @param course curso a agregar
-     * @return course 
-     */
-    @Override
-    public Course addCourse(Course course) {
-        persistenceActions.addAction( new Action(Action.Type.addCourse, course));
-        return persistenceCourses.addCourse(course);
-    }
-    /**
-     * Elimina un curso 
-     * @param course
-     * @return course curso eliminado
-     */
-    @Override
-    public Course deleteCourse(Course course) {
-        persistenceActions.addAction( new Action(Action.Type.removeCourse, course));
-        return persistenceCourses.removeCourse(course);
-    }
-    /**
-     * Lista tods los cursos
-     * @return cursos del sistema
-     */
-    @Override
-    public HashDictionary<String, Course> lisCourses() {
-        persistenceActions.addAction( new Action(Action.Type.listCourses, null));
-        return persistenceCourses.listCourses();
-    }
+
     /**
      * Deshace la ultima accion registrada
      */
@@ -157,4 +159,20 @@ public class PersistenceFacade implements IPersistenceFacade {
     public void undoAction(){
         persistenceActions.undoLastAction();
     }
+
+    /**
+     * Lista todos los estudiantes agregados al sistema y registra la accion
+     * @return arbol binario con los estudiantes
+     */
+    @Override
+    public BinarySearchTree<Student> listStudents() {
+        persistenceActions.addAction( new Action(Action.Type.listStudents, null));
+        return persistenceStudents.listStudents();
+    }
+
+    //@Override
+    //public Student rotateRol() {
+        //persistenceActions.addAction( new Action(Action.Type.listStudents, null));
+        //return persistenceStudents.listStudents();
+    //}
 }

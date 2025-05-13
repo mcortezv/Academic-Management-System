@@ -11,7 +11,6 @@ package components;
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class StudentCourse {
-
     private Student student;
     private Course course;
 
