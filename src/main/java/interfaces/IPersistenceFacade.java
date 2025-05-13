@@ -33,13 +33,15 @@ public interface IPersistenceFacade {
 
     PersistenceWaitingListCourses showWaitingListForCourse(String id);
 
-    void addGrade(String studentId, Double grade);
+    void processNextRequest();
+    
+    void requestAddGrade(String studentId, Double grade);
 
-    void updateGrade(String studentId, Double grade, int index);
+    void requestUpdateGrade(String studentId, Double grade, int index);
 
     Double getAverage(String studentId);
 
-    ArrayList<Double> listGrades(String studentId);
+    ArrayList<Double> requestListGrades(String studentId);
 
     void undoAction();
 
