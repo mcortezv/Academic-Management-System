@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 import components.Contact;
-import components.Role;
 import components.Student;
 import structures.BinarySearchTree;
 import structures.exceptions.TreeException;
@@ -18,11 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Cortez, Manuel;
  */
 public class BinarySearchTreeTest {
-
     private BinarySearchTree<Student> arbol;
     private Contact datosContacto;
     private PersistenceGrades grades;
-    private Role role;
     private Student student1;
     private Student student2;
     private Student student3;
@@ -34,26 +31,20 @@ public class BinarySearchTreeTest {
         arbol = new BinarySearchTree<>();
         datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
         grades = new PersistenceGrades();
-        role = new Role(Role.RoleType.STUDENT);
 
         student1 = new Student("Escalante Sebastian", datosContacto);
-        student1.setRol(role);
         student1.setId("ABC100");
 
         student2 = new Student("Escalante Sebastian", datosContacto);
-        student2.setRol(role);
         student2.setId("ABC200");
 
         student3 = new Student("Escalante Sebastian", datosContacto);
-        student3.setRol(role);
         student3.setId("ABC300");
 
         student4 = new Student("Escalante Sebastian", datosContacto);
-        student4.setRol(role);
         student4.setId("ABC400");
 
         student5 = new Student("Escalante Sebastian", datosContacto);
-        student5.setRol(role);
         student5.setId("ABC500");
     }
 

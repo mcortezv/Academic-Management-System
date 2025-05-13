@@ -52,5 +52,4 @@ public class Request {
     public Object getData() {
         return this.data;
     }
-
 }

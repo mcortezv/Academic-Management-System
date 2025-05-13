@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package components;
-
 import persistences.PersistenceGrades;
 import structures.ArrayList;
 import interfaces.Identificable;
@@ -16,12 +15,10 @@ import validators.Validator;
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public final class Student implements Identificable {
-
     private String id;
     private String fullName;
     private Contact contactDetails;
     private PersistenceGrades grades;
-    private Role rol;
 
     /**
      * Constructor vacio del estudiante
@@ -50,14 +47,12 @@ public final class Student implements Identificable {
      * @param fullName
      * @param contactDetails
      * @param grades
-     * @param rol
      */
-    public Student(String id, String fullName, Contact contactDetails, PersistenceGrades grades, Role rol) {
+    public Student(String id, String fullName, Contact contactDetails, PersistenceGrades grades) {
         this.id = generateRandomId();
         this.fullName = fullName;
         this.contactDetails = contactDetails;
         this.grades = grades;
-        this.rol = rol;
     }
 
     /**
@@ -86,15 +81,6 @@ public final class Student implements Identificable {
      */
     public Contact getContactDetails() {
         return contactDetails;
-    }
-
-    /**
-     * Obtiene el rol que el estudiante tiene asignado
-     *
-     * @return rol
-     */
-    public Role getRol() {
-        return rol;
     }
 
     /**
@@ -164,15 +150,6 @@ public final class Student implements Identificable {
     }
 
     /**
-     * Establece el rol del estudiante al valor de su parametro
-     *
-     * @param rol a asignar
-     */
-    public void setRol(Role rol) {
-        this.rol = rol;
-    }
-
-    /**
      * Compara la instancia del estudiante con otro objeto que implementa la
      * interfaz
      *
@@ -214,7 +191,7 @@ public final class Student implements Identificable {
      */
     @Override
     public String toString() {
-        return "Estudiante{" + "Matricula: " + id + ", Nombre Completo: " + fullName + ", Datos de Contecto: " + contactDetails + ", Rol: " + rol + '}';
+        return "Estudiante{" + "Matricula: " + id + ", Nombre Completo: " + fullName + ", Datos de Contecto: " + contactDetails + '}';
     }
 
 }
