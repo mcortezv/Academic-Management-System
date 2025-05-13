@@ -36,7 +36,6 @@ public class PersistenceRequests {
             request.getStudent().updateGrade(0.0, (int) request.getData());
             persistenceActions.addAction(new Action(Action.Type.updateGrade, request.getStudent(), request.getData()));
         } else if (request.getType() == Request.Type.updateGrade) {
-
             request.getStudent().updateGrade((Double) request.getData(), request.getIndex());
             persistenceActions.addAction(new Action(Action.Type.updateGrade, request.getStudent(), request.getData(), request.getIndex()));
         } else if (request.getType() == Request.Type.listGrades) {

@@ -36,21 +36,20 @@ public class StudentPanel extends BasePanel{
         btnSearchStudent.setPreferredSize(new Dimension(150, 30));
             //Add student button
             btnAddStudent.addActionListener(e -> { 
-                new StudentFormDialog(mainFrame, 0).setVisible(true);
+                new StudentFormDialog(mainFrame, null, 0).setVisible(true);
             });
             //Delete student button
             btnDeleteStudent.addActionListener(e -> { 
-                new StudentFormDialog(mainFrame, 1).setVisible(true);
+                new StudentFormDialog(mainFrame, null, 1).setVisible(true);
             });
             //Search student button
             btnSearchStudent.addActionListener(e -> { 
-                new StudentFormDialog(mainFrame, 2).setVisible(true);
+                new StudentFormDialog(mainFrame, null, 2).setVisible(true);
             });
 
         //Paneles
         centralPanel.add(btnAddStudent);        
         centralPanel.add(btnDeleteStudent);
         centralPanel.add(btnSearchStudent);
-
     }
 }
