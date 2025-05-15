@@ -6,6 +6,7 @@ package panels;
 
 import components.Course;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.List;
@@ -31,6 +32,7 @@ public class CourseTablePanel extends JPanel {
 
     public CourseTablePanel(HashDictionary<String, Course> courses, CoursePanel coursePanel) {
         setLayout(new BorderLayout());
+        setBackground(Color.WHITE);
         centralPanel = new JPanel();
         southPanel = new JPanel();
         btnBack = new JButton("Volver");
@@ -70,6 +72,7 @@ public class CourseTablePanel extends JPanel {
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setPreferredSize(new Dimension(500, 100));
         table.setDefaultEditor(Object.class, null);
+        table.getTableHeader().setReorderingAllowed(false);
         centralPanel.add(scrollPane, BorderLayout.CENTER);
 
         add(centralPanel, BorderLayout.CENTER);

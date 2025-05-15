@@ -136,19 +136,19 @@ public final class StudentFormDialog extends JDialog {
         String adressField = addressField.getText().trim();
 
         if (!Validator.validateName(name)) {
-            JOptionPane.showMessageDialog(centerPanel, "Nombre del estudiante invalido");
+            JOptionPane.showMessageDialog(centerPanel, "Nombre del estudiante invalido", "Error", JOptionPane.ERROR_MESSAGE);
             throw new PersistenceStudentsException("Nombre de estudiante invalido");
         }
         if (!Validator.validatePhone(phoneNumber)) {
-            JOptionPane.showMessageDialog(centerPanel, "Numero de telefono invalido");
+            JOptionPane.showMessageDialog(centerPanel, "Numero de telefono invalido", "Error", JOptionPane.ERROR_MESSAGE);
             throw new PersistenceStudentsException("Numero de telefono invalido");
         }
         if (!Validator.validateEmail(email)) {
-            JOptionPane.showMessageDialog(centerPanel, "Correo electronico invalido");
+            JOptionPane.showMessageDialog(centerPanel, "Correo electronico invalido", "Error", JOptionPane.ERROR_MESSAGE);
             throw new PersistenceStudentsException("Correo electronico invalido");
         }
         if (!Validator.validateStreetNumber(adressField)) {
-            JOptionPane.showMessageDialog(centerPanel, "Nombre del estudiante invalido");
+            JOptionPane.showMessageDialog(centerPanel, "Nombre del estudiante invalido", "Error", JOptionPane.ERROR_MESSAGE);
             throw new PersistenceStudentsException("Direccion invalida");
         }
         contact = new Contact(phoneNumber, email, adressField);
