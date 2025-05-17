@@ -1,8 +1,9 @@
-package formsDialog;
-
+package gui.formsDialog;
 import components.Contact;
 import components.Student;
 import gui.MainFrame;
+import gui.styles.Button;
+import gui.styles.TextField;
 import interfaces.IPersistenceFacade;
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -11,12 +12,10 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import persistences.PersistenceStudents;
 import persistences.exceptions.PersistenceStudentsException;
 import validators.Validator;
@@ -30,11 +29,11 @@ public final class StudentFormDialog extends JDialog {
     private JPanel centerPanel;
     private JPanel southPanel;
     private MainFrame mainFrame;
-    private JTextField nameField;
-    private JTextField phoneField;
-    private JTextField emailField;
-    private JTextField addressField;
-    private JTextField idField;
+    private TextField nameField;
+    private TextField phoneField;
+    private TextField emailField;
+    private TextField addressField;
+    private TextField idField;
     private PersistenceStudents persistence;
     private Student student;
     private Contact contact;
@@ -66,7 +65,7 @@ public final class StudentFormDialog extends JDialog {
     }
 
     public void addStudent() {
-        setSize(400, 300);
+        setSize(600, 400);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
@@ -74,7 +73,7 @@ public final class StudentFormDialog extends JDialog {
         // Name field
         JPanel namePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         namePanel.add(new JLabel("Nombre Completo:   "));
-        nameField = new JTextField(20);
+        nameField = new TextField(20);
         namePanel.add(nameField);
         namePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
@@ -87,23 +86,23 @@ public final class StudentFormDialog extends JDialog {
         // Phone field
         JPanel phonePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         phonePanel.add(new JLabel("Telefono:              "));
-        phoneField = new JTextField(15);
+        phoneField = new TextField(15);
         phonePanel.add(phoneField);
 
         // Email field
         JPanel emailPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         emailPanel.add(new JLabel("Email:                    "));
-        emailField = new JTextField(20);
+        emailField = new TextField(20);
         emailPanel.add(emailField);
 
         // Address field
         JPanel addressPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         addressPanel.add(new JLabel("Direccion postal:"));
-        addressField = new JTextField(20);
+        addressField = new TextField(20);
         addressPanel.add(addressField);
 
         // Add button
-        JButton btnadd = new JButton("Añadir");
+        Button btnadd = new Button("Añadir");
         btnadd.addActionListener(e -> {
             try {
                 actionBtnAddStudent();
@@ -160,7 +159,7 @@ public final class StudentFormDialog extends JDialog {
     }
 
     public void deleteStudent() {
-        setSize(350, 150);
+        setSize(400, 200);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
@@ -168,13 +167,13 @@ public final class StudentFormDialog extends JDialog {
         // Id field
         JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         idPanel.add(new JLabel("Matricula del estudiante:   "));
-        idField = new JTextField(12);
+        idField = new TextField(12);
         idPanel.add(idField);
         idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 
         // Delete button
-        JButton btnDelete = new JButton("Eliminar estudiante");
+        Button btnDelete = new Button("Eliminar estudiante");
         btnDelete.addActionListener(e -> {
             try {
                 actionBtnDeleteStudent();
@@ -204,7 +203,7 @@ public final class StudentFormDialog extends JDialog {
     }
 
     public void searchStudent() {
-        setSize(350, 150);
+        setSize(400, 200);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
@@ -212,13 +211,13 @@ public final class StudentFormDialog extends JDialog {
         // Id field
         JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         idPanel.add(new JLabel("Matricula del estudiante:   "));
-        idField = new JTextField(12);
+        idField = new TextField(12);
         idPanel.add(idField);
         idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 
         // Delete button
-        JButton btnSearch = new JButton("Buscar");
+        Button btnSearch = new Button("Buscar");
         btnSearch.addActionListener(e -> {
             try{
                 actionBtnSearchStudent();

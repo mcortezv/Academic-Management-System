@@ -2,35 +2,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package panels;
+package gui.styles;
 
 import gui.MainFrame;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Frame;
+import gui.panels.NorthPanel;
+
+import java.awt.*;
+import java.awt.Button;
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
  *
  * @author david
  */
-public abstract class BasePanel extends JPanel {
-
+public abstract class Panel extends JPanel {
     protected MainFrame mainFrame;
     protected JPanel centralPanel;
     protected JPanel southPanel;
-    protected JButton btnBack;
+    protected java.awt.Button btnBack;
     protected NorthPanel northPanel;
 
 
-    public BasePanel(MainFrame frame, NorthPanel northPanel) {
+    public Panel(MainFrame frame, NorthPanel northPanel) {
+        setBackground(Style.BACKGROUND_COLOR);
         mainFrame = frame;
         this.northPanel = northPanel;
-        btnBack = new JButton("Volver");
+        btnBack = new Button("Volver");
         setLayout(new BorderLayout());
         centralPanel = new JPanel();
         southPanel = new JPanel();

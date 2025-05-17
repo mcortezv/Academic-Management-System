@@ -4,37 +4,34 @@
  */
 package gui;
 
+import gui.styles.Button;
+import gui.styles.Style;
 import interfaces.IPersistenceFacade;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import panels.CoursePanel;
-import panels.EnrollmentPanel;
-import panels.GradePanel;
-import panels.MainPanel;
-import panels.NorthPanel;
-import panels.ReportPanel;
-import panels.StudentPanel;
-import persistences.PersistenceFacade;
+import gui.panels.CoursePanel;
+import gui.panels.EnrollmentPanel;
+import gui.panels.GradePanel;
+import gui.panels.MainPanel;
+import gui.panels.NorthPanel;
+import gui.panels.ReportPanel;
+import gui.panels.StudentPanel;
 
 /**
  *
  * @author david
  */
 public class MainFrame extends JFrame {
-
     private JMenuBar menuBar;
-    private JButton btnStudents;
-    private JButton btnCourse;
-    private JButton btnEnrollments;
-    private JButton btnGrades;
-    private JButton btnReport;
-    private JButton btnInUse;
+    private Button btnStudents;
+    private Button btnCourse;
+    private Button btnEnrollments;
+    private Button btnGrades;
+    private Button btnReport;
+    private Button btnInUse;
     private MainPanel mainPanel;
     private JPanel centralPanel;
     private NorthPanel northPanel;
@@ -46,6 +43,7 @@ public class MainFrame extends JFrame {
     private IPersistenceFacade persistenciaFacade;
 
     public MainFrame(IPersistenceFacade persistenciaFacade) {
+        getContentPane().setBackground(Style.BACKGROUND_COLOR);
         this.persistenciaFacade = persistenciaFacade;
         starComponetns();
         setTitle("Gestion de estudiantes");
@@ -62,20 +60,19 @@ public class MainFrame extends JFrame {
 
     public void starComponetns() {
         menuBar = new JMenuBar();
-        btnStudents = new JButton("Estudiantes");
-        btnCourse = new JButton("Cursos");
-        btnEnrollments = new JButton("Inscripciones");
-        btnGrades = new JButton("Calificaciones");
-        btnReport = new JButton("Reportes");
-        setBackground(Color.WHITE);
+        btnStudents = new Button("Estudiantes");
+        btnCourse = new Button("Cursos");
+        btnEnrollments = new Button("Inscripciones");
+        btnGrades = new Button("Calificaciones");
+        btnReport = new Button("Reportes");
 
         //Main panel
         mainPanel = new MainPanel();
-        mainPanel.setBackground(Color.WHITE);
+        mainPanel.setBackground(Style.BACKGROUND_COLOR);
         
         //North panel
         northPanel = new NorthPanel();
-        
+
         //Central Panel
         centralPanel = new JPanel();
         centralPanel.add(mainPanel);

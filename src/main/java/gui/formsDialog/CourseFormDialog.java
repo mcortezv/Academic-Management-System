@@ -2,15 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package formsDialog;
+package gui.formsDialog;
 
 import gui.MainFrame;
+import gui.styles.Button;
+import gui.styles.Dialog;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -19,7 +20,7 @@ import javax.swing.JTextField;
  *
  * @author david
  */
-public class CourseFormDialog extends BaseDialog {
+public class CourseFormDialog extends Dialog {
 
     public CourseFormDialog(MainFrame owner, int option) {
         super(owner, option);
@@ -58,7 +59,7 @@ public class CourseFormDialog extends BaseDialog {
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 
         // Create button
-        JButton btnAddCourse = new JButton("Crear curso");
+        Button btnAddCourse = new Button("Crear curso");
         btnAddCourse.addActionListener(e -> {
             //Verifica que no exista un curso ya con el mismo nombre
             //añade el curso a la lista de cursos
@@ -90,7 +91,7 @@ public class CourseFormDialog extends BaseDialog {
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 
         // Create button
-        JButton btnDelete = new JButton("Eliminar curso");
+        Button btnDelete = new Button("Eliminar curso");
         btnDelete.addActionListener(e -> {
             //Verifica que exista un curso con ese nombre
             //ejecuta "eliminar" de la lista de cursos
@@ -123,7 +124,7 @@ public class CourseFormDialog extends BaseDialog {
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
         
         // Create button
-        JButton btnRotate = new JButton("Rotar rol");
+        Button btnRotate = new Button("Rotar rol");
         btnRotate.addActionListener(e -> {
             
             dispose();

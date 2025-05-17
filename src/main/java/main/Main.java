@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package main;
-
 import gui.MainFrame;
 import interfaces.IPersistenceFacade;
 import persistences.*;

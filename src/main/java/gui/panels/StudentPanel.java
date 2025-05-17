@@ -1,23 +1,20 @@
-package panels;
+package gui.panels;
 
-import formsDialog.StudentFormDialog;
+import gui.formsDialog.StudentFormDialog;
 import gui.MainFrame;
+import gui.styles.Panel;
+import gui.styles.Button;
+
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Frame;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 /**
  *
  * @author david
  */
-public class StudentPanel extends BasePanel{
-    private JButton btnAddStudent;
-    private JButton btnDeleteStudent;
-    private JButton btnSearchStudent;
+public class StudentPanel extends Panel {
+    private Button btnAddStudent;
+    private Button btnDeleteStudent;
+    private Button btnSearchStudent;
 
     public StudentPanel(MainFrame frame, NorthPanel northPanel) {
         super(frame, northPanel);
@@ -26,9 +23,9 @@ public class StudentPanel extends BasePanel{
 
     @Override
     public void startComponents() {
-        btnAddStudent = new JButton("Añadir estudiante");
-        btnDeleteStudent = new JButton("Eliminar estudiante");
-        btnSearchStudent = new JButton("Buscar Estudiante");
+        btnAddStudent = new Button("Añadir estudiante");
+        btnDeleteStudent = new Button("Eliminar estudiante");
+        btnSearchStudent = new Button("Buscar Estudiante");
 
         //Buttons
         btnAddStudent.setPreferredSize(new Dimension(150, 30));

@@ -2,29 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package panels;
-
-import formsDialog.CourseFormDialog;
-import formsDialog.StudentFormDialog;
+package gui.panels;
+import gui.formsDialog.CourseFormDialog;
 import gui.MainFrame;
+import gui.styles.Panel;
+import gui.styles.Button;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Frame;
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
  *
  * @author david
  */
-public class CoursePanel extends BasePanel {
+public class CoursePanel extends Panel {
 
-    private JButton btnCreateCourse;
-    private JButton btnDeleteCourse;
-    private JButton btnListCourses;
-    private JButton btnRotateRole;
+    private Button btnCreateCourse;
+    private Button btnDeleteCourse;
+    private Button btnListCourses;
+    private Button btnRotateRole;
     private JPanel mainCoursePanel;
     private CourseTablePanel courseTablePanel;
 
@@ -34,10 +32,10 @@ public class CoursePanel extends BasePanel {
 
     @Override
     public void startComponents() {
-        btnCreateCourse = new JButton("Añadir curso");
-        btnDeleteCourse = new JButton("Eliminar curso");
-        btnListCourses = new JButton("Ver cursos");
-        btnRotateRole = new JButton("Rotar rol de estudiante");
+        btnCreateCourse = new Button("Añadir curso");
+        btnDeleteCourse = new Button("Eliminar curso");
+        btnListCourses = new Button("Ver cursos");
+        btnRotateRole = new Button("Rotar rol de estudiante");
         mainCoursePanel = new JPanel();
         courseTablePanel = new CourseTablePanel(mainFrame.getIPersistenceFacade().lisCourses(), this);
         

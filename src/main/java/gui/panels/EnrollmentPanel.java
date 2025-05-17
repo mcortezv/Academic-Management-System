@@ -2,21 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package panels;
+package gui.panels;
 
 import gui.MainFrame;
+import gui.styles.Panel;
+import gui.styles.Button;
 import java.awt.Dimension;
-import java.awt.Frame;
-import javax.swing.JButton;
 
 /**
  *
  * @author david
  */
-public class EnrollmentPanel extends BasePanel{
-    JButton btnEnrollStudent;
-    JButton btnEnrolledStudents;
-    JButton btnWaitList;
+public class EnrollmentPanel extends Panel {
+    Button btnEnrollStudent;
+    Button btnEnrolledStudents;
+    Button btnWaitList;
 
     public EnrollmentPanel(MainFrame frame, NorthPanel northPanel) {
         super(frame, northPanel);
@@ -24,9 +24,9 @@ public class EnrollmentPanel extends BasePanel{
 
     @Override
     public void startComponents() {
-        btnEnrollStudent =  new JButton("Inscribir Alumno");
-        btnEnrolledStudents =  new JButton("Ver estudiantes inscritos");
-        btnWaitList =  new JButton("<html><div style='text-align: center;'>Ver lista de espera<br>de un curso</div></html>");
+        btnEnrollStudent =  new Button("Inscribir Alumno");
+        btnEnrolledStudents =  new Button("Ver estudiantes inscritos");
+        btnWaitList =  new Button("<html><div style='text-align: center;'>Ver lista de espera<br>de un curso</div></html>");
 
         //Buttons
         btnEnrollStudent.setPreferredSize(new Dimension(150, 30));

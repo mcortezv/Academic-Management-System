@@ -2,20 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package panels;
+package gui.panels;
 
 import components.Course;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.List;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import structures.ArrayList;
+
+import gui.styles.Button;
+import gui.styles.Style;
 import structures.HashDictionary;
 
 /**
@@ -26,16 +26,16 @@ public class CourseTablePanel extends JPanel {
 
     private JPanel centralPanel;
     private JPanel southPanel;
-    private JButton btnBack;
+    private Button btnBack;
 
     private HashDictionary<String, Course> cursosDictionary;
 
     public CourseTablePanel(HashDictionary<String, Course> courses, CoursePanel coursePanel) {
         setLayout(new BorderLayout());
-        setBackground(Color.WHITE);
+        setBackground(Style.PANEL_COLOR);
         centralPanel = new JPanel();
         southPanel = new JPanel();
-        btnBack = new JButton("Volver");
+        btnBack = new Button("Volver");
         
         centralPanel.setPreferredSize(new Dimension(200, 300));
         southPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
