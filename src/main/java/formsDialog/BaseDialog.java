@@ -21,6 +21,7 @@ public abstract class BaseDialog extends JDialog {
     protected MainFrame mainFrame;
 
     public BaseDialog(MainFrame owner, int option) {
+        
         super(owner, " ", true);
         mainFrame = owner;
         centerPanel = new JPanel();

@@ -6,6 +6,8 @@ package gui;
 
 import interfaces.IPersistenceFacade;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
@@ -65,9 +67,11 @@ public class MainFrame extends JFrame {
         btnEnrollments = new JButton("Inscripciones");
         btnGrades = new JButton("Calificaciones");
         btnReport = new JButton("Reportes");
+        setBackground(Color.WHITE);
 
         //Main panel
         mainPanel = new MainPanel();
+        mainPanel.setBackground(Color.WHITE);
         
         //North panel
         northPanel = new NorthPanel();
@@ -92,6 +96,11 @@ public class MainFrame extends JFrame {
         northPanel.add(btnReport);
         
         //Buttons
+        btnStudents.setPreferredSize(new Dimension(120, 25));
+        btnCourse.setPreferredSize(new Dimension(120, 25));
+        btnEnrollments.setPreferredSize(new Dimension(120, 25));
+        btnGrades.setPreferredSize(new Dimension(120, 25));
+        btnReport.setPreferredSize(new Dimension(120, 25));
         btnStudents.addActionListener(e -> showPanel(studentPanel));
         btnStudents.addActionListener(e -> {
             btnInUse = btnStudents;

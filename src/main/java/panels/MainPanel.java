@@ -5,6 +5,7 @@
 package panels;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
@@ -23,6 +24,7 @@ public class MainPanel extends JPanel{
 
     public MainPanel() {
         setLayout(new BorderLayout());
+        
         label  = new JLabel("Main panel");
         btnUndo = new JButton("Deshacer ultima accion");
         btnUndo.setPreferredSize(new Dimension(180, 30));
@@ -32,9 +34,17 @@ public class MainPanel extends JPanel{
         centerPanel = new JPanel(new  FlowLayout(FlowLayout.LEFT));
         centerPanel.setPreferredSize(new Dimension(500, 300));
         centerPanel.add(label);
+        centerPanel.setBackground(Color.WHITE);
             //soutPanel
         soutPanel = new JPanel(new  FlowLayout(FlowLayout.LEFT));
         soutPanel.add(btnUndo);
+        soutPanel.setBackground(Color.WHITE);
+        
+        //Buttons
+            //Undo Action
+        btnUndo.addActionListener(e -> {
+            //Desacer acciones
+        });
             
         add(centerPanel, BorderLayout.CENTER);
         add(soutPanel, BorderLayout.SOUTH);

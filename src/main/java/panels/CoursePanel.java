@@ -46,7 +46,7 @@ public class CoursePanel extends BasePanel {
         //Main course panel
         mainCoursePanel.setLayout(new FlowLayout());
         mainCoursePanel.setPreferredSize(new Dimension(200, 300));
-        mainCoursePanel.setBorder(BorderFactory.createEmptyBorder(20, 150, 0, 150));
+        mainCoursePanel.setBorder(BorderFactory.createEmptyBorder( 0, 0, 0, 0));
 
         //Buttons
         btnCreateCourse.setPreferredSize(new Dimension(150, 30));
@@ -75,7 +75,8 @@ public class CoursePanel extends BasePanel {
         mainCoursePanel.add(btnDeleteCourse);
         mainCoursePanel.add(btnListCourses);
         mainCoursePanel.add(btnRotateRole);
-        centralPanel.add(mainCoursePanel);
+        centralPanel.setLayout(new BorderLayout());
+        centralPanel.add(mainCoursePanel, BorderLayout.CENTER);
         
     }
 
