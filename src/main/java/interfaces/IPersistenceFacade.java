@@ -5,6 +5,7 @@
 package interfaces;
 import components.Course;
 import components.Student;
+import persistences.PersistenceStudents;
 import persistences.PersistenceStudentsCourses;
 import persistences.PersistenceWaitingListCourses;
 import structures.ArrayList;
@@ -48,4 +49,6 @@ public interface IPersistenceFacade {
     BinarySearchTree<Student> listStudentsByAverage();
 
     Student rotateRol(String id);
+    
+    PersistenceStudents getPersistenceStudents();
 }

@@ -37,6 +37,7 @@ public final class StudentFormDialog extends JDialog {
     private PersistenceStudents persistence;
     private Student student;
     private Contact contact;
+    private int[] grades = new int[5];
 
     public StudentFormDialog(MainFrame owner, IPersistenceFacade persistence, int option) {
         super(owner, " ", true);
@@ -151,6 +152,7 @@ public final class StudentFormDialog extends JDialog {
             throw new PersistenceStudentsException("Direccion invalida");
         }
         contact = new Contact(phoneNumber, email, adressField);
+        
         student = new Student(name, contact);
         persistence.addStudent(student);
         JOptionPane.showMessageDialog(centerPanel, "Estudiante agregado con exito");

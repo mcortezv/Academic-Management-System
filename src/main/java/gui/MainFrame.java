@@ -19,12 +19,14 @@ import gui.panels.MainPanel;
 import gui.panels.NorthPanel;
 import gui.panels.ReportPanel;
 import gui.panels.StudentPanel;
+import persistences.PersistenceFacade;
+import persistences.PersistenceStudents;
 
 /**
  *
  * @author david
  */
-public class MainFrame extends JFrame {
+public final class MainFrame extends JFrame {
     private JMenuBar menuBar;
     private Button btnStudents;
     private Button btnCourse;
@@ -40,12 +42,12 @@ public class MainFrame extends JFrame {
     private EnrollmentPanel enrollmentPanel;
     private GradePanel gradePanel;
     private ReportPanel reportPanel;
-    private IPersistenceFacade persistenciaFacade;
+    private final IPersistenceFacade persistenciaFacade;    
 
     public MainFrame(IPersistenceFacade persistenciaFacade) {
         getContentPane().setBackground(Style.BACKGROUND_COLOR);
         this.persistenciaFacade = persistenciaFacade;
-        starComponetns();
+        startComponents();
         setTitle("Gestion de estudiantes");
         setSize(800, 500);
         setJMenuBar(menuBar);
@@ -58,14 +60,14 @@ public class MainFrame extends JFrame {
         return persistenciaFacade;
     }
 
-    public void starComponetns() {
+    public void startComponents() {
         menuBar = new JMenuBar();
         btnStudents = new Button("Estudiantes");
         btnCourse = new Button("Cursos");
         btnEnrollments = new Button("Inscripciones");
         btnGrades = new Button("Calificaciones");
         btnReport = new Button("Reportes");
-
+        
         //Main panel
         mainPanel = new MainPanel();
         mainPanel.setBackground(Style.BACKGROUND_COLOR);
@@ -83,8 +85,9 @@ public class MainFrame extends JFrame {
         coursePanel = new CoursePanel(this, northPanel);
         enrollmentPanel = new EnrollmentPanel(this, northPanel);
         gradePanel = new GradePanel(this, northPanel);
-        reportPanel = new ReportPanel(this, northPanel);
-
+        reportPanel = new ReportPanel(this, northPanel, persistenciaFacade);
+        reportPanel.startComponents();
+        
         add(northPanel, BorderLayout.NORTH);
         northPanel.add(btnStudents);
         northPanel.add(btnCourse);

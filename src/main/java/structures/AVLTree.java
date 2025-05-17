@@ -1,21 +1,19 @@
 package structures;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+import components.Student;
 import structures.exceptions.TreeException;
 import structures.nodes.AVLTreeNode;
 
 /**
- * Clase genérica que representa un Árbol AVL.
- * Proporciona inserción, eliminación y balanceo automático de nodos.
+ * Clase genérica que representa un Árbol AVL. Proporciona inserción,
+ * eliminación y balanceo automático de nodos.
  *
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  *
  * @param <T> el tipo de dato que se almacenará, debe ser comparable
  */
 public class AVLTree<T extends Comparable<T>> {
+
     private AVLTreeNode<T> raiz;
     private int altura;
 
@@ -29,7 +27,9 @@ public class AVLTree<T extends Comparable<T>> {
     }
 
     private AVLTreeNode<T> insert(AVLTreeNode<T> nodo, T dato) {
-        if (nodo == null) return new AVLTreeNode<>(dato);
+        if (nodo == null) {
+            return new AVLTreeNode<>(dato);
+        }
         int cmp = dato.compareTo(nodo.getValue());
         if (cmp < 0) {
             nodo.setLeft(insert(nodo.getLeft(), dato));
@@ -49,41 +49,52 @@ public class AVLTree<T extends Comparable<T>> {
     public void remove(T dato) {
         raiz = remove(raiz, dato);
     }
+
     /**
-     * 
+     *
      * @param nodo
      * @param dato
-     * @return 
+     * @return
      */
     private AVLTreeNode<T> remove(AVLTreeNode<T> nodo, T dato) {
-        if (nodo == null) throw new TreeException("Elemento no encontrado");
+        if (nodo == null) {
+            throw new TreeException("Elemento no encontrado");
+        }
         int cmp = dato.compareTo(nodo.getValue());
         if (cmp < 0) {
             nodo.setLeft(remove(nodo.getLeft(), dato));
         } else if (cmp > 0) {
             nodo.setRight(remove(nodo.getRight(), dato));
         } else {
-            if (nodo.getLeft() == null) return nodo.getRight();
-            if (nodo.getRight() == null) return nodo.getLeft();
+            if (nodo.getLeft() == null) {
+                return nodo.getRight();
+            }
+            if (nodo.getRight() == null) {
+                return nodo.getLeft();
+            }
             AVLTreeNode<T> sucesor = obtenerMinimo(nodo.getRight());
             nodo.setValue(sucesor.getValue());
             nodo.setRight(remove(nodo.getRight(), sucesor.getValue()));
         }
         return balancear(nodo);
     }
+
     /**
-     * 
+     *
      * @param nodo
-     * @return 
+     * @return
      */
     private AVLTreeNode<T> obtenerMinimo(AVLTreeNode<T> nodo) {
-        while (nodo.getLeft() != null) nodo = nodo.getLeft();
+        while (nodo.getLeft() != null) {
+            nodo = nodo.getLeft();
+        }
         return nodo;
     }
+
     /**
-     * 
+     *
      * @param nodo
-     * @return 
+     * @return
      */
     private AVLTreeNode<T> balancear(AVLTreeNode<T> nodo) {
         actualizarAltura(nodo);
@@ -102,35 +113,39 @@ public class AVLTree<T extends Comparable<T>> {
         }
         return nodo;
     }
+
     /**
-     * 
-     * @param nodo 
+     *
+     * @param nodo
      */
     private void actualizarAltura(AVLTreeNode<T> nodo) {
         int izquierdaAltura = altura(nodo.getLeft());
         int derechaAltura = altura(nodo.getRight());
         nodo.setHeight(1 + Math.max(izquierdaAltura, derechaAltura));
     }
+
     /**
-     * 
+     *
      * @param nodo
-     * @return 
+     * @return
      */
     private int altura(AVLTreeNode<T> nodo) {
         return nodo == null ? 0 : nodo.getHeight();
     }
+
     /**
-     * 
+     *
      * @param nodo
-     * @return 
+     * @return
      */
     private int obtenerBalance(AVLTreeNode<T> nodo) {
         return nodo == null ? 0 : altura(nodo.getLeft()) - altura(nodo.getRight());
     }
+
     /**
-     * 
+     *
      * @param y
-     * @return 
+     * @return
      */
     private AVLTreeNode<T> rotarDerecha(AVLTreeNode<T> y) {
         AVLTreeNode<T> x = y.getLeft();
@@ -141,10 +156,11 @@ public class AVLTree<T extends Comparable<T>> {
         actualizarAltura(x);
         return x;
     }
+
     /**
-     * 
+     *
      * @param x
-     * @return 
+     * @return
      */
     private AVLTreeNode<T> rotarIzquierda(AVLTreeNode<T> x) {
         AVLTreeNode<T> y = x.getRight();
@@ -173,23 +189,45 @@ public class AVLTree<T extends Comparable<T>> {
     public AVLTreeNode<T> getRaiz() {
         return raiz;
     }
+
     /**
-     * 
+     *
      */
-    public  void ListinOrder(){
+    public void ListinOrder() {
         inOrder(raiz);
     }
+
     /**
-     * 
-     * @param node 
+     *
+     * @param node
      */
-    public void inOrder(AVLTreeNode<T> node){
-        if(node != null){
+    public void inOrder(AVLTreeNode<T> node) {
+        if (node != null) {
             inOrder(node.getLeft());
             System.out.println(node.getValue());
             inOrder(node.getRight());
         }
     }
-    
-    
+
+    /**
+     *
+     * @return
+     */
+    public String inOrderToString() {
+        return inOrderToString(raiz);
+    }
+
+    /**
+     *
+     * @param node
+     * @return
+     */
+    private String inOrderToString(AVLTreeNode<T> node) {
+        if (node == null) {
+            return "";
+        }
+        return inOrderToString(node.getLeft())
+                + node.getValue().toString() + "\n"
+                + inOrderToString(node.getRight());
+    }
 }
