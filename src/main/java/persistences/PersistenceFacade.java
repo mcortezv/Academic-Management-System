@@ -259,4 +259,13 @@ public class PersistenceFacade implements IPersistenceFacade {
         }
         return null;
     }
+
+    /**
+     * 
+     * @return 
+     */
+    @Override
+    public PersistenceStudents getPersistenceStudents() {
+        return this.persistenceStudents;
+    }
 }

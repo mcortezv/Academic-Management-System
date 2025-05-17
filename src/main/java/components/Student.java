@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package components;
+
 import persistences.PersistenceGrades;
 import structures.ArrayList;
 import interfaces.Identificable;
@@ -15,6 +16,7 @@ import validators.Validator;
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public final class Student implements Identificable {
+
     private String id;
     private String fullName;
     private Contact contactDetails;
@@ -25,17 +27,26 @@ public final class Student implements Identificable {
      */
     public Student() {
         this.id = generateRandomId();
+        this.grades = new PersistenceGrades();
+    }
+
+    public Student(String id) {
+        this.id = id;
+        this.grades = new PersistenceGrades();
     }
 
     /**
-     Constructor que establece los atributos de la instancia al valor de sus
+     * Constructor que establece los atributos de la instancia al valor de sus
      * parametros
+     *
      * @param fullName
      * @param contactDetails
      */
     public Student(String fullName, Contact contactDetails) {
         this.id = generateRandomId();
+        this.fullName = fullName;
         this.contactDetails = contactDetails;
+        this.grades = new PersistenceGrades();
 
     }
 
@@ -43,16 +54,15 @@ public final class Student implements Identificable {
      * Constructor que establece los atributos de la instancia al valor de sus
      * parametros
      *
-     * @param id
      * @param fullName
      * @param contactDetails
      * @param grades
      */
-    public Student(String id, String fullName, Contact contactDetails, PersistenceGrades grades) {
+    public Student(String fullName, Contact contactDetails, PersistenceGrades grades) {
         this.id = generateRandomId();
         this.fullName = fullName;
         this.contactDetails = contactDetails;
-        this.grades = grades;
+        this.grades = new PersistenceGrades();
     }
 
     /**
