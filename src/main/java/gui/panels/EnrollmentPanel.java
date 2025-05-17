@@ -29,8 +29,8 @@ public class EnrollmentPanel extends Panel {
         btnWaitList =  new Button("<html><div style='text-align: center;'>Ver lista de espera<br>de un curso</div></html>");
 
         //Buttons
-        btnEnrollStudent.setPreferredSize(new Dimension(150, 30));
-        btnEnrolledStudents.setPreferredSize(new Dimension(180, 40));
+        btnEnrollStudent.setPreferredSize(new Dimension(175, 30));
+        btnEnrolledStudents.setPreferredSize(new Dimension(175, 40));
         btnWaitList.setPreferredSize(new Dimension(180, 40));
 
         //Panels

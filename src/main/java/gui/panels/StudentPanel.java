@@ -28,9 +28,9 @@ public class StudentPanel extends Panel {
         btnSearchStudent = new Button("Buscar Estudiante");
 
         //Buttons
-        btnAddStudent.setPreferredSize(new Dimension(150, 30));
-        btnDeleteStudent.setPreferredSize(new Dimension(150, 30));
-        btnSearchStudent.setPreferredSize(new Dimension(150, 30));
+        btnAddStudent.setPreferredSize(new Dimension(175, 30));
+        btnDeleteStudent.setPreferredSize(new Dimension(175, 30));
+        btnSearchStudent.setPreferredSize(new Dimension(175, 30));
             //Add student button
             btnAddStudent.addActionListener(e -> { 
                 new StudentFormDialog(mainFrame, null, 0).setVisible(true);

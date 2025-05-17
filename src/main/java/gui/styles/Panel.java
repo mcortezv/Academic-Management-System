@@ -34,7 +34,7 @@ public abstract class Panel extends JPanel {
         southPanel = new JPanel();
         centralPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         centralPanel.setPreferredSize(new Dimension(200, 300));
-        centralPanel.setBorder(BorderFactory.createEmptyBorder(20, 170, 0, 150)); 
+        centralPanel.setBorder(BorderFactory.createEmptyBorder(20, 160, 0, 150)); 
         southPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         southPanel.setPreferredSize(new Dimension(500, 45));
         centralPanel.setBackground(Color.WHITE);

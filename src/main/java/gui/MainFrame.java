@@ -93,11 +93,11 @@ public class MainFrame extends JFrame {
         northPanel.add(btnReport);
         
         //Buttons
-        btnStudents.setPreferredSize(new Dimension(120, 25));
-        btnCourse.setPreferredSize(new Dimension(120, 25));
-        btnEnrollments.setPreferredSize(new Dimension(120, 25));
-        btnGrades.setPreferredSize(new Dimension(120, 25));
-        btnReport.setPreferredSize(new Dimension(120, 25));
+        btnStudents.setPreferredSize(new Dimension(130, 25));
+        btnCourse.setPreferredSize(new Dimension(130, 25));
+        btnEnrollments.setPreferredSize(new Dimension(130, 25));
+        btnGrades.setPreferredSize(new Dimension(130, 25));
+        btnReport.setPreferredSize(new Dimension(130, 25));
         btnStudents.addActionListener(e -> showPanel(studentPanel));
         btnStudents.addActionListener(e -> {
             btnInUse = btnStudents;

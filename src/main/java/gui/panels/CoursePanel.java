@@ -8,6 +8,7 @@ import gui.MainFrame;
 import gui.styles.Panel;
 import gui.styles.Button;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
@@ -44,13 +45,15 @@ public class CoursePanel extends Panel {
         //Main course panel
         mainCoursePanel.setLayout(new FlowLayout());
         mainCoursePanel.setPreferredSize(new Dimension(200, 300));
-        mainCoursePanel.setBorder(BorderFactory.createEmptyBorder( 0, 0, 0, 0));
+        mainCoursePanel.setBorder(BorderFactory.createEmptyBorder( 0, 0, 0, 5));
+        mainCoursePanel.setBackground(Color.WHITE);
+
 
         //Buttons
-        btnCreateCourse.setPreferredSize(new Dimension(150, 30));
-        btnDeleteCourse.setPreferredSize(new Dimension(150, 30));
-        btnListCourses.setPreferredSize(new Dimension(150, 30));
-        btnRotateRole.setPreferredSize(new Dimension(150, 30));
+        btnCreateCourse.setPreferredSize(new Dimension(175, 30));
+        btnDeleteCourse.setPreferredSize(new Dimension(175, 30));
+        btnListCourses.setPreferredSize(new Dimension(175, 30));
+        btnRotateRole.setPreferredSize(new Dimension(175, 30));
         //Create course button
         btnCreateCourse.addActionListener(e -> {
             new CourseFormDialog(mainFrame, 0).setVisible(true);

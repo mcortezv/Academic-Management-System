@@ -7,6 +7,7 @@ package gui.panels;
 import gui.MainFrame;
 import gui.styles.Panel;
 import gui.styles.Button;
+import java.awt.Dimension;
 
 /**
  *
@@ -22,7 +23,6 @@ public class ReportPanel extends Panel {
 
     @Override
     public void startComponents() {
-        
     }
 
 }
