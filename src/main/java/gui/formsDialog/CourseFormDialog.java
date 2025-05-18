@@ -19,7 +19,6 @@ import validators.Validator;
  * @author david
  */
 public final class CourseFormDialog extends Dialog {
-
     private TextField courseNameField;
     private IPersistenceFacade persistence;
 

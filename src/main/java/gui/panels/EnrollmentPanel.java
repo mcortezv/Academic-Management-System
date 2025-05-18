@@ -8,7 +8,6 @@ import gui.formsDialog.EnrollFormDialog;
 import gui.styles.Panel;
 import gui.styles.Button;
 import interfaces.IPersistenceFacade;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -34,7 +33,7 @@ public class EnrollmentPanel extends Panel {
         btnEnrollStudent =  new Button("Inscribir Alumno");
         btnEnrolledStudents =  new Button("Ver Estudiantes Inscritos");
         btnWaitList =  new Button("Ver Lista de Espera");
-        textArea = new JTextArea(18, 20);
+        textArea = new JTextArea(18, 21);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setEditable(false);
