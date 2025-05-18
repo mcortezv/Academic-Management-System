@@ -30,8 +30,6 @@ public class BinarySearchTreeTest {
     public void setUp() {
         arbol = new BinarySearchTree<>();
         datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
-        grades = new PersistenceGrades();
-
         student1 = new Student("Escalante Sebastian", datosContacto);
         student1.setId("ABC100");
 
