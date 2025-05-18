@@ -54,7 +54,6 @@ public class PersistenceStudents {
         studentsByAverage.insert(student2);
         students.insert(student1);
         students.insert(student2);
-        System.out.println("Datos insertados en el árbol.");
     }
 
 }

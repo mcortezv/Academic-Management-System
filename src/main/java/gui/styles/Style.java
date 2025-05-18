@@ -20,6 +20,6 @@ public class Style {
 
     public static final java.awt.Font TITLE_FONT = new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 16);
     public static final java.awt.Font LABEL_FONT = new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 11);
-    public static final java.awt.Font INPUT_FONT = new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 10);
+    public static final java.awt.Font INPUT_FONT = new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 14);
     public static final java.awt.Font BUTTON_FONT = new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14);
 }

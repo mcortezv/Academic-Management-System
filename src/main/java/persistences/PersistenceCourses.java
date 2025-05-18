@@ -68,8 +68,7 @@ public final class PersistenceCourses {
         Contact datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
         Student student1 = new Student("2222BBBB", "Sebas", datosContacto);
         Course course = new Course("1111AAAA","cursoA",student1);
-        courses.put("1111AAAA", course);        
-        System.out.println("Datos insertados en el árbol.");
+        courses.put("1111AAAA", course);
     }
     /**
      * 

@@ -19,6 +19,7 @@ public class GradePanel extends Panel {
     private Button btnDeleteGrade;
     private Button btnListGrades;
     private Button btnAverageStudent;
+    private Button btnProcessNextRequest;
     private IPersistenceFacade persistenceFacade;
 
     public GradePanel(MainFrame frame, NorthPanel northPanel, IPersistenceFacade persistenceFacade) {
@@ -33,6 +34,7 @@ public class GradePanel extends Panel {
         btnDeleteGrade =  new Button("Elimnar Calificaciones");
         btnListGrades =  new Button("Ver Calificaciones");
         btnAverageStudent =  new Button("Obtener Promedio");
+        btnProcessNextRequest =  new Button("Procesar Cola Solicitud");
 
         //Botones
         btnAddGrade.setPreferredSize(new Dimension(230, 40));
@@ -40,12 +42,13 @@ public class GradePanel extends Panel {
         btnDeleteGrade.setPreferredSize(new Dimension(230, 40));
         btnListGrades.setPreferredSize(new Dimension(230, 40));
         btnAverageStudent.setPreferredSize(new Dimension(230, 40));
+        btnProcessNextRequest.setPreferredSize(new Dimension(230, 40));
 
         //Panels
         centralPanel.add(btnAddGrade);
         centralPanel.add(btnUpdateGrade);
         centralPanel.add(btnDeleteGrade);
         centralPanel.add(btnAverageStudent);
-
+        centralPanel.add(btnProcessNextRequest);
     }
 }
