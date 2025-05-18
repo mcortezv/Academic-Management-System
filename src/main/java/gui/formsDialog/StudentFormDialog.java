@@ -3,6 +3,7 @@ import components.*;
 import gui.MainFrame;
 import gui.styles.Button;
 import gui.styles.TextField;
+import gui.styles.Dialog;
 import interfaces.IPersistenceFacade;
 import java.awt.*;
 import javax.swing.*;
@@ -13,7 +14,7 @@ import validators.Validator;
  *
  * @author david
  */
-public final class StudentFormDialog extends JDialog {
+public final class StudentFormDialog extends Dialog {
     private JPanel centerPanel;
     private JPanel southPanel;
     private MainFrame mainFrame;

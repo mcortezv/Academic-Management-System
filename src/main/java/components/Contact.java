@@ -80,6 +80,6 @@ public class Contact {
      */
     @Override
     public String toString() {
-        return "Contacto{" + "Numero de Telefono: " + phoneNumber + ", Correo Electronico: " + eMail + ", Codigo Postal: " + zipCode + '}';
+        return " | Numero de Telefono: " + phoneNumber + " | Correo Electronico: " + eMail + " | Codigo Postal: " + zipCode;
     }
 }

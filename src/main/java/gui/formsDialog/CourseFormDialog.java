@@ -169,7 +169,7 @@ public final class CourseFormDialog extends Dialog {
         if(course == null){
             JOptionPane.showMessageDialog(centerPanel, "Curso no encontrado","Error",JOptionPane.ERROR_MESSAGE);
         }
-        
+
         Student courseTutor = persistence.rotateRol(course.getId());
         JOptionPane.showMessageDialog(centerPanel, courseTutor.toString(), "Rol de lider rotado con exito, nuevo tutor: ", 1);
         dispose();

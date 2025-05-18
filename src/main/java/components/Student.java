@@ -184,6 +184,6 @@ public final class Student implements Identificable {
      */
     @Override
     public String toString() {
-        return "Estudiante{" + "Matricula: " + id + ", Nombre Completo: " + fullName + ", Datos de Contacto: " + contactDetails + '}';
+        return "Matricula: " + id + " | Nombre Completo: " + fullName + " | Datos de Contacto: " + contactDetails + " | Promedio: " + this.getAverage();
     }
 }

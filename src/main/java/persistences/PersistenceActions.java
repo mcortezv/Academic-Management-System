@@ -66,18 +66,22 @@ public class PersistenceActions {
             case addStudent -> {
                 Student studentToRemove = (Student) action.getData();
                 persistenceStudents.removeStudent(studentToRemove);
+                JOptionPane.showMessageDialog(null, "Se ha deshecho la accion de agregar el estudiante: " + studentToRemove.getFullName());
             }
             case removeStudent -> {
                 Student studentToAdd = (Student) action.getData();
                 persistenceStudents.addStudent(studentToAdd);
+                JOptionPane.showMessageDialog(null, "Se ha deshecho la accion de eliminar el estudiante: " + studentToAdd.getFullName());
             }
             case addCourse -> {
                 Course courseToRemove = (Course) action.getData();
                 persistenceCourses.removeCourse(courseToRemove);
+                JOptionPane.showMessageDialog(null, "Se ha deshecho la accion de agregar el curso: " + courseToRemove.getName());
             }
             case removeCourse -> {
                 Course courseToadd = (Course) action.getData();
                 persistenceCourses.addCourse(courseToadd);
+                JOptionPane.showMessageDialog(null, "Se ha deshecho la accion de eliminar el curso: " + courseToadd.getName());
             }
             default -> {
                 JOptionPane.showMessageDialog(null, "La ultima accion no cumple con los requisistos para ser deshecha", "Error", JOptionPane.ERROR_MESSAGE);
