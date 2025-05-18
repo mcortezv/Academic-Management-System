@@ -27,7 +27,11 @@ public interface IPersistenceFacade {
 
     PersistenceStudentsCourses showEnrolledStudentsInCourse(String id);
 
+    ArrayList<Student> showEnrolledStudentsInCourseArrayList(String id);
+
     PersistenceWaitingListCourses showWaitingListForCourse(String id);
+
+    ArrayList<Student> showWaitingListForCourseArrayList(String id);
 
     void processNextRequest();
     

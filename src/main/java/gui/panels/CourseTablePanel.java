@@ -47,7 +47,8 @@ public class CourseTablePanel extends JPanel {
                 Object[] row = {
                     course.getId(),
                     course.getName(),
-                    course.getTutor()
+                    course.getTutor(),
+                    course.getEnrolledStudents()
                 };
                 model.addRow(row);
             }
@@ -71,8 +72,6 @@ public class CourseTablePanel extends JPanel {
         add(southPanel, BorderLayout.SOUTH);
 
     }
-
     public void initComponents() {
-
     }
 }

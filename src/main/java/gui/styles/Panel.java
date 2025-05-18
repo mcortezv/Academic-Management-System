@@ -32,7 +32,7 @@ public abstract class Panel extends JPanel {
         centralPanel = new JPanel();
         southPanel = new JPanel();
         centralPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        centralPanel.setPreferredSize(new Dimension(600, 450));
+        centralPanel.setPreferredSize(new Dimension(600, 500));
         centralPanel.setBorder(BorderFactory.createEmptyBorder(40, 170, 0, 150));
         southPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         southPanel.setPreferredSize(new Dimension(500, 50));

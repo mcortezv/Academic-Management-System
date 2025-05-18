@@ -7,7 +7,9 @@ import java.util.Random;
 import persistences.PersistenceStudentsCourses;
 import persistences.PersistenceWaitingListCourses;
 import persistences.PersistenceRoles;
+import structures.ArrayList;
 import validators.Validator;
+import javax.swing.*;
 
 /**
  * Clase que representa un curso en el sistema
@@ -21,6 +23,7 @@ public final class Course {
     private PersistenceStudentsCourses enrolledStudents;
     private PersistenceWaitingListCourses waitingList;
     private PersistenceRoles studentsWithAssignedRole;
+    private final int maxCapacity = 25;
 
     /**
      * Constructor vacio del curso
@@ -106,6 +109,10 @@ public final class Course {
      *
      * @return enrolledStudents
      */
+    public ArrayList<Student> getEnrolledStudentsArrayList() {
+        return enrolledStudents.getList();
+    }
+
     public PersistenceStudentsCourses getEnrolledStudents() {
         return enrolledStudents;
     }
@@ -115,6 +122,10 @@ public final class Course {
      *
      * @return waitingList
      */
+    public ArrayList<Student> getWaitingListArrayList() {
+        return waitingList.getList();
+    }
+
     public PersistenceWaitingListCourses getWaitingList() {
         return waitingList;
     }
@@ -126,6 +137,16 @@ public final class Course {
      */
     public PersistenceRoles getStudentsWithAssignedRole() {
         return studentsWithAssignedRole;
+    }
+
+    public void enrollStudentInCourse(Student student){
+        if (enrolledStudents.getTam() >= maxCapacity){
+            waitingList.enrollStudentWaitingList(student);
+            JOptionPane.showMessageDialog(null, "Cantidad Maxima de Estudiantes Alcanzada", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            enrolledStudents.enrollStudentCourse(student);
+            JOptionPane.showMessageDialog(null, "Estudiante Agregado con Exito", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**

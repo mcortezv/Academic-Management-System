@@ -8,7 +8,9 @@ import gui.formsDialog.EnrollFormDialog;
 import gui.styles.Panel;
 import gui.styles.Button;
 import interfaces.IPersistenceFacade;
-import java.awt.Dimension;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *
@@ -18,6 +20,8 @@ public class EnrollmentPanel extends Panel {
     private Button btnEnrollStudent;
     private Button btnEnrolledStudents;
     private Button btnWaitList;
+    private JTextArea textArea;
+    private JScrollPane jps;
     private IPersistenceFacade persistenceFacade;
 
     public EnrollmentPanel(MainFrame frame, NorthPanel northPanel, IPersistenceFacade persistenceFacade) {
@@ -30,6 +34,12 @@ public class EnrollmentPanel extends Panel {
         btnEnrollStudent =  new Button("Inscribir Alumno");
         btnEnrolledStudents =  new Button("Ver Estudiantes Inscritos");
         btnWaitList =  new Button("Ver Lista de Espera");
+        textArea = new JTextArea(18, 20);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setEditable(false);
+        jps = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         //Buttons
         btnEnrollStudent.setPreferredSize(new Dimension(230, 40));
@@ -40,10 +50,23 @@ public class EnrollmentPanel extends Panel {
         centralPanel.add(btnEnrollStudent);
         centralPanel.add(btnEnrolledStudents);
         centralPanel.add(btnWaitList);
+        centralPanel.add(jps);
 
         //button
         btnEnrollStudent.addActionListener(e -> {
-            new EnrollFormDialog(mainFrame, 0, persistenceFacade).setVisible(true);
+            new EnrollFormDialog(mainFrame, 0, persistenceFacade, this).setVisible(true);
         });
+
+        btnEnrolledStudents.addActionListener(e -> {
+            new EnrollFormDialog(mainFrame, 1, persistenceFacade, this).setVisible(true);
+        });
+
+        btnWaitList.addActionListener(e -> {
+            new EnrollFormDialog(mainFrame, 2, persistenceFacade, this).setVisible(true);
+        });
+    }
+
+    public JTextArea getTextArea(){
+        return textArea;
     }
 }

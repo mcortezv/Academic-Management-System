@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package persistences;
-import components.Course;
+import components.Student;
+import structures.ArrayList;
 import structures.CircularDoubleLinkedList;
 
 /**
@@ -11,9 +12,17 @@ import structures.CircularDoubleLinkedList;
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class PersistenceWaitingListCourses {
-    private CircularDoubleLinkedList<Course> waitingListCourses;
+    private CircularDoubleLinkedList<Student> waitingListCourses;
 
     public PersistenceWaitingListCourses(){
-        this.waitingListCourses = new CircularDoubleLinkedList<Course>();
+        this.waitingListCourses = new CircularDoubleLinkedList<>();
+    }
+
+    public void enrollStudentWaitingList(Student student){
+        waitingListCourses.add(student);
+    }
+
+    public ArrayList<Student> getList(){
+        return waitingListCourses.getList();
     }
 }

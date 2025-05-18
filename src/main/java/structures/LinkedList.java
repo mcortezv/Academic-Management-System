@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package structures;
+import components.Student;
 import structures.exceptions.ListException;
 import structures.nodes.SingleNode;
 import java.util.Objects;
@@ -18,6 +19,10 @@ public class LinkedList<T> {
     private SingleNode<T> ultimo;
     private int tam;
 
+    public int getTam() {
+        return tam;
+    }
+
     /**
      * Metodo que Asigna un objeto a la ultima posicion de la lista.
      *
@@ -25,7 +30,7 @@ public class LinkedList<T> {
      */
     public void add(T o) {
         SingleNode<T> nuevoNodo = new SingleNode<>(o);
-        if (ultimo == null){
+        if (P == null){
             P = nuevoNodo;
         } else {
             ultimo.setNext(nuevoNodo);
@@ -117,6 +122,14 @@ public class LinkedList<T> {
         this.ultimo = null;
         this.tam = 0;
     }
-    
-    
+
+    public ArrayList<Student> getList(){
+        ArrayList<Student> students = new ArrayList<>(10);
+        SingleNode<T> actual = P;
+        while (actual != null) {
+            students.add((Student) actual.getValue());
+            actual = actual.getNext();
+        }
+        return students;
+    }
 }

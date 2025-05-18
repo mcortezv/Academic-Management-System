@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package persistences;
+import components.Contact;
 import components.Student;
+import structures.ArrayList;
 import structures.LinkedList;
 
 /**
@@ -17,11 +19,21 @@ public class PersistenceStudentsCourses {
         this.studentsCourses = new LinkedList<>();
     }
 
-    public int getCapacity(){
-        return 0;
+    public int getTam(){
+        return studentsCourses.getTam();
+    }
+
+    public ArrayList<Student> getList(){
+        return studentsCourses.getList();
     }
 
     public void enrollStudentCourse(Student student){
         studentsCourses.add(student);
+    }
+
+    public void populateStudents() {
+        Contact datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
+        Student student1 = new Student("2222BBBB", "Sebas", datosContacto);
+        studentsCourses.add(student1);
     }
 }

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package structures;
+import components.Student;
 import structures.exceptions.ListException;
 import structures.nodes.DoubleNode;
 import java.util.Objects;
@@ -116,5 +117,15 @@ public class CircularDoubleLinkedList<T> {
         this.P = null;
         this.ultimo = null;
         this.tam = 0;
+    }
+
+    public ArrayList<Student> getList(){
+        ArrayList<Student> students = new ArrayList<>(10);
+        DoubleNode<T> actual = P;
+        for (int i = 0; i < tam - 1; i++) {
+            students.add((Student) actual.getValue());
+            actual = actual.getNext();
+        }
+        return students;
     }
 }
