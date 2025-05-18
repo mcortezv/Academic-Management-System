@@ -1,4 +1,5 @@
 package structures;
+import components.Student;
 import interfaces.Identificable;
 import structures.exceptions.TreeException;
 import structures.nodes.AVLTreeNode;
@@ -49,7 +50,6 @@ public class AVLTree<T extends Identificable> {
     }
 
     /**
-     *
      * @param nodo
      * @param dato
      * @return
@@ -78,7 +78,6 @@ public class AVLTree<T extends Identificable> {
     }
 
     /**
-     *
      * @param nodo
      * @return
      */
@@ -90,7 +89,6 @@ public class AVLTree<T extends Identificable> {
     }
 
     /**
-     *
      * @param nodo
      * @return
      */
@@ -113,7 +111,6 @@ public class AVLTree<T extends Identificable> {
     }
 
     /**
-     *
      * @param nodo
      */
     private void actualizarAltura(AVLTreeNode<T> nodo) {
@@ -123,7 +120,6 @@ public class AVLTree<T extends Identificable> {
     }
 
     /**
-     *
      * @param nodo
      * @return
      */
@@ -132,7 +128,6 @@ public class AVLTree<T extends Identificable> {
     }
 
     /**
-     *
      * @param nodo
      * @return
      */
@@ -141,7 +136,6 @@ public class AVLTree<T extends Identificable> {
     }
 
     /**
-     *
      * @param y
      * @return
      */
@@ -156,7 +150,6 @@ public class AVLTree<T extends Identificable> {
     }
 
     /**
-     *
      * @param x
      * @return
      */
@@ -196,7 +189,6 @@ public class AVLTree<T extends Identificable> {
     }
 
     /**
-     *
      * @param node
      */
     public void inOrder(AVLTreeNode<T> node) {
@@ -208,24 +200,24 @@ public class AVLTree<T extends Identificable> {
     }
 
     /**
-     *
      * @return
      */
-    public String listInOrderToString() {
-        return inOrderToString(raiz);
+    public ArrayList<Student> listInOrderToString() {
+        ArrayList<Student> students = new ArrayList<>(10);
+        return inOrderToString(raiz, students);
     }
 
     /**
-     *
      * @param node
      * @return
      */
-    private String inOrderToString(AVLTreeNode<T> node) {
+    private ArrayList<Student> inOrderToString(AVLTreeNode<T> node, ArrayList<Student> students) {
         if (node == null) {
-            return "";
+            return students;
         }
-        return inOrderToString(node.getLeft())
-                + node.getValue().toString() + "\n"
-                + inOrderToString(node.getRight());
+        inOrderToString(node.getLeft(), students);
+        students.add((Student) node.getValue());
+        inOrderToString(node.getRight(), students);
+        return students;
     }
 }

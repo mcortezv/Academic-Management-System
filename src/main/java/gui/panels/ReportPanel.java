@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import persistences.PersistenceStudents;
 import structures.AVLTree;
+import structures.ArrayList;
 
 /**
  *
@@ -57,18 +58,18 @@ public final class ReportPanel extends Panel {
     public void showStudents() {
         txtAreaReportStudents.setText("ESTUDIANTES REGISTRADOS EN EL SISTEMA\n");
         PersistenceStudents persistenceStudents = persistenceFacade.getPersistenceStudents();
-        persistenceStudents.populateStudents();
         AVLTree<Student> studentsByAverage = persistenceStudents.getStudentsByAverage();
         if (studentsByAverage == null) {
             txtAreaReportStudents.setText("\nNo hay estudiantes registrados");
         } else {
-            String studentsData = studentsByAverage.listInOrderToString();
+            ArrayList<Student> studentsData = studentsByAverage.listInOrderToString();
             if (studentsData.isEmpty()) {
                 txtAreaReportStudents.append("\nEl árbol está vacío.");
             } else {
-                txtAreaReportStudents.append(studentsByAverage.listInOrderToString());
+                for (Student student: studentsData){
+                    txtAreaReportStudents.append("\n" + student.toString() + "\n");
+                }
             }
         }
-
     }
 }

@@ -35,6 +35,10 @@ public class ArrayList<T> implements Iterable<T> {
         this.array = (T[]) new Object[numObjetos];
     }
 
+    public boolean isEmpty(){
+        return numObjects == 0;
+    }
+
     /**
      * Agrega un objeto al final de la lista.
      *

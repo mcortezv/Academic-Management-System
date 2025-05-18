@@ -3,12 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gui.styles;
-
 import gui.MainFrame;
 import gui.panels.NorthPanel;
-
 import java.awt.*;
-import java.awt.Button;
+import gui.styles.Button;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
@@ -20,7 +18,7 @@ public abstract class Panel extends JPanel {
     protected MainFrame mainFrame;
     protected JPanel centralPanel;
     protected JPanel southPanel;
-    protected java.awt.Button btnBack;
+    protected Button btnBack;
     protected NorthPanel northPanel;
 
 
@@ -34,9 +32,9 @@ public abstract class Panel extends JPanel {
         southPanel = new JPanel();
         centralPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         centralPanel.setPreferredSize(new Dimension(200, 300));
-        centralPanel.setBorder(BorderFactory.createEmptyBorder(20, 170, 0, 150)); 
+        centralPanel.setBorder(BorderFactory.createEmptyBorder(40, 170, 0, 150));
         southPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        southPanel.setPreferredSize(new Dimension(500, 45));
+        southPanel.setPreferredSize(new Dimension(500, 50));
         centralPanel.setBackground(Color.WHITE);
         southPanel.setBackground(Color.WHITE);
 

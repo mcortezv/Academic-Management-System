@@ -16,7 +16,6 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import persistences.PersistenceStudents;
 import persistences.exceptions.PersistenceStudentsException;
 import validators.Validator;
 
@@ -35,9 +34,8 @@ public final class StudentFormDialog extends JDialog {
     private TextField streetField;
     private TextField streetNumberField;
     private TextField districtField;
-    
     private TextField idField;
-    private PersistenceStudents persistence;
+    private IPersistenceFacade persistence;
     private Student student;
     private Contact contact;    
 
@@ -47,7 +45,7 @@ public final class StudentFormDialog extends JDialog {
         mainFrame = owner;
         centerPanel = new JPanel();
         southPanel = new JPanel();
-        this.persistence = new PersistenceStudents();
+        this.persistence = persistence;
         switch (option) {
             case 0 -> {
                 setTitle("Añadir estudiante");
@@ -65,7 +63,6 @@ public final class StudentFormDialog extends JDialog {
             }
 
         }
-
     }
 
     public void addStudent() {
@@ -219,8 +216,8 @@ public final class StudentFormDialog extends JDialog {
             JOptionPane.showMessageDialog(centerPanel, "Id de estudiante invalido");
             throw new PersistenceStudentsException("Id del estudiante invalido");
         }
-        student = persistence.searchStudent(id);
-        persistence.removeStudent(student);
+        Student student = persistence.searchStudentById(id);
+        persistence.getPersistenceStudents().removeStudent(student);
         JOptionPane.showMessageDialog(centerPanel, "Estudiante removido con exito");
     }
 
@@ -263,8 +260,7 @@ public final class StudentFormDialog extends JDialog {
             JOptionPane.showMessageDialog(centerPanel, "Id de estudiante invalido");
             throw new PersistenceStudentsException("Id del estudiante invalido");
         }
-        student = persistence.searchStudent(id);
-
+        Student student = persistence.searchStudentById(id);
         JOptionPane.showMessageDialog(centerPanel, student.toString(),"Estudiante encontrado: ",1);
 
     }
