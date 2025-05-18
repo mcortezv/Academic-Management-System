@@ -154,19 +154,27 @@ public final class StudentFormDialog extends JDialog {
         
         if (!Validator.validateName(name)) {
             JOptionPane.showMessageDialog(centerPanel, "Nombre del estudiante invalido", "Error", JOptionPane.ERROR_MESSAGE);
-            throw new PersistenceStudentsException("Nombre de estudiante invalido");
+            throw new PersistenceStudentsException("Nombre de Estudiante Invalido");
         }
         if (!Validator.validatePhone(phoneNumber)) {
             JOptionPane.showMessageDialog(centerPanel, "Numero de telefono invalido", "Error", JOptionPane.ERROR_MESSAGE);
-            throw new PersistenceStudentsException("Numero de telefono invalido");
+            throw new PersistenceStudentsException("Numero de Telefono Invalido");
         }
         if (!Validator.validateEmail(email)) {
             JOptionPane.showMessageDialog(centerPanel, "Correo electronico invalido", "Error", JOptionPane.ERROR_MESSAGE);
-            throw new PersistenceStudentsException("Correo electronico invalido");
+            throw new PersistenceStudentsException("Correo Electronico Invalido");
         }
-        if (!Validator.validateStreetNumber(street)) {
+        if (!Validator.validateStreet(street)) {
             JOptionPane.showMessageDialog(centerPanel, "Nombre del estudiante invalido", "Error", JOptionPane.ERROR_MESSAGE);
-            throw new PersistenceStudentsException("Direccion invalida");
+            throw new PersistenceStudentsException("Calle Invalida");
+        }
+        if (!Validator.validateStreetNumber(streetNumber)) {
+            JOptionPane.showMessageDialog(centerPanel, "Nombre del estudiante invalido", "Error", JOptionPane.ERROR_MESSAGE);
+            throw new PersistenceStudentsException("Numero de Calle Invalido");
+        }
+        if (!Validator.validateDistric(district)) {
+            JOptionPane.showMessageDialog(centerPanel, "Nombre del estudiante invalido", "Error", JOptionPane.ERROR_MESSAGE);
+            throw new PersistenceStudentsException("Distrito Invalido");
         }
         contact = new Contact(phoneNumber, email, street);
         

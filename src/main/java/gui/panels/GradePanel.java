@@ -8,7 +8,6 @@ import gui.MainFrame;
 import gui.styles.Panel;
 import gui.styles.Button;
 import interfaces.IPersistenceFacade;
-
 import java.awt.Dimension;
 
 /**
@@ -24,24 +23,24 @@ public class GradePanel extends Panel {
     private IPersistenceFacade persistenceFacade;
 
     public GradePanel(MainFrame frame, NorthPanel northPanel, IPersistenceFacade persistenceFacade) {
-        super(frame, northPanel);
+        super(frame, northPanel, persistenceFacade);
         this.persistenceFacade = persistenceFacade;
     }
 
     @Override
     public void startComponents() {
-        btnAddGrade =  new Button("Añadir calificaciones");
-        btnUpdateGrade =  new Button("Actualizar calificaciones");
-        btnDeleteGrade =  new Button("Elimnar calificaciones");
-        btnListGrades =  new Button("Ver calificaciones");
-        btnAverageStudent =  new Button("Obtener promedio");
+        btnAddGrade =  new Button("Añadir Calificaciones");
+        btnUpdateGrade =  new Button("Actualizar Calificaciones");
+        btnDeleteGrade =  new Button("Elimnar Calificaciones");
+        btnListGrades =  new Button("Ver Calificaciones");
+        btnAverageStudent =  new Button("Obtener Promedio");
 
         //Botones
-        btnAddGrade.setPreferredSize(new Dimension(180, 30));
-        btnUpdateGrade.setPreferredSize(new Dimension(180, 30));
-        btnDeleteGrade.setPreferredSize(new Dimension(180, 30));
-        btnListGrades.setPreferredSize(new Dimension(180, 30));
-        btnAverageStudent.setPreferredSize(new Dimension(180, 30));
+        btnAddGrade.setPreferredSize(new Dimension(230, 40));
+        btnUpdateGrade.setPreferredSize(new Dimension(230, 40));
+        btnDeleteGrade.setPreferredSize(new Dimension(230, 40));
+        btnListGrades.setPreferredSize(new Dimension(230, 40));
+        btnAverageStudent.setPreferredSize(new Dimension(230, 40));
 
         //Panels
         centralPanel.add(btnAddGrade);
@@ -50,5 +49,4 @@ public class GradePanel extends Panel {
         centralPanel.add(btnAverageStudent);
 
     }
-
 }

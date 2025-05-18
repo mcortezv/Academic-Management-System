@@ -3,12 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gui.panels;
-
 import gui.MainFrame;
 import gui.styles.Panel;
 import gui.styles.Button;
 import interfaces.IPersistenceFacade;
-
 import java.awt.Dimension;
 
 /**
@@ -22,25 +20,25 @@ public class EnrollmentPanel extends Panel {
     private IPersistenceFacade persistenceFacade;
 
     public EnrollmentPanel(MainFrame frame, NorthPanel northPanel, IPersistenceFacade persistenceFacade) {
-        super(frame, northPanel);
+        super(frame, northPanel, persistenceFacade);
         this.persistenceFacade = persistenceFacade;
     }
 
     @Override
     public void startComponents() {
         btnEnrollStudent =  new Button("Inscribir Alumno");
-        btnEnrolledStudents =  new Button("Ver estudiantes inscritos");
-        btnWaitList =  new Button("<html><div style='text-align: center;'>Ver lista de espera<br>de un curso</div></html>");
+        btnEnrolledStudents =  new Button("Ver Estudiantes Inscritos");
+        btnWaitList =  new Button("Ver Lista de Espera");
 
         //Buttons
-        btnEnrollStudent.setPreferredSize(new Dimension(150, 30));
-        btnEnrolledStudents.setPreferredSize(new Dimension(180, 40));
-        btnWaitList.setPreferredSize(new Dimension(180, 40));
+        btnEnrollStudent.setPreferredSize(new Dimension(230, 40));
+        btnEnrolledStudents.setPreferredSize(new Dimension(230, 40));
+        btnWaitList.setPreferredSize(new Dimension(230, 40));
 
         //Panels
         centralPanel.add(btnEnrollStudent);
-        southPanel.add(btnEnrolledStudents);
-        southPanel.add(btnWaitList);
+        centralPanel.add(btnEnrolledStudents);
+        centralPanel.add(btnWaitList);
 
     }
 

@@ -9,9 +9,7 @@ import gui.styles.Panel;
 import gui.styles.Button;
 import interfaces.IPersistenceFacade;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.*;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
@@ -29,31 +27,32 @@ public class CoursePanel extends Panel {
     private IPersistenceFacade persistenceFacade;
 
     public CoursePanel(MainFrame frame, NorthPanel northPanel, IPersistenceFacade persistenceFacade) {
-        super(frame, northPanel);
+        super(frame, northPanel, persistenceFacade);
         this.persistenceFacade = persistenceFacade;
     }
 
     @Override
     public void startComponents() {
-        btnCreateCourse = new Button("Añadir curso");
-        btnDeleteCourse = new Button("Eliminar curso");
-        btnListCourses = new Button("Ver cursos");
-        btnRotateRole = new Button("Rotar rol de estudiante");
+        btnCreateCourse = new Button("Añadir Curso");
+        btnDeleteCourse = new Button("Eliminar Curso");
+        btnListCourses = new Button("Ver Cursos");
+        btnRotateRole = new Button("Rotar Rol");
         mainCoursePanel = new JPanel();
+        mainCoursePanel.setBackground(Color.WHITE);
         courseTablePanel = new CourseTablePanel(mainFrame.getIPersistenceFacade().lisCourses(), this, persistenceFacade);
-        
-        
+
+
         //comentarioxxx
         //Main course panel
         mainCoursePanel.setLayout(new FlowLayout());
         mainCoursePanel.setPreferredSize(new Dimension(200, 300));
-        mainCoursePanel.setBorder(BorderFactory.createEmptyBorder( 0, 0, 0, 0));
+
 
         //Buttons
-        btnCreateCourse.setPreferredSize(new Dimension(150, 30));
-        btnDeleteCourse.setPreferredSize(new Dimension(150, 30));
-        btnListCourses.setPreferredSize(new Dimension(150, 30));
-        btnRotateRole.setPreferredSize(new Dimension(150, 30));
+        btnCreateCourse.setPreferredSize(new Dimension(180, 40));
+        btnDeleteCourse.setPreferredSize(new Dimension(180, 40));
+        btnListCourses.setPreferredSize(new Dimension(180, 40));
+        btnRotateRole.setPreferredSize(new Dimension(180, 40));
         //Create course button
         btnCreateCourse.addActionListener(e -> {
             new CourseFormDialog(mainFrame, 0).setVisible(true);
@@ -91,6 +90,5 @@ public class CoursePanel extends Panel {
     public void showCoursePanel() {
         showPanel(mainCoursePanel);
         add(southPanel, BorderLayout.SOUTH);
-        
     }
 }

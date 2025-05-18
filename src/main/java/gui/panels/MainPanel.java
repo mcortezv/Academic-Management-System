@@ -25,7 +25,7 @@ public class MainPanel extends JPanel {
         this.imagen = new ImageIcon("").getImage();
         setLayout(new BorderLayout());
         btnUndo = new Button("Deshacer Ultima Accion");
-        btnUndo.setPreferredSize(new Dimension(180, 30));
+        btnUndo.setPreferredSize(new Dimension(220, 40));
 
         //Panels
         //centralPanel

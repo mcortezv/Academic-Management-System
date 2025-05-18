@@ -11,8 +11,8 @@ import interfaces.IPersistenceFacade;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
+
 import persistences.PersistenceStudents;
 import structures.AVLTree;
 import structures.ArrayList;
@@ -29,30 +29,28 @@ public final class ReportPanel extends Panel {
     private IPersistenceFacade persistenceFacade;
 
     public ReportPanel(MainFrame frame, NorthPanel northPanel, IPersistenceFacade persistenceFacade) {
-        super(frame, northPanel);
+        super(frame, northPanel, persistenceFacade);
         this.persistenceFacade = persistenceFacade;
     }
 
     @Override
     public void startComponents() {
+        JPanel panelButtoms = new JPanel(new FlowLayout());
         btnListStudents = new Button("Listar Estudiantes");
         btnListAverageStudents = new Button("Listar Estudiantes por Promedio");
+        panelButtoms.add(btnListStudents);
+        panelButtoms.add(btnListAverageStudents);
         txtAreaReportStudents = new JTextArea(20, 100);
         txtAreaReportStudents.setMargin(new Insets(100, 0, 0, 0));
         txtAreaReportStudents.setLineWrap(true);
         txtAreaReportStudents.setWrapStyleWord(true);
         txtAreaReportStudents.setEditable(false);
+
         JScrollPane jsp = new JScrollPane(txtAreaReportStudents,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-
-        btnListStudents.setBounds(300, 10, 170, 40);
-        btnListAverageStudents.setBounds(600, 10, 170, 40);
-        jsp.setBounds(75, 110, 10, 10);
-
-        add(btnListStudents);
-        add(btnListAverageStudents);
-        add(jsp);
+        add(panelButtoms, BorderLayout.NORTH);
+        add(jsp, BorderLayout.CENTER);
 
 
         btnListStudents.addActionListener((ActionEvent e) -> {

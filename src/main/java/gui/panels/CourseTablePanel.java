@@ -35,10 +35,10 @@ public class CourseTablePanel extends JPanel {
         centralPanel = new JPanel();
         southPanel = new JPanel();
         btnBack = new Button("Volver");
-        centralPanel.setPreferredSize(new Dimension(200, 300));
+        centralPanel.setPreferredSize(new Dimension(200, 500));
         southPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         southPanel.setPreferredSize(new Dimension(500, 45));
-        String[] columnNames = {"Id", "Nombre", "Tutor", "Estudiantes inscritos"};
+        String[] columnNames = {"Id", "Nombre", "Tutor", "Estudiantes Inscritos"};
 
         //Boton
         btnBack.addActionListener(e -> coursePanel.showCoursePanel());

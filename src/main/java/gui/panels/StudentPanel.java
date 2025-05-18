@@ -1,11 +1,9 @@
 package gui.panels;
-
 import gui.formsDialog.StudentFormDialog;
 import gui.MainFrame;
 import gui.styles.Panel;
 import gui.styles.Button;
 import interfaces.IPersistenceFacade;
-
 import java.awt.Dimension;
 
 /**
@@ -19,20 +17,20 @@ public class StudentPanel extends Panel {
     private IPersistenceFacade persistenceFacade;
 
     public StudentPanel(MainFrame frame, NorthPanel northPanel, IPersistenceFacade persistenceFacade) {
-        super(frame, northPanel);
+        super(frame, northPanel, persistenceFacade);
         this.persistenceFacade = persistenceFacade;
     }
 
     @Override
     public void startComponents() {
-        btnAddStudent = new Button("Añadir estudiante");
-        btnDeleteStudent = new Button("Eliminar estudiante");
+        btnAddStudent = new Button("Añadir Estudiante");
+        btnDeleteStudent = new Button("Eliminar Estudiante");
         btnSearchStudent = new Button("Buscar Estudiante");
 
         //Buttons
-        btnAddStudent.setPreferredSize(new Dimension(150, 30));
-        btnDeleteStudent.setPreferredSize(new Dimension(150, 30));
-        btnSearchStudent.setPreferredSize(new Dimension(150, 30));
+        btnAddStudent.setPreferredSize(new Dimension(180, 40));
+        btnDeleteStudent.setPreferredSize(new Dimension(180, 40));
+        btnSearchStudent.setPreferredSize(new Dimension(180, 40));
             //Add student button
             btnAddStudent.addActionListener(e -> { 
                 new StudentFormDialog(mainFrame, persistenceFacade, 0).setVisible(true);
