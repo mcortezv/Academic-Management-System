@@ -202,22 +202,21 @@ public class AVLTree<T extends Identificable> {
     /**
      * @return
      */
-    public ArrayList<Student> listInOrderToString() {
+    public ArrayList<Student> listInOrderToArrayList() {
         ArrayList<Student> students = new ArrayList<>(10);
-        return inOrderToString(raiz, students);
+        return inOrderToArrayList(raiz, students);
     }
 
     /**
      * @param node
      * @return
      */
-    private ArrayList<Student> inOrderToString(AVLTreeNode<T> node, ArrayList<Student> students) {
-        if (node == null) {
-            return students;
+    private ArrayList<Student> inOrderToArrayList(AVLTreeNode<T> node, ArrayList<Student> students) {
+        if (node != null) {
+            inOrderToArrayList(node.getLeft(), students);
+            students.add((Student) node.getValue());
+            inOrderToArrayList(node.getRight(), students);
         }
-        inOrderToString(node.getLeft(), students);
-        students.add((Student) node.getValue());
-        inOrderToString(node.getRight(), students);
         return students;
     }
 }

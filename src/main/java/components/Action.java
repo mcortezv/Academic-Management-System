@@ -29,6 +29,7 @@ public class Action {
         submitGradesRequest,
         processNextRequest,
         listStudents,
+        listStudentsByAverage,
         rotateRoles,
         addGrade,
         updateGrade,

@@ -8,8 +8,8 @@ import gui.MainFrame;
 import gui.styles.Panel;
 import gui.styles.Button;
 import interfaces.IPersistenceFacade;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -22,6 +22,7 @@ import structures.ArrayList;
  * @author david
  */
 public final class ReportPanel extends Panel {
+    private Button btnListStudents;
     private Button btnListAverageStudents;
     private JTextArea txtAreaReportStudents;
     private JScrollPane jsp;
@@ -34,42 +35,58 @@ public final class ReportPanel extends Panel {
 
     @Override
     public void startComponents() {
-        this.setLayout(new BorderLayout());
-        btnListAverageStudents = new Button("Listar estudiantes");
-        btnListAverageStudents.setPreferredSize(new Dimension(170, 30));
-
-        txtAreaReportStudents = new JTextArea(50, 40);
+        btnListStudents = new Button("Listar Estudiantes");
+        btnListAverageStudents = new Button("Listar Estudiantes por Promedio");
+        txtAreaReportStudents = new JTextArea(20, 100);
+        txtAreaReportStudents.setMargin(new Insets(100, 0, 0, 0));
         txtAreaReportStudents.setLineWrap(true);
         txtAreaReportStudents.setWrapStyleWord(true);
         txtAreaReportStudents.setEditable(false);
+        JScrollPane jsp = new JScrollPane(txtAreaReportStudents,
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jsp = new JScrollPane(txtAreaReportStudents);
-        jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        jsp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        btnListStudents.setBounds(300, 10, 170, 40);
+        btnListAverageStudents.setBounds(600, 10, 170, 40);
+        jsp.setBounds(75, 110, 10, 10);
 
-        this.add(btnListAverageStudents, BorderLayout.NORTH);
-        this.add(jsp, BorderLayout.CENTER);
+        add(btnListStudents);
+        add(btnListAverageStudents);
+        add(jsp);
+
+
+        btnListStudents.addActionListener((ActionEvent e) -> {
+            showStudents();
+        });
 
         btnListAverageStudents.addActionListener((ActionEvent e) -> {
-            showStudents();
+            showStudentsByAverage();
         });
     }
 
     public void showStudents() {
         txtAreaReportStudents.setText("ESTUDIANTES REGISTRADOS EN EL SISTEMA\n");
         PersistenceStudents persistenceStudents = persistenceFacade.getPersistenceStudents();
-        AVLTree<Student> studentsByAverage = persistenceStudents.getStudentsByAverage();
-        if (studentsByAverage == null) {
+        ArrayList<Student> students = persistenceStudents.listStudents();
+        if (students.isEmpty()) {
             txtAreaReportStudents.setText("\nNo hay estudiantes registrados");
         } else {
-            ArrayList<Student> studentsData = studentsByAverage.listInOrderToString();
-            if (studentsData.isEmpty()) {
-                txtAreaReportStudents.append("\nEl árbol está vacío.");
-            } else {
-                for (Student student: studentsData){
+            for (Student student: students){
+                txtAreaReportStudents.append("\n" + student.toString() + "\n");
+            }
+        }
+    }
+
+    public void showStudentsByAverage() {
+        txtAreaReportStudents.setText("ESTUDIANTES LISTADOS POR PROMEDIO\n");
+        PersistenceStudents persistenceStudents = persistenceFacade.getPersistenceStudents();
+        ArrayList<Student> studentsByAverage = persistenceStudents.listStudentsInOrderFromAVLTree();
+        if (studentsByAverage.isEmpty()) {
+            txtAreaReportStudents.setText("\nNo hay estudiantes registrados");
+        } else {
+                for (Student student: studentsByAverage){
                     txtAreaReportStudents.append("\n" + student.toString() + "\n");
                 }
-            }
         }
     }
 }

@@ -241,9 +241,20 @@ public class PersistenceFacade implements IPersistenceFacade {
      * @return arbol binario con los estudiantes
      */
     @Override
-    public BinarySearchTree<Student> listStudentsByAverage() {
+    public ArrayList<Student> listStudents() {
         persistenceActions.addAction(new Action(Action.Type.listStudents, null));
         return persistenceStudents.listStudents();
+    }
+
+    /**
+     * Lista todos los estudiantes agregados al sistema y registra la accion
+     *
+     * @return arbol binario con los estudiantes
+     */
+    @Override
+    public ArrayList<Student> listStudentsByAverage() {
+        persistenceActions.addAction(new Action(Action.Type.listStudentsByAverage, null));
+        return persistenceStudents.listStudentsInOrderFromAVLTree();
     }
 
     /**

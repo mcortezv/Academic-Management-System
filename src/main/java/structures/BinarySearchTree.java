@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package structures;
+import components.Student;
 import structures.exceptions.TreeException;
+import structures.nodes.AVLTreeNode;
 import structures.nodes.BinaryTreeNode;
 import interfaces.Identificable;
 
@@ -201,5 +203,54 @@ public class BinarySearchTree<T extends Identificable> {
             nodo.setLeft(remove(nodo.getLeft(), sucesor.getValue()));
         }
         return nodo;
+    }
+
+    /**
+     * Devuelve la raíz del árbol (solo para pruebas).
+     *
+     * @return la raíz
+     */
+    public BinaryTreeNode<T> getRaiz() {
+        return raiz;
+    }
+
+    /**
+     *
+     */
+    public void listInOrder() {
+        inOrder(raiz);
+    }
+
+    /**
+     * @param node
+     */
+    public void inOrder(BinaryTreeNode<T> node) {
+        if (node != null) {
+            inOrder(node.getLeft());
+            System.out.println(node.getValue());
+            inOrder(node.getRight());
+        }
+    }
+
+    /**
+     * @return
+     */
+    public ArrayList<Student> listInOrderToArrayList() {
+        ArrayList<Student> students = new ArrayList<>(10);
+        return inOrderToArrayList(raiz, students);
+    }
+
+    /**
+     * @param node
+     * @return
+     */
+    private ArrayList<Student> inOrderToArrayList(BinaryTreeNode<T> node, ArrayList<Student> students) {
+        if (node == null) {
+            return students;
+        }
+        inOrderToArrayList(node.getLeft(), students);
+        students.add((Student) node.getValue());
+        inOrderToArrayList(node.getRight(), students);
+        return students;
     }
 }

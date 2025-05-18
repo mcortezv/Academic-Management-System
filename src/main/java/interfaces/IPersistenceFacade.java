@@ -46,7 +46,9 @@ public interface IPersistenceFacade {
 
     void undoAction();
 
-    BinarySearchTree<Student> listStudentsByAverage();
+    ArrayList<Student> listStudents();
+
+    ArrayList<Student> listStudentsByAverage();
 
     Student rotateRol(String id);
     

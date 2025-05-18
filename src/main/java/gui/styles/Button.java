@@ -55,4 +55,8 @@ public class Button extends JButton {
     public void updateUI() {
         setUI(new BasicButtonUI());
     }
+
+    public void setPreferredSize(int i, int i1) {
+
+    }
 }
