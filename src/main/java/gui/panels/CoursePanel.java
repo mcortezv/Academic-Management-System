@@ -55,19 +55,20 @@ public class CoursePanel extends Panel {
         btnRotateRole.setPreferredSize(new Dimension(180, 40));
         //Create course button
         btnCreateCourse.addActionListener(e -> {
-            new CourseFormDialog(mainFrame, 0).setVisible(true);
+            new CourseFormDialog(mainFrame, 0,persistenceFacade).setVisible(true);
         });
         //Delete course button
         btnDeleteCourse.addActionListener(e -> {
-            new CourseFormDialog(mainFrame, 1).setVisible(true);
+            new CourseFormDialog(mainFrame, 1,persistenceFacade).setVisible(true);
         });
         //List courses button asdasda
         btnListCourses.addActionListener(e -> {
+            repaint();
             showPanel(courseTablePanel);
         });
         //Rotate role in course button
         btnRotateRole.addActionListener(e -> {
-            new CourseFormDialog(mainFrame, 0).setVisible(true);
+            new CourseFormDialog(mainFrame, 2,persistenceFacade).setVisible(true);
         });
 
         //Panels
