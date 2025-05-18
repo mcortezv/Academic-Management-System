@@ -172,11 +172,10 @@ public final class CourseFormDialog extends Dialog {
             
         }
 
-        Student courseTutor = persistence.rotateRol(course.getId());
-        if (courseTutor == null) {
+        if (persistence.rotateRol(course.getId()) == null) {
             JOptionPane.showMessageDialog(centerPanel,"No hay un nuevo tutor asignado, no se pudo rotar el rol ");
         } else {
-            JOptionPane.showMessageDialog(centerPanel, courseTutor.toString(), "Rol de lider rotado con exito, nuevo tutor: ", 1);
+            JOptionPane.showMessageDialog(centerPanel, persistence.rotateRol(course.getId()).toString(), "Rol de lider rotado con exito, nuevo tutor: ", 1);
             dispose();
         }
 

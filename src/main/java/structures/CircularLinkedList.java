@@ -5,6 +5,8 @@
 package structures;
 import structures.exceptions.ListException;
 import structures.nodes.SingleNode;
+
+import javax.swing.*;
 import java.util.Objects;
 
 /**
@@ -139,10 +141,12 @@ public class CircularLinkedList<T> {
      */
     public SingleNode<T> rotateNode(){
         if (P == null){
-            throw new ListException("El rol no se puede rotar porque no hay estudiantes.");
+            JOptionPane.showMessageDialog(null, "El rol no se puede rotar porque no hay estudiantes.", "Error", JOptionPane.ERROR_MESSAGE);
+            return new SingleNode<>();
         }
         if (tam < 2){
-            throw new ListException("El rol no se puede rotar porque no hay suficientes estudiantes.");
+            JOptionPane.showMessageDialog(null, "El rol no se puede rotar porque no hay suficientes estudiantes.", "Error", JOptionPane.ERROR_MESSAGE);
+            return new SingleNode<>();
         }
         ultimo.setNext(P);
         ultimo = P;

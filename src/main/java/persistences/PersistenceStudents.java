@@ -14,6 +14,7 @@ import structures.*;
 public final class PersistenceStudents {
     private final BinarySearchTree<Student> students;
     private AVLTree<Student> studentsByAverage;
+    private ArrayList<Student> studentArrayList;
 
     public PersistenceStudents() {
         this.students = new BinarySearchTree<>();
@@ -38,6 +39,13 @@ public final class PersistenceStudents {
     }
 
     public ArrayList<Student> listStudentsInOrderFromAVLTree() {
+        studentsByAverage.clear();
+        studentArrayList = listStudents();
+        for (Student student: studentArrayList){
+            if (student.getAverage() != 0.0){
+                studentsByAverage.insert(student);
+            }
+        }
         return studentsByAverage.listInOrderToArrayList();
     }
 
