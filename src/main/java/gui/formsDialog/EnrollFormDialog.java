@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gui.formsDialog;
+
 import components.Course;
 import components.Student;
 import gui.MainFrame;
@@ -14,18 +15,23 @@ import structures.ArrayList;
 import structures.HashDictionary;
 import javax.swing.*;
 import java.awt.*;
+import persistences.PersistenceCourses;
+import persistences.PersistenceStudents;
 
 /**
  *
  * @author david
  */
 public class EnrollFormDialog extends Dialog {
+
     private HashDictionary<String, Course> courseHashDictionary;
     private ArrayList<String> coursesKeys;
     private JComboBox<String> comboBox;
     private TextField idField;
     private IPersistenceFacade persistenceFacade;
     private EnrollmentPanel panel;
+    private Student student;
+    private Course course;
 
     public EnrollFormDialog(MainFrame owner, int option, IPersistenceFacade persistenceFacade, EnrollmentPanel panel) {
         super(owner, "", true);
@@ -39,11 +45,11 @@ public class EnrollFormDialog extends Dialog {
                 setTitle("Inscribir Estudiante");
                 caseEnrollStudent();
             }
-            case 1 ->{
+            case 1 -> {
                 setTitle("Estudiantes Inscritos");
                 caseListEnrolledStudents();
             }
-            case 2 ->{
+            case 2 -> {
                 setTitle("Estudiantes Espera");
                 caseWaitingListStudents();
             }
@@ -123,7 +129,7 @@ public class EnrollFormDialog extends Dialog {
         add(southPanel, BorderLayout.SOUTH);
     }
 
-    public void caseWaitingListStudents(){
+    public void caseWaitingListStudents() {
         setSize(400, 250);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
@@ -155,35 +161,52 @@ public class EnrollFormDialog extends Dialog {
         add(southPanel, BorderLayout.SOUTH);
     }
 
-    public void enrollStudentAction(){
+    public void enrollStudentAction() {
         String idStudent = idField.getText().trim();
+        PersistenceStudents students = persistenceFacade.getPersistenceStudents();
+        try {
+            student = students.searchStudent(idStudent);
+        } catch (structures.exceptions.TreeException ex) {
+            JOptionPane.showMessageDialog(null, "Estudiante No Encontrado ");
+            return;
+        }
+
         String idCourse = (String) comboBox.getSelectedItem();
+        PersistenceCourses courses = persistenceFacade.getPersistenceCourses();
+        course = courses.getCourseById(idCourse);
+        try {
+            course = courses.getCourseById(idCourse);
+        } catch (persistences.exceptions.PersistenceCoursesException ex) {
+            JOptionPane.showMessageDialog(null, "Curso No Encontrado ");
+            return;
+        }
+
         persistenceFacade.enrollStudentInCourse(idStudent, idCourse);
-        JOptionPane.showMessageDialog(null, "Estudiante Inscrito a la Clase: "+comboBox.getSelectedItem());
+        JOptionPane.showMessageDialog(null, "Estudiante Inscrito a la Clase: " + comboBox.getSelectedItem());
     }
 
-    public void enrolledStudents(){
+    public void enrolledStudents() {
         String idCourse = (String) comboBox.getSelectedItem();
         ArrayList<Student> students = persistenceFacade.showEnrolledStudentsInCourseArrayList(idCourse);
-        if (students.isEmpty()){
-            JOptionPane.showMessageDialog(null, "No Hay Estudiantes Inscritos: "+comboBox.getSelectedItem());
+        if (students.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No Hay Estudiantes Inscritos: " + comboBox.getSelectedItem());
         } else {
-            for (Student student: students){
-                panel.getTextArea().append(student.toString());
+            for (Student studentEnrolledStudents : students) {
+                panel.getTextArea().append(studentEnrolledStudents.toString());
             }
         }
 
     }
 
-    public void waitingListStudents(){
+    public void waitingListStudents() {
         String idCourse = (String) comboBox.getSelectedItem();
         persistenceFacade.showWaitingListForCourse(idCourse);
         ArrayList<Student> students = persistenceFacade.showWaitingListForCourseArrayList(idCourse);
-        if (students.isEmpty()){
-            JOptionPane.showMessageDialog(null, "No Hay Estudiantes En Lista de Espera: "+comboBox.getSelectedItem());
+        if (students.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No Hay Estudiantes En Lista de Espera: " + comboBox.getSelectedItem());
         } else {
-            for (Student student: students){
-                panel.getTextArea().append(student.toString());
+            for (Student studentWaitingList : students) {
+                panel.getTextArea().append(studentWaitingList.toString());
             }
         }
     }
