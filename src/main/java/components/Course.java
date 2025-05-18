@@ -32,6 +32,7 @@ public final class Course {
     public Course(String name){
         this.id = generateRandomId();
         this.name = name;
+        this.tutor = null;
         this.enrolledStudents = new PersistenceStudentsCourses();
         this.waitingList = new PersistenceWaitingListCourses();
         this.studentsWithAssignedRole = new PersistenceRoles();
@@ -40,6 +41,7 @@ public final class Course {
     public Course(String id, String name){
         this.id = generateRandomId();
         this.name = name;
+        this.tutor = null;
         this.enrolledStudents = new PersistenceStudentsCourses();
         this.waitingList = new PersistenceWaitingListCourses();
         this.studentsWithAssignedRole = new PersistenceRoles();
@@ -71,6 +73,7 @@ public final class Course {
             PersistenceWaitingListCourses waitingList, PersistenceRoles studentsWithAssignedRole) {
         this.id = id;
         this.name = name;
+        this.tutor = tutor;
         this.enrolledStudents = enrolledStudents;
         this.waitingList = waitingList;
         this.studentsWithAssignedRole = studentsWithAssignedRole;

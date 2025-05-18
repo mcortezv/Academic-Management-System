@@ -49,6 +49,7 @@ public final class PersistenceCourses {
     /**
      * Regresa el curso correspondiente al id que recibe como parametro.
      *
+     * @param id
      * @return courses
      */
     public Course getCourse(String id){
@@ -67,9 +68,8 @@ public final class PersistenceCourses {
     public void populateCourses() {
         Contact datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
         Student student1 = new Student("2222BBBB", "Sebas", datosContacto);
-        Course course = new Course("1111AAAA","cursoA");
-        course.setTutor(student1);
-        courses.put("1111AAAA", course);;
+        Course course = new Course("1111AAAA","cursoA",student1);        
+        courses.put("1111AAAA", course);
     }
     /**
      * 
@@ -84,5 +84,15 @@ public final class PersistenceCourses {
         }
     }
     return null;
+    }
+    
+    public Course getCourseById(String id){
+        for(String key : courses.getKeys()){
+            Course course = courses.get(key);
+            if(course.getId().equalsIgnoreCase(id.trim())){
+                return course;
+            }
+        }
+        return null;
     }
 }

@@ -11,7 +11,7 @@ import structures.*;
  *
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
-public class PersistenceStudents {
+public final class PersistenceStudents {
     private final BinarySearchTree<Student> students;
     private AVLTree<Student> studentsByAverage;
 
