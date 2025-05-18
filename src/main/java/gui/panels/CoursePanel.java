@@ -39,7 +39,7 @@ public class CoursePanel extends Panel {
         btnRotateRole = new Button("Rotar Rol");
         mainCoursePanel = new JPanel();
         mainCoursePanel.setBackground(Color.WHITE);
-        courseTablePanel = new CourseTablePanel(mainFrame.getIPersistenceFacade().lisCourses(), this, persistenceFacade);
+
 
 
         //comentarioxxx
@@ -63,6 +63,7 @@ public class CoursePanel extends Panel {
         });
         //List courses button asdasda
         btnListCourses.addActionListener(e -> {
+            courseTablePanel = new CourseTablePanel(this, persistenceFacade);
             repaint();
             showPanel(courseTablePanel);
         });

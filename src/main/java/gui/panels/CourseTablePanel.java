@@ -25,10 +25,9 @@ public class CourseTablePanel extends JPanel {
     private JPanel southPanel;
     private Button btnBack;
     private IPersistenceFacade persistenceFacade;
-
     private HashDictionary<String, Course> cursosDictionary;
 
-    public CourseTablePanel(HashDictionary<String, Course> courses, CoursePanel coursePanel, IPersistenceFacade persistenceFacade) {
+    public CourseTablePanel(CoursePanel coursePanel, IPersistenceFacade persistenceFacade) {
         this.persistenceFacade = persistenceFacade;
         setLayout(new BorderLayout());
         setBackground(Style.PANEL_COLOR);
@@ -46,9 +45,8 @@ public class CourseTablePanel extends JPanel {
 
         //Table model
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
-
-        if (courses != null) {
-            this.cursosDictionary = courses;
+        cursosDictionary = persistenceFacade.lisCourses();
+        if (cursosDictionary != null) {
             for (Course course : cursosDictionary.getValues()) {
                 Object[] row = {
                     course.getId(),
