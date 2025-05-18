@@ -5,12 +5,15 @@
 package interfaces;
 import components.Course;
 import components.Student;
+import gui.styles.Panel;
 import persistences.PersistenceStudents;
 import persistences.PersistenceStudentsCourses;
 import persistences.PersistenceWaitingListCourses;
 import structures.ArrayList;
 import structures.BinarySearchTree;
 import structures.HashDictionary;
+
+import javax.swing.*;
 
 /**
  *
@@ -44,7 +47,7 @@ public interface IPersistenceFacade {
 
     ArrayList<Double> requestListGrades(String studentId);
 
-    void undoAction();
+    void undoAction(JPanel panel);
 
     ArrayList<Student> listStudents();
 

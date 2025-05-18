@@ -24,7 +24,6 @@ import validators.Validator;
  * @author david
  */
 public final class StudentFormDialog extends JDialog {
-
     private JPanel centerPanel;
     private JPanel southPanel;
     private MainFrame mainFrame;

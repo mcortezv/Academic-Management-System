@@ -18,22 +18,15 @@ public class Action {
      */
     public enum Type {
         addStudent,
-        searchStudent,
         removeStudent,
         addCourse,
         removeCourse,
-        listCourses,
         enrollStudentInCourse,
-        showEnrolledStudentsInCourse,
-        showWaitingListForCourse,
         submitGradesRequest,
         processNextRequest,
-        listStudents,
-        listStudentsByAverage,
         rotateRoles,
         addGrade,
         updateGrade,
-        getAverage,
         listGrades,
     }
 

@@ -10,10 +10,13 @@ import components.Request;
 import components.Student;
 import components.dtos.StudentCourseDTO;
 import components.dtos.StudentGradeDTO;
+import gui.styles.Panel;
 import interfaces.IPersistenceFacade;
 import structures.ArrayList;
 import structures.BinarySearchTree;
 import structures.HashDictionary;
+
+import javax.swing.*;
 
 /**
  * Clase que actua como fachada para las distintas capas de persistencia del
@@ -68,7 +71,6 @@ public class PersistenceFacade implements IPersistenceFacade {
      */
     @Override
     public Student searchStudentById(String id) {
-        persistenceActions.addAction(new Action(Action.Type.searchStudent, id));
         return persistenceStudents.searchStudent(id);
     }
 
@@ -103,7 +105,6 @@ public class PersistenceFacade implements IPersistenceFacade {
      */
     @Override
     public HashDictionary<String, Course> lisCourses() {
-        persistenceActions.addAction(new Action(Action.Type.listCourses, null));
         return persistenceCourses.listCourses();
     }
 
@@ -132,7 +133,6 @@ public class PersistenceFacade implements IPersistenceFacade {
     public PersistenceStudentsCourses showEnrolledStudentsInCourse(String id) {
         Course course = persistenceCourses.getCourse(id);
         if (course != null) {
-            persistenceActions.addAction(new Action(Action.Type.showEnrolledStudentsInCourse, id));
             return course.getEnrolledStudents();
         }
         return null;
@@ -147,7 +147,6 @@ public class PersistenceFacade implements IPersistenceFacade {
     public PersistenceWaitingListCourses showWaitingListForCourse(String id) {
         Course course = persistenceCourses.getCourse(id);
         if (course != null) {
-            persistenceActions.addAction(new Action(Action.Type.showWaitingListForCourse, id));
             return course.getWaitingList();
         }
         return null;
@@ -205,7 +204,6 @@ public class PersistenceFacade implements IPersistenceFacade {
     public Double getAverage(String studentId) {
         Student student = persistenceStudents.searchStudent(studentId);
         if (student != null) {
-            persistenceActions.addAction(new Action(Action.Type.getAverage, studentId));
             return student.getAverage();
         }
         return null;
@@ -221,7 +219,6 @@ public class PersistenceFacade implements IPersistenceFacade {
     public ArrayList<Double> requestListGrades(String studentId) {
         Student student = persistenceStudents.searchStudent(studentId);
         if (student != null) {
-            persistenceActions.addAction(new Action(Action.Type.listGrades, studentId));
             return student.listGrades();
         }
         return null;
@@ -231,8 +228,8 @@ public class PersistenceFacade implements IPersistenceFacade {
      * Deshace la ultima accion registrada
      */
     @Override
-    public void undoAction() {
-        persistenceActions.undoLastAction();
+    public void undoAction(JPanel panel) {
+        persistenceActions.undoLastAction(panel);
     }
 
     /**
@@ -242,7 +239,6 @@ public class PersistenceFacade implements IPersistenceFacade {
      */
     @Override
     public ArrayList<Student> listStudents() {
-        persistenceActions.addAction(new Action(Action.Type.listStudents, null));
         return persistenceStudents.listStudents();
     }
 
@@ -253,7 +249,6 @@ public class PersistenceFacade implements IPersistenceFacade {
      */
     @Override
     public ArrayList<Student> listStudentsByAverage() {
-        persistenceActions.addAction(new Action(Action.Type.listStudentsByAverage, null));
         return persistenceStudents.listStudentsInOrderFromAVLTree();
     }
 

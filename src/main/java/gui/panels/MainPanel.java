@@ -4,6 +4,7 @@
  */
 package gui.panels;
 import gui.styles.Button;
+import gui.styles.Panel;
 import gui.styles.Style;
 import interfaces.IPersistenceFacade;
 import java.awt.*;
@@ -43,7 +44,7 @@ public class MainPanel extends JPanel {
         //Buttons
         //Undo Action
         btnUndo.addActionListener(e -> {
-            persistenceFacade.undoAction();
+            persistenceFacade.undoAction( this);
         });
 
         add(centerPanel, BorderLayout.CENTER);
