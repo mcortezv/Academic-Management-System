@@ -19,6 +19,7 @@ public class PersistenceStudents {
     public PersistenceStudents() {
         this.students = new BinarySearchTree<>();
         this.studentsByAverage = new AVLTree<>();
+        populateStudents();
     }
 
     public void addStudent(Student student) {
@@ -34,8 +35,7 @@ public class PersistenceStudents {
     }
 
     public Student searchStudent(String studentId) {
-        Contact datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
-        return students.get(new Student("1923WSS", datosContacto));
+        return students.get(studentId);
     }
 
     public BinarySearchTree<Student> listStudents() {
@@ -56,12 +56,14 @@ public class PersistenceStudents {
             studentsByAverage = new AVLTree<>();
         }
         Contact datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
-        Student student1 = new Student("1923WSS", datosContacto);
-        Student student2 = new Student("1234NNS", datosContacto);
+        Student student1 = new Student("1111AAAA", "Sebas", datosContacto);
+        Student student2 = new Student("2222BBBB", "Manuel", datosContacto);
         student1.addGrade(10.0);
         student1.addGrade(9.0);
         studentsByAverage.insert(student1);
         studentsByAverage.insert(student2);
+        students.insert(student1);
+        students.insert(student2);
         System.out.println("Datos insertados en el árbol.");
     }
 

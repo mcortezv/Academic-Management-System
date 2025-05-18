@@ -3,19 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gui.panels;
-
 import components.Course;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
 import gui.styles.Button;
 import gui.styles.Style;
+import interfaces.IPersistenceFacade;
 import structures.HashDictionary;
 
 /**
@@ -23,20 +21,20 @@ import structures.HashDictionary;
  * @author david
  */
 public class CourseTablePanel extends JPanel {
-
     private JPanel centralPanel;
     private JPanel southPanel;
     private Button btnBack;
+    private IPersistenceFacade persistenceFacade;
 
     private HashDictionary<String, Course> cursosDictionary;
 
-    public CourseTablePanel(HashDictionary<String, Course> courses, CoursePanel coursePanel) {
+    public CourseTablePanel(HashDictionary<String, Course> courses, CoursePanel coursePanel, IPersistenceFacade persistenceFacade) {
+        this.persistenceFacade = persistenceFacade;
         setLayout(new BorderLayout());
         setBackground(Style.PANEL_COLOR);
         centralPanel = new JPanel();
         southPanel = new JPanel();
         btnBack = new Button("Volver");
-        
         centralPanel.setPreferredSize(new Dimension(200, 300));
         southPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         southPanel.setPreferredSize(new Dimension(500, 45));

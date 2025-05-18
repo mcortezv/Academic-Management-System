@@ -1,10 +1,8 @@
-package structures;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-import java.util.List;
+package structures;
 import structures.nodes.DictionaryNode;
 
 /**
@@ -21,8 +19,9 @@ public class HashDictionary<K, V> {
         this.table = new DictionaryNode[capacidadInicial];
         this.size = 0;
     }
-    public List<V> getValues() {
-        List<V> values = new java.util.ArrayList<>();
+
+    public ArrayList<V> getValues() {
+         ArrayList<V> values = new ArrayList<>(size);
         for (int i = 0; i < capacity; i++) {
             DictionaryNode<K, V> actual = table[i];
             while (actual != null) {
@@ -31,6 +30,28 @@ public class HashDictionary<K, V> {
             }
         }
         return values;
+    }
+
+    /**
+     * Devuelve una representación de todos los valores almacenados en la tabla hash.
+     *
+     * @return String con los valores.
+     */
+    public String getKeysAndValues() {
+        return getKeysAndValues(table);
+    }
+
+    private String getKeysAndValues(DictionaryNode<K, V>[] table) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < capacity; i++) {
+            DictionaryNode<K, V> actual = table[i];
+            while (actual != null) {
+                sb.append(actual.getValue()).append("\n");
+                sb.append(actual.getKey()).append(" -> ").append(actual.getValue()).append("\n");
+                actual = actual.getNext();
+            }
+        }
+        return sb.toString();
     }
 
     public int getSize() {

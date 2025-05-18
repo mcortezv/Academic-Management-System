@@ -4,7 +4,12 @@
  */
 package structures;
 import structures.exceptions.ListException;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 /**
  * Implementación de una lista basada en un array.
@@ -12,7 +17,7 @@ import java.util.Objects;
  * @param <T> Tipo de elementos almacenados en la lista.
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
-public class ArrayList<T> {
+public class ArrayList<T> implements Iterable<T> {
     public int numObjects;
     public T[] array;
 
@@ -127,4 +132,25 @@ public class ArrayList<T> {
         this.numObjects = 0;
         this.array = (T[]) new Object[array.length];
     }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private int currentIndex = 0;
+
+            @Override
+            public boolean hasNext() {
+                return currentIndex < numObjects;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return array[currentIndex++];
+            }
+        };
+    }
+
 }

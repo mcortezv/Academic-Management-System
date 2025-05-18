@@ -7,6 +7,7 @@ package gui.panels;
 import gui.MainFrame;
 import gui.styles.Panel;
 import gui.styles.Button;
+import interfaces.IPersistenceFacade;
 
 import java.awt.Dimension;
 
@@ -15,14 +16,16 @@ import java.awt.Dimension;
  * @author david
  */
 public class GradePanel extends Panel {
-    Button btnAddGrade;
-    Button btnUpdateGrade;
-    Button btnDeleteGrade;
-    Button btnListGrades;
-    Button btnAverageStudent;
+    private Button btnAddGrade;
+    private Button btnUpdateGrade;
+    private Button btnDeleteGrade;
+    private Button btnListGrades;
+    private Button btnAverageStudent;
+    private IPersistenceFacade persistenceFacade;
 
-    public GradePanel(MainFrame frame, NorthPanel northPanel) {
+    public GradePanel(MainFrame frame, NorthPanel northPanel, IPersistenceFacade persistenceFacade) {
         super(frame, northPanel);
+        this.persistenceFacade = persistenceFacade;
     }
 
     @Override

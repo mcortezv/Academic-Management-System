@@ -18,7 +18,6 @@ import javax.swing.border.EmptyBorder;
  * @author david
  */
 public class NorthPanel extends JPanel {
-
     private Button btnInUse;
 
     public NorthPanel() {
@@ -32,13 +31,13 @@ public class NorthPanel extends JPanel {
         int width = getWidth();
         int height = getHeight();
 
-        g.setColor(Style.PANEL_COLOR);
+        g.setColor(Style.BACKGROUND_COLOR);
         g.fillRect(0, 0, width, height);
         Graphics2D g2 = (Graphics2D) g;
 
         if (btnInUse != null) {
             Rectangle r = btnInUse.getBounds();
-            g2.setColor(new Color(200, 220, 255));
+            g2.setColor(Color.WHITE);
             g2.fillRoundRect(r.x - 5, r.y - 5, r.width + 10, r.height + 10, 15, 15);
         } else {
             g2.setColor(Style.PANEL_COLOR);

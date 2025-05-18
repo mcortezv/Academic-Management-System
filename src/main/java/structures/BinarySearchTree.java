@@ -75,36 +75,36 @@ public class BinarySearchTree<T extends Identificable> {
     /**
      * Busca un dato en el árbol y lo devuelve si se encuentra.
      *
-     * @param dato el dato a buscar en el árbol
+     * @param id el dato a buscar en el árbol
      * @return el dato encontrado en el árbol
      * @throws TreeException si el dato no se encuentra en el árbol o es null
      */
-    public T get(T dato) {
-        if (dato == null) {
+    public T get(String id) {
+        if (id == null) {
             throw new TreeException("El dato no puede ser nulo");
         }
-        return get(raiz, dato);
+        return get(raiz, id);
     }
 
     /**
      * Método recursivo auxiliar para buscar un dato en el árbol.
      *
      * @param nodo el nodo actual en la búsqueda recursiva
-     * @param dato el dato a buscar
+     * @param id el dato a buscar
      * @return el dato encontrado
      * @throws TreeException si el dato no se encuentra en el subárbol
      */
-    private T get(BinaryTreeNode<T> nodo, T dato) {
+    private T get(BinaryTreeNode<T> nodo, String id) {
         if (nodo == null) {
             throw new TreeException("Dato no encontrado en el árbol");
         }
-        int comparacion = dato.compareTo(nodo.getValue());
+        int comparacion = id.compareTo(nodo.getValue().getId());
         if (comparacion == 0) {
             return nodo.getValue();
         } else if (comparacion < 0) {
-            return get(nodo.getLeft(), dato);
+            return get(nodo.getLeft(), id);
         } else {
-            return get(nodo.getRight(), dato);
+            return get(nodo.getRight(), id);
         }
     }
 
@@ -153,12 +153,12 @@ public class BinarySearchTree<T extends Identificable> {
     /**
      * Verifica si un dato existe en el árbol.
      *
-     * @param dato el dato a buscar
+     * @param id el dato a buscar
      * @return true si el dato existe en el árbol, false en caso contrario
      */
-    public boolean contains(T dato) {
+    public boolean contains(String id) {
         try {
-            get(dato);
+            get(id);
         } catch (TreeException e) {
             return false;
         }

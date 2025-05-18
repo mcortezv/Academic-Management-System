@@ -3,12 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gui;
-
 import gui.styles.Button;
 import gui.styles.Style;
 import interfaces.IPersistenceFacade;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+
+import java.awt.*;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
@@ -19,8 +18,6 @@ import gui.panels.MainPanel;
 import gui.panels.NorthPanel;
 import gui.panels.ReportPanel;
 import gui.panels.StudentPanel;
-import persistences.PersistenceFacade;
-import persistences.PersistenceStudents;
 
 /**
  *
@@ -45,11 +42,10 @@ public final class MainFrame extends JFrame {
     private final IPersistenceFacade persistenciaFacade;    
 
     public MainFrame(IPersistenceFacade persistenciaFacade) {
-        getContentPane().setBackground(Style.BACKGROUND_COLOR);
         this.persistenciaFacade = persistenciaFacade;
         startComponents();
         setTitle("Gestion de estudiantes");
-        setSize(800, 500);
+        setSize(1280, 720);
         setJMenuBar(menuBar);
         add(centralPanel, BorderLayout.CENTER);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,8 +65,7 @@ public final class MainFrame extends JFrame {
         btnReport = new Button("Reportes");
         
         //Main panel
-        mainPanel = new MainPanel();
-        mainPanel.setBackground(Style.BACKGROUND_COLOR);
+        mainPanel = new MainPanel(persistenciaFacade);
         
         //North panel
         northPanel = new NorthPanel();
@@ -78,13 +73,14 @@ public final class MainFrame extends JFrame {
         //Central Panel
         centralPanel = new JPanel();
         centralPanel.add(mainPanel);
+        centralPanel.setBackground(Style.PANEL_COLOR);
         add(centralPanel, BorderLayout.CENTER);
 
         // Initialize panels
-        studentPanel = new StudentPanel(this, northPanel);
-        coursePanel = new CoursePanel(this, northPanel);
-        enrollmentPanel = new EnrollmentPanel(this, northPanel);
-        gradePanel = new GradePanel(this, northPanel);
+        studentPanel = new StudentPanel(this, northPanel, persistenciaFacade);
+        coursePanel = new CoursePanel(this, northPanel , persistenciaFacade);
+        enrollmentPanel = new EnrollmentPanel(this, northPanel , persistenciaFacade);
+        gradePanel = new GradePanel(this, northPanel , persistenciaFacade);
         reportPanel = new ReportPanel(this, northPanel, persistenciaFacade);
         reportPanel.startComponents();
         
@@ -96,11 +92,11 @@ public final class MainFrame extends JFrame {
         northPanel.add(btnReport);
         
         //Buttons
-        btnStudents.setPreferredSize(new Dimension(120, 25));
-        btnCourse.setPreferredSize(new Dimension(120, 25));
-        btnEnrollments.setPreferredSize(new Dimension(120, 25));
-        btnGrades.setPreferredSize(new Dimension(120, 25));
-        btnReport.setPreferredSize(new Dimension(120, 25));
+        btnStudents.setPreferredSize(new Dimension(170, 40));
+        btnCourse.setPreferredSize(new Dimension(170, 40));
+        btnEnrollments.setPreferredSize(new Dimension(170, 40));
+        btnGrades.setPreferredSize(new Dimension(170, 40));
+        btnReport.setPreferredSize(new Dimension(170, 40));
         btnStudents.addActionListener(e -> showPanel(studentPanel));
         btnStudents.addActionListener(e -> {
             btnInUse = btnStudents;

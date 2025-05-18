@@ -4,6 +4,7 @@ import gui.formsDialog.StudentFormDialog;
 import gui.MainFrame;
 import gui.styles.Panel;
 import gui.styles.Button;
+import interfaces.IPersistenceFacade;
 
 import java.awt.Dimension;
 
@@ -15,10 +16,11 @@ public class StudentPanel extends Panel {
     private Button btnAddStudent;
     private Button btnDeleteStudent;
     private Button btnSearchStudent;
+    private IPersistenceFacade persistenceFacade;
 
-    public StudentPanel(MainFrame frame, NorthPanel northPanel) {
+    public StudentPanel(MainFrame frame, NorthPanel northPanel, IPersistenceFacade persistenceFacade) {
         super(frame, northPanel);
-
+        this.persistenceFacade = persistenceFacade;
     }
 
     @Override
@@ -33,15 +35,15 @@ public class StudentPanel extends Panel {
         btnSearchStudent.setPreferredSize(new Dimension(150, 30));
             //Add student button
             btnAddStudent.addActionListener(e -> { 
-                new StudentFormDialog(mainFrame, null, 0).setVisible(true);
+                new StudentFormDialog(mainFrame, persistenceFacade, 0).setVisible(true);
             });
             //Delete student button
             btnDeleteStudent.addActionListener(e -> { 
-                new StudentFormDialog(mainFrame, null, 1).setVisible(true);
+                new StudentFormDialog(mainFrame, persistenceFacade, 1).setVisible(true);
             });
             //Search student button
             btnSearchStudent.addActionListener(e -> { 
-                new StudentFormDialog(mainFrame, null, 2).setVisible(true);
+                new StudentFormDialog(mainFrame, persistenceFacade, 2).setVisible(true);
             });
 
         //Paneles

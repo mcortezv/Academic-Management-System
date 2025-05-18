@@ -7,6 +7,8 @@ package gui.panels;
 import gui.MainFrame;
 import gui.styles.Panel;
 import gui.styles.Button;
+import interfaces.IPersistenceFacade;
+
 import java.awt.Dimension;
 
 /**
@@ -14,12 +16,14 @@ import java.awt.Dimension;
  * @author david
  */
 public class EnrollmentPanel extends Panel {
-    Button btnEnrollStudent;
-    Button btnEnrolledStudents;
-    Button btnWaitList;
+    private Button btnEnrollStudent;
+    private Button btnEnrolledStudents;
+    private Button btnWaitList;
+    private IPersistenceFacade persistenceFacade;
 
-    public EnrollmentPanel(MainFrame frame, NorthPanel northPanel) {
+    public EnrollmentPanel(MainFrame frame, NorthPanel northPanel, IPersistenceFacade persistenceFacade) {
         super(frame, northPanel);
+        this.persistenceFacade = persistenceFacade;
     }
 
     @Override

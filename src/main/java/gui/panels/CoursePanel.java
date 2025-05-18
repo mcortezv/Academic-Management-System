@@ -7,6 +7,8 @@ import gui.formsDialog.CourseFormDialog;
 import gui.MainFrame;
 import gui.styles.Panel;
 import gui.styles.Button;
+import interfaces.IPersistenceFacade;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -18,16 +20,17 @@ import javax.swing.JPanel;
  * @author david
  */
 public class CoursePanel extends Panel {
-
     private Button btnCreateCourse;
     private Button btnDeleteCourse;
     private Button btnListCourses;
     private Button btnRotateRole;
     private JPanel mainCoursePanel;
     private CourseTablePanel courseTablePanel;
+    private IPersistenceFacade persistenceFacade;
 
-    public CoursePanel(MainFrame frame, NorthPanel northPanel) {
+    public CoursePanel(MainFrame frame, NorthPanel northPanel, IPersistenceFacade persistenceFacade) {
         super(frame, northPanel);
+        this.persistenceFacade = persistenceFacade;
     }
 
     @Override
@@ -37,7 +40,7 @@ public class CoursePanel extends Panel {
         btnListCourses = new Button("Ver cursos");
         btnRotateRole = new Button("Rotar rol de estudiante");
         mainCoursePanel = new JPanel();
-        courseTablePanel = new CourseTablePanel(mainFrame.getIPersistenceFacade().lisCourses(), this);
+        courseTablePanel = new CourseTablePanel(mainFrame.getIPersistenceFacade().lisCourses(), this, persistenceFacade);
         
         
         //comentarioxxx
