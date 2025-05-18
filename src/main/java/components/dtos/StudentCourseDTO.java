@@ -2,15 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package components;
+package components.dtos;
 
-/**
+ import components.Course;
+ import components.Student;
+
+ /**
  * Clase que funciona como intermediaria para relacionar un estudiante con un
  * curso especifico
  *
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
-public class StudentCourse {
+public class StudentCourseDTO {
     private Student student;
     private Course course;
 
@@ -21,7 +24,7 @@ public class StudentCourse {
      * @param student
      * @param course
      */
-    public StudentCourse(Student student, Course course) {
+    public StudentCourseDTO(Student student, Course course) {
         this.student = student;
         this.course = course;
     }

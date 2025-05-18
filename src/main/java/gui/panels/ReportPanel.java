@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gui.panels;
-
 import components.Student;
 import gui.MainFrame;
 import gui.styles.Panel;
@@ -12,19 +11,16 @@ import interfaces.IPersistenceFacade;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import persistences.PersistenceStudents;
 import structures.AVLTree;
-import structures.Pair;
 
 /**
  *
  * @author david
  */
 public final class ReportPanel extends Panel {
-
     private Button btnListAverageStudents;
     private JTextArea txtAreaReportStudents;
     private JScrollPane jsp;
@@ -59,26 +55,19 @@ public final class ReportPanel extends Panel {
     }
 
     public void showStudents() {
-
-        txtAreaReportStudents.setText("ESTUDIANTES REGISTRADOS EN EL SISTEMA");
+        txtAreaReportStudents.setText("ESTUDIANTES REGISTRADOS EN EL SISTEMA\n");
         PersistenceStudents persistenceStudents = persistenceFacade.getPersistenceStudents();
         persistenceStudents.populateStudents();
-
-        if (persistenceStudents != null) {
-            AVLTree<Pair<Double, Student>> studentsByAverage = persistenceStudents.getStudentsByAverage();
-
-            if (studentsByAverage != null) {
-                String studentsData = studentsByAverage.inOrderToString();
-                txtAreaReportStudents.setText(studentsByAverage.inOrderToString());
-                if (!studentsData.isEmpty()) {
-                    txtAreaReportStudents.append(studentsData);
-                } else {
-                    txtAreaReportStudents.append("\nEl árbol está vacío.");
-                }
+        AVLTree<Student> studentsByAverage = persistenceStudents.getStudentsByAverage();
+        if (studentsByAverage == null) {
+            txtAreaReportStudents.setText("\nNo hay estudiantes registrados");
+        } else {
+            String studentsData = studentsByAverage.listInOrderToString();
+            if (studentsData.isEmpty()) {
+                txtAreaReportStudents.append("\nEl árbol está vacío.");
             } else {
-                txtAreaReportStudents.setText("No hay estudiantes registrados");
+                txtAreaReportStudents.append(studentsByAverage.listInOrderToString());
             }
-
         }
 
     }

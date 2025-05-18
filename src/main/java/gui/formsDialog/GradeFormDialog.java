@@ -14,7 +14,7 @@ import gui.styles.Dialog;
 public class GradeFormDialog extends Dialog {
     
     public GradeFormDialog(MainFrame owner, int option) {
-        super(owner, option);
+        super(owner, "", true);
         
     }
     

@@ -3,20 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package persistences;
-
+import components.Contact;
 import components.Student;
 import structures.AVLTree;
 import structures.BinarySearchTree;
-import structures.Pair;
 
 /**
  *
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class PersistenceStudents {
-
     private final BinarySearchTree<Student> students;
-    private AVLTree<Pair<Double, Student>> studentsByAverage;
+    private AVLTree<Student> studentsByAverage;
 
     public PersistenceStudents() {
         this.students = new BinarySearchTree<>();
@@ -26,20 +24,18 @@ public class PersistenceStudents {
     public void addStudent(Student student) {
         students.insert(students.raiz, student);
         Double average = student.getAverage();
-        Pair<Double, Student> studentToAVLTree = new Pair<>(average, student);
-        studentsByAverage.insert(studentToAVLTree);
+        studentsByAverage.insert(student);
     }
 
     public void removeStudent(Student student) {
         students.remove(student);
         Double average = student.getAverage();
-        Pair<Double, Student> studentToTakeOutFromAVLTree = new Pair<>(average, student);
-        studentsByAverage.remove(studentToTakeOutFromAVLTree);
+        studentsByAverage.remove(student);
     }
 
     public Student searchStudent(String studentId) {
-        Student studentToFind = new Student(studentId);
-        return students.get(studentToFind);
+        Contact datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
+        return students.get(new Student("1923WSS", datosContacto));
     }
 
     public BinarySearchTree<Student> listStudents() {
@@ -47,11 +43,11 @@ public class PersistenceStudents {
     }
 
     public void listStudentsInOrderFromAVLTree() {
-        studentsByAverage.ListinOrder();
+        studentsByAverage.listInOrderToString();
     }
 
-    public AVLTree<Pair<Double, Student>> getStudentsByAverage() {
-        System.out.println("Contenido del arbol antes de retornar: " + studentsByAverage.inOrderToString());
+    public AVLTree<Student> getStudentsByAverage() {
+        System.out.println("Contenido del arbol antes de retornar: " + studentsByAverage.listInOrderToString());
         return studentsByAverage;
     }
 
@@ -59,13 +55,13 @@ public class PersistenceStudents {
         if (studentsByAverage == null) {
             studentsByAverage = new AVLTree<>();
         }
-
-        Student student1 = new Student("1923WSS");
-        Student student2 = new Student("1234NNS");
-
-        studentsByAverage.insert(new Pair<>(8.5, student1));
-        studentsByAverage.insert(new Pair<>(9.0, student2));
-
+        Contact datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
+        Student student1 = new Student("1923WSS", datosContacto);
+        Student student2 = new Student("1234NNS", datosContacto);
+        student1.addGrade(10.0);
+        student1.addGrade(9.0);
+        studentsByAverage.insert(student1);
+        studentsByAverage.insert(student2);
         System.out.println("Datos insertados en el árbol.");
     }
 

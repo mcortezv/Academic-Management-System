@@ -14,6 +14,6 @@ import gui.styles.Dialog;
 public class EnrollFormDialog extends Dialog {
     
     public EnrollFormDialog(MainFrame owner, int option) {
-        super(owner, option);
+        super(owner, "", true);
     }
    }

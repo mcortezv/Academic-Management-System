@@ -6,6 +6,7 @@ package persistences;
 
 import components.Action;
 import components.Request;
+import components.dtos.StudentGradeDTO;
 import structures.ArrayList;
 import structures.Queue;
 
@@ -29,21 +30,21 @@ public class PersistenceRequests {
 
     public ArrayList<Double> processNextRequest() {
         Request request = requests.dequeue();
+        StudentGradeDTO studentGradeDTO = (StudentGradeDTO) request.getData();
+        Double grade = studentGradeDTO.getGrade();
         if (request.getType() == Request.Type.addGrade) {
-            request.getStudent().addGrade((Double) request.getData());
-            persistenceActions.addAction(new Action(Action.Type.addGrade, request.getStudent(), request.getData()));
+            studentGradeDTO.getStudent().addGrade(grade);
+            persistenceActions.addAction(new Action(Action.Type.addGrade, studentGradeDTO));
         } else if (request.getType() == Request.Type.removeGrade) {
-            request.getStudent().updateGrade(0.0, (int) request.getData());
-            persistenceActions.addAction(new Action(Action.Type.updateGrade, request.getStudent(), request.getData()));
+            studentGradeDTO.getStudent().updateGrade(0.0, studentGradeDTO.getIndex());
+            persistenceActions.addAction(new Action(Action.Type.updateGrade, studentGradeDTO));
         } else if (request.getType() == Request.Type.updateGrade) {
-            request.getStudent().updateGrade((Double) request.getData(), request.getIndex());
-            persistenceActions.addAction(new Action(Action.Type.updateGrade, request.getStudent(), request.getData(), request.getIndex()));
+            studentGradeDTO.getStudent().updateGrade(studentGradeDTO.getGrade(), studentGradeDTO.getIndex());
+            persistenceActions.addAction(new Action(Action.Type.updateGrade, studentGradeDTO));
         } else if (request.getType() == Request.Type.listGrades) {
-            persistenceActions.addAction(new Action(Action.Type.listGrades, request.getStudent()));
-            return request.getStudent().listGrades();
-
+            persistenceActions.addAction(new Action(Action.Type.listGrades, studentGradeDTO));
+            return studentGradeDTO.getStudent().listGrades();
         }
         return null;
     }
-
 }

@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 public class CourseFormDialog extends Dialog {
 
     public CourseFormDialog(MainFrame owner, int option) {
-        super(owner, option);
+        super(owner, "", true);
 
         switch (option) {
             case 0:

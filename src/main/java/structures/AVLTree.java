@@ -1,6 +1,5 @@
 package structures;
-
-import components.Student;
+import interfaces.Identificable;
 import structures.exceptions.TreeException;
 import structures.nodes.AVLTreeNode;
 
@@ -12,8 +11,7 @@ import structures.nodes.AVLTreeNode;
  *
  * @param <T> el tipo de dato que se almacenará, debe ser comparable
  */
-public class AVLTree<T extends Comparable<T>> {
-
+public class AVLTree<T extends Identificable> {
     private AVLTreeNode<T> raiz;
     private int altura;
 
@@ -30,7 +28,7 @@ public class AVLTree<T extends Comparable<T>> {
         if (nodo == null) {
             return new AVLTreeNode<>(dato);
         }
-        int cmp = dato.compareTo(nodo.getValue());
+        int cmp = dato.getAverage().compareTo(nodo.getValue().getAverage());
         if (cmp < 0) {
             nodo.setLeft(insert(nodo.getLeft(), dato));
         } else if (cmp > 0) {
@@ -193,7 +191,7 @@ public class AVLTree<T extends Comparable<T>> {
     /**
      *
      */
-    public void ListinOrder() {
+    public void listInOrder() {
         inOrder(raiz);
     }
 
@@ -213,7 +211,7 @@ public class AVLTree<T extends Comparable<T>> {
      *
      * @return
      */
-    public String inOrderToString() {
+    public String listInOrderToString() {
         return inOrderToString(raiz);
     }
 

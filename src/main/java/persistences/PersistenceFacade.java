@@ -8,7 +8,8 @@ import components.Action;
 import components.Course;
 import components.Request;
 import components.Student;
-import components.StudentCourse;
+import components.dtos.StudentCourseDTO;
+import components.dtos.StudentGradeDTO;
 import interfaces.IPersistenceFacade;
 import structures.ArrayList;
 import structures.BinarySearchTree;
@@ -117,7 +118,7 @@ public class PersistenceFacade implements IPersistenceFacade {
         Student student = persistenceStudents.searchStudent(studentId);
         Course course = persistenceCourses.getCourse(courseId);
         if (course != null && student != null) {
-            persistenceActions.addAction(new Action(Action.Type.enrollStudentInCourse, new StudentCourse(student, course)));
+            persistenceActions.addAction(new Action(Action.Type.enrollStudentInCourse, new StudentCourseDTO(student, course)));
             course.getEnrolledStudents().enrollStudentCourse(student);
         }
     }
@@ -170,9 +171,10 @@ public class PersistenceFacade implements IPersistenceFacade {
     @Override
     public void requestAddGrade(String studentId, Double grade) {
         Student student = persistenceStudents.searchStudent(studentId);
+        StudentGradeDTO studentGradeDTO = new StudentGradeDTO(student, grade, -1);
         if (student != null) {
             student.addGrade(grade);
-            persistenceRequests.addRequest(new Request(Request.Type.addGrade, student, grade));
+            persistenceRequests.addRequest(new Request(Request.Type.addGrade, studentGradeDTO));
         }
     }
 
@@ -186,9 +188,10 @@ public class PersistenceFacade implements IPersistenceFacade {
     @Override
     public void requestUpdateGrade(String studentId, Double grade, int index) {
         Student student = persistenceStudents.searchStudent(studentId);
+        StudentGradeDTO studentGradeDTO = new StudentGradeDTO(student, grade, index);
         if (student != null) {
             student.updateGrade(grade, index);
-            persistenceRequests.addRequest(new Request(Request.Type.updateGrade, student, grade, index));
+            persistenceRequests.addRequest(new Request(Request.Type.updateGrade, studentGradeDTO));
         }
     }
 

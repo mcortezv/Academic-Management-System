@@ -32,7 +32,7 @@ public class BinarySearchTree<T extends Identificable> {
      */
     private BinaryTreeNode<T> findBiggestNode(BinaryTreeNode<T> nodo) {
         if (nodo == null) {
-            return null;
+            throw new TreeException("El arbol esta vacío");
         }
         BinaryTreeNode<T> actual = nodo;
         while (actual.getRight() != null) {
