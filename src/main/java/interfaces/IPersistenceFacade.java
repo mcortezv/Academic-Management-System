@@ -48,6 +48,8 @@ public interface IPersistenceFacade {
     Student rotateRol(String id);
     
     PersistenceStudents getPersistenceStudents();
+
+    PersistenceCourses getPersistenceCourses();
     
     Course getCourseByName(String name);
 }

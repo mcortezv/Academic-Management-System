@@ -4,6 +4,7 @@
  */
 package gui.panels;
 import gui.MainFrame;
+import gui.formsDialog.EnrollFormDialog;
 import gui.styles.Panel;
 import gui.styles.Button;
 import interfaces.IPersistenceFacade;
@@ -40,6 +41,9 @@ public class EnrollmentPanel extends Panel {
         centralPanel.add(btnEnrolledStudents);
         centralPanel.add(btnWaitList);
 
+        //button
+        btnEnrollStudent.addActionListener(e -> {
+            new EnrollFormDialog(mainFrame, 0, persistenceFacade).setVisible(true);
+        });
     }
-
 }

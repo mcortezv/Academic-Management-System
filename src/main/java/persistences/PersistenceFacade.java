@@ -268,6 +268,15 @@ public class PersistenceFacade implements IPersistenceFacade {
         return this.persistenceStudents;
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
+    public PersistenceCourses getPersistenceCourses() {
+        return this.persistenceCourses;
+    }
+
     @Override
     public Course getCourseByName(String name) {
         return persistenceCourses.getCourseByName(name);

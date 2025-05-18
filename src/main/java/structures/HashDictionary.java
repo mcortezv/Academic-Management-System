@@ -10,7 +10,6 @@ import structures.nodes.DictionaryNode;
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class HashDictionary<K, V> {
-
     private DictionaryNode<K, V>[] table;
     private int size;
     private int capacity;
@@ -147,5 +146,4 @@ public class HashDictionary<K, V> {
             }
         }
     }
-
 }
