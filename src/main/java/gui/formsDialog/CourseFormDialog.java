@@ -3,22 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gui.formsDialog;
-
-import components.Course;
-import components.Student;
-import gui.MainFrame;
-import gui.styles.Button;
+import components.*;
+import gui.*;
 import gui.styles.Dialog;
 import gui.styles.TextField;
 import interfaces.IPersistenceFacade;
-
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 import persistences.exceptions.PersistenceCoursesException;
 import validators.Validator;
 

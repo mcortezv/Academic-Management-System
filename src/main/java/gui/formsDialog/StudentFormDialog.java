@@ -1,21 +1,11 @@
 package gui.formsDialog;
-import components.Contact;
-import components.Student;
+import components.*;
 import gui.MainFrame;
 import gui.styles.Button;
 import gui.styles.TextField;
 import interfaces.IPersistenceFacade;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 import persistences.exceptions.PersistenceStudentsException;
 import validators.Validator;
 
@@ -78,7 +68,7 @@ public final class StudentFormDialog extends JDialog {
         namePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, -15, 0));
 
         //contact information label
-        JLabel sectionLabel = new JLabel("--------  Informacion de contacto  --------");
+        JLabel sectionLabel = new JLabel("--------  Informacion de Contacto  --------");
         sectionLabel.setFont(sectionLabel.getFont().deriveFont(Font.BOLD));
         sectionLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         sectionLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 15, 0));

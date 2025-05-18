@@ -6,10 +6,7 @@ package persistences;
 import components.Action;
 import components.Course;
 import components.Student;
-import gui.styles.Panel;
-import persistences.exceptions.PersistenceActionsException;
 import structures.Stack;
-
 import javax.swing.*;
 
 /**
@@ -49,12 +46,12 @@ public class PersistenceActions {
     /**
      * Metodo que remueve la ultima accion añadida a la pila de acciones
      */
-    public void undoLastAction(JPanel panel) {
+    public void undoLastAction() {
         if (!actions.isEmpty()) {
             Action lastAction = actions.pop();
-            performUndo(lastAction, panel);
+            performUndo(lastAction);
         } else {
-            JOptionPane.showMessageDialog(panel, "Pila de Acciones Vacia", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Pila de Acciones Vacia", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -64,7 +61,7 @@ public class PersistenceActions {
      *
      * @param action accion a deshacer
      */
-    public void performUndo(Action action, JPanel panel) {
+    public void performUndo(Action action) {
         switch (action.getType()) {
             case addStudent -> {
                 Student studentToRemove = (Student) action.getData();
@@ -83,7 +80,7 @@ public class PersistenceActions {
                 persistenceCourses.addCourse(courseToadd);
             }
             default -> {
-                JOptionPane.showMessageDialog(panel, "La ultima accion no cumple con los requisistos para ser deshecha", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "La ultima accion no cumple con los requisistos para ser deshecha", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

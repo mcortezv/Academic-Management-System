@@ -3,20 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package persistences;
-
-import components.Action;
-import components.Course;
-import components.Request;
-import components.Student;
-import components.dtos.StudentCourseDTO;
-import components.dtos.StudentGradeDTO;
-import gui.styles.Panel;
+import components.*;
+import components.dtos.*;
 import interfaces.IPersistenceFacade;
-import structures.ArrayList;
-import structures.BinarySearchTree;
-import structures.HashDictionary;
-
-import javax.swing.*;
+import structures.*;
 
 /**
  * Clase que actua como fachada para las distintas capas de persistencia del
@@ -228,8 +218,8 @@ public class PersistenceFacade implements IPersistenceFacade {
      * Deshace la ultima accion registrada
      */
     @Override
-    public void undoAction(JPanel panel) {
-        persistenceActions.undoLastAction(panel);
+    public void undoAction() {
+        persistenceActions.undoLastAction();
     }
 
     /**
@@ -282,7 +272,4 @@ public class PersistenceFacade implements IPersistenceFacade {
     public Course getCourseByName(String name) {
         return persistenceCourses.getCourseByName(name);
     }
-    
-    
-    
 }

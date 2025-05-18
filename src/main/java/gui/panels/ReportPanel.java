@@ -8,13 +8,10 @@ import gui.MainFrame;
 import gui.styles.Panel;
 import gui.styles.Button;
 import interfaces.IPersistenceFacade;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
-
 import persistences.PersistenceStudents;
-import structures.AVLTree;
 import structures.ArrayList;
 
 /**

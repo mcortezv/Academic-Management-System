@@ -3,9 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package persistences;
-
-import components.Action;
-import components.Request;
+import components.*;
 import components.dtos.StudentGradeDTO;
 import structures.ArrayList;
 import structures.Queue;

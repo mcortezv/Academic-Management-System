@@ -3,11 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package persistences;
-
-import components.Contact;
-import components.Course;
-import components.Student;
-import structures.AVLTree;
+import components.*;
 import structures.HashDictionary;
 
 /**

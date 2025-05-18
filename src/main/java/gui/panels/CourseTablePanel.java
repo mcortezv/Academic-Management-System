@@ -4,12 +4,8 @@
  */
 package gui.panels;
 import components.Course;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import java.awt.*;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import gui.styles.Button;
 import gui.styles.Style;
@@ -79,5 +75,4 @@ public class CourseTablePanel extends JPanel {
     public void initComponents() {
 
     }
-
 }

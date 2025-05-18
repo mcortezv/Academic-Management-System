@@ -6,18 +6,9 @@ package gui;
 import gui.styles.Button;
 import gui.styles.Style;
 import interfaces.IPersistenceFacade;
-
 import java.awt.*;
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JPanel;
-import gui.panels.CoursePanel;
-import gui.panels.EnrollmentPanel;
-import gui.panels.GradePanel;
-import gui.panels.MainPanel;
-import gui.panels.NorthPanel;
-import gui.panels.ReportPanel;
-import gui.panels.StudentPanel;
+import javax.swing.*;
+import gui.panels.*;
 
 /**
  *

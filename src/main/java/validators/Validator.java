@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package validators;
-
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 

@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gui.panels;
-
 import gui.MainFrame;
 import gui.styles.Panel;
 import gui.styles.Button;

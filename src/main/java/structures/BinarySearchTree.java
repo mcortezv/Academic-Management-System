@@ -5,7 +5,6 @@
 package structures;
 import components.Student;
 import structures.exceptions.TreeException;
-import structures.nodes.AVLTreeNode;
 import structures.nodes.BinaryTreeNode;
 import interfaces.Identificable;
 

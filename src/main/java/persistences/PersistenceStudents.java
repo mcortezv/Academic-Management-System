@@ -5,9 +5,7 @@
 package persistences;
 import components.Contact;
 import components.Student;
-import structures.AVLTree;
-import structures.ArrayList;
-import structures.BinarySearchTree;
+import structures.*;
 
 /**
  *

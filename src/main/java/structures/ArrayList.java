@@ -4,12 +4,9 @@
  */
 package structures;
 import structures.exceptions.ListException;
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
 /**
  * Implementación de una lista basada en un array.

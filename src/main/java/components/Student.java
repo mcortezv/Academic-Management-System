@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package components;
-
 import persistences.PersistenceGrades;
 import structures.ArrayList;
 import interfaces.Identificable;
@@ -187,5 +186,4 @@ public final class Student implements Identificable {
     public String toString() {
         return "Estudiante{" + "Matricula: " + id + ", Nombre Completo: " + fullName + ", Datos de Contacto: " + contactDetails + '}';
     }
-
 }

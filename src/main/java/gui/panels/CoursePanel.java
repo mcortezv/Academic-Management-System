@@ -8,9 +8,7 @@ import gui.MainFrame;
 import gui.styles.Panel;
 import gui.styles.Button;
 import interfaces.IPersistenceFacade;
-
 import java.awt.*;
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 /**
@@ -90,7 +88,7 @@ public class CoursePanel extends Panel {
     }
     
     public void showCoursePanel() {
-        showPanel(mainCoursePanel);
+        showPanel(centralPanel);
         add(southPanel, BorderLayout.SOUTH);
     }
 }

@@ -3,17 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package interfaces;
-import components.Course;
-import components.Student;
-import gui.styles.Panel;
-import persistences.PersistenceStudents;
-import persistences.PersistenceStudentsCourses;
-import persistences.PersistenceWaitingListCourses;
-import structures.ArrayList;
-import structures.BinarySearchTree;
-import structures.HashDictionary;
-
-import javax.swing.*;
+import components.*;
+import persistences.*;
+import structures.*;
 
 /**
  *
@@ -47,7 +39,7 @@ public interface IPersistenceFacade {
 
     ArrayList<Double> requestListGrades(String studentId);
 
-    void undoAction(JPanel panel);
+    void undoAction();
 
     ArrayList<Student> listStudents();
 

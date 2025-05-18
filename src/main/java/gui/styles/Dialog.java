@@ -12,7 +12,6 @@ import javax.swing.JPanel;
  * @author david
  */
 public abstract class Dialog extends JDialog {
-
     protected JPanel centerPanel;
     protected JPanel southPanel;
     protected MainFrame mainFrame;
@@ -22,7 +21,5 @@ public abstract class Dialog extends JDialog {
         mainFrame = owner;
         centerPanel = new JPanel();
         southPanel = new JPanel();
-
     }
-
 }

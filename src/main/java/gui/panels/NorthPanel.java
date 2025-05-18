@@ -3,8 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gui.panels;
-import gui.styles.Button;
-import gui.styles.Style;
+import gui.styles.*;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;

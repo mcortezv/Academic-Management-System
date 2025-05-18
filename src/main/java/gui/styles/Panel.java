@@ -6,7 +6,6 @@ package gui.styles;
 import gui.MainFrame;
 import gui.panels.NorthPanel;
 import interfaces.IPersistenceFacade;
-
 import java.awt.*;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -22,7 +21,6 @@ public abstract class Panel extends JPanel {
     protected Button btnBack;
     protected Button btnUndo;
     protected NorthPanel northPanel;
-
 
     public Panel(MainFrame frame, NorthPanel northPanel, IPersistenceFacade persistenceFacade) {
         setBackground(Style.BACKGROUND_COLOR);
@@ -53,12 +51,10 @@ public abstract class Panel extends JPanel {
         });
 
         btnUndo.addActionListener(e -> {
-            persistenceFacade.undoAction(this);
+            persistenceFacade.undoAction();
         });
 
     }
 
     public abstract void startComponents();
-
-
 }
