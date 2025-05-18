@@ -1,7 +1,6 @@
 components\Request.class
 structures\BinarySearchTree.class
 persistences\PersistenceActions$1.class
-structures\Pair.class
 persistences\exceptions\PersistenceCoursesException.class
 gui\panels\CoursePanel.class
 persistences\PersistenceCourses.class
@@ -20,7 +19,7 @@ persistences\PersistenceRequests.class
 structures\nodes\DoubleNode.class
 interfaces\Identificable.class
 structures\exceptions\ListException.class
-components\StudentCourse.class
+structures\ArrayList$1.class
 gui\panels\ReportPanel.class
 persistences\PersistenceGrades.class
 persistences\exceptions\PersistenceWaitingListCoursesException.class
@@ -44,6 +43,7 @@ persistences\exceptions\PersistenceStudentsException.class
 gui\styles\Dialog.class
 persistences\exceptions\PersistenceActionsException.class
 components\Course.class
+components\dtos\StudentGradeDTO.class
 components\Contact.class
 persistences\PersistenceFacade.class
 components\Request$Type.class
@@ -54,6 +54,7 @@ gui\formsDialog\StudentFormDialog.class
 gui\styles\Panel.class
 structures\exceptions\HashMapException.class
 structures\nodes\BinaryTreeNode.class
+components\dtos\StudentCourseDTO.class
 structures\exceptions\StackException.class
 gui\formsDialog\GradeFormDialog.class
 components\Action.class
