@@ -1,7 +1,6 @@
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\structures\Queue.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\gui\styles\TextField.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\persistences\exceptions\PersistenceRequestException.java
-C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\components\StudentCourse.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\persistences\PersistenceActions.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\persistences\PersistenceCourses.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\structures\CircularLinkedList.java
@@ -32,6 +31,7 @@ C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Man
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\components\Contact.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\structures\BinarySearchTree.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\structures\LinkedList.java
+C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\components\dtos\StudentGradeDTO.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\structures\AVLTree.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\structures\exceptions\StackException.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\gui\panels\EnrollmentPanel.java
@@ -53,12 +53,12 @@ C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Man
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\persistences\exceptions\PersistenceRolesException.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\persistences\exceptions\PersistenceStudentsCoursesException.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\structures\Stack.java
-C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\structures\Pair.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\gui\panels\MainPanel.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\structures\nodes\DictionaryNode.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\structures\nodes\DoubleNode.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\gui\formsDialog\GradeFormDialog.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\persistences\exceptions\PersistenceActionsException.java
+C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\components\dtos\StudentCourseDTO.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\structures\HashDictionary.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\components\Course.java
 C:\Users\Sebas\OneDrive\Documents\NetBeansProjects\ESTRUCTURA_DATOS\Academic-Management-System\src\main\java\gui\styles\Panel.java

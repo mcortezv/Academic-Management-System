@@ -61,11 +61,11 @@ public class BinarySearchTreeTest {
         arbol.insert(student4);
         arbol.insert(student5);
         assertFalse(arbol.isEmpty());
-        assertTrue(arbol.contains(student1));
-        assertTrue(arbol.contains(student2));
-        assertTrue(arbol.contains(student3));
-        assertTrue(arbol.contains(student4));
-        assertTrue(arbol.contains(student5));
+        assertTrue(arbol.contains(student1.getId()));
+        assertTrue(arbol.contains(student2.getId()));
+        assertTrue(arbol.contains(student3.getId()));
+        assertTrue(arbol.contains(student4.getId()));
+        assertTrue(arbol.contains(student5.getId()));
     }
 
     @Test
@@ -85,12 +85,12 @@ public class BinarySearchTreeTest {
         arbol.insert(student2);
         arbol.insert(student3);
         arbol.insert(student4);
-        assertEquals(student1, arbol.get(student1));
-        assertEquals(student2, arbol.get(student2));
-        assertEquals(student3, arbol.get(student3));
-        assertEquals(student4, arbol.get(student4));
+        assertEquals(student1, arbol.get(student1.getId()));
+        assertEquals(student2, arbol.get(student2.getId()));
+        assertEquals(student3, arbol.get(student3.getId()));
+        assertEquals(student4, arbol.get(student4.getId()));
 
-        assertThrows(TreeException.class, () -> arbol.get(student5));
+        assertThrows(TreeException.class, () -> arbol.get(student5.getId()));
     }
 
     @Test
@@ -101,13 +101,13 @@ public class BinarySearchTreeTest {
         arbol.insert(student4);
         arbol.insert(student5);
         arbol.remove(student5);
-        assertFalse(arbol.contains(student5));
+        assertFalse(arbol.contains(student5.getId()));
         arbol.remove(student1);
-        assertFalse(arbol.contains(student1));
-        assertTrue(arbol.contains(student2));
+        assertFalse(arbol.contains(student1.getId()));
+        assertTrue(arbol.contains(student2.getId()));
         arbol.remove(student2);
-        assertFalse(arbol.contains(student2));
-        assertTrue(arbol.contains(student3));
-        assertTrue(arbol.contains(student3));
+        assertFalse(arbol.contains(student2.getId()));
+        assertTrue(arbol.contains(student3.getId()));
+        assertTrue(arbol.contains(student3.getId()));
     }
 }

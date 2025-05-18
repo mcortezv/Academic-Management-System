@@ -3,7 +3,6 @@ import components.Contact;
 import components.Student;
 import gui.MainFrame;
 import gui.styles.Button;
-import gui.styles.Dialog;
 import gui.styles.TextField;
 import interfaces.IPersistenceFacade;
 import java.awt.BorderLayout;
@@ -13,6 +12,7 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,7 +24,7 @@ import validators.Validator;
  *
  * @author david
  */
-public final class StudentFormDialog extends Dialog {
+public final class StudentFormDialog extends JDialog {
 
     private JPanel centerPanel;
     private JPanel southPanel;
@@ -32,15 +32,18 @@ public final class StudentFormDialog extends Dialog {
     private TextField nameField;
     private TextField phoneField;
     private TextField emailField;
-    private TextField addressField;
+    private TextField streetField;
+    private TextField streetNumberField;
+    private TextField districtField;
+    
     private TextField idField;
     private PersistenceStudents persistence;
     private Student student;
-    private Contact contact;
-    private int[] grades = new int[5];
+    private Contact contact;    
 
-    public StudentFormDialog(MainFrame owner, IPersistenceFacade persistence, int option) {
+    public StudentFormDialog(MainFrame owner, IPersistenceFacade persistence, int option) {        
         super(owner, " ", true);
+        setResizable(false);
         mainFrame = owner;
         centerPanel = new JPanel();
         southPanel = new JPanel();
@@ -66,7 +69,7 @@ public final class StudentFormDialog extends Dialog {
     }
 
     public void addStudent() {
-        setSize(600, 400);
+        setSize(660, 460);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
@@ -92,16 +95,28 @@ public final class StudentFormDialog extends Dialog {
 
         // Email field
         JPanel emailPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        emailPanel.add(new JLabel("Email:                    "));
+        emailPanel.add(new JLabel("Email:                 "));
         emailField = new TextField(20);
         emailPanel.add(emailField);
 
         // Address field
-        JPanel addressPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        addressPanel.add(new JLabel("Direccion postal:"));
-        addressField = new TextField(20);
-        addressPanel.add(addressField);
-
+        JPanel streetPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        streetPanel.add(new JLabel("Calle:                 "));
+        streetField = new TextField(20);        
+        streetPanel.add(streetField);
+        
+        JPanel streetNumberPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));        
+        streetNumberPanel.add(new JLabel("Numero:                "));
+        streetNumberField = new TextField(20);
+        streetNumberPanel.add(streetNumberField);
+        
+        JPanel districtPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));        
+        districtPanel.add(new JLabel("Distrito:              "));
+        districtField = new TextField(20);
+        districtPanel.add(districtField);
+                                                                        
+        
+        
         // Add button
         Button btnadd = new Button("Añadir");
         btnadd.addActionListener(e -> {
@@ -112,13 +127,16 @@ public final class StudentFormDialog extends Dialog {
             }
         });
 
+        
         // Add everything to the central panel
         centerPanel.add(namePanel);
         centerPanel.add(Box.createVerticalStrut(10));
         centerPanel.add(sectionLabel);
         centerPanel.add(phonePanel);
         centerPanel.add(emailPanel);
-        centerPanel.add(addressPanel);
+        centerPanel.add(streetPanel);
+        centerPanel.add(streetNumberPanel);
+        centerPanel.add(districtPanel);
         centerPanel.add(Box.createVerticalStrut(15));
         southPanel.add(btnadd);
 
@@ -133,8 +151,10 @@ public final class StudentFormDialog extends Dialog {
         String name = nameField.getText().trim();
         String phoneNumber = phoneField.getText().trim();
         String email = emailField.getText().trim();
-        String adressField = addressField.getText().trim();
-
+        String street = streetField.getText().trim();
+        String streetNumber =streetNumberField.getText().trim();
+        String district = districtField.getText().trim();
+        
         if (!Validator.validateName(name)) {
             JOptionPane.showMessageDialog(centerPanel, "Nombre del estudiante invalido", "Error", JOptionPane.ERROR_MESSAGE);
             throw new PersistenceStudentsException("Nombre de estudiante invalido");
@@ -147,11 +167,11 @@ public final class StudentFormDialog extends Dialog {
             JOptionPane.showMessageDialog(centerPanel, "Correo electronico invalido", "Error", JOptionPane.ERROR_MESSAGE);
             throw new PersistenceStudentsException("Correo electronico invalido");
         }
-        if (!Validator.validateStreetNumber(adressField)) {
+        if (!Validator.validateStreetNumber(street)) {
             JOptionPane.showMessageDialog(centerPanel, "Nombre del estudiante invalido", "Error", JOptionPane.ERROR_MESSAGE);
             throw new PersistenceStudentsException("Direccion invalida");
         }
-        contact = new Contact(phoneNumber, email, adressField);
+        contact = new Contact(phoneNumber, email, street);
         
         student = new Student(name, contact);
         persistence.addStudent(student);
