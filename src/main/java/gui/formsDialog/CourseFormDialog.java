@@ -4,27 +4,36 @@
  */
 package gui.formsDialog;
 
+import components.Course;
+import components.Student;
 import gui.MainFrame;
 import gui.styles.Button;
 import gui.styles.Dialog;
+import gui.styles.TextField;
+import interfaces.IPersistenceFacade;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import persistences.exceptions.PersistenceCoursesException;
+import validators.Validator;
 
 /**
  *
  * @author david
  */
-public class CourseFormDialog extends Dialog {
+public final class CourseFormDialog extends Dialog {
 
-    public CourseFormDialog(MainFrame owner, int option) {
+    private TextField courseNameField;
+    private IPersistenceFacade persistence;
+
+    public CourseFormDialog(MainFrame owner, int option, IPersistenceFacade persistence) {
         super(owner, "", true);
-
+        this.persistence = persistence;
         switch (option) {
             case 0:
                 setTitle("Añadir curso");
@@ -53,7 +62,7 @@ public class CourseFormDialog extends Dialog {
         // Name field
         JPanel courseNamePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         courseNamePanel.add(new JLabel("Nombre del curso:   "));
-        JTextField courseNameField = new JTextField(15);
+        courseNameField = new TextField(15);
         courseNamePanel.add(courseNameField);
         courseNamePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
@@ -61,11 +70,7 @@ public class CourseFormDialog extends Dialog {
         // Create button
         Button btnAddCourse = new Button("Crear curso");
         btnAddCourse.addActionListener(e -> {
-            //Verifica que no exista un curso ya con el mismo nombre
-            //añade el curso a la lista de cursos
-            //si regresa true se despliega un Joptionpane "Añadido"
-            //si regresa false se despliega un Joptionpane "error ya existe un curso con ese nombre"
-            dispose();
+            addCourse();
         });
 
         // Add everything to the central panel
@@ -85,7 +90,7 @@ public class CourseFormDialog extends Dialog {
         // Name field
         JPanel courseNamePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         courseNamePanel.add(new JLabel("Nombre del curso:   "));
-        JTextField courseNameField = new JTextField(15);
+        courseNameField = new TextField(15);
         courseNamePanel.add(courseNameField);
         courseNamePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
@@ -93,10 +98,7 @@ public class CourseFormDialog extends Dialog {
         // Create button
         Button btnDelete = new Button("Eliminar curso");
         btnDelete.addActionListener(e -> {
-            //Verifica que exista un curso con ese nombre
-            //ejecuta "eliminar" de la lista de cursos
-            //si regresa true se despliega un Joptionpane "Eliminado"
-            //si regresa false se despliega un Joptionpane "error no se encontró el curso"
+            removeCourse();
             dispose();
         });
 
@@ -108,25 +110,25 @@ public class CourseFormDialog extends Dialog {
         add(southPanel, BorderLayout.SOUTH);
 
     }
-    
-    public void caseRotateRol(){
+
+    public void caseRotateRol() {
         setSize(350, 150);
         setLocationRelativeTo(mainFrame);
         setLayout(new BorderLayout());
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
-        
+
         // Name field
         JPanel courseNamePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         courseNamePanel.add(new JLabel("Nombre del curso:   "));
-        JTextField courseNameField = new JTextField(15);
+        courseNameField = new TextField(15);
         courseNamePanel.add(courseNameField);
         courseNamePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-        
+
         // Create button
         Button btnRotate = new Button("Rotar rol");
         btnRotate.addActionListener(e -> {
-            
+            rotateRol();
             dispose();
         });
 
@@ -136,7 +138,50 @@ public class CourseFormDialog extends Dialog {
 
         add(centerPanel, BorderLayout.CENTER);
         add(southPanel, BorderLayout.SOUTH);
-        
+
     }
 
+    public void addCourse() {
+        String name = courseNameField.getText().trim();
+        if (!Validator.validateName(name)) {
+            JOptionPane.showMessageDialog(centerPanel, "Nombre del curso invalido", "Error", JOptionPane.ERROR_MESSAGE);
+            throw new PersistenceCoursesException("Nombre de Curso Invalido");
+        }
+        Course course = new Course(name);
+        persistence.addCourse(course);
+        JOptionPane.showMessageDialog(centerPanel, "Curso agregado con exito");
+        dispose();
+    }
+
+    public void removeCourse() {
+        String name = courseNameField.getText().trim();
+        if (!Validator.validateName(name)) {
+            JOptionPane.showMessageDialog(centerPanel, "Nombre del curso invalido", "Error", JOptionPane.ERROR_MESSAGE);
+            throw new PersistenceCoursesException("Nombre de Curso Invalido");
+        }
+        Course course = persistence.getCourseByName(name);
+        if(course == null){
+            JOptionPane.showMessageDialog(centerPanel, "Curso no encontrado","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        persistence.deleteCourse(course);
+        JOptionPane.showMessageDialog(centerPanel, "Curso eliminado con exito");
+        dispose();
+    }
+
+    public void rotateRol() {
+        String name = courseNameField.getText().trim();
+        if (!Validator.validateName(name)) {
+            JOptionPane.showMessageDialog(centerPanel, "Nombre del curso invalido", "Error", JOptionPane.ERROR_MESSAGE);
+            throw new PersistenceCoursesException("Nombre de Curso Invalido");
+        }
+        Course course = persistence.getCourseByName(name);
+        if(course == null){
+            JOptionPane.showMessageDialog(centerPanel, "Curso no encontrado","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        Student courseTutor = persistence.rotateRol(course.getId());
+        JOptionPane.showMessageDialog(centerPanel, courseTutor.toString(), "Rol de lider rotado con exito, nuevo tutor: ", 1);
+        dispose();
+
+    }
 }

@@ -4,7 +4,10 @@
  */
 package persistences;
 
+import components.Contact;
 import components.Course;
+import components.Student;
+import structures.AVLTree;
 import structures.HashDictionary;
 
 /**
@@ -12,7 +15,7 @@ import structures.HashDictionary;
  *
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
-public class PersistenceCourses {
+public final class PersistenceCourses {
     private HashDictionary<String, Course> courses;
 
     /**
@@ -20,6 +23,7 @@ public class PersistenceCourses {
      */
     public PersistenceCourses() {
         this.courses = new HashDictionary<>(10);
+        populateCourses();
     }
 
     /**
@@ -62,5 +66,27 @@ public class PersistenceCourses {
      */
     public HashDictionary<String, Course> listCourses() {
         return courses;
+    }
+    
+    public void populateCourses() {
+        Contact datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
+        Student student1 = new Student("2222BBBB", "Sebas", datosContacto);
+        Course course = new Course("1111AAAA","cursoA",student1);
+        courses.put("1111AAAA", course);        
+        System.out.println("Datos insertados en el árbol.");
+    }
+    /**
+     * 
+     * @param name
+     * @return 
+     */
+    public Course getCourseByName(String name){
+        for (String key : courses.getKeys()) {
+        Course course = courses.get(key);
+        if (course.getName().equalsIgnoreCase(name.trim())) {
+            return course;
+        }
+    }
+    return null;
     }
 }

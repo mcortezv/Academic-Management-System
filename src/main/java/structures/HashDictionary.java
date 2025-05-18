@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package structures;
+
 import structures.nodes.DictionaryNode;
 
 /**
@@ -10,6 +11,7 @@ import structures.nodes.DictionaryNode;
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class HashDictionary<K, V> {
+
     private DictionaryNode<K, V>[] table;
     private int size;
     private int capacity;
@@ -21,7 +23,7 @@ public class HashDictionary<K, V> {
     }
 
     public ArrayList<V> getValues() {
-         ArrayList<V> values = new ArrayList<>(size);
+        ArrayList<V> values = new ArrayList<>(size);
         for (int i = 0; i < capacity; i++) {
             DictionaryNode<K, V> actual = table[i];
             while (actual != null) {
@@ -31,9 +33,26 @@ public class HashDictionary<K, V> {
         }
         return values;
     }
+    
+    /**
+     * 
+     * @return 
+     */
+    public ArrayList<K> getKeys() {
+        ArrayList<K> keys = new ArrayList<>(size);
+        for (int i = 0; i < capacity; i++) {
+            DictionaryNode<K, V> actual = table[i];
+            while (actual != null) {
+                keys.add(actual.getKey());
+                actual = actual.getNext();
+            }
+        }
+        return keys;
+    }
 
     /**
-     * Devuelve una representación de todos los valores almacenados en la tabla hash.
+     * Devuelve una representación de todos los valores almacenados en la tabla
+     * hash.
      *
      * @return String con los valores.
      */
@@ -78,7 +97,9 @@ public class HashDictionary<K, V> {
                     actual.setValue(valor);
                     return;
                 }
-                if (actual.getNext() == null) break;
+                if (actual.getNext() == null) {
+                    break;
+                }
                 actual = actual.getNext();
             }
             actual.setNext(nuevo);
@@ -106,7 +127,6 @@ public class HashDictionary<K, V> {
         return false;
     }
 
-
     public V get(K clave) {
         int indice = getHash(clave);
         DictionaryNode<K, V> actual = table[indice];
@@ -128,6 +148,5 @@ public class HashDictionary<K, V> {
             }
         }
     }
-    
-    
+
 }

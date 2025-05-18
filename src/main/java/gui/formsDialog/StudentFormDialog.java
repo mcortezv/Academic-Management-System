@@ -268,7 +268,7 @@ public final class StudentFormDialog extends JDialog {
             JOptionPane.showMessageDialog(centerPanel, "Id de estudiante invalido");
             throw new PersistenceStudentsException("Id del estudiante invalido");
         }
-        Student student = persistence.searchStudentById(id);
+        student = persistence.searchStudentById(id);
         JOptionPane.showMessageDialog(centerPanel, student.toString(),"Estudiante encontrado: ",1);
 
     }
