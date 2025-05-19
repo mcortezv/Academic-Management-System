@@ -19,8 +19,8 @@ public class PersistenceStudentsCourses {
         this.studentsCourses = new LinkedList<>();
     }
 
-    public int getTam(){
-        return studentsCourses.getTam();
+    public int getSize(){
+        return studentsCourses.getSize();
     }
 
     public ArrayList<Student> getList(){
@@ -31,7 +31,7 @@ public class PersistenceStudentsCourses {
         studentsCourses.add(student);
     }
 
-    public void populateStudents() {
+    public void populateStudentsCourses() {
         Contact datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
         Student student1 = new Student("2222BBBB", "Sebas", datosContacto);
         Student student2 = new Student("3333CCCC", "manuel", datosContacto);

@@ -143,7 +143,7 @@ public final class Course {
     }
 
     public void enrollStudentInCourse(Student student){
-        if (enrolledStudents.getTam() >= maxCapacity){
+        if (enrolledStudents.getSize()>= maxCapacity){
             waitingList.enrollStudentWaitingList(student);
             JOptionPane.showMessageDialog(null, "Cantidad Maxima de Estudiantes Alcanzada", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
