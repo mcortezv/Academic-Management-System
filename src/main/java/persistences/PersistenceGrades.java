@@ -35,8 +35,13 @@ public class PersistenceGrades {
         if (index == grades.numObjects) {
             return sum / grades.numObjects;
         }
-        return getAverage(index + 1, sum + grades.get(index));
+        Double grade = grades.get(index);
+        if (grade != null) {
+            sum += grade;
+        }
+        return getAverage(index + 1, sum);
     }
+
 
 
     public ArrayList<Double> listGrades(){

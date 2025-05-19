@@ -14,7 +14,7 @@ import javax.swing.plaf.basic.BasicButtonUI;
  * @author Cortez, Manuel;
  */
 public class Button extends JButton {
-    private static final int CORNER_RADIUS = 4;
+    private static final int CORNER_RADIUS = 8;
     private boolean hovered = false;
 
     public Button(String text) {

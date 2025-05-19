@@ -7,6 +7,7 @@ import components.Student;
 import gui.MainFrame;
 import gui.styles.Panel;
 import gui.styles.Button;
+import gui.styles.Style;
 import interfaces.IPersistenceFacade;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -37,12 +38,13 @@ public final class ReportPanel extends Panel {
         btnListAverageStudents = new Button("Listar Estudiantes por Promedio");
         panelButtoms.add(btnListStudents);
         panelButtoms.add(btnListAverageStudents);
-        txtAreaReportStudents = new JTextArea(20, 100);
+        txtAreaReportStudents = new JTextArea(19, 92);
         txtAreaReportStudents.setMargin(new Insets(100, 0, 0, 0));
         txtAreaReportStudents.setLineWrap(true);
         txtAreaReportStudents.setWrapStyleWord(true);
         txtAreaReportStudents.setEditable(false);
-
+        txtAreaReportStudents.setFont(Style.INPUT_FONT);
+        txtAreaReportStudents.setMargin(new Insets(20, 30, 20, 15));
         JScrollPane jsp = new JScrollPane(txtAreaReportStudents,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);

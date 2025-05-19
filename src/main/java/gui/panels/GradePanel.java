@@ -8,6 +8,7 @@ import gui.formsDialog.EnrollFormDialog;
 import gui.formsDialog.GradeFormDialog;
 import gui.styles.Panel;
 import gui.styles.Button;
+import gui.styles.Style;
 import interfaces.IPersistenceFacade;
 import javax.swing.*;
 import java.awt.Dimension;
@@ -38,10 +39,11 @@ public class GradePanel extends Panel {
         btnDeleteGrade =  new Button("Eliminar Calificaciones");
         btnListGrades =  new Button("Ver Calificaciones");
         btnProcessNextRequest =  new Button("Procesar Cola Solicitud");
-        textArea = new JTextArea(15, 21);
+        textArea = new JTextArea(13, 19);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setEditable(false);
+        textArea.setFont(Style.INPUT_FONT);
         jps = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
