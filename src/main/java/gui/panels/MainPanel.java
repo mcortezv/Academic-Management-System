@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gui.panels;
+import gui.styles.Style;
 import interfaces.IPersistenceFacade;
 import java.awt.*;
 import javax.swing.*;
@@ -26,15 +27,12 @@ public class MainPanel extends JPanel {
         //centralPanel
         centerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         centerPanel.setPreferredSize(new Dimension(1200, 550));
-
         centerPanel.setOpaque(false);
 
         //soutPanel
         soutPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-
+        soutPanel.setBackground(Style.PANEL_COLOR);
         soutPanel.setOpaque(false);
-
-
         add(centerPanel, BorderLayout.CENTER);
         add(soutPanel, BorderLayout.SOUTH);
     }

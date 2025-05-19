@@ -55,5 +55,7 @@ public interface IPersistenceFacade {
 
     PersistenceCourses getPersistenceCourses();
     
+    PersistenceActions getPersistenceActions();
+    
     Course getCourseByName(String name);
 }

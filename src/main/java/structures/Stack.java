@@ -3,19 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package structures;
+
 import structures.exceptions.StackException;
 import structures.nodes.SingleNode;
 
 /**
- * Implementacion de una pila utilizando una lista enlazada simple.
- * Esta clase implementa las operaciones básicas de una pila: apilar,
- * desapilar, obtener el ultimo elemento,
- * verificar si esta vacia y obtener el tamaño de la pila.
+ * Implementacion de una pila utilizando una lista enlazada simple. Esta clase
+ * implementa las operaciones básicas de una pila: apilar, desapilar, obtener el
+ * ultimo elemento, verificar si esta vacia y obtener el tamaño de la pila.
  *
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  * @param <T> Tipo de datos de los elementos almacenados en la pila.
  */
 public class Stack<T> {
+
     private SingleNode<T> P;
 
     /**
@@ -37,7 +38,7 @@ public class Stack<T> {
             return;
         }
         SingleNode<T> aux = P;
-        while (aux.getNext() != null){
+        while (aux.getNext() != null) {
             aux = aux.getNext();
         }
         aux.setNext(nuevo);
@@ -53,13 +54,13 @@ public class Stack<T> {
         if (isEmpty()) {
             throw new StackException("La pila esta vacia");
         }
-        if (getSize() == 1){
+        if (getSize() == 1) {
             T dato = P.getValue();
             P = null;
             return dato;
         }
         SingleNode<T> aux = P;
-        while (aux.getNext().getNext() != null){
+        while (aux.getNext().getNext() != null) {
             aux = aux.getNext();
         }
         T dato = aux.getNext().getValue();
@@ -78,7 +79,7 @@ public class Stack<T> {
             throw new StackException("La pila esta vacia");
         }
         SingleNode<T> aux = P;
-        while (aux.getNext() != null){
+        while (aux.getNext() != null) {
             aux = aux.getNext();
         }
         return aux.getValue();
@@ -90,14 +91,15 @@ public class Stack<T> {
      * @return true si la pila esta vacia, false en caso contrario.
      */
     public boolean isEmpty() {
-        if (P == null){
+        if (P == null) {
             return true;
         }
         return false;
     }
 
     /**
-     * Devuelve el tamaño de la pila, es decir, la cantidad de elementos presentes.
+     * Devuelve el tamaño de la pila, es decir, la cantidad de elementos
+     * presentes.
      *
      * @return El numero de elementos en la pila.
      */
@@ -110,4 +112,16 @@ public class Stack<T> {
         }
         return size;
     }
+
+    // This method returns the stack content as a plain String
+    public String getAllElementsAsString() {
+        StringBuilder sb = new StringBuilder();
+        SingleNode<T> current = P;
+        while (current != null) {
+            sb.append(current.getValue()).append("\n");
+            current = current.getNext();
+        }
+        return sb.toString();
+    }
+
 }

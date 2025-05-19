@@ -127,5 +127,9 @@ public final class MainFrame extends JFrame {
     public void showMainPanel() {
         showPanel(mainPanel);
     }
+    
+    public MainPanel getMainPanel(){
+        return mainPanel;
+    }
 
 }

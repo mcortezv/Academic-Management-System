@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gui.formsDialog;
-
 import components.*;
 import gui.*;
 import gui.styles.Dialog;
@@ -140,6 +139,7 @@ public final class CourseFormDialog extends Dialog {
         }
         Course course = new Course(name);
         persistence.addCourse(course);
+        //mainFrame.getMainPanel().updateText(persistence.getPersistenceActions().getStack().getAllElementsAsString());
         JOptionPane.showMessageDialog(centerPanel, "Curso agregado con exito");
         dispose();
     }
@@ -178,6 +178,5 @@ public final class CourseFormDialog extends Dialog {
             JOptionPane.showMessageDialog(centerPanel, persistence.rotateRol(course.getId()).toString(), "Rol de lider rotado con exito, nuevo tutor: ", 1);
             dispose();
         }
-
     }
 }
