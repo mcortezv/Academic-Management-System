@@ -16,11 +16,11 @@ import java.util.Objects;
  */
 public class LinkedList<T> {
     private SingleNode<T> P;
-    private SingleNode<T> ultimo;
-    private int tam;
+    private SingleNode<T> last;
+    private int size;
 
-    public int getTam() {
-        return tam;
+    public int getSize() {
+        return size;
     }
 
     /**
@@ -33,10 +33,10 @@ public class LinkedList<T> {
         if (P == null){
             P = nuevoNodo;
         } else {
-            ultimo.setNext(nuevoNodo);
+            last.setNext(nuevoNodo);
         }
-        ultimo = nuevoNodo;
-        tam++;
+        last = nuevoNodo;
+        size++;
     }
 
     /**
@@ -46,7 +46,7 @@ public class LinkedList<T> {
      * @param indice int Indice donde se desea insetar.
      */
     public void set(T o, int indice) {
-        if (indice < 0 || indice >= tam) {
+        if (indice < 0 || indice >= size) {
             throw new ListException("Indice fuera del rango");
         }
         SingleNode<T> nuevoNodo = new SingleNode<>(o);
@@ -61,7 +61,7 @@ public class LinkedList<T> {
             nuevoNodo.setNext(actual.getNext());
             actual.setNext(nuevoNodo);
         }
-        tam++;
+        size++;
     }
 
     /**
@@ -77,19 +77,19 @@ public class LinkedList<T> {
         if (Objects.equals(P.getValue(), o)) {
             P = P.getNext();
             if (P == null) {
-                ultimo = null;
+                last = null;
             }
-            tam--;
+            size--;
             return true;
         }
         SingleNode<T> actual = P;
         while (actual.getNext() != null) {
             if (Objects.equals(actual.getNext().getValue(), o)) {
-                if (actual.getNext() == ultimo) {
-                    ultimo = actual;
+                if (actual.getNext() == last) {
+                    last = actual;
                 }
                 actual.setNext(actual.getNext().getNext());
-                tam--;
+                size--;
                 return true;
             }
             actual = actual.getNext();
@@ -105,7 +105,7 @@ public class LinkedList<T> {
      */
     public int indexOf(T o) {
         SingleNode<T> actual = P;
-        for (int i = 0; i < tam; i++) {
+        for (int i = 0; i < size; i++) {
             if (Objects.equals(actual.getValue(), o)){
                 return i;
             }
@@ -119,8 +119,8 @@ public class LinkedList<T> {
      */
     public void clear() {
         this.P = null;
-        this.ultimo = null;
-        this.tam = 0;
+        this.last = null;
+        this.size = 0;
     }
 
     public ArrayList<Student> getList(){
