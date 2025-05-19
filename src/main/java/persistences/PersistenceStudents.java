@@ -117,7 +117,7 @@ public final class PersistenceStudents {
         Student student5 = new Student("5555EEEE", "Juan Baldenegro", datosContacto5);
         Student student6 = new Student("6666FFFF", "Antonio Quintana", datosContacto6);
         Student student7 = new Student("7777GGGG", "Luis Angel Rivera", datosContacto7);
-        Student student8 = new Student("8888HHHHH", "Daniel Miramontes", datosContacto8);
+        Student student8 = new Student("8888HHHH", "Daniel Miramontes", datosContacto8);
         Student student9 = new Student("9999IIII", "Ana Miramontes", datosContacto9);
         Student student10 = new Student("1010JJJJ", "Pedro Miramontes", datosContacto10);
         Student student11 = new Student("2020KKKK", "David Miramontes", datosContacto11);

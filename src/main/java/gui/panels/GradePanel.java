@@ -36,7 +36,7 @@ public class GradePanel extends Panel {
         btnAddGrade =  new Button("Añadir Calificaciones");
         btnUpdateGrade =  new Button("Actualizar Calificaciones");
         btnDeleteGrade =  new Button("Eliminar Calificaciones");
-        btnGetAverage =  new Button("Soliciar Promedio");
+        btnGetAverage =  new Button("Solicitar Promedio");
         btnProcessNextRequest =  new Button("Procesar Cola Solicitud");
         textArea = new JTextArea(10, 19);
         textArea.setLineWrap(true);
