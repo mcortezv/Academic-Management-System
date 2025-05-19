@@ -14,14 +14,15 @@ public class TreeException extends RuntimeException {
     /**
      * Constructor por defecto de la excepción.
      */
-    public TreeException(){}
+    public TreeException() {
+    }
 
     /**
      * Constructor que acepta un mensaje de error.
      *
      * @param s String Mensaje de error descriptivo.
      */
-    public TreeException(String s){
+    public TreeException(String s) {
         super(s);
     }
 }

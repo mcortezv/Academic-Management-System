@@ -5,20 +5,23 @@
 package structures.nodes;
 
 /**
- * Clase Generica Nodo que permite crear un nuevo Nodo que guarda un Objeto
- * y la referencia del nodo siguiente, Null en caso de ser el ultimo.
+ * Clase Generica Nodo que permite crear un nuevo Nodo que guarda un Objeto y la
+ * referencia del nodo siguiente, Null en caso de ser el ultimo.
  *
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
+ * @param <T> tipo de dato almacenado en el nodo
  */
 public class SingleNode<T> {
+
     T value;
     SingleNode<T> next;
 
     /**
-     * Constructor por defecto de la clase Nodo que cre una nuevo Nodo con
-     * sus atributos en null.
+     * Constructor por defecto de la clase Nodo que cre una nuevo Nodo con sus
+     * atributos en null.
      */
-    public SingleNode(){}
+    public SingleNode() {
+    }
 
     /**
      * Constructor por defecto de la clase Nodo que cre una nuevo Nodo seteando
@@ -26,17 +29,17 @@ public class SingleNode<T> {
      *
      * @param value T Valor del Nodo.
      */
-    public SingleNode(T value){
+    public SingleNode(T value) {
         this.value = value;
     }
 
     /**
-     * Metodo que establece el dato que recibe como parametro al atributo del Nodo
-     * que lo manda llamar.
+     * Metodo que establece el dato que recibe como parametro al atributo del
+     * Nodo que lo manda llamar.
      *
      * @param value T Valor del Nodo.
      */
-    public void setValue(T value){
+    public void setValue(T value) {
         this.value = value;
     }
 
@@ -45,26 +48,27 @@ public class SingleNode<T> {
      *
      * @return T Valor del Nodo.
      */
-    public T getValue(){
+    public T getValue() {
         return this.value;
     }
 
     /**
-     * Metodo que establece la Referencia que recibe como parametro al atributo siguiente del Nodo
-     * que lo manda llamar.
+     * Metodo que establece la Referencia que recibe como parametro al atributo
+     * siguiente del Nodo que lo manda llamar.
      *
-     * @param next Nodo<T> Referencia del siguiente Nodo.
+     * @param next Nodo Referencia del siguiente Nodo.
      */
-    public void setNext(SingleNode<T> next){
+    public void setNext(SingleNode<T> next) {
         this.next = next;
     }
 
     /**
-     * Metodo que retorna la Referencia del Nodo siguiente al que manda llamar al metodo.
+     * Metodo que retorna la Referencia del Nodo siguiente al que manda llamar
+     * al metodo.
      *
-     * @return Nodo<T> Nodo siguiente al que llama al metodo.
+     * @return Nodo Nodo siguiente al que llama al metodo.
      */
-    public SingleNode<T> getNext(){
+    public SingleNode<T> getNext() {
         return this.next;
     }
 }

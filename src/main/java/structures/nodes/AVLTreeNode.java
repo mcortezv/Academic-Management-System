@@ -84,7 +84,7 @@ public class AVLTreeNode<T> {
     /**
      * Devuelve la altura del nodo en especifico.
      *
-     * @return height int
+     * @return height altura del nodo
      */
     public int getHeight() {
         return height;
@@ -93,7 +93,7 @@ public class AVLTreeNode<T> {
     /**
      * Establece la altura del nodo en especifico.
      *
-     * @param height int
+     * @param height algura del nodo
      */
     public void setHeight(int height) {
         this.height = height;

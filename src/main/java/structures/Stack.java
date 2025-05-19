@@ -32,16 +32,16 @@ public class Stack<T> {
      * @param value El dato a agregar a la pila.
      */
     public void push(T value) {
-        SingleNode<T> nuevo = new SingleNode<>(value);
+        SingleNode<T> newNode = new SingleNode<>(value);
         if (P == null) {
-            P = nuevo;
+            P = newNode;
             return;
         }
         SingleNode<T> aux = P;
         while (aux.getNext() != null) {
             aux = aux.getNext();
         }
-        aux.setNext(nuevo);
+        aux.setNext(newNode);
     }
 
     /**
@@ -55,17 +55,17 @@ public class Stack<T> {
             return null;
         }
         if (getSize() == 1) {
-            T dato = P.getValue();
+            T data = P.getValue();
             P = null;
-            return dato;
+            return data;
         }
         SingleNode<T> aux = P;
         while (aux.getNext().getNext() != null) {
             aux = aux.getNext();
         }
-        T dato = aux.getNext().getValue();
+        T data = aux.getNext().getValue();
         aux.setNext(null);
-        return dato;
+        return data;
     }
 
     /**
@@ -91,10 +91,7 @@ public class Stack<T> {
      * @return true si la pila esta vacia, false en caso contrario.
      */
     public boolean isEmpty() {
-        if (P == null) {
-            return true;
-        }
-        return false;
+        return P == null;
     }
 
     /**
@@ -113,7 +110,11 @@ public class Stack<T> {
         return size;
     }
 
-    // This method returns the stack content as a plain String
+    /**
+     * Retorna el contenido de la pila en una cadena de texto
+     *
+     * @return String cadena con el contenido de la pila
+     */
     public String getAllElementsAsString() {
         StringBuilder sb = new StringBuilder();
         SingleNode<T> current = P;

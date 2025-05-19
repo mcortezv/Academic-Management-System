@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package structures;
+
 import components.Student;
 import interfaces.Identificable;
-import structures.exceptions.TreeException;
 import structures.nodes.AVLTreeNode;
 
 import javax.swing.*;
@@ -19,152 +19,178 @@ import javax.swing.*;
  * @param <T> el tipo de dato que se almacenará, debe ser comparable
  */
 public class AVLTree<T extends Identificable> {
-    private AVLTreeNode<T> raiz;
-    private int altura;
+
+    private AVLTreeNode<T> root;
+    private int height;
 
     /**
      * Inserta un dato en el árbol AVL.
      *
-     * @param dato el dato a insertar
+     * @param data el dato a insertar
      */
-    public void insert(T dato) {
-        raiz = insert(raiz, dato);
+    public void insert(T data) {
+        root = insert(root, data);
     }
 
-    private AVLTreeNode<T> insert(AVLTreeNode<T> nodo, T dato) {
-        if (nodo == null) {
-            return new AVLTreeNode<>(dato);
+    /**
+     * Metodo recursivo auxiliar que inserta un nuevo nodo en el arbol AVL,
+     * manteniendo el balance
+     *
+     * @param node nodo a insertar
+     * @param data el dato a insertar en el nodo
+     * @return la nueva raiz del arbol balanceado
+     */
+    private AVLTreeNode<T> insert(AVLTreeNode<T> node, T data) {
+        if (node == null) {
+            return new AVLTreeNode<>(data);
         }
-        int cmp = dato.getAverage().compareTo(nodo.getValue().getAverage());
+        int cmp = data.getAverage().compareTo(node.getValue().getAverage());
         if (cmp > 0 || cmp == 0) {
-            nodo.setRight(insert(nodo.getRight(), dato));
+            node.setRight(insert(node.getRight(), data));
         } else {
-            nodo.setLeft(insert(nodo.getLeft(), dato));
+            node.setLeft(insert(node.getLeft(), data));
         }
-        return balancear(nodo);
+        return balance(node);
     }
 
     /**
      * Elimina un dato del árbol AVL.
      *
-     * @param dato el dato a eliminar
+     * @param data el dato a eliminar
      */
-    public void remove(T dato) {
-        raiz = remove(raiz, dato);
+    public void remove(T data) {
+        root = remove(root, data);
     }
 
     /**
-     * @param nodo
-     * @param dato
-     * @return
+     * Metodo recursivo para eliminar un nodo en el arbol AVL Muestra un mensje
+     * si el dato no es encontrado
+     *
+     * @param node el nodo actual
+     * @param data el dato a eliminar
+     * @return la nueva raiz del subarbol balanceado
      */
-    private AVLTreeNode<T> remove(AVLTreeNode<T> nodo, T dato) {
-        if (nodo == null) {
+    private AVLTreeNode<T> remove(AVLTreeNode<T> node, T data) {
+        if (node == null) {
             JOptionPane.showMessageDialog(null, "Estudiante no Encontrado", "Error", JOptionPane.ERROR_MESSAGE);
             return null;
         }
-        int cmp = dato.compareTo(nodo.getValue());
-        if (cmp < 0) {
-            nodo.setLeft(remove(nodo.getLeft(), dato));
-        } else if (cmp > 0) {
-            nodo.setRight(remove(nodo.getRight(), dato));
+        int comparation = data.compareTo(node.getValue());
+        if (comparation < 0) {
+            node.setLeft(remove(node.getLeft(), data));
+        } else if (comparation > 0) {
+            node.setRight(remove(node.getRight(), data));
         } else {
-            if (nodo.getLeft() == null) {
-                return nodo.getRight();
+            if (node.getLeft() == null) {
+                return node.getRight();
             }
-            if (nodo.getRight() == null) {
-                return nodo.getLeft();
+            if (node.getRight() == null) {
+                return node.getLeft();
             }
-            AVLTreeNode<T> sucesor = obtenerMinimo(nodo.getRight());
-            nodo.setValue(sucesor.getValue());
-            nodo.setRight(remove(nodo.getRight(), sucesor.getValue()));
+            AVLTreeNode<T> succesor = getMinimum(node.getRight());
+            node.setValue(succesor.getValue());
+            node.setRight(remove(node.getRight(), succesor.getValue()));
         }
-        return balancear(nodo);
+        return balance(node);
     }
 
     /**
-     * @param nodo
-     * @return
+     * Obtiene el nodo con el valor minimo en el arbol
+     *
+     * @param node la raiz del subarbol
+     * @return node nodo con el valor minimo
      */
-    private AVLTreeNode<T> obtenerMinimo(AVLTreeNode<T> nodo) {
-        while (nodo.getLeft() != null) {
-            nodo = nodo.getLeft();
+    private AVLTreeNode<T> getMinimum(AVLTreeNode<T> node) {
+        while (node.getLeft() != null) {
+            node = node.getLeft();
         }
-        return nodo;
+        return node;
     }
 
     /**
-     * @param nodo
-     * @return
+     * Realiza el balanceo de arbol AVL si su factor de equilibro es incorrecto
+     *
+     * @param node la raiz del arbol a balancear
+     * @return node la lueva raiz del subarbol balanceado
      */
-    private AVLTreeNode<T> balancear(AVLTreeNode<T> nodo) {
-        actualizarAltura(nodo);
-        int balance = obtenerBalance(nodo);
+    private AVLTreeNode<T> balance(AVLTreeNode<T> node) {
+        updateHeight(node);
+        int balance = getBalance(node);
         if (balance > 1) {
-            if (obtenerBalance(nodo.getLeft()) < 0) {
-                nodo.setLeft(rotarIzquierda(nodo.getLeft()));
+            if (getBalance(node.getLeft()) < 0) {
+                node.setLeft(rotateLeft(node.getLeft()));
             }
-            return rotarDerecha(nodo);
+            return rotateRight(node);
         }
         if (balance < -1) {
-            if (obtenerBalance(nodo.getRight()) > 0) {
-                nodo.setRight(rotarDerecha(nodo.getRight()));
+            if (getBalance(node.getRight()) > 0) {
+                node.setRight(rotateRight(node.getRight()));
             }
-            return rotarIzquierda(nodo);
+            return rotateLeft(node);
         }
-        return nodo;
+        return node;
     }
 
     /**
-     * @param nodo
+     * Actualiza la altura del nodo basandose en sus nodos hijos
+     *
+     * @param node el nodo al que se le actualiza la latura
      */
-    private void actualizarAltura(AVLTreeNode<T> nodo) {
-        int izquierdaAltura = altura(nodo.getLeft());
-        int derechaAltura = altura(nodo.getRight());
-        nodo.setHeight(1 + Math.max(izquierdaAltura, derechaAltura));
+    private void updateHeight(AVLTreeNode<T> node) {
+        int izquierdaAltura = height(node.getLeft());
+        int derechaAltura = height(node.getRight());
+        node.setHeight(1 + Math.max(izquierdaAltura, derechaAltura));
     }
 
     /**
-     * @param nodo
-     * @return
+     * Obtiene la altura del nodo
+     *
+     * @param node el nodo cuya altura se desea conocer
+     * @return la altura del nodo, si es 0 devuelve null
      */
-    private int altura(AVLTreeNode<T> nodo) {
-        return nodo == null ? 0 : nodo.getHeight();
+    private int height(AVLTreeNode<T> node) {
+        return node == null ? 0 : node.getHeight();
     }
 
     /**
-     * @param nodo
-     * @return
+     * Calcula el factor de balance de un nodo
+     *
+     * @param node el nodo al que se le calcula el balance
+     * @return la diferencia de altura entre el subarbol izquierdo y derecho
      */
-    private int obtenerBalance(AVLTreeNode<T> nodo) {
-        return nodo == null ? 0 : altura(nodo.getLeft()) - altura(nodo.getRight());
+    private int getBalance(AVLTreeNode<T> node) {
+        return node == null ? 0 : height(node.getLeft()) - height(node.getRight());
     }
 
     /**
-     * @param y
-     * @return
+     * Realiza una rotacion simple a la derecha
+     *
+     * @param y el nodo desequilibrado
+     * @return el nuevo nodo raiz del subarbol tras la rotacion
      */
-    private AVLTreeNode<T> rotarDerecha(AVLTreeNode<T> y) {
+    private AVLTreeNode<T> rotateRight(AVLTreeNode<T> y) {
         AVLTreeNode<T> x = y.getLeft();
         AVLTreeNode<T> T2 = x.getRight();
         x.setRight(y);
         y.setLeft(T2);
-        actualizarAltura(y);
-        actualizarAltura(x);
+        updateHeight(y);
+        updateHeight(x);
         return x;
     }
 
     /**
-     * @param x
-     * @return
+     * Realiza una rotacion simple a la izquierda
+     *
+     * @param x el nodo desequilibrado
+     * @return el nuevo nodo raiz del subarbol tras la rotacion
      */
-    private AVLTreeNode<T> rotarIzquierda(AVLTreeNode<T> x) {
+    private AVLTreeNode<T> rotateLeft(AVLTreeNode<T> x) {
         AVLTreeNode<T> y = x.getRight();
         AVLTreeNode<T> T2 = y.getLeft();
         y.setLeft(x);
         x.setRight(T2);
-        actualizarAltura(x);
-        actualizarAltura(y);
+        updateHeight(x);
+        updateHeight(y);
         return y;
     }
 
@@ -174,31 +200,37 @@ public class AVLTree<T extends Identificable> {
      * @return true si el árbol está vacío, false en caso contrario
      */
     public boolean isEmpty() {
-        return raiz == null;
+        return root == null;
     }
 
+    /**
+     * Elimina todos los elementos del arbol dejandolo vacio
+     */
     public void clear() {
-        raiz = null;
+        root = null;
     }
 
     /**
      * Devuelve la raíz del árbol (solo para pruebas).
      *
-     * @return la raíz
+     * @return la raíz del arbol
      */
-    public AVLTreeNode<T> getRaiz() {
-        return raiz;
+    public AVLTreeNode<T> getRoot() {
+        return root;
     }
 
     /**
-     *
+     * Imprime los elementos del arbol en recorrido "In-Order" (izquierda, raiz,
+     * derecha)
      */
     public void listInOrder() {
-        inOrder(raiz);
+        inOrder(root);
     }
 
     /**
-     * @param node
+     * Metodo recursivo que imprime los elementos del arbol en orden "In-Order"
+     *
+     * @param node el nodo actual desde el cual iniciar el recorrido
      */
     public void inOrder(AVLTreeNode<T> node) {
         if (node != null) {
@@ -209,16 +241,22 @@ public class AVLTree<T extends Identificable> {
     }
 
     /**
-     * @return
+     * Devuelve una lista Arraylist con los elementos del arbol del tipo Student
+     * en orden "In-Order"
+     *
+     * @return la lista de estudiantes
      */
     public ArrayList<Student> listInOrderToArrayList() {
         ArrayList<Student> students = new ArrayList<>(10);
-        return inOrderToArrayList(raiz, students);
+        return inOrderToArrayList(root, students);
     }
 
     /**
-     * @param node
-     * @return
+     * Metodo auxiliar recursivo que agrega los valores del arbol a una lista
+     * ArrayList con los elementos del tipo Student en orden "In-Order"
+     *
+     * @param node el nodo actual
+     * @return la lista con los estudiantes
      */
     private ArrayList<Student> inOrderToArrayList(AVLTreeNode<T> node, ArrayList<Student> students) {
         if (node != null) {

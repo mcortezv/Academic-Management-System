@@ -3,18 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package structures;
+
 import structures.nodes.DictionaryNode;
 
 /**
- * Implementación de un diccionario hash utilizando un arreglo de listas enlazadas
- * para manejar colisiones mediante encadenamiento.
+ * Implementación de un diccionario hash utilizando un arreglo de listas
+ * enlazadas para manejar colisiones mediante encadenamiento.
  *
  * @param <K> Tipo de dato para la clave.
  * @param <V> Tipo de dato para el valor.
  *
- * @author Cortez, Manuel
+ * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class HashDictionary<K, V> {
+
     private DictionaryNode<K, V>[] table;
     private int size;
     private int capacity;
@@ -22,14 +24,20 @@ public class HashDictionary<K, V> {
     /**
      * Constructor que inicializa el diccionario con una capacidad específica.
      *
-     * @param capacidadInicial Capacidad inicial del diccionario.
+     * @param initialCapacity Capacidad inicial del diccionario.
      */
-    public HashDictionary(int capacidadInicial) {
-        this.capacity = capacidadInicial;
-        this.table = new DictionaryNode[capacidadInicial];
+    public HashDictionary(int initialCapacity) {
+        this.capacity = initialCapacity;
+        this.table = new DictionaryNode[initialCapacity];
         this.size = 0;
     }
 
+    /**
+     * Metodo que regresa una lista enlazada que contiene solo los valores
+     * almacenados en el diccionario
+     *
+     * @return values los valores devueltos del diccionario
+     */
     public ArrayList<V> getValues() {
         ArrayList<V> values = new ArrayList<>(size);
         for (int i = 0; i < capacity; i++) {
@@ -43,8 +51,10 @@ public class HashDictionary<K, V> {
     }
 
     /**
+     * Metodo que regresa una lista enlazada que contiene solo las llaves
+     * almacenadas en el diccionario
      *
-     * @return
+     * @return keys las llaves devueltas del diccionario
      */
     public ArrayList<K> getKeys() {
         ArrayList<K> keys = new ArrayList<>(size);
@@ -109,31 +119,31 @@ public class HashDictionary<K, V> {
     /**
      * Calcula el índice hash para una clave.
      *
-     * @param clave Clave cuya posición hash se desea obtener.
+     * @param key Clave cuya posición hash se desea obtener.
      * @return Índice calculado dentro del arreglo.
      */
-    private int getHash(K clave) {
-        return Math.abs(clave.hashCode()) % capacity;
+    private int getHash(K key) {
+        return Math.abs(key.hashCode()) % capacity;
     }
 
     /**
-     * Inserta o actualiza un par clave-valor en el diccionario.
-     * Si la clave ya existe, actualiza su valor.
-     * Si no, la inserta al final de la lista del bucket correspondiente.
+     * Inserta o actualiza un par clave-valor en el diccionario. Si la clave ya
+     * existe, actualiza su valor. Si no, la inserta al final de la lista del
+     * bucket correspondiente.
      *
-     * @param clave Clave a insertar o actualizar.
-     * @param valor Valor asociado a la clave.
+     * @param key Clave a insertar o actualizar.
+     * @param value Valor asociado a la clave.
      */
-    public void put(K clave, V valor) {
-        int indice = getHash(clave);
-        DictionaryNode<K, V> nuevo = new DictionaryNode<>(clave, valor);
-        if (table[indice] == null) {
-            table[indice] = nuevo;
+    public void put(K key, V value) {
+        int index = getHash(key);
+        DictionaryNode<K, V> newToPut = new DictionaryNode<>(key, value);
+        if (table[index] == null) {
+            table[index] = newToPut;
         } else {
-            DictionaryNode<K, V> actual = table[indice];
+            DictionaryNode<K, V> actual = table[index];
             while (actual != null) {
-                if (actual.getKey().equals(clave)) {
-                    actual.setValue(valor);
+                if (actual.getKey().equals(key)) {
+                    actual.setValue(value);
                     return;
                 }
                 if (actual.getNext() == null) {
@@ -141,7 +151,7 @@ public class HashDictionary<K, V> {
                 }
                 actual = actual.getNext();
             }
-            actual.setNext(nuevo);
+            actual.setNext(newToPut);
         }
         size++;
     }
@@ -153,20 +163,20 @@ public class HashDictionary<K, V> {
      * @return true si fue eliminado, false si no se encontró.
      */
     public boolean remove(K clave) {
-        int indice = getHash(clave);
-        DictionaryNode<K, V> actual = table[indice];
-        DictionaryNode<K, V> anterior = null;
+        int index = getHash(clave);
+        DictionaryNode<K, V> actual = table[index];
+        DictionaryNode<K, V> previus = null;
         while (actual != null) {
             if (actual.getKey().equals(clave)) {
-                if (anterior == null) {
-                    table[indice] = actual.getNext();
+                if (previus == null) {
+                    table[index] = actual.getNext();
                 } else {
-                    anterior.setNext(actual.getNext());
+                    previus.setNext(actual.getNext());
                 }
                 size--;
                 return true;
             }
-            anterior = actual;
+            previus = actual;
             actual = actual.getNext();
         }
         return false;
@@ -175,14 +185,14 @@ public class HashDictionary<K, V> {
     /**
      * Busca y retorna el valor asociado a una clave específica.
      *
-     * @param clave Clave a buscar.
+     * @param key Clave a buscar.
      * @return Valor asociado, o null si no se encuentra.
      */
-    public V get(K clave) {
-        int indice = getHash(clave);
-        DictionaryNode<K, V> actual = table[indice];
+    public V get(K key) {
+        int index = getHash(key);
+        DictionaryNode<K, V> actual = table[index];
         while (actual != null) {
-            if (actual.getKey().equals(clave)) {
+            if (actual.getKey().equals(key)) {
                 return actual.getValue();
             }
             actual = actual.getNext();

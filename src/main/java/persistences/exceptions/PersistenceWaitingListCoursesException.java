@@ -5,7 +5,7 @@
 package persistences.exceptions;
 
 /**
- * Excepción personalizada para manejar errores en la Persistencia de Lissta de Espera de Cursos.
+ * Excepción personalizada para manejar errores en la Persistencia de Lista de Espera de Cursos.
  *
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */

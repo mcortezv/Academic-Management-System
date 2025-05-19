@@ -14,14 +14,15 @@ public class ListException extends RuntimeException {
     /**
      * Constructor por defecto de la excepción.
      */
-    public ListException(){}
+    public ListException() {
+    }
 
     /**
      * Constructor que acepta un mensaje de error.
      *
      * @param s String Mensaje de error descriptivo.
      */
-    public ListException(String s){
+    public ListException(String s) {
         super(s);
     }
 }

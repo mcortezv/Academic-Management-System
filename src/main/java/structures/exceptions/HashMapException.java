@@ -14,14 +14,15 @@ public class HashMapException extends RuntimeException {
     /**
      * Constructor por defecto de la excepción.
      */
-    public HashMapException(){}
+    public HashMapException() {
+    }
 
     /**
      * Constructor que acepta un mensaje de error.
      *
      * @param s String Mensaje de error descriptivo.
      */
-    public HashMapException(String s){
+    public HashMapException(String s) {
         super(s);
     }
 }

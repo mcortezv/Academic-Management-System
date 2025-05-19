@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package persistences;
+
 import components.*;
 import components.dtos.*;
 import interfaces.IPersistenceFacade;
@@ -49,7 +50,7 @@ public class PersistenceFacade implements IPersistenceFacade {
      */
     @Override
     public void addStudent(Student student) {
-        persistenceActions.addAction(new Action(Action.Type.addStudent, student,"Estudiante ("+student.getId()+") añadido"));
+        persistenceActions.addAction(new Action(Action.Type.addStudent, student, "Estudiante (" + student.getId() + ") añadido"));
         persistenceStudents.addStudent(student);
     }
 
@@ -72,7 +73,7 @@ public class PersistenceFacade implements IPersistenceFacade {
      */
     @Override
     public Course addCourse(Course course) {
-        persistenceActions.addAction(new Action(Action.Type.addCourse, course, "Curso ("+course.getName()+") añadido"));
+        persistenceActions.addAction(new Action(Action.Type.addCourse, course, "Curso (" + course.getName() + ") añadido"));
         return persistenceCourses.addCourse(course);
     }
 
@@ -84,7 +85,7 @@ public class PersistenceFacade implements IPersistenceFacade {
      */
     @Override
     public Course deleteCourse(Course course) {
-        persistenceActions.addAction(new Action(Action.Type.removeCourse, course, "Curso ("+course.getName()+") eliminado"));
+        persistenceActions.addAction(new Action(Action.Type.removeCourse, course, "Curso (" + course.getName() + ") eliminado"));
         return persistenceCourses.removeCourse(course);
     }
 
@@ -109,7 +110,7 @@ public class PersistenceFacade implements IPersistenceFacade {
         Student student = persistenceStudents.searchStudent(studentId);
         Course course = persistenceCourses.getCourse(courseId);
         if (course != null && student != null) {
-            persistenceActions.addAction(new Action(Action.Type.enrollStudentInCourse, new StudentCourseDTO(student, course), "Etudiante ("+student.getId()+") inscrito"));
+            persistenceActions.addAction(new Action(Action.Type.enrollStudentInCourse, new StudentCourseDTO(student, course), "Etudiante (" + student.getId() + ") inscrito"));
             course.getEnrolledStudents().enrollStudentCourse(student);
         }
     }
@@ -158,6 +159,11 @@ public class PersistenceFacade implements IPersistenceFacade {
         return null;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public ArrayList<Student> showWaitingListForCourseArrayList(String id) {
         Course course = persistenceCourses.getCourse(id);
@@ -169,7 +175,6 @@ public class PersistenceFacade implements IPersistenceFacade {
 
     /**
      *
- 
      */
     @Override
     public void processNextRequest() {
@@ -278,15 +283,15 @@ public class PersistenceFacade implements IPersistenceFacade {
     public Student rotateRol(String id) {
         Course course = persistenceCourses.getCourse(id);
         if (course != null) {
-            persistenceActions.addAction(new Action(Action.Type.rotateRoles, id, "Lider del curso ("+ course.getId()+") rotado"));
+            persistenceActions.addAction(new Action(Action.Type.rotateRoles, id, "Lider del curso (" + course.getId() + ") rotado"));
             return course.rotateRol();
         }
         return null;
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public PersistenceStudents getPersistenceStudents() {
@@ -310,7 +315,7 @@ public class PersistenceFacade implements IPersistenceFacade {
     public PersistenceCourses getPersistenceCourses() {
         return this.persistenceCourses;
     }
-    
+
     @Override
     public PersistenceActions getPersistenceActions() {
         return this.persistenceActions;

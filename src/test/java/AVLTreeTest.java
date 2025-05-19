@@ -59,8 +59,8 @@ public class AVLTreeTest {
         arbol.insert(student2);
         arbol.insert(student3);
         arbol.remove(student4);
-        assertNotNull(arbol.getRaiz());
-        assertNotEquals(student1, arbol.getRaiz().getValue());
+        assertNotNull(arbol.getRoot());
+        assertNotEquals(student1, arbol.getRoot().getValue());
     }
 
     @Test

@@ -3,18 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package structures;
+
 import structures.exceptions.QueueException;
 import structures.nodes.SingleNode;
 
 /**
- * Implementación de una cola utilizando una lista enlazada simple.
- * Esta clase implementa las operaciones basicas de una cola: encolar,
- * desencolar, obtener el primer elemento,
+ * Implementación de una cola utilizando una lista enlazada simple. Esta clase
+ * implementa las operaciones basicas de una cola: encolar, desencolar, obtener
+ * el primer elemento,
  *
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  * @param <T> Tipo de datos de los elementos almacenados en la cola.
  */
 public class Queue<T> {
+
     private SingleNode<T> P;
 
     /**
@@ -30,13 +32,13 @@ public class Queue<T> {
      * @param value El dato a agregar a la cola.
      */
     public void enqueue(T value) {
-        SingleNode<T> nuevo = new SingleNode<>(value);
+        SingleNode<T> newNode = new SingleNode<>(value);
         if (P == null) {
-            P = nuevo;
+            P = newNode;
             return;
         }
-        nuevo.setNext(P);
-        P = nuevo;
+        newNode.setNext(P);
+        P = newNode;
     }
 
     /**
@@ -49,18 +51,18 @@ public class Queue<T> {
         if (isEmpty()) {
             return null;
         }
-        if (getSize() == 1){
-            T dato = P.getValue();
+        if (getSize() == 1) {
+            T data = P.getValue();
             P = null;
-            return dato;
+            return data;
         }
         SingleNode<T> aux = P;
         while (aux.getNext().getNext() != null) {
             aux = aux.getNext();
         }
-        T dato = aux.getNext().getValue();
+        T data = aux.getNext().getValue();
         aux.setNext(null);
-        return dato;
+        return data;
     }
 
     /**
@@ -74,7 +76,7 @@ public class Queue<T> {
             return null;
         }
         SingleNode<T> aux = P;
-        while (aux.getNext() != null){
+        while (aux.getNext() != null) {
             aux = aux.getNext();
         }
         return aux.getValue();
@@ -90,7 +92,8 @@ public class Queue<T> {
     }
 
     /**
-     * Devuelve el tamaño de la cola, es decir, la cantidad de elementos presentes.
+     * Devuelve el tamaño de la cola, es decir, la cantidad de elementos
+     * presentes.
      *
      * @return El numero de elementos en la cola.
      */

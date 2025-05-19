@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package structures;
+
 import structures.exceptions.ListException;
 
 import javax.swing.*;
@@ -17,24 +18,26 @@ import java.util.Objects;
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class ArrayList<T> implements Iterable<T> {
+
     public int numObjects;
     public T[] array;
 
     /**
-     * Constructor que establece los atributos de la instancia al valor de sus parametros
+     * Constructor que establece los atributos de la instancia al valor de sus
+     * parametros
      *
      * @param numObjetos int Tamaño inicial de la lista.
      * @throws ListException si el tamaño es negativo.
      */
-    public ArrayList(int numObjetos){
-        if (numObjetos < 0){
+    public ArrayList(int numObjetos) {
+        if (numObjetos < 0) {
             throw new ListException("El Tamaño no Puede Ser Negativo");
         }
         this.numObjects = 0;
         this.array = (T[]) new Object[numObjetos];
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return numObjects == 0;
     }
 
@@ -59,7 +62,7 @@ public class ArrayList<T> implements Iterable<T> {
      * @throws ListException si el índice está fuera de rango.
      */
     public void set(T o, int i) {
-        if (i < 0 || i >= array.length){
+        if (i < 0 || i >= array.length) {
             JOptionPane.showMessageDialog(null, "Indice Fuera del Rango del Arreglo de Calificaciones", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -75,7 +78,7 @@ public class ArrayList<T> implements Iterable<T> {
      * @throws ListException si el índice está fuera de rango.
      */
     public T get(int i) {
-        if (i < 0 || i >= array.length){
+        if (i < 0 || i >= array.length) {
             throw new ListException("Indice Fuera de Rango");
         }
         return array[i];
@@ -89,11 +92,11 @@ public class ArrayList<T> implements Iterable<T> {
      * @throws ListException si la lista está vacía.
      */
     public boolean remove(T o) {
-        if (this.numObjects == 0){
+        if (this.numObjects == 0) {
             throw new ListException("La Lista Esta Vacia");
         }
-        for (int i = 0; i < array.length; i++){
-            if (Objects.equals(o, array[i])){
+        for (int i = 0; i < array.length; i++) {
+            if (Objects.equals(o, array[i])) {
                 array[i] = null;
                 numObjects--;
                 return true;
@@ -109,8 +112,8 @@ public class ArrayList<T> implements Iterable<T> {
      * @return Índice del objeto o -1 si no se encuentra.
      */
     public int indexOf(T o) {
-        for (int i = 0; i < array.length; i++){
-            if (Objects.equals(o, array[i])){
+        for (int i = 0; i < array.length; i++) {
+            if (Objects.equals(o, array[i])) {
                 return i;
             }
         }
@@ -137,16 +140,33 @@ public class ArrayList<T> implements Iterable<T> {
         this.array = (T[]) new Object[array.length];
     }
 
+    /**
+     * Retorna un iterador para recorrer los elementos almacenados en el
+     * arreglo.
+     *
+     * @return iterator
+     */
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             private int currentIndex = 0;
 
+            /**
+             * Verifica si hay más elementos disponibles en el arreglo para
+             * iterar.
+             *
+             * @return
+             */
             @Override
             public boolean hasNext() {
                 return currentIndex < numObjects;
             }
 
+            /**
+             * Retorna el siguiente elemento en la iteración.
+             *
+             * @return
+             */
             @Override
             public T next() {
                 if (!hasNext()) {
