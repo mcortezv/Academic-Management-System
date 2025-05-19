@@ -24,6 +24,7 @@ public class PersistenceStudentsCourses {
      */
     public PersistenceStudentsCourses() {
         this.studentsCourses = new LinkedList<>();
+        populateStudentsCourses();
     }
 
     /**
@@ -70,10 +71,36 @@ public class PersistenceStudentsCourses {
      * el sistema
      */
     public void populateStudentsCourses() {
-        Contact datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
-        Student student1 = new Student("2222BBBB", "Sebas", datosContacto);
-        Student student2 = new Student("3333CCCC", "manuel", datosContacto);
+        Contact datosContacto1 = new Contact("6681118936", "sebastian@gmail.com", "81271");
+        Contact datosContacto2 = new Contact("6681117834", "juanito@gmail.com", "817232");
+        Contact datosContacto3 = new Contact("6681892523", "manuel@gmail.com", "817272");
+        Contact datosContacto4 = new Contact("6681151615", "alonso@gmail.com", "817937");
+        Contact datosContacto5 = new Contact("6681029372", "juandavid@gmail.com", "819283");
+        Contact datosContacto6 = new Contact("6681272634", "antonio@gmail.com", "72834");
+        Contact datosContacto7 = new Contact("6681928323", "luisangel@gmail.com", "81293");
+        Contact datosContacto8 = new Contact("6681191827", "daniel@gmail.com", "818234");
+
+
+
+        Student student1 = new Student("1111AAAA", "Sebastian Escalante", datosContacto1);
+        Student student2 = new Student("2222BBBB", "Juan Manuel Perez", datosContacto2);
+        Student student3 = new Student("3333CCCC", "Manuel Cortez", datosContacto3);
+        Student student4 = new Student("4444DDDD", "Luis Alonso", datosContacto4);
+        Student student5 = new Student("5555EEEE", "Juan Baldenegro", datosContacto5);
+        Student student6 = new Student("6666FFFF", "Antonio Quintana", datosContacto6);
+        Student student7 = new Student("7777GGGG", "Luis Angel Rivera", datosContacto7);
+        Student student8 = new Student("8888HHHHH", "Daniel Miramontes", datosContacto8);
+
+
+
         studentsCourses.add(student1);
         studentsCourses.add(student2);
+        studentsCourses.add(student3);
+        studentsCourses.add(student4);
+        studentsCourses.add(student5);
+        studentsCourses.add(student6);
+        studentsCourses.add(student7);
+        studentsCourses.add(student8);
+
     }
 }

@@ -33,7 +33,7 @@ public class CourseTablePanel extends JPanel {
         centralPanel.setPreferredSize(new Dimension(200, 500));
         southPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         southPanel.setPreferredSize(new Dimension(500, 45));
-        String[] columnNames = {"Id", "Nombre", "Tutor"};
+        String[] columnNames = {"Id", "Nombre"};
 
         //Boton
         btnBack.addActionListener(e -> coursePanel.showCoursePanel());
@@ -47,14 +47,12 @@ public class CourseTablePanel extends JPanel {
                 Object[] row = {
                     course.getId(),
                     course.getName(),
-                    course.getTutor(),
                 };
                 model.addRow(row);
             }
 
         } else {
             Object[] row = {
-                " ",
                 " ",
                 " "
             };

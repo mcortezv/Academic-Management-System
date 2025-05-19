@@ -39,6 +39,13 @@ public final class PersistenceRoles {
         return null;
     }
 
+    public Student undoRotateRol(){
+        if (roles.undoRotateNode().getValue() != null) {
+            return roles.undoRotateNode().getValue();
+        }
+        return null;
+    }
+
     /**
      * Metodo auxiliar que permite agregar estudiantes al sistema y establecer
      * los mismos con un rol designado a algun curso en el sistema

@@ -88,6 +88,13 @@ public class PersistenceActions {
                 persistenceCourses.addCourse(courseToadd);
                 JOptionPane.showMessageDialog(null, "Se ha deshecho la accion de eliminar el curso: " + courseToadd.getName());
             }
+            case rotateRoles -> {
+                String idCourse  = (String) action.getData();
+                Course course = persistenceCourses.getCourseById(idCourse);
+                course.undoRotateRol();
+                JOptionPane.showMessageDialog(null, "Se ha deshecho la accion de rotar el rol del curso: " + course.getName());
+            }
+
             default -> {
                 JOptionPane.showMessageDialog(null, "La ultima accion no cumple con los requisistos para ser deshecha", "Error", JOptionPane.ERROR_MESSAGE);
             }

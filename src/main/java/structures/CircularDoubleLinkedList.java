@@ -36,8 +36,9 @@ public class CircularDoubleLinkedList<T> {
         } else {
             newNode.setNext(P);
             newNode.setPrev(last);
-            P.setPrev(newNode);
             last.setNext(newNode);
+            P.setPrev(newNode);
+
         }
         last = newNode;
         size++;
@@ -164,7 +165,7 @@ public class CircularDoubleLinkedList<T> {
     public ArrayList<Student> getList() {
         ArrayList<Student> students = new ArrayList<>(10);
         DoubleNode<T> actual = P;
-        for (int i = 0; i < size - 1; i++) {
+        for (int i = 0; i < size; i++) {
             students.add((Student) actual.getValue());
             actual = actual.getNext();
         }

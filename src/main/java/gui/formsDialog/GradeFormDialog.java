@@ -30,6 +30,7 @@ public class GradeFormDialog extends Dialog {
     private JTextArea textArea;
     private JScrollPane jsp;
     private GradePanel panel;
+    private Double gradeDouble;
     
     public GradeFormDialog(MainFrame owner, int option, IPersistenceFacade persistenceFacade, GradePanel panel) {
         super(owner, "", true);
@@ -231,7 +232,7 @@ public class GradeFormDialog extends Dialog {
         // Create button
         Button btnAddCourse = new Button("Confirmar");
         btnAddCourse.addActionListener(e -> {
-            persistenceFacade.undoAction();
+            processNextRequest();
             dispose();
         });
 
@@ -251,7 +252,12 @@ public class GradeFormDialog extends Dialog {
             if (persistenceFacade.searchStudentById(id) == null){
                 return;
             }
-            Double gradeDouble = Double.parseDouble(inputGrade.getText().trim());
+            try{
+                gradeDouble = Double.parseDouble(inputGrade.getText().trim());
+            }catch(NumberFormatException ex){
+                JOptionPane.showMessageDialog(centerPanel, "Calificacion Invalida (Escala 10.0)", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             if (!Validator.validateDecimalGrade(gradeDouble)) {
                 JOptionPane.showMessageDialog(centerPanel, "Calificacion Invalida (Escala 10.0)", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
@@ -269,7 +275,13 @@ public class GradeFormDialog extends Dialog {
             if (persistenceFacade.searchStudentById(id) == null){
                 return;
             }
-            Double gradeDouble = Double.parseDouble(inputGrade.getText().trim());
+            try{
+                gradeDouble = Double.parseDouble(inputGrade.getText().trim());
+            }catch(NumberFormatException ex){
+                JOptionPane.showMessageDialog(centerPanel, "Calificacion Invalida (Escala 10.0)", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             if (!Validator.validateDecimalGrade(gradeDouble)) {
                 JOptionPane.showMessageDialog(centerPanel, "Calificacion Invalida (Escala 10.0)", "Error", JOptionPane.ERROR_MESSAGE);
             } else {

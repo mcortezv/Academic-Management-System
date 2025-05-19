@@ -5,9 +5,12 @@
 package persistences;
 
 import components.*;
+import components.Action;
 import components.dtos.StudentGradeDTO;
 import structures.ArrayList;
 import structures.Queue;
+
+import javax.swing.*;
 
 /**
  * Clase encargada de manejar la persistencia de solicitudes de calificaciones
@@ -60,19 +63,27 @@ public class PersistenceRequests {
      */
     public ArrayList<Double> processNextRequest() {
         Request request = requests.dequeue();
+        if (request == null){
+            JOptionPane.showMessageDialog(null, "No hay solicitudes para procesar");
+            return null;
+        }
         StudentGradeDTO studentGradeDTO = (StudentGradeDTO) request.getData();
         Double grade = studentGradeDTO.getGrade();
         if (request.getType() == Request.Type.addGrade) {
             studentGradeDTO.getStudent().addGrade(grade);
             persistenceActions.addAction(new Action(Action.Type.addGrade, studentGradeDTO, "Calificacion añadida"));
+            JOptionPane.showMessageDialog(null, "Se ha procesado la solicitud: Añadir calificacion del estudiante: " + studentGradeDTO.getStudent().getFullName());
         } else if (request.getType() == Request.Type.removeGrade) {
             studentGradeDTO.getStudent().updateGrade(0.0, studentGradeDTO.getIndex());
             persistenceActions.addAction(new Action(Action.Type.updateGrade, studentGradeDTO, "Calificacion eliminada"));
+            JOptionPane.showMessageDialog(null, "Se ha procesado la solicitud: Eliminar calificacion del estudiante: " + studentGradeDTO.getStudent().getFullName());
         } else if (request.getType() == Request.Type.updateGrade) {
             studentGradeDTO.getStudent().updateGrade(studentGradeDTO.getGrade(), studentGradeDTO.getIndex());
             persistenceActions.addAction(new Action(Action.Type.updateGrade, studentGradeDTO, "Calificacion actualizada"));
+            JOptionPane.showMessageDialog(null, "Se ha procesado la solicitud: Actualizar calificacion del estudiante: " + studentGradeDTO.getStudent().getFullName());
         } else if (request.getType() == Request.Type.listGrades) {
             persistenceActions.addAction(new Action(Action.Type.listGrades, studentGradeDTO, null));
+            //JOptionPane.showMessageDialog(null, "Se ha procesado la solicitud: Listar calificacion del estudiante: " + studentGradeDTO.getStudent().getFullName());
             return studentGradeDTO.getStudent().listGrades();
         }
         return null;
