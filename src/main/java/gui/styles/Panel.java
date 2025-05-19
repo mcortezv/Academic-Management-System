@@ -36,6 +36,7 @@ public abstract class Panel extends JPanel {
         centralPanel.setBorder(BorderFactory.createEmptyBorder(40, 170, 0, 150));
         southPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         southPanel.setPreferredSize(new Dimension(500, 50));
+        southPanel.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 0));
         centralPanel.setBackground(Color.WHITE);
         southPanel.setBackground(Color.WHITE);
 
@@ -54,6 +55,10 @@ public abstract class Panel extends JPanel {
             persistenceFacade.undoAction();
         });
 
+    }
+    
+    public void updateTextFromPanel(String text) {
+        mainFrame.getMainPanel().updateText(text);
     }
 
     public abstract void startComponents();

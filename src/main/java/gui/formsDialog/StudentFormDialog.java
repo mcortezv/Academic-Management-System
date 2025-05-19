@@ -170,6 +170,7 @@ public final class StudentFormDialog extends Dialog {
         
         student = new Student(name, contact);
         persistence.addStudent(student);
+        mainFrame.getMainPanel().updateText(persistence.getPersistenceActions().getStack().getAllElementsAsString());
         JOptionPane.showMessageDialog(centerPanel, "Estudiante agregado con exito");
         dispose();
 

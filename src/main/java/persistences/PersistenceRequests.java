@@ -32,15 +32,15 @@ public class PersistenceRequests {
         Double grade = studentGradeDTO.getGrade();
         if (request.getType() == Request.Type.addGrade) {
             studentGradeDTO.getStudent().addGrade(grade);
-            persistenceActions.addAction(new Action(Action.Type.addGrade, studentGradeDTO));
+            persistenceActions.addAction(new Action(Action.Type.addGrade, studentGradeDTO, "Calificacion añadida"));
         } else if (request.getType() == Request.Type.removeGrade) {
             studentGradeDTO.getStudent().updateGrade(0.0, studentGradeDTO.getIndex());
-            persistenceActions.addAction(new Action(Action.Type.updateGrade, studentGradeDTO));
+            persistenceActions.addAction(new Action(Action.Type.updateGrade, studentGradeDTO, "Calificacion eliminada"));
         } else if (request.getType() == Request.Type.updateGrade) {
             studentGradeDTO.getStudent().updateGrade(studentGradeDTO.getGrade(), studentGradeDTO.getIndex());
-            persistenceActions.addAction(new Action(Action.Type.updateGrade, studentGradeDTO));
+            persistenceActions.addAction(new Action(Action.Type.updateGrade, studentGradeDTO, "Calificacion actualizada"));
         } else if (request.getType() == Request.Type.listGrades) {
-            persistenceActions.addAction(new Action(Action.Type.listGrades, studentGradeDTO));
+            persistenceActions.addAction(new Action(Action.Type.listGrades, studentGradeDTO, null));
             return studentGradeDTO.getStudent().listGrades();
         }
         return null;

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package persistences;
+
 import components.Action;
 import components.Course;
 import components.Student;
@@ -41,6 +42,10 @@ public class PersistenceActions {
      */
     public void addAction(Action action) {
         actions.push(action);
+    }
+
+    public Stack<Action> getStack() {
+        return actions;
     }
 
     /**
@@ -88,4 +93,5 @@ public class PersistenceActions {
             }
         }
     }
+
 }

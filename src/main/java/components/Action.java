@@ -12,6 +12,7 @@ package components;
 public class Action {
     private final Type type;
     private final Object data;
+    private final String name;
 
     /**
      * Enumeracion que define los distintos tipos de acciones del sistema
@@ -37,9 +38,10 @@ public class Action {
      * @param type
      * @param data
      */
-    public Action(Type type, Object data) {
+    public Action(Type type, Object data, String name) {
         this.type = type;
         this.data = data;
+        this.name = name;
     }
 
     /**
@@ -58,5 +60,10 @@ public class Action {
      */
     public Object getData() {
         return this.data;
+    }
+    
+    @Override
+    public String toString() {
+        return "[" + name + "]";
     }
 }
