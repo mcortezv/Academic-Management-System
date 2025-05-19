@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gui.formsDialog;
+import components.Student;
 import gui.MainFrame;
 import gui.panels.GradePanel;
 import gui.styles.Dialog;
@@ -10,15 +11,16 @@ import interfaces.IPersistenceFacade;
 import javax.swing.*;
 import java.awt.*;
 import gui.styles.TextField;
+import structures.ArrayList;
 
 /**
  *
  * @author david
  */
 public class GradeFormDialog extends Dialog {
-    private TextField idStudent;
-    private TextField grade;
-    private TextField indexGrade;
+    private TextField inputIdStudent;
+    private TextField inputGrade;
+    private TextField inputIndexGrade;
     private IPersistenceFacade persistenceFacade;
     private GradePanel panel;
     
@@ -55,11 +57,11 @@ public class GradeFormDialog extends Dialog {
         // Id field
         JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         idPanel.add(new JLabel("Matricula del Estudiante:  "));
-        idStudent = new TextField(12);
-        idPanel.add(idStudent);
+        inputIdStudent = new TextField(12);
+        idPanel.add(inputIdStudent);
         idPanel.add(new JLabel("Nueva Calificacion:           "));
-        grade = new TextField(12);
-        idPanel.add(grade);
+        inputGrade = new TextField(12);
+        idPanel.add(inputGrade);
         idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
@@ -88,14 +90,14 @@ public class GradeFormDialog extends Dialog {
         // Id field
         JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         idPanel.add(new JLabel("Matricula del Estudiante:  "));
-        idStudent = new TextField(12);
-        idPanel.add(idStudent);
+        inputIdStudent = new TextField(12);
+        idPanel.add(inputIdStudent);
         idPanel.add(new JLabel("Nueva Calificacion:           "));
-        grade = new TextField(12);
-        idPanel.add(grade);
+        inputGrade = new TextField(12);
+        idPanel.add(inputGrade);
         idPanel.add(new JLabel("Indice de la Calificacion:  "));
-        indexGrade = new TextField(12);
-        idPanel.add(indexGrade);
+        inputIndexGrade = new TextField(12);
+        idPanel.add(inputIndexGrade);
         idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
@@ -124,11 +126,11 @@ public class GradeFormDialog extends Dialog {
         // Id field
         JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         idPanel.add(new JLabel("Matricula del Estudiante:  "));
-        idStudent = new TextField(12);
-        idPanel.add(idStudent);
+        inputIdStudent = new TextField(12);
+        idPanel.add(inputIdStudent);
         idPanel.add(new JLabel("Indice de la Calificacion:  "));
-        indexGrade = new TextField(12);
-        idPanel.add(indexGrade);
+        inputIndexGrade = new TextField(12);
+        idPanel.add(inputIndexGrade);
         idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
         southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
@@ -154,21 +156,6 @@ public class GradeFormDialog extends Dialog {
         setLayout(new BorderLayout());
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 
-        // Id field
-        JPanel idPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        idPanel.add(new JLabel("Matricula del Estudiante:  "));
-        idStudent = new TextField(12);
-        idPanel.add(idStudent);
-        idPanel.add(new JLabel("Nueva Calificacion:           "));
-        grade = new TextField(12);
-        idPanel.add(grade);
-        idPanel.add(new JLabel("Indice de la Calificacion:  "));
-        indexGrade = new TextField(12);
-        idPanel.add(indexGrade);
-        idPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
-        southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-        southPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-
         // Enroll button
         Button btnAddGrade = new Button("Procesar Solicitud");
         btnAddGrade.addActionListener(e -> {
@@ -177,7 +164,6 @@ public class GradeFormDialog extends Dialog {
         });
 
         // Add everything to the central panel
-        centerPanel.add(idPanel);
         southPanel.add(btnAddGrade);
 
         add(centerPanel, BorderLayout.CENTER);
@@ -185,18 +171,28 @@ public class GradeFormDialog extends Dialog {
     }
 
     public void addGrade(){
-
+        String id = inputIdStudent.getText().trim();
+        Double gradeDouble = Double.parseDouble(inputGrade.getText().trim());
+        persistenceFacade.requestAddGrade(id, gradeDouble);
+        JOptionPane.showMessageDialog(null, "Solicitud Agregar Calificacion Enviada");
     }
 
     public void updateGrade(){
-
+        String id = inputIdStudent.getText().trim();
+        Double gradeDouble = Double.parseDouble(inputGrade.getText().trim());
+        int index = Integer.parseInt(inputIndexGrade.getText().trim());
+        persistenceFacade.requestUpdateGrade(id, gradeDouble, index);
+        JOptionPane.showMessageDialog(null, "Solicitud Actualizar Calificacion Enviada");
     }
 
     public void deleteGrade(){
-
+        String id = inputIdStudent.getText().trim();
+        int index = Integer.parseInt(inputIndexGrade.getText().trim());
+        persistenceFacade.requestUpdateGrade(id, 0.0, index);
+        JOptionPane.showMessageDialog(null, "Solicitud Eliminar Calificacion Enviada");
     }
 
     public void processNextRequest(){
-
+        persistenceFacade.processNextRequest();
     }
 }
