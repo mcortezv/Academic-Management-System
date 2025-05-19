@@ -27,7 +27,9 @@ public final class PersistenceStudents {
     }
 
     public void removeStudent(Student student) {
-        students.remove(student);
+        if (student != null){
+            students.remove(student);
+        }
     }
 
     public Student searchStudent(String studentId) {

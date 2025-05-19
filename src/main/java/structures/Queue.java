@@ -47,7 +47,7 @@ public class Queue<T> {
      */
     public T dequeue() {
         if (isEmpty()) {
-            throw new QueueException("La cola esta vacia");
+            return null;
         }
         if (getSize() == 1){
             T dato = P.getValue();
@@ -71,7 +71,7 @@ public class Queue<T> {
      */
     public T peek() {
         if (isEmpty()) {
-            throw new QueueException("La cola esta vacia");
+            return null;
         }
         SingleNode<T> aux = P;
         while (aux.getNext() != null){

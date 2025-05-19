@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gui.formsDialog;
-
 import components.Course;
 import components.Student;
 import gui.MainFrame;
@@ -11,12 +10,14 @@ import gui.panels.EnrollmentPanel;
 import gui.styles.Dialog;
 import gui.styles.TextField;
 import interfaces.IPersistenceFacade;
+import persistences.exceptions.PersistenceCoursesException;
 import structures.ArrayList;
 import structures.HashDictionary;
 import javax.swing.*;
 import java.awt.*;
 import persistences.PersistenceCourses;
 import persistences.PersistenceStudents;
+import validators.Validator;
 
 /**
  *
@@ -163,36 +164,46 @@ public class EnrollFormDialog extends Dialog {
 
     public void enrollStudentAction() {
         String idStudent = idField.getText().trim();
+        if (!Validator.validateId(idStudent)) {
+            JOptionPane.showMessageDialog(centerPanel, "Id de Estudiante Invalido", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         PersistenceStudents students = persistenceFacade.getPersistenceStudents();
-        try {
-            student = students.searchStudent(idStudent);
-        } catch (structures.exceptions.TreeException ex) {
-            JOptionPane.showMessageDialog(null, "Estudiante No Encontrado ");
-            return;
-        }
-
-        String idCourse = (String) comboBox.getSelectedItem();
-        PersistenceCourses courses = persistenceFacade.getPersistenceCourses();
-        course = courses.getCourseById(idCourse);
-        try {
+        student = students.searchStudent(idStudent);
+        if (student != null) {
+            String idCourse = (String) comboBox.getSelectedItem();
+            PersistenceCourses courses = persistenceFacade.getPersistenceCourses();
             course = courses.getCourseById(idCourse);
-        } catch (persistences.exceptions.PersistenceCoursesException ex) {
-            JOptionPane.showMessageDialog(null, "Curso No Encontrado ");
-            return;
+            try {
+                course = courses.getCourseById(idCourse);
+            } catch (persistences.exceptions.PersistenceCoursesException ex) {
+                JOptionPane.showMessageDialog(null, "Curso No Encontrado ");
+                return;
+            }
+            assert course != null;
+            if (course.getEnrolledStudents().contains(student)){
+                JOptionPane.showMessageDialog(null, "Este Estudiante Ya Esta Inscrito en Este Curso: " + comboBox.getSelectedItem());
+            } else {
+                persistenceFacade.enrollStudentInCourse(idStudent, idCourse);
+                JOptionPane.showMessageDialog(null, "Estudiante Inscrito a la Clase: " + comboBox.getSelectedItem());
+            }
         }
-
-        persistenceFacade.enrollStudentInCourse(idStudent, idCourse);
-        JOptionPane.showMessageDialog(null, "Estudiante Inscrito a la Clase: " + comboBox.getSelectedItem());
     }
 
     public void enrolledStudents() {
         String idCourse = (String) comboBox.getSelectedItem();
+        if (!Validator.validateId(idCourse)) {
+            JOptionPane.showMessageDialog(centerPanel, "Nombre del curso invalido", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         ArrayList<Student> students = persistenceFacade.showEnrolledStudentsInCourseArrayList(idCourse);
         if (students.isEmpty()) {
+            panel.getTextArea().setText("");
             JOptionPane.showMessageDialog(null, "No Hay Estudiantes Inscritos: " + comboBox.getSelectedItem());
         } else {
+            panel.getTextArea().setText("");
             for (Student studentEnrolledStudents : students) {
-                panel.getTextArea().append(studentEnrolledStudents.toString());
+                panel.getTextArea().append("\n" + studentEnrolledStudents.toString() + "\n");
             }
         }
 
@@ -200,13 +211,19 @@ public class EnrollFormDialog extends Dialog {
 
     public void waitingListStudents() {
         String idCourse = (String) comboBox.getSelectedItem();
+        if (!Validator.validateId(idCourse)) {
+            JOptionPane.showMessageDialog(centerPanel, "Nombre del curso invalido", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         persistenceFacade.showWaitingListForCourse(idCourse);
         ArrayList<Student> students = persistenceFacade.showWaitingListForCourseArrayList(idCourse);
         if (students.isEmpty()) {
+            panel.getTextArea().setText("");
             JOptionPane.showMessageDialog(null, "No Hay Estudiantes En Lista de Espera: " + comboBox.getSelectedItem());
         } else {
+            panel.getTextArea().setText("");
             for (Student studentWaitingList : students) {
-                panel.getTextArea().append(studentWaitingList.toString());
+                panel.getTextArea().append("\n" + studentWaitingList.toString() + "\n");
             }
         }
     }

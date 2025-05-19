@@ -53,6 +53,8 @@ public interface IPersistenceFacade {
     
     PersistenceStudents getPersistenceStudents();
 
+    PersistenceRequests getPersistenceRequests();
+
     PersistenceCourses getPersistenceCourses();
     
     PersistenceActions getPersistenceActions();

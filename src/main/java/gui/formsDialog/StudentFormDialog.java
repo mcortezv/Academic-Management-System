@@ -155,22 +155,21 @@ public final class StudentFormDialog extends Dialog {
             throw new PersistenceStudentsException("Correo Electronico Invalido");
         }
         if (!Validator.validateStreet(street)) {
-            JOptionPane.showMessageDialog(centerPanel, "Nombre del estudiante invalido", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(centerPanel, "Calle Invalida", "Error", JOptionPane.ERROR_MESSAGE);
             throw new PersistenceStudentsException("Calle Invalida");
         }
         if (!Validator.validateStreetNumber(streetNumber)) {
-            JOptionPane.showMessageDialog(centerPanel, "Nombre del estudiante invalido", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(centerPanel, "Numero de Calle Invalido", "Error", JOptionPane.ERROR_MESSAGE);
             throw new PersistenceStudentsException("Numero de Calle Invalido");
         }
         if (!Validator.validateDistric(district)) {
-            JOptionPane.showMessageDialog(centerPanel, "Nombre del estudiante invalido", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(centerPanel, "Distrito Invalido", "Error", JOptionPane.ERROR_MESSAGE);
             throw new PersistenceStudentsException("Distrito Invalido");
         }
         contact = new Contact(phoneNumber, email, street);
         
         student = new Student(name, contact);
         persistence.addStudent(student);
-        //mainFrame.getMainPanel().updateText(persistence.getPersistenceActions().getStack().getAllElementsAsString());
         JOptionPane.showMessageDialog(centerPanel, "Estudiante agregado con exito");
         dispose();
 

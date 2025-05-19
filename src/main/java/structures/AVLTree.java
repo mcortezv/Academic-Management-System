@@ -8,6 +8,8 @@ import interfaces.Identificable;
 import structures.exceptions.TreeException;
 import structures.nodes.AVLTreeNode;
 
+import javax.swing.*;
+
 /**
  * Clase genérica que representa un Árbol AVL. Proporciona inserción,
  * eliminación y balanceo automático de nodos.
@@ -34,12 +36,10 @@ public class AVLTree<T extends Identificable> {
             return new AVLTreeNode<>(dato);
         }
         int cmp = dato.getAverage().compareTo(nodo.getValue().getAverage());
-        if (cmp < 0) {
-            nodo.setLeft(insert(nodo.getLeft(), dato));
-        } else if (cmp > 0) {
+        if (cmp > 0 || cmp == 0) {
             nodo.setRight(insert(nodo.getRight(), dato));
         } else {
-            throw new TreeException("Elemento duplicado");
+            nodo.setLeft(insert(nodo.getLeft(), dato));
         }
         return balancear(nodo);
     }
@@ -60,7 +60,8 @@ public class AVLTree<T extends Identificable> {
      */
     private AVLTreeNode<T> remove(AVLTreeNode<T> nodo, T dato) {
         if (nodo == null) {
-            throw new TreeException("Elemento no encontrado");
+            JOptionPane.showMessageDialog(null, "Estudiante no Encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
         }
         int cmp = dato.compareTo(nodo.getValue());
         if (cmp < 0) {

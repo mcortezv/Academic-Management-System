@@ -4,7 +4,6 @@
  */
 package gui.panels;
 import gui.MainFrame;
-import gui.formsDialog.EnrollFormDialog;
 import gui.formsDialog.GradeFormDialog;
 import gui.styles.Panel;
 import gui.styles.Button;
@@ -21,7 +20,7 @@ public class GradePanel extends Panel {
     private Button btnAddGrade;
     private Button btnUpdateGrade;
     private Button btnDeleteGrade;
-    private Button btnListGrades;
+    private Button btnGetAverage;
     private Button btnProcessNextRequest;
     private JTextArea textArea;
     private JScrollPane jps;
@@ -37,9 +36,9 @@ public class GradePanel extends Panel {
         btnAddGrade =  new Button("Añadir Calificaciones");
         btnUpdateGrade =  new Button("Actualizar Calificaciones");
         btnDeleteGrade =  new Button("Eliminar Calificaciones");
-        btnListGrades =  new Button("Ver Calificaciones");
+        btnGetAverage =  new Button("Soliciar Promedio");
         btnProcessNextRequest =  new Button("Procesar Cola Solicitud");
-        textArea = new JTextArea(13, 19);
+        textArea = new JTextArea(10, 19);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setEditable(false);
@@ -51,13 +50,14 @@ public class GradePanel extends Panel {
         btnAddGrade.setPreferredSize(new Dimension(230, 40));
         btnUpdateGrade.setPreferredSize(new Dimension(230, 40));
         btnDeleteGrade.setPreferredSize(new Dimension(230, 40));
-        btnListGrades.setPreferredSize(new Dimension(230, 40));
+        btnGetAverage.setPreferredSize(new Dimension(230, 40));
         btnProcessNextRequest.setPreferredSize(new Dimension(230, 40));
 
         //Panels
         centralPanel.add(btnAddGrade);
         centralPanel.add(btnUpdateGrade);
         centralPanel.add(btnDeleteGrade);
+        centralPanel.add(btnGetAverage);
         centralPanel.add(btnProcessNextRequest);
         centralPanel.add(jps);
 
@@ -74,8 +74,12 @@ public class GradePanel extends Panel {
             new GradeFormDialog(mainFrame, 2, persistenceFacade, this).setVisible(true);
         });
 
-        btnProcessNextRequest.addActionListener(e -> {
+        btnGetAverage.addActionListener(e -> {
             new GradeFormDialog(mainFrame, 3, persistenceFacade, this).setVisible(true);
+        });
+
+        btnProcessNextRequest.addActionListener(e -> {
+            new GradeFormDialog(mainFrame, 4, persistenceFacade, this).setVisible(true);
         });
     }
 

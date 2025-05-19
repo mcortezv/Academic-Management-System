@@ -4,6 +4,8 @@
  */
 package structures;
 import structures.exceptions.ListException;
+
+import javax.swing.*;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
@@ -58,7 +60,8 @@ public class ArrayList<T> implements Iterable<T> {
      */
     public void set(T o, int i) {
         if (i < 0 || i >= array.length){
-            throw new ListException("Indice Fuera de Rango");
+            JOptionPane.showMessageDialog(null, "Indice Fuera del Rango del Arreglo de Calificaciones", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
         array[i] = o;
         numObjects++;

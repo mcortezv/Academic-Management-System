@@ -128,7 +128,7 @@ public class Validator {
      * @param grade a validar
      * @return boolean
      */
-    public static boolean validateDecimalGrade(double grade) {
+    public static boolean validateDecimalGrade(Double grade) {
         return grade >= 0.0 && grade <= 10.0 && (grade * 10) % 10 == 0;
     }
 

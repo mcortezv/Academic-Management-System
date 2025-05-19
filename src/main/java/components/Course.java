@@ -23,7 +23,7 @@ public final class Course {
     private PersistenceStudentsCourses enrolledStudents;
     private PersistenceWaitingListCourses waitingList;
     private PersistenceRoles studentsWithAssignedRole;
-    private final int maxCapacity = 25;
+    private final int maxCapacity = 10;
 
     /**
      * Constructor vacio del curso

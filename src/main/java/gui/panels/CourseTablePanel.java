@@ -33,7 +33,7 @@ public class CourseTablePanel extends JPanel {
         centralPanel.setPreferredSize(new Dimension(200, 500));
         southPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         southPanel.setPreferredSize(new Dimension(500, 45));
-        String[] columnNames = {"Id", "Nombre", "Tutor", "Estudiantes Inscritos"};
+        String[] columnNames = {"Id", "Nombre", "Tutor"};
 
         //Boton
         btnBack.addActionListener(e -> coursePanel.showCoursePanel());
@@ -48,7 +48,6 @@ public class CourseTablePanel extends JPanel {
                     course.getId(),
                     course.getName(),
                     course.getTutor(),
-                    course.getEnrolledStudents()
                 };
                 model.addRow(row);
             }
@@ -63,7 +62,7 @@ public class CourseTablePanel extends JPanel {
         }
         JTable table = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setPreferredSize(new Dimension(500, 100));
+        scrollPane.setPreferredSize(new Dimension(500, 500));
         table.setDefaultEditor(Object.class, null);
         table.getTableHeader().setReorderingAllowed(false);
         centralPanel.add(scrollPane, BorderLayout.CENTER);

@@ -298,6 +298,15 @@ public class PersistenceFacade implements IPersistenceFacade {
      * @return
      */
     @Override
+    public PersistenceRequests getPersistenceRequests() {
+        return this.persistenceRequests;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
     public PersistenceCourses getPersistenceCourses() {
         return this.persistenceCourses;
     }

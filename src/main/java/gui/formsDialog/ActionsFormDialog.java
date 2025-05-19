@@ -4,12 +4,10 @@
  */
 package gui.formsDialog;
 import components.Action;
-import components.Course;
 import gui.MainFrame;
 import gui.styles.Dialog;
 import gui.styles.Panel;
 import gui.styles.Style;
-import gui.styles.TextField;
 import interfaces.IPersistenceFacade;
 import javax.swing.*;
 import java.awt.*;

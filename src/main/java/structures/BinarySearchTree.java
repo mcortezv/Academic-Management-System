@@ -8,6 +8,8 @@ import structures.exceptions.TreeException;
 import structures.nodes.BinaryTreeNode;
 import interfaces.Identificable;
 
+import javax.swing.*;
+
 /**
  * Implementación de un árbol binario de búsqueda genérico que almacena elementos ordenados.
  * Los elementos deben implementar la interfaz Comparable para permitir la comparación.
@@ -97,7 +99,8 @@ public class BinarySearchTree<T extends Identificable> {
      */
     private T get(BinaryTreeNode<T> nodo, String id) {
         if (nodo == null) {
-            throw new TreeException("Dato no encontrado en el árbol");
+            JOptionPane.showMessageDialog(null, "Estudiante no Encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
         }
         int comparacion = id.compareTo(nodo.getValue().getId());
         if (comparacion == 0) {

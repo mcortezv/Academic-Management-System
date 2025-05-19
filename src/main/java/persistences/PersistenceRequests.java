@@ -26,6 +26,10 @@ public class PersistenceRequests {
         requests.enqueue(request);
     }
 
+    public Request getNextRequest(){
+        return requests.peek();
+    }
+
     public ArrayList<Double> processNextRequest() {
         Request request = requests.dequeue();
         StudentGradeDTO studentGradeDTO = (StudentGradeDTO) request.getData();

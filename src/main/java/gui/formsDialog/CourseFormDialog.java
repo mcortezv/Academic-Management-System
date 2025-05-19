@@ -10,7 +10,6 @@ import gui.styles.TextField;
 import interfaces.IPersistenceFacade;
 import java.awt.*;
 import javax.swing.*;
-import persistences.exceptions.PersistenceCoursesException;
 import validators.Validator;
 
 /**
@@ -135,48 +134,46 @@ public final class CourseFormDialog extends Dialog {
         String name = courseNameField.getText().trim();
         if (!Validator.validateName(name)) {
             JOptionPane.showMessageDialog(centerPanel, "Nombre del curso invalido", "Error", JOptionPane.ERROR_MESSAGE);
-            throw new PersistenceCoursesException("Nombre de Curso Invalido");
+        } else {
+            Course course = new Course(name);
+            persistence.addCourse(course);
+            JOptionPane.showMessageDialog(centerPanel, "Curso agregado con exito");
+            dispose();
         }
-        Course course = new Course(name);
-        persistence.addCourse(course);
-        //mainFrame.getMainPanel().updateText(persistence.getPersistenceActions().getStack().getAllElementsAsString());
-        JOptionPane.showMessageDialog(centerPanel, "Curso agregado con exito");
-        dispose();
     }
 
     public void removeCourse() {
         String name = courseNameField.getText().trim();
         if (!Validator.validateName(name)) {
             JOptionPane.showMessageDialog(centerPanel, "Nombre del curso invalido", "Error", JOptionPane.ERROR_MESSAGE);
-            throw new PersistenceCoursesException("Nombre de Curso Invalido");
+        } else {
+            Course course = persistence.getCourseByName(name);
+            if (course == null) {
+                JOptionPane.showMessageDialog(centerPanel, "Curso no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                persistence.deleteCourse(course);
+                JOptionPane.showMessageDialog(centerPanel, "Curso eliminado con exito");
+                dispose();
+            }
         }
-        Course course = persistence.getCourseByName(name);
-        if (course == null) {
-            JOptionPane.showMessageDialog(centerPanel, "Curso no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        persistence.deleteCourse(course);
-        JOptionPane.showMessageDialog(centerPanel, "Curso eliminado con exito");
-        dispose();
     }
 
     public void rotateRol() {
         String name = courseNameField.getText().trim();
         if (!Validator.validateName(name)) {
             JOptionPane.showMessageDialog(centerPanel, "Nombre del curso invalido", "Error", JOptionPane.ERROR_MESSAGE);
-            throw new PersistenceCoursesException("Nombre de Curso Invalido");
-        }
-        Course course = persistence.getCourseByName(name);
-        if (course == null) {
-            JOptionPane.showMessageDialog(centerPanel, "Curso no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-            
-        }
-
-        if (persistence.rotateRol(course.getId()) == null) {
-            JOptionPane.showMessageDialog(centerPanel,"No hay un nuevo tutor asignado, no se pudo rotar el rol ");
         } else {
-            JOptionPane.showMessageDialog(centerPanel, persistence.rotateRol(course.getId()).toString(), "Rol de lider rotado con exito, nuevo tutor: ", 1);
-            dispose();
+            Course course = persistence.getCourseByName(name);
+            if (course == null) {
+                JOptionPane.showMessageDialog(centerPanel, "Curso no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                if (persistence.rotateRol(course.getId()) == null) {
+                    JOptionPane.showMessageDialog(centerPanel,"No hay un nuevo tutor asignado, no se pudo rotar el rol ");
+                } else {
+                    JOptionPane.showMessageDialog(centerPanel, persistence.rotateRol(course.getId()).toString(), "Rol de lider rotado con exito, nuevo tutor: ", 1);
+                    dispose();
+                }
+            }
         }
     }
 }
