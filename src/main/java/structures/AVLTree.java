@@ -176,6 +176,10 @@ public class AVLTree<T extends Identificable> {
         return raiz == null;
     }
 
+    public void clear() {
+        raiz = null;
+    }
+
     /**
      * Devuelve la raíz del árbol (solo para pruebas).
      *
