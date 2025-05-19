@@ -157,4 +157,16 @@ public class CircularLinkedList<T> {
         P = P.getNext();
         return P;
     }
+
+    /**
+     *
+     * @return
+     */
+    public SingleNode<T> undoRotateNode(){
+        SingleNode<T> var = new SingleNode<>();
+        for(int i = 0; i < size ; i++ ){
+            var = rotateNode();
+        }
+        return var;
+    }
 }

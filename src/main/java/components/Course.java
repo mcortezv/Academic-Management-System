@@ -37,17 +37,17 @@ public final class Course {
         this.waitingList = new PersistenceWaitingListCourses();
         this.studentsWithAssignedRole = new PersistenceRoles();
     }
-    
+
     public Course(String id, String name){
-        this.id = generateRandomId();
+        this.id = id;
         this.name = name;
         this.tutor = null;
         this.enrolledStudents = new PersistenceStudentsCourses();
         this.waitingList = new PersistenceWaitingListCourses();
         this.studentsWithAssignedRole = new PersistenceRoles();
-        
+
     }
-    
+
     public Course(String id, String name, Student tutor){
         this.id = id;
         this.name = name;
@@ -55,7 +55,7 @@ public final class Course {
         this.enrolledStudents = new PersistenceStudentsCourses();
         this.waitingList = new PersistenceWaitingListCourses();
         this.studentsWithAssignedRole = new PersistenceRoles();
-        
+
     }
     /**
      * Constructor que establece los atributos de la instancia al valor de sus
@@ -77,6 +77,17 @@ public final class Course {
         this.enrolledStudents = enrolledStudents;
         this.waitingList = waitingList;
         this.studentsWithAssignedRole = studentsWithAssignedRole;
+    }
+    public void enrollStudent(Student student){
+        if(enrolledStudents.getSize() >= 10){
+            //JOptionPane.showMessageDialog(null,"La clase esta llena, el estudiante se envió a lista de espera");
+            waitingList.enrollStudentWaitingList(student);
+            JOptionPane.showMessageDialog(null, "El curso se encuentra lleno, el estudiante se envió a lista de espera");
+        }else{
+            enrolledStudents.enrollStudentCourse(student);
+            JOptionPane.showMessageDialog(null, "Estudiante Inscrito a la Clase: ");
+        }
+
     }
 
     /**
@@ -181,10 +192,15 @@ public final class Course {
 
     /**
      * Metodo que rota el rol de lider del curso y devuelve al estudiante que es el nuevo lider.
-     * @return 
+     * @return
      */
     public Student rotateRol() {
         return studentsWithAssignedRole.rotateRole();
+    }
+
+
+    public Student undoRotateRol(){
+        return studentsWithAssignedRole.undoRotateRol();
     }
     /**
      * 

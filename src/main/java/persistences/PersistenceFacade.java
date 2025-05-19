@@ -111,7 +111,7 @@ public class PersistenceFacade implements IPersistenceFacade {
         Course course = persistenceCourses.getCourse(courseId);
         if (course != null && student != null) {
             persistenceActions.addAction(new Action(Action.Type.enrollStudentInCourse, new StudentCourseDTO(student, course), "Etudiante (" + student.getId() + ") inscrito"));
-            course.getEnrolledStudents().enrollStudentCourse(student);
+            course.enrollStudent(student);
         }
     }
 

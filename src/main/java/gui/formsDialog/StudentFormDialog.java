@@ -212,9 +212,12 @@ public final class StudentFormDialog extends Dialog {
         String id = idField.getText().trim();
         if (!Validator.validateId(id)) {
             JOptionPane.showMessageDialog(centerPanel, "Id de estudiante invalido");
-            throw new PersistenceStudentsException("Id del estudiante invalido");
+            return;
         }
         Student student = persistence.searchStudentById(id);
+        if(student == null){
+            return;
+        }
         persistence.getPersistenceStudents().removeStudent(student);
         JOptionPane.showMessageDialog(centerPanel, "Estudiante removido con exito");
     }
@@ -256,9 +259,12 @@ public final class StudentFormDialog extends Dialog {
         String id = idField.getText().trim();
         if (!Validator.validateId(id)) {
             JOptionPane.showMessageDialog(centerPanel, "Id de estudiante invalido");
-            throw new PersistenceStudentsException("Id del estudiante invalido");
+            return;
         }
         student = persistence.searchStudentById(id);
+        if(student == null){
+            return;
+        }
         JOptionPane.showMessageDialog(centerPanel, student.toString(),"Estudiante encontrado: ",1);
 
     }

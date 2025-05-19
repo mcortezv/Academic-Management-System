@@ -96,15 +96,86 @@ public final class PersistenceStudents {
         if (studentsByAverage == null) {
             studentsByAverage = new AVLTree<>();
         }
-        Contact datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
-        Student student1 = new Student("2222BBBB", "Sebas", datosContacto);
-        Student student2 = new Student("1111AAAA", "Manuel", datosContacto);
+        Contact datosContacto1 = new Contact("6681118936", "sebastian@gmail.com", "81271");
+        Contact datosContacto2 = new Contact("6681117834", "juanito@gmail.com", "817232");
+        Contact datosContacto3 = new Contact("6681892523", "manuel@gmail.com", "817272");
+        Contact datosContacto4 = new Contact("6681151615", "alonso@gmail.com", "817937");
+        Contact datosContacto5 = new Contact("6681029372", "juandavid@gmail.com", "819283");
+        Contact datosContacto6 = new Contact("6681272634", "antonio@gmail.com", "72834");
+        Contact datosContacto7 = new Contact("6681928323", "luisangel@gmail.com", "81293");
+        Contact datosContacto8 = new Contact("6681191827", "daniel@gmail.com", "818234");
+        Contact datosContacto9 = new Contact("6681928323", "luisangel@gmail.com", "81293");
+        Contact datosContacto10 = new Contact("6681191827", "daniel@gmail.com", "818234");
+        Contact datosContacto11 = new Contact("6681191827", "daniel@gmail.com", "818234");
+
+
+
+        Student student1 = new Student("1111AAAA", "Sebastian Escalante", datosContacto1);
+        Student student2 = new Student("2222BBBB", "Juan Manuel Perez", datosContacto2);
+        Student student3 = new Student("3333CCCC", "Manuel Cortez", datosContacto3);
+        Student student4 = new Student("4444DDDD", "Luis Alonso", datosContacto4);
+        Student student5 = new Student("5555EEEE", "Juan Baldenegro", datosContacto5);
+        Student student6 = new Student("6666FFFF", "Antonio Quintana", datosContacto6);
+        Student student7 = new Student("7777GGGG", "Luis Angel Rivera", datosContacto7);
+        Student student8 = new Student("8888HHHHH", "Daniel Miramontes", datosContacto8);
+        Student student9 = new Student("9999IIII", "Ana Miramontes", datosContacto9);
+        Student student10 = new Student("1010JJJJ", "Pedro Miramontes", datosContacto10);
+        Student student11 = new Student("2020KKKK", "David Miramontes", datosContacto11);
+
+
         student1.addGrade(9.0);
+        student1.addGrade(7.0);
+        student1.addGrade(8.0);
+        student1.addGrade(9.0);
+        student1.addGrade(6.0);
+        student1.addGrade(8.0);
+        student1.addGrade(9.0);
+        student1.addGrade(7.0);
+
         student2.addGrade(10.0);
-        studentsByAverage.insert(student1);
-        studentsByAverage.insert(student2);
+        student2.addGrade(9.0);
+
+        student3.addGrade(8.0);
+
+        student4.addGrade(5.0);
+        student4.addGrade(9.0);
+        student4.addGrade(8.0);
+
+        student5.addGrade(10.0);
+        student5.addGrade(5.0);
+
+        student6.addGrade(8.0);
+        student6.addGrade(5.0);
+
+        student7.addGrade(9.0);
+        student7.addGrade(10.0);
+
+        student8.addGrade(9.0);
+        student8.addGrade(7.0);
+        student8.addGrade(9.0);
+        student8.addGrade(10.0);
+
+
         students.insert(student1);
         students.insert(student2);
+        students.insert(student3);
+        students.insert(student4);
+        students.insert(student5);
+        students.insert(student6);
+        students.insert(student7);
+        students.insert(student8);
+        students.insert(student9);
+        students.insert(student10);
+        students.insert(student11);
+
+        studentsByAverage.insert(student1);
+        studentsByAverage.insert(student2);
+        studentsByAverage.insert(student3);
+        studentsByAverage.insert(student4);
+        studentsByAverage.insert(student5);
+        studentsByAverage.insert(student6);
+        studentsByAverage.insert(student7);
+        studentsByAverage.insert(student8);
     }
 
 }

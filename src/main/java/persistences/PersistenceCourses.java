@@ -64,13 +64,7 @@ public final class PersistenceCourses {
     public HashDictionary<String, Course> listCourses() {
         return courses;
     }
-    
-    public void populateCourses() {
-        Contact datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
-        Student student1 = new Student("2222BBBB", "Sebas", datosContacto);
-        Course course = new Course("1111AAAA","cursoA",student1);        
-        courses.put("1111AAAA", course);
-    }
+
     /**
      * 
      * @param name
@@ -85,7 +79,12 @@ public final class PersistenceCourses {
     }
     return null;
     }
-    
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Course getCourseById(String id){
         for(String key : courses.getKeys()){
             Course course = courses.get(key);
@@ -94,5 +93,23 @@ public final class PersistenceCourses {
             }
         }
         return null;
+    }
+
+    /**
+     *
+     */
+    public void populateCourses() {
+        Course course1 = new Course("1111AAAA","cursoA");
+        Course course2 = new Course("2222BBBB","cursoB");
+        Course course3 = new Course("3333CCCC","cursoC");
+        Course course4 = new Course("4444DDDD","cursoD");
+        Course course5 = new Course("5555EEEE","cursoE");
+
+        courses.put(course1.getId(), course1);
+        courses.put(course2.getId(), course2);
+        courses.put(course3.getId(), course3);
+        courses.put(course4.getId(), course4);
+        courses.put(course5.getId(), course5);
+
     }
 }

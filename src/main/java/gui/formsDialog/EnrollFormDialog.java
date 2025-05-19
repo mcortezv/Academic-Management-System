@@ -185,7 +185,6 @@ public class EnrollFormDialog extends Dialog {
                 JOptionPane.showMessageDialog(null, "Este Estudiante Ya Esta Inscrito en Este Curso: " + comboBox.getSelectedItem());
             } else {
                 persistenceFacade.enrollStudentInCourse(idStudent, idCourse);
-                JOptionPane.showMessageDialog(null, "Estudiante Inscrito a la Clase: " + comboBox.getSelectedItem());
             }
         }
     }
@@ -215,8 +214,12 @@ public class EnrollFormDialog extends Dialog {
             JOptionPane.showMessageDialog(centerPanel, "Nombre del curso invalido", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        persistenceFacade.showWaitingListForCourse(idCourse);
-        ArrayList<Student> students = persistenceFacade.showWaitingListForCourseArrayList(idCourse);
+        Course course = persistenceFacade.getPersistenceCourses().getCourseById(idCourse);
+        if(course == null){
+            JOptionPane.showMessageDialog(centerPanel, "El curso no ha sido encontradp", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        ArrayList<Student> students = course.getWaitingListArrayList();
         if (students.isEmpty()) {
             panel.getTextArea().setText("");
             JOptionPane.showMessageDialog(null, "No Hay Estudiantes En Lista de Espera: " + comboBox.getSelectedItem());

@@ -41,6 +41,7 @@ public final class MainFrame extends JFrame {
         add(centralPanel, BorderLayout.CENTER);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setResizable(false);
     }
     
     public IPersistenceFacade getIPersistenceFacade(){
