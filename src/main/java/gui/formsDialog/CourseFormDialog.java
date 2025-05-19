@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gui.formsDialog;
+
 import components.*;
 import gui.*;
 import gui.styles.Dialog;
@@ -18,7 +19,6 @@ import validators.Validator;
  * @author david
  */
 public final class CourseFormDialog extends Dialog {
-
     private TextField courseNameField;
     private IPersistenceFacade persistence;
 
@@ -152,8 +152,8 @@ public final class CourseFormDialog extends Dialog {
             throw new PersistenceCoursesException("Nombre de Curso Invalido");
         }
         Course course = persistence.getCourseByName(name);
-        if(course == null){
-            JOptionPane.showMessageDialog(centerPanel, "Curso no encontrado","Error",JOptionPane.ERROR_MESSAGE);
+        if (course == null) {
+            JOptionPane.showMessageDialog(centerPanel, "Curso no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
         }
         persistence.deleteCourse(course);
         JOptionPane.showMessageDialog(centerPanel, "Curso eliminado con exito");
@@ -167,13 +167,18 @@ public final class CourseFormDialog extends Dialog {
             throw new PersistenceCoursesException("Nombre de Curso Invalido");
         }
         Course course = persistence.getCourseByName(name);
-        if(course == null){
-            JOptionPane.showMessageDialog(centerPanel, "Curso no encontrado","Error",JOptionPane.ERROR_MESSAGE);
+        if (course == null) {
+            JOptionPane.showMessageDialog(centerPanel, "Curso no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+            
         }
 
-        Student courseTutor = persistence.rotateRol(course.getId());
-        JOptionPane.showMessageDialog(centerPanel, courseTutor.toString(), "Rol de lider rotado con exito, nuevo tutor: ", 1);
-        dispose();
+        if (persistence.rotateRol(course.getId()) == null) {
+            JOptionPane.showMessageDialog(centerPanel,"No hay un nuevo tutor asignado, no se pudo rotar el rol ");
+        } else {
+            JOptionPane.showMessageDialog(centerPanel, persistence.rotateRol(course.getId()).toString(), "Rol de lider rotado con exito, nuevo tutor: ", 1);
+            dispose();
+        }
 
     }
 }

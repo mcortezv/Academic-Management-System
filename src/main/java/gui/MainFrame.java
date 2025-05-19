@@ -30,10 +30,10 @@ public final class MainFrame extends JFrame {
     private EnrollmentPanel enrollmentPanel;
     private GradePanel gradePanel;
     private ReportPanel reportPanel;
-    private final IPersistenceFacade persistenciaFacade;    
+    private final IPersistenceFacade persistenceFacade;    
 
-    public MainFrame(IPersistenceFacade persistenciaFacade) {
-        this.persistenciaFacade = persistenciaFacade;
+    public MainFrame(IPersistenceFacade persistenceFacade) {
+        this.persistenceFacade = persistenceFacade;
         startComponents();
         setTitle("Gestion de estudiantes");
         setSize(1280, 720);
@@ -44,7 +44,7 @@ public final class MainFrame extends JFrame {
     }
     
     public IPersistenceFacade getIPersistenceFacade(){
-        return persistenciaFacade;
+        return persistenceFacade;
     }
 
     public void startComponents() {
@@ -56,7 +56,7 @@ public final class MainFrame extends JFrame {
         btnReport = new Button("Reportes");
         
         //Main panel
-        mainPanel = new MainPanel(persistenciaFacade);
+        mainPanel = new MainPanel(persistenceFacade);
         
         //North panel
         northPanel = new NorthPanel();
@@ -68,11 +68,11 @@ public final class MainFrame extends JFrame {
         add(centralPanel, BorderLayout.CENTER);
 
         // Initialize panels
-        studentPanel = new StudentPanel(this, northPanel, persistenciaFacade);
-        coursePanel = new CoursePanel(this, northPanel , persistenciaFacade);
-        enrollmentPanel = new EnrollmentPanel(this, northPanel , persistenciaFacade);
-        gradePanel = new GradePanel(this, northPanel , persistenciaFacade);
-        reportPanel = new ReportPanel(this, northPanel, persistenciaFacade);
+        studentPanel = new StudentPanel(this, northPanel, persistenceFacade);
+        coursePanel = new CoursePanel(this, northPanel , persistenceFacade);
+        enrollmentPanel = new EnrollmentPanel(this, northPanel , persistenceFacade);
+        gradePanel = new GradePanel(this, northPanel , persistenceFacade);
+        reportPanel = new ReportPanel(this, northPanel, persistenceFacade);
         reportPanel.startComponents();
         
         add(northPanel, BorderLayout.NORTH);

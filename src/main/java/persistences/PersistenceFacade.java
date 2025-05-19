@@ -131,8 +131,10 @@ public class PersistenceFacade implements IPersistenceFacade {
     /**
      * Lista todos los estudiantes inscritos en un curso.
      *
+     * @param id
      * @return cursos del sistema
      */
+    @Override
     public ArrayList<Student> showEnrolledStudentsInCourseArrayList(String id) {
         Course course = persistenceCourses.getCourse(id);
         if (course != null) {
@@ -144,6 +146,7 @@ public class PersistenceFacade implements IPersistenceFacade {
     /**
      * Lista tods los cursos
      *
+     * @param id
      * @return cursos del sistema
      */
     @Override
@@ -155,6 +158,7 @@ public class PersistenceFacade implements IPersistenceFacade {
         return null;
     }
 
+    @Override
     public ArrayList<Student> showWaitingListForCourseArrayList(String id) {
         Course course = persistenceCourses.getCourse(id);
         if (course != null) {

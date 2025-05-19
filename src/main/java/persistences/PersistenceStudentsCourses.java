@@ -34,6 +34,8 @@ public class PersistenceStudentsCourses {
     public void populateStudents() {
         Contact datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
         Student student1 = new Student("2222BBBB", "Sebas", datosContacto);
+        Student student2 = new Student("3333CCCC", "manuel", datosContacto);
         studentsCourses.add(student1);
+        studentsCourses.add(student2);
     }
 }

@@ -53,6 +53,7 @@ public abstract class Panel extends JPanel {
 
         btnUndo.addActionListener(e -> {
             persistenceFacade.undoAction();
+            mainFrame.getMainPanel().updateText(persistenceFacade.getPersistenceActions().getStack().getAllElementsAsString());
         });
 
     }

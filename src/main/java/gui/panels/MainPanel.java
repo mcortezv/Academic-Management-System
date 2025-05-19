@@ -64,6 +64,7 @@ public class MainPanel extends JPanel {
         //Undo Action
         btnUndo.addActionListener(e -> {
             persistenceFacade.undoAction();
+            updateText(persistenceFacade.getPersistenceActions().getStack().getAllElementsAsString());
         });
 
         add(centerPanel, BorderLayout.CENTER);

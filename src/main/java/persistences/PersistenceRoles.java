@@ -21,7 +21,10 @@ public final class PersistenceRoles {
     }
 
     public Student rotateRole() {
-        return roles.rotateNode().getValue();
+        if (roles.rotateNode().getValue() != null){
+            return  roles.rotateNode().getValue();
+        }
+        return null;
     }
 
     public void populateRoles() {

@@ -4,9 +4,12 @@
  */
 package gui.panels;
 import gui.MainFrame;
+import gui.formsDialog.EnrollFormDialog;
+import gui.formsDialog.GradeFormDialog;
 import gui.styles.Panel;
 import gui.styles.Button;
 import interfaces.IPersistenceFacade;
+import javax.swing.*;
 import java.awt.Dimension;
 
 /**
@@ -18,8 +21,9 @@ public class GradePanel extends Panel {
     private Button btnUpdateGrade;
     private Button btnDeleteGrade;
     private Button btnListGrades;
-    private Button btnAverageStudent;
     private Button btnProcessNextRequest;
+    private JTextArea textArea;
+    private JScrollPane jps;
     private IPersistenceFacade persistenceFacade;
 
     public GradePanel(MainFrame frame, NorthPanel northPanel, IPersistenceFacade persistenceFacade) {
@@ -31,24 +35,49 @@ public class GradePanel extends Panel {
     public void startComponents() {
         btnAddGrade =  new Button("Añadir Calificaciones");
         btnUpdateGrade =  new Button("Actualizar Calificaciones");
-        btnDeleteGrade =  new Button("Elimnar Calificaciones");
+        btnDeleteGrade =  new Button("Eliminar Calificaciones");
         btnListGrades =  new Button("Ver Calificaciones");
-        btnAverageStudent =  new Button("Obtener Promedio");
         btnProcessNextRequest =  new Button("Procesar Cola Solicitud");
+        textArea = new JTextArea(15, 21);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setEditable(false);
+        jps = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         //Botones
         btnAddGrade.setPreferredSize(new Dimension(230, 40));
         btnUpdateGrade.setPreferredSize(new Dimension(230, 40));
         btnDeleteGrade.setPreferredSize(new Dimension(230, 40));
         btnListGrades.setPreferredSize(new Dimension(230, 40));
-        btnAverageStudent.setPreferredSize(new Dimension(230, 40));
         btnProcessNextRequest.setPreferredSize(new Dimension(230, 40));
 
         //Panels
         centralPanel.add(btnAddGrade);
         centralPanel.add(btnUpdateGrade);
         centralPanel.add(btnDeleteGrade);
-        centralPanel.add(btnAverageStudent);
         centralPanel.add(btnProcessNextRequest);
+        centralPanel.add(jps);
+
+        //button
+        btnAddGrade.addActionListener(e -> {
+            new GradeFormDialog(mainFrame, 0, persistenceFacade, this).setVisible(true);
+        });
+
+        btnUpdateGrade.addActionListener(e -> {
+            new GradeFormDialog(mainFrame, 1, persistenceFacade, this).setVisible(true);
+        });
+
+        btnDeleteGrade.addActionListener(e -> {
+            new GradeFormDialog(mainFrame, 2, persistenceFacade, this).setVisible(true);
+        });
+
+        btnProcessNextRequest.addActionListener(e -> {
+            new GradeFormDialog(mainFrame, 3, persistenceFacade, this).setVisible(true);
+        });
+    }
+
+    public JTextArea getTextArea(){
+        return textArea;
     }
 }
