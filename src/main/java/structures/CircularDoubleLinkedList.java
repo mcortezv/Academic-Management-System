@@ -9,8 +9,11 @@ import structures.nodes.DoubleNode;
 import java.util.Objects;
 
 /**
- * Clase Generica de una Lista Doblemente Enlazada Circular que permite Agregar, Remover y Encontrar
- * el indice de objetos, asi como vaciar por completo la lista.
+ * Clase Genérica de una Lista Doblemente Enlazada Circular.
+ * Permite operaciones como agregar, insertar por índice, eliminar por valor,
+ * obtener el índice de un elemento, limpiar la lista y generar una lista de estudiantes.
+ *
+ * @param <T> Tipo de dato que se almacenará en la lista.
  *
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
@@ -19,6 +22,11 @@ public class CircularDoubleLinkedList<T> {
     private DoubleNode<T> ultimo;
     private int tam;
 
+    /**
+     * Agrega un nuevo elemento al final de la lista.
+     *
+     * @param o Elemento a agregar.
+     */
     public void add(T o) {
         DoubleNode<T> nuevoNodo = new DoubleNode<>(o);
         if (ultimo == null) {
@@ -35,11 +43,20 @@ public class CircularDoubleLinkedList<T> {
         tam++;
     }
 
+    /**
+     * Inserta un nuevo elemento en la posición especificada.
+     *
+     * @param o      Elemento a insertar.
+     * @param indice Índice en el cual se insertará el elemento.
+     * @throws ListException Si el índice está fuera de rango.
+     */
     public void set(T o, int indice) {
         if (indice < 0 || indice > tam) {
             throw new ListException("Indice fuera del rango");
         }
+
         DoubleNode<T> nuevoNodo = new DoubleNode<>(o);
+
         if (indice == 0) {
             if (P == null) {
                 P = nuevoNodo;
@@ -66,13 +83,21 @@ public class CircularDoubleLinkedList<T> {
                 ultimo = nuevoNodo;
             }
         }
+
         tam++;
     }
 
+    /**
+     * Elimina la primera aparición del elemento especificado.
+     *
+     * @param o Elemento a eliminar.
+     * @return true si el elemento fue encontrado y eliminado; false en caso contrario.
+     */
     public boolean remove(T o) {
         if (P == null) {
             return false;
         }
+
         if (Objects.equals(P.getValue(), o)) {
             if (P == ultimo) {
                 P = null;
@@ -85,6 +110,7 @@ public class CircularDoubleLinkedList<T> {
             tam--;
             return true;
         }
+
         DoubleNode<T> actual = P;
         while (actual.getNext() != P) {
             if (Objects.equals(actual.getNext().getValue(), o)) {
@@ -99,13 +125,20 @@ public class CircularDoubleLinkedList<T> {
             }
             actual = actual.getNext();
         }
+
         return false;
     }
 
+    /**
+     * Devuelve el índice de la primera aparición del elemento especificado.
+     *
+     * @param o Elemento a buscar.
+     * @return Índice del elemento si se encuentra; -1 si no está en la lista.
+     */
     public int indexOf(T o) {
         DoubleNode<T> actual = P;
         for (int i = 0; i < tam; i++) {
-            if (Objects.equals(actual.getValue(), o)){
+            if (Objects.equals(actual.getValue(), o)) {
                 return i;
             }
             actual = actual.getNext();
@@ -113,13 +146,22 @@ public class CircularDoubleLinkedList<T> {
         return -1;
     }
 
+    /**
+     * Elimina todos los elementos de la lista.
+     * La lista queda vacía.
+     */
     public void clear() {
         this.P = null;
         this.ultimo = null;
         this.tam = 0;
     }
 
-    public ArrayList<Student> getList(){
+    /**
+     * Genera y retorna una lista de estudiantes a partir de los elementos actuales.
+     *
+     * @return Lista de objetos Student contenidos en la lista circular.
+     */
+    public ArrayList<Student> getList() {
         ArrayList<Student> students = new ArrayList<>(10);
         DoubleNode<T> actual = P;
         for (int i = 0; i < tam - 1; i++) {

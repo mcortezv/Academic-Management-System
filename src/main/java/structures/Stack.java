@@ -52,7 +52,7 @@ public class Stack<T> {
      */
     public T pop() {
         if (isEmpty()) {
-            throw new StackException("La pila esta vacia");
+            return null;
         }
         if (getSize() == 1) {
             T dato = P.getValue();
@@ -76,7 +76,7 @@ public class Stack<T> {
      */
     public T peek() {
         if (isEmpty()) {
-            throw new StackException("La pila esta vacia");
+            return null;
         }
         SingleNode<T> aux = P;
         while (aux.getNext() != null) {

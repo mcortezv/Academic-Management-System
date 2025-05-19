@@ -61,7 +61,11 @@ public class Action {
     public Object getData() {
         return this.data;
     }
-    
+
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return "[" + name + "]";

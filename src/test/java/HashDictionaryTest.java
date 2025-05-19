@@ -22,6 +22,7 @@ public class HashDictionaryTest {
     @Test
     public void testPutAndGetSimple() {
         dict.put("CS101", "Math");
+        assertTrue(dict.contains("CS101"));
         assertEquals("Math", dict.get("CS101"));
     }
 

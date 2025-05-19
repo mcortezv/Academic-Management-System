@@ -4,6 +4,7 @@
  */
 package gui.styles;
 import gui.MainFrame;
+import gui.formsDialog.ActionsFormDialog;
 import gui.panels.NorthPanel;
 import interfaces.IPersistenceFacade;
 import java.awt.*;
@@ -45,6 +46,8 @@ public abstract class Panel extends JPanel {
         add(southPanel, BorderLayout.SOUTH);
         southPanel.add(btnBack);
         southPanel.add(btnUndo);
+
+
         //Boton
         btnBack.addActionListener(e -> frame.showMainPanel());
         btnBack.addActionListener(e -> {
@@ -52,15 +55,11 @@ public abstract class Panel extends JPanel {
         });
 
         btnUndo.addActionListener(e -> {
-            persistenceFacade.undoAction();
-            //mainFrame.getMainPanel().updateText(persistenceFacade.getPersistenceActions().getStack().getAllElementsAsString());
+            new ActionsFormDialog(mainFrame, 0, persistenceFacade, this).setVisible(true);
         });
 
     }
-    
-    public void updateTextFromPanel(String text) {
-        //mainFrame.getMainPanel().updateText(text);
-    }
+
 
     public abstract void startComponents();
 }
