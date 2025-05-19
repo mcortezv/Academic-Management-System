@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package structures;
+
 import components.Student;
 import structures.exceptions.TreeException;
 import structures.nodes.BinaryTreeNode;
@@ -11,33 +12,36 @@ import interfaces.Identificable;
 import javax.swing.*;
 
 /**
- * Implementación de un árbol binario de búsqueda genérico que almacena elementos ordenados.
- * Los elementos deben implementar la interfaz Comparable para permitir la comparación.
+ * Implementación de un árbol binario de búsqueda genérico que almacena
+ * elementos ordenados. Los elementos deben implementar la interfaz Comparable
+ * para permitir la comparación.
  *
- * @param <T> el tipo de elementos almacenados en el árbol, debe implementar Comparable<T>
+ * @param <T> el tipo de elementos almacenados en el árbol, debe implementar
+ * Comparable<T>
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class BinarySearchTree<T extends Identificable> {
-    public BinaryTreeNode<T> raiz;
+
+    public BinaryTreeNode<T> root;
 
     /**
      * Constructor que inicializa un árbol binario de búsqueda vacío.
      */
     public BinarySearchTree() {
-        raiz = null;
+        root = null;
     }
 
     /**
      * Encuentra el nodo con el dato más grande en el subárbol del nodo dado.
      *
-     * @param nodo el nodo raíz del subárbol a buscar
+     * @param node el nodo raíz del subárbol a buscar
      * @return el nodo con el dato más grande, o null si el subárbol está vacío
      */
-    private BinaryTreeNode<T> findBiggestNode(BinaryTreeNode<T> nodo) {
-        if (nodo == null) {
+    private BinaryTreeNode<T> findBiggestNode(BinaryTreeNode<T> node) {
+        if (node == null) {
             throw new TreeException("El arbol esta vacío");
         }
-        BinaryTreeNode<T> actual = nodo;
+        BinaryTreeNode<T> actual = node;
         while (actual.getRight() != null) {
             actual = actual.getRight();
         }
@@ -51,10 +55,10 @@ public class BinarySearchTree<T extends Identificable> {
      * @throws TreeException si el árbol está vacío
      */
     public T firstEntry() {
-        if (raiz == null) {
+        if (root == null) {
             throw new TreeException("El arbol esta vacío");
         }
-        BinaryTreeNode<T> actual = raiz;
+        BinaryTreeNode<T> actual = root;
         while (actual.getLeft() != null) {
             actual = actual.getLeft();
         }
@@ -68,11 +72,11 @@ public class BinarySearchTree<T extends Identificable> {
      * @throws TreeException si el árbol está vacío
      */
     public T lastEntry() {
-        if (raiz == null) {
+        if (root == null) {
             throw new TreeException("El árbol está vacío");
         }
-        BinaryTreeNode<T> mayor = findBiggestNode(raiz);
-        return mayor.getValue();
+        BinaryTreeNode<T> bigger = findBiggestNode(root);
+        return bigger.getValue();
     }
 
     /**
@@ -86,29 +90,29 @@ public class BinarySearchTree<T extends Identificable> {
         if (id == null) {
             throw new TreeException("El dato no puede ser nulo");
         }
-        return get(raiz, id);
+        return get(root, id);
     }
 
     /**
      * Método recursivo auxiliar para buscar un dato en el árbol.
      *
-     * @param nodo el nodo actual en la búsqueda recursiva
+     * @param node el nodo actual en la búsqueda recursiva
      * @param id el dato a buscar
      * @return el dato encontrado
      * @throws TreeException si el dato no se encuentra en el subárbol
      */
-    private T get(BinaryTreeNode<T> nodo, String id) {
-        if (nodo == null) {
+    private T get(BinaryTreeNode<T> node, String id) {
+        if (node == null) {
             JOptionPane.showMessageDialog(null, "Estudiante no Encontrado", "Error", JOptionPane.ERROR_MESSAGE);
             return null;
         }
-        int comparacion = id.compareTo(nodo.getValue().getId());
-        if (comparacion == 0) {
-            return nodo.getValue();
-        } else if (comparacion < 0) {
-            return get(nodo.getLeft(), id);
+        int comparation = id.compareTo(node.getValue().getId());
+        if (comparation == 0) {
+            return node.getValue();
+        } else if (comparation < 0) {
+            return get(node.getLeft(), id);
         } else {
-            return get(nodo.getRight(), id);
+            return get(node.getRight(), id);
         }
     }
 
@@ -118,40 +122,40 @@ public class BinarySearchTree<T extends Identificable> {
      * @return true si el árbol no contiene nodos, false en caso contrario
      */
     public boolean isEmpty() {
-        return raiz == null;
+        return root == null;
     }
 
     /**
      * Inserta un nuevo dato en el árbol manteniendo el orden.
      *
-     * @param dato el dato a insertar en el árbol
+     * @param data el dato a insertar en el árbol
      * @throws TreeException si el dato a insertar es null
      */
-    public void insert(T dato) {
-        if (dato == null) {
+    public void insert(T data) {
+        if (data == null) {
             throw new TreeException("El dato no puede ser nulo");
         }
-        raiz = insert(raiz, dato);
+        root = insert(root, data);
     }
 
     /**
      * Método recursivo auxiliar para insertar un dato en el árbol.
      *
-     * @param nodo el nodo actual en la inserción recursiva
-     * @param dato el dato a insertar
+     * @param node el nodo actual en la inserción recursiva
+     * @param data el dato a insertar
      * @return el nodo modificado con el nuevo dato insertado
      */
-    public BinaryTreeNode<T> insert(BinaryTreeNode<T> nodo, T dato) {
-        if (nodo == null) {
-            return new BinaryTreeNode<T>(dato);
+    public BinaryTreeNode<T> insert(BinaryTreeNode<T> node, T data) {
+        if (node == null) {
+            return new BinaryTreeNode<>(data);
         }
-        int comparacion = dato.compareTo(nodo.getValue());
-        if (comparacion < 0) {
-            nodo.setLeft(insert(nodo.getLeft(), dato));
-        } else if (comparacion > 0) {
-            nodo.setRight(insert(nodo.getRight(), dato));
+        int comparation = data.compareTo(node.getValue());
+        if (comparation < 0) {
+            node.setLeft(insert(node.getLeft(), data));
+        } else if (comparation > 0) {
+            node.setRight(insert(node.getRight(), data));
         }
-        return nodo;
+        return node;
     }
 
     /**
@@ -170,60 +174,65 @@ public class BinarySearchTree<T extends Identificable> {
     }
 
     /**
-     * Elimina un dato del árbol manteniendo la estructura de árbol binario de búsqueda.
+     * Elimina un dato del árbol manteniendo la estructura de árbol binario de
+     * búsqueda.
      *
-     * @param dato el dato a eliminar del árbol
+     * @param data el dato a eliminar del árbol
      */
-    public void remove(T dato) {
-        raiz = remove(raiz, dato);
+    public void remove(T data) {
+        root = remove(root, data);
     }
 
     /**
      * Método recursivo auxiliar para eliminar un dato del árbol.
      *
-     * @param nodo el nodo actual en la eliminación recursiva
-     * @param dato el dato a eliminar
+     * @param node el nodo actual en la eliminación recursiva
+     * @param data el dato a eliminar
      * @return el nodo modificado con el dato eliminado
      */
-    private BinaryTreeNode<T> remove(BinaryTreeNode<T> nodo, T dato) {
-        if (nodo == null) {
+    private BinaryTreeNode<T> remove(BinaryTreeNode<T> node, T data) {
+        if (node == null) {
             return null;
         }
-        int comparacion = dato.compareTo(nodo.getValue());
-        if (comparacion < 0) {
-            nodo.setLeft(remove(nodo.getLeft(), dato));
-        } else if (comparacion > 0) {
-            nodo.setRight(remove(nodo.getRight(), dato));
+        int comparation = data.compareTo(node.getValue());
+        if (comparation < 0) {
+            node.setLeft(remove(node.getLeft(), data));
+        } else if (comparation > 0) {
+            node.setRight(remove(node.getRight(), data));
         } else {
-            if (nodo.getLeft() == null) {
-                return nodo.getRight();
-            } else if (nodo.getRight() == null) {
-                return nodo.getLeft();
+            if (node.getLeft() == null) {
+                return node.getRight();
+            } else if (node.getRight() == null) {
+                return node.getLeft();
             }
-            BinaryTreeNode<T> sucesor = findBiggestNode(nodo.getLeft());
-            nodo.setValue(sucesor.getValue());
-            nodo.setLeft(remove(nodo.getLeft(), sucesor.getValue()));
+            BinaryTreeNode<T> succesor = findBiggestNode(node.getLeft());
+            node.setValue(succesor.getValue());
+            node.setLeft(remove(node.getLeft(), succesor.getValue()));
         }
-        return nodo;
+        return node;
     }
 
     /**
      * Devuelve la raíz del árbol (solo para pruebas).
      *
-     * @return la raíz
+     * @return root la raíz a devolver
      */
-    public BinaryTreeNode<T> getRaiz() {
-        return raiz;
+    public BinaryTreeNode<T> getRoot() {
+        return root;
     }
 
     /**
-     *
+     * Imprime los elementos del arbol en orden "In-order" (izquierda, raiz,
+     * derecha)
      */
     public void listInOrder() {
-        inOrder(raiz);
+        inOrder(root);
     }
 
     /**
+     * Recorre el arbol en orden "In-order" (izquierda, raiz, derecha) e imprime
+     * el valor de cada uno de los nodos
+     *
      * @param node
      */
     public void inOrder(BinaryTreeNode<T> node) {
@@ -235,16 +244,22 @@ public class BinarySearchTree<T extends Identificable> {
     }
 
     /**
-     * @return
+     * Recorre el árbol en orden "in-order" y retorna una lista ArrayList con
+     * los elementos del árbol convertidos a objetos Student
+     *
+     * @return ArrayList<Student> lista con los estudiantes
      */
     public ArrayList<Student> listInOrderToArrayList() {
         ArrayList<Student> students = new ArrayList<>(10);
-        return inOrderToArrayList(raiz, students);
+        return inOrderToArrayList(root, students);
     }
 
     /**
-     * @param node
-     * @return
+     * Metodo auxiliar recursivo que recorre el arbol "In-order" y agrega los
+     * valores de tipo Student a una lista ArrayList
+     *
+     * @param node nodo actual en el que se realiza el recorrido
+     * @return students estudiantes
      */
     private ArrayList<Student> inOrderToArrayList(BinaryTreeNode<T> node, ArrayList<Student> students) {
         if (node == null) {

@@ -40,7 +40,7 @@ public class BinaryTreeNode<T> {
     /**
      * Establece el valor del nodo al valor recibido del parametro
      *
-     * @param value
+     * @param value valor del nodo
      */
     public void setValue(T value) {
         this.value = value;
@@ -49,7 +49,7 @@ public class BinaryTreeNode<T> {
     /**
      * Obtiene el valor del nodo
      *
-     * @return value
+     * @return value valor del nodo
      */
     public T getValue() {
         return value;
@@ -58,7 +58,7 @@ public class BinaryTreeNode<T> {
     /**
      * Establece el nodo recibido del parametro como nodo izquierdo
      *
-     * @param left
+     * @param left nodo izquierdo
      */
     public void setLeft(BinaryTreeNode<T> left) {
         this.left = left;
@@ -67,7 +67,7 @@ public class BinaryTreeNode<T> {
     /**
      * Obtiene el nodo que se encuentra a la izquierda
      *
-     * @return left
+     * @return left nodo izquierdo
      */
     public BinaryTreeNode<T> getLeft() {
         return left;
@@ -76,7 +76,7 @@ public class BinaryTreeNode<T> {
     /**
      * Establece el nodo recibido del paremtro como nodo derecho
      *
-     * @param right
+     * @param right nodo derecho
      */
     public void setRight(BinaryTreeNode<T> right) {
         this.right = right;
@@ -85,7 +85,7 @@ public class BinaryTreeNode<T> {
     /**
      * Obtiene el nodo que se encuentra a la derecha
      *
-     * @return right
+     * @return right nodo derecho
      */
     public BinaryTreeNode<T> getRight() {
         return right;

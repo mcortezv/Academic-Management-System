@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package structures;
+
 import components.Student;
 import structures.exceptions.ListException;
 import structures.nodes.SingleNode;
@@ -13,8 +14,10 @@ import java.util.Objects;
  * el indice de objetos, asi como vaciar por completo la lista.
  *
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
+ * @param <T> tipo de dato de los elementos almacenados en la lista enlazada
  */
 public class LinkedList<T> {
+
     private SingleNode<T> P;
     private SingleNode<T> last;
     private int size;
@@ -29,13 +32,13 @@ public class LinkedList<T> {
      * @param o Objeto a insertar.
      */
     public void add(T o) {
-        SingleNode<T> nuevoNodo = new SingleNode<>(o);
-        if (P == null){
-            P = nuevoNodo;
+        SingleNode<T> newNode = new SingleNode<>(o);
+        if (P == null) {
+            P = newNode;
         } else {
-            last.setNext(nuevoNodo);
+            last.setNext(newNode);
         }
-        last = nuevoNodo;
+        last = newNode;
         size++;
     }
 
@@ -49,17 +52,17 @@ public class LinkedList<T> {
         if (indice < 0 || indice >= size) {
             throw new ListException("Indice fuera del rango");
         }
-        SingleNode<T> nuevoNodo = new SingleNode<>(o);
+        SingleNode<T> newNode = new SingleNode<>(o);
         if (indice == 0) {
-            nuevoNodo.setNext(P);
-            P = nuevoNodo;
+            newNode.setNext(P);
+            P = newNode;
         } else {
             SingleNode<T> actual = P;
             for (int i = 0; i < indice - 1; i++) {
                 actual = actual.getNext();
             }
-            nuevoNodo.setNext(actual.getNext());
-            actual.setNext(nuevoNodo);
+            newNode.setNext(actual.getNext());
+            actual.setNext(newNode);
         }
         size++;
     }
@@ -71,7 +74,7 @@ public class LinkedList<T> {
      * @return true si el objeto fue eliminado, false si no se encontró.
      */
     public boolean remove(T o) {
-        if (P == null){
+        if (P == null) {
             return false;
         }
         if (Objects.equals(P.getValue(), o)) {
@@ -106,7 +109,7 @@ public class LinkedList<T> {
     public int indexOf(T o) {
         SingleNode<T> actual = P;
         for (int i = 0; i < size; i++) {
-            if (Objects.equals(actual.getValue(), o)){
+            if (Objects.equals(actual.getValue(), o)) {
                 return i;
             }
             actual = actual.getNext();
@@ -123,7 +126,13 @@ public class LinkedList<T> {
         this.size = 0;
     }
 
-    public ArrayList<Student> getList(){
+    /**
+     * Metodo que regresa una lista con todos los elementos del tipo Student
+     * contenida en una lista enlazada
+     *
+     * @return students la lista de estudiantes
+     */
+    public ArrayList<Student> getList() {
         ArrayList<Student> students = new ArrayList<>(10);
         SingleNode<T> actual = P;
         while (actual != null) {

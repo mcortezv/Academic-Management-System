@@ -14,14 +14,15 @@ public class StackException extends RuntimeException {
     /**
      * Constructor por defecto de la excepción.
      */
-    public StackException(){}
+    public StackException() {
+    }
 
     /**
      * Constructor que acepta un mensaje de error.
      *
      * @param s String Mensaje de error descriptivo.
      */
-    public StackException(String s){
+    public StackException(String s) {
         super(s);
     }
 }

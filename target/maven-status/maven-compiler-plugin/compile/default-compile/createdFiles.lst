@@ -40,10 +40,12 @@ structures\exceptions\TreeException.class
 structures\CircularLinkedList.class
 structures\LinkedList.class
 persistences\exceptions\PersistenceStudentsException.class
+gui\formsDialog\RequestFormDialog.class
 gui\styles\Dialog.class
 persistences\exceptions\PersistenceActionsException.class
 components\Course.class
 components\dtos\StudentGradeDTO.class
+gui\formsDialog\ActionsFormDialog.class
 components\Contact.class
 persistences\PersistenceFacade.class
 components\Request$Type.class

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package structures;
+
 import structures.exceptions.ListException;
 import structures.nodes.SingleNode;
 
@@ -14,11 +15,13 @@ import java.util.Objects;
  * el indice de objetos, asi como vaciar por completo la lista.
  *
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
+ * @param <T> tipo de datos almacenados en la lista doblemente enlazada circular
  */
 public class CircularLinkedList<T> {
+
     private SingleNode<T> P;
-    private SingleNode<T> ultimo;
-    private int tam;
+    private SingleNode<T> last;
+    private int size;
 
     /**
      * Metodo que Asigna un objeto a la ultima posicion de la lista.
@@ -26,51 +29,51 @@ public class CircularLinkedList<T> {
      * @param o Objeto a insertar.
      */
     public void add(T o) {
-        SingleNode<T> nuevoNodo = new SingleNode<>(o);
-        if (ultimo == null) {
-            P = nuevoNodo;
-            nuevoNodo.setNext(nuevoNodo);
+        SingleNode<T> newNode = new SingleNode<>(o);
+        if (last == null) {
+            P = newNode;
+            newNode.setNext(newNode);
         } else {
-            nuevoNodo.setNext(P);
-            ultimo.setNext(nuevoNodo);
+            newNode.setNext(P);
+            last.setNext(newNode);
         }
-        ultimo = nuevoNodo;
-        tam++;
+        last = newNode;
+        size++;
     }
 
     /**
      * Metodo que Asigna un objeto en la posicion que recibe como parametro.
      *
      * @param o Objeto a insertar.
-     * @param indice int Indice donde se desea insetar.
+     * @param index int Indice donde se desea insetar.
      */
-    public void set(T o, int indice) {
-        if (indice < 0 || indice > tam) {
+    public void set(T o, int index) {
+        if (index < 0 || index > size) {
             throw new ListException("Indice fuera del rango");
         }
-        SingleNode<T> nuevoNodo = new SingleNode<>(o);
-        if (indice == 0) {
+        SingleNode<T> newNode = new SingleNode<>(o);
+        if (index == 0) {
             if (P == null) {
-                P = nuevoNodo;
+                P = newNode;
                 P.setNext(P);
-                ultimo = P;
+                last = P;
             } else {
-                nuevoNodo.setNext(P);
-                P = nuevoNodo;
-                ultimo.setNext(P);
+                newNode.setNext(P);
+                P = newNode;
+                last.setNext(P);
             }
         } else {
             SingleNode<T> actual = P;
-            for (int i = 0; i < indice - 1; i++) {
+            for (int i = 0; i < index - 1; i++) {
                 actual = actual.getNext();
             }
-            nuevoNodo.setNext(actual.getNext());
-            actual.setNext(nuevoNodo);
-            if (actual == ultimo) {
-                ultimo = nuevoNodo;
+            newNode.setNext(actual.getNext());
+            actual.setNext(newNode);
+            if (actual == last) {
+                last = newNode;
             }
         }
-        tam++;
+        size++;
     }
 
     /**
@@ -84,31 +87,30 @@ public class CircularLinkedList<T> {
             return false;
         }
         if (Objects.equals(P.getValue(), o)) {
-            if (P == ultimo) {
+            if (P == last) {
                 P = null;
-                ultimo = null;
+                last = null;
             } else {
                 P = P.getNext();
-                ultimo.setNext(P);
+                last.setNext(P);
             }
-            tam--;
+            size--;
             return true;
         }
         SingleNode<T> actual = P;
         while (actual.getNext() != P) {
             if (Objects.equals(actual.getNext().getValue(), o)) {
-                if (actual.getNext() == ultimo) {
-                    ultimo = actual;
+                if (actual.getNext() == last) {
+                    last = actual;
                 }
                 actual.setNext(actual.getNext().getNext());
-                tam--;
+                size--;
                 return true;
             }
             actual = actual.getNext();
         }
         return false;
     }
-
 
     /**
      * Metodo que busca un objeto en la lista y devuelve su índice.
@@ -118,8 +120,8 @@ public class CircularLinkedList<T> {
      */
     public int indexOf(T o) {
         SingleNode<T> actual = P;
-        for (int i = 0; i < tam; i++) {
-            if (Objects.equals(actual.getValue(), o)){
+        for (int i = 0; i < size; i++) {
+            if (Objects.equals(actual.getValue(), o)) {
                 return i;
             }
             actual = actual.getNext();
@@ -132,24 +134,26 @@ public class CircularLinkedList<T> {
      */
     public void clear() {
         this.P = null;
-        this.ultimo = null;
-        this.tam = 0;
+        this.last = null;
+        this.size = 0;
     }
 
     /**
      * Metodo que establece el nodo principal al siguiente.
+     *
+     * @return nodo que fue establecido como siguiente
      */
-    public SingleNode<T> rotateNode(){
-        if (P == null){
+    public SingleNode<T> rotateNode() {
+        if (P == null) {
             JOptionPane.showMessageDialog(null, "El rol no se puede rotar porque no hay estudiantes.", "Error", JOptionPane.ERROR_MESSAGE);
             return new SingleNode<>();
         }
-        if (tam < 2){
+        if (size < 2) {
             JOptionPane.showMessageDialog(null, "El rol no se puede rotar porque no hay suficientes estudiantes.", "Error", JOptionPane.ERROR_MESSAGE);
             return new SingleNode<>();
         }
-        ultimo.setNext(P);
-        ultimo = P;
+        last.setNext(P);
+        last = P;
         P = P.getNext();
         return P;
     }

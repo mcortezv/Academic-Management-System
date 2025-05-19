@@ -14,14 +14,15 @@ public class QueueException extends RuntimeException {
     /**
      * Constructor por defecto de la excepción.
      */
-    public QueueException(){}
+    public QueueException() {
+    }
 
     /**
      * Constructor que acepta un mensaje de error.
      *
      * @param s String Mensaje de error descriptivo.
      */
-    public QueueException(String s){
+    public QueueException(String s) {
         super(s);
     }
 }
