@@ -76,4 +76,8 @@ public class GradePanel extends Panel {
             new GradeFormDialog(mainFrame, 3, persistenceFacade, this).setVisible(true);
         });
     }
+
+    public JTextArea getTextArea(){
+        return textArea;
+    }
 }
