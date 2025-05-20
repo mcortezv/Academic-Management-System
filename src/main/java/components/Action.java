@@ -10,6 +10,7 @@ package components;
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public class Action {
+
     private final Type type;
     private final Object data;
     private final String name;
@@ -62,10 +63,18 @@ public class Action {
         return this.data;
     }
 
+    /**
+     *Retorna una cadena con el nombre de la accion
+     * @return name cadena con el nombre
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *Metodo que retorna una cadena con el nombre de la accion
+     * @return name cadena con el nombre de la accion
+     */
     @Override
     public String toString() {
         return "[" + name + "]";

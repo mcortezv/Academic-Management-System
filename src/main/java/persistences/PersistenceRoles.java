@@ -33,17 +33,20 @@ public final class PersistenceRoles {
      * @return estudiante con el rol de tutor
      */
     public Student rotateRole() {
-        if (roles.rotateNode().getValue() != null) {
-            return roles.rotateNode().getValue();
+        var node = roles.rotateNode();
+        if (node.getValue() != null) {
+            return node.getValue();
         }
         return null;
     }
 
-    public Student undoRotateRol(){
-        if (roles.undoRotateNode().getValue() != null) {
-            return roles.undoRotateNode().getValue();
-        }
-        return null;
+    /**
+     *
+     * @return
+     */
+    public Student undoRotateRol() {
+        var node = roles.undoRotateNode();
+        return node.getValue();
     }
 
     /**
@@ -54,7 +57,9 @@ public final class PersistenceRoles {
         Contact datosContacto = new Contact("6681118936", "sebastian@gmail.com", "81271");
         Student student1 = new Student("2222BBBB", "Sebas", datosContacto);
         Student student2 = new Student("1234AAAA", "manuel", datosContacto);
+        Student student3 = new Student("5555CCCC","david",datosContacto);
         roles.add(student1);
         roles.add(student2);
+        roles.add(student3);
     }
 }

@@ -152,8 +152,6 @@ public class CircularLinkedList<T> {
             JOptionPane.showMessageDialog(null, "El rol no se puede rotar porque no hay suficientes estudiantes.", "Error", JOptionPane.ERROR_MESSAGE);
             return new SingleNode<>();
         }
-        last.setNext(P);
-        last = P;
         P = P.getNext();
         return P;
     }
@@ -162,11 +160,18 @@ public class CircularLinkedList<T> {
      *
      * @return
      */
-    public SingleNode<T> undoRotateNode(){
-        SingleNode<T> var = new SingleNode<>();
-        for(int i = 0; i < size ; i++ ){
-            var = rotateNode();
+    public SingleNode<T> undoRotateNode() {
+        if (P == null || size < 2) {
+            JOptionPane.showMessageDialog(null, "No se puede deshacer la rotación porque no hay suficientes estudiantes.", "Error", JOptionPane.ERROR_MESSAGE);
+            return new SingleNode<>();
         }
-        return var;
+
+        SingleNode<T> actual = P;
+        while (actual.getNext() != P) {
+            actual = actual.getNext();
+        }
+
+        P = actual;
+        return P;
     }
 }

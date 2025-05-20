@@ -11,6 +11,7 @@ package components;
  * @author Sebas
  */
 public class Request {
+
     private final Type type;
     private final Object data;
 

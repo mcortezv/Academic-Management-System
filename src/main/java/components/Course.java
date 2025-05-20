@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package components;
+
 import java.util.Random;
 import persistences.PersistenceStudentsCourses;
 import persistences.PersistenceWaitingListCourses;
@@ -17,6 +18,7 @@ import javax.swing.*;
  * @author Cortez, Manuel; Escárcega, David; Escalante, Sebastian.
  */
 public final class Course {
+
     private String id;
     private String name;
     private Student tutor;
@@ -27,9 +29,10 @@ public final class Course {
 
     /**
      * Constructor vacio del curso
+     *
      * @param name
      */
-    public Course(String name){
+    public Course(String name) {
         this.id = generateRandomId();
         this.name = name;
         this.tutor = null;
@@ -38,7 +41,7 @@ public final class Course {
         this.studentsWithAssignedRole = new PersistenceRoles();
     }
 
-    public Course(String id, String name){
+    public Course(String id, String name) {
         this.id = id;
         this.name = name;
         this.tutor = null;
@@ -48,7 +51,7 @@ public final class Course {
 
     }
 
-    public Course(String id, String name, Student tutor){
+    public Course(String id, String name, Student tutor) {
         this.id = id;
         this.name = name;
         this.tutor = tutor;
@@ -57,6 +60,7 @@ public final class Course {
         this.studentsWithAssignedRole = new PersistenceRoles();
 
     }
+
     /**
      * Constructor que establece los atributos de la instancia al valor de sus
      * parametros
@@ -78,12 +82,13 @@ public final class Course {
         this.waitingList = waitingList;
         this.studentsWithAssignedRole = studentsWithAssignedRole;
     }
-    public void enrollStudent(Student student){
-        if(enrolledStudents.getSize() >= 10){
+
+    public void enrollStudent(Student student) {
+        if (enrolledStudents.getSize() >= 10) {
             //JOptionPane.showMessageDialog(null,"La clase esta llena, el estudiante se envió a lista de espera");
             waitingList.enrollStudentWaitingList(student);
             JOptionPane.showMessageDialog(null, "El curso se encuentra lleno, el estudiante se envió a lista de espera");
-        }else{
+        } else {
             enrolledStudents.enrollStudentCourse(student);
             JOptionPane.showMessageDialog(null, "Estudiante Inscrito a la Clase: ");
         }
@@ -132,7 +137,8 @@ public final class Course {
     }
 
     /**
-     * Metodo que regresa una persistencia de estudiantes en lista de espera del curso.
+     * Metodo que regresa una persistencia de estudiantes en lista de espera del
+     * curso.
      *
      * @return waitingList
      */
@@ -153,8 +159,8 @@ public final class Course {
         return studentsWithAssignedRole;
     }
 
-    public void enrollStudentInCourse(Student student){
-        if (enrolledStudents.getSize()>= maxCapacity){
+    public void enrollStudentInCourse(Student student) {
+        if (enrolledStudents.getSize() >= maxCapacity) {
             waitingList.enrollStudentWaitingList(student);
             JOptionPane.showMessageDialog(null, "Cantidad Maxima de Estudiantes Alcanzada", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -184,27 +190,37 @@ public final class Course {
     /**
      * Establece el tutor del curso al valor recibido del parametro
      *
-     * @param tutor
+     * @param tutor tutor del curso
      */
     public void setTutor(Student tutor) {
         this.tutor = tutor;
     }
 
     /**
-     * Metodo que rota el rol de lider del curso y devuelve al estudiante que es el nuevo lider.
-     * @return
+     * Metodo que rota el rol de lider del curso y devuelve al estudiante que es
+     * el nuevo lider.
+     *
+     * @return Stutdent estudiante lider
      */
     public Student rotateRol() {
         return studentsWithAssignedRole.rotateRole();
     }
 
-
-    public Student undoRotateRol(){
+    /**
+     * Metodo que deshace la rotacion de lider del curso y devuelve el
+     * estudiante que es el anterior lider
+     *
+     * @return Student estudiante lider
+     */
+    public Student undoRotateRol() {
         return studentsWithAssignedRole.undoRotateRol();
     }
+
     /**
-     * 
-     * @return 
+     * Metodo que genera un id random que se le asignará al curso en el
+     * constctor
+     *
+     * @return id
      */
     public String generateRandomId() {
         Random random = new Random();
@@ -221,6 +237,7 @@ public final class Course {
             return generateRandomId();
         }
     }
+
     /**
      * Metodo que regresa una cadena de texto con todos los atributos de la
      * instancia
