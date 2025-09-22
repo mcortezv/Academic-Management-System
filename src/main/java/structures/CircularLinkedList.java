@@ -139,12 +139,16 @@ public class CircularLinkedList<T> {
     }
 
     /**
-     * Metodo que establece el nodo principal al siguiente
+     * Metodo que establece el nodo principal al siguiente.
      *
      * @return nodo que fue establecido como siguiente
      */
     public SingleNode<T> rotateNode() {
-        if (P == null || size < 2) {
+        if (P == null) {
+            JOptionPane.showMessageDialog(null, "El rol no se puede rotar porque no hay estudiantes.", "Error", JOptionPane.ERROR_MESSAGE);
+            return new SingleNode<>();
+        }
+        if (size < 2) {
             JOptionPane.showMessageDialog(null, "El rol no se puede rotar porque no hay suficientes estudiantes.", "Error", JOptionPane.ERROR_MESSAGE);
             return new SingleNode<>();
         }
