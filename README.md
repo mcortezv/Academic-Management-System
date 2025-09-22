@@ -57,8 +57,8 @@ All structures are implemented using **generic programming (`<T>`)** for reusabi
 
 ## **Project Requirements**
 
-- Java JDK 23 or higher
-- Recommended IDE: NetBeans, IntelliJ IDEA, or Eclipse
+- Java JDK 23
+- Recommended IDE: NetBeans or IntelliJ IDEA
 - [Draw.io](https://drive.google.com/file/d/1V0-v3KFbcSu_ZoZG00jufblqh6oPrndj/view?usp=sharing_eil_se_dm&ts=681dc6d4) for visualizing class diagrams (optional)
 
 ## **License**
